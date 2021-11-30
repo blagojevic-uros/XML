@@ -1,24 +1,40 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
     xmlns:vc="http://www.w3.org/2007/XMLSchema-versioning" elementFormDefault="qualified"
-    vc:minVersion="1.1">
+    vc:minVersion="1.1" targetNamespace="http://www.ftn.uns.ac.rs/vakcine/potvrda"
+    xmlns:pov="http://www.ftn.uns.ac.rs/vakcine/potvrda"
+    xmlns:xx="http://www.ftn.uns.ac.rs/vakcine/potvrda">
 
     <xs:element name="potvrda_o_vakcinaciji">
         <xs:complexType>
             <xs:sequence>
-                <xs:element name="licni_podaci" type="Licni_podaci"/>
-                <xs:element name="zdravstvena_ustanova"/>
-                <xs:element name="datum_izdavanja_potvrde"/>
-                <xs:element name="qr_kod"/>
-                <xs:element name="sifra_potvrde"/>
+                <xs:element name="licni_podaci" type="pov:Licni_podaci"/>
+                <xs:element name="sifra_potvrde" type="xs:string"/>
+                <xs:element name="zdravstvena_ustanova" type="xs:string"/>
+                <xs:element name="datum_izdavanja_potvrde" type="xs:date"/>
+                <xs:element name="qr_kod" type="xs:string"/>
+                <xs:element name="informacije_vakcinacije" type="pov:informacije_vakcinacija"/>
             </xs:sequence>
         </xs:complexType>
     </xs:element>
     <xs:complexType name="Licni_podaci">
         <xs:sequence>
-            <xs:element name="ime" type="xs:string"/>
-            <xs:element name="prezime" type="xs:string"/>
-            <xs:element name="pol" type="Pol" maxOccurs="1" minOccurs="1"/>
+            <xs:element name="ime_prezime">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element name="ime" type="xs:string"/>
+                        <xs:element name="prezime" type="xs:string"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="pol" maxOccurs="1" minOccurs="1">
+                <xs:simpleType>
+                    <xs:restriction base="xs:string">
+                        <xs:enumeration value="Musko"/>
+                        <xs:enumeration value="Zensko"/>
+                    </xs:restriction>
+                </xs:simpleType>
+            </xs:element>
             <xs:element name="JMBG">
                 <xs:simpleType>
                     <xs:restriction base="xs:positiveInteger">
@@ -26,20 +42,15 @@
                     </xs:restriction>
                 </xs:simpleType>
             </xs:element>
+            <xs:element name="datum_rodjenja" type="xs:date"/>
         </xs:sequence>
     </xs:complexType>
-    <xs:complexType name="Pol">
-        <xs:choice>
-            <xs:element name="Musko"/>
-            <xs:element name="Zensko"/>
-        </xs:choice>
-    </xs:complexType>
-    <xs:complexType name="Informacije_vakcine">
+    <xs:complexType name="informacije_vakcinacija">
         <xs:sequence>
-            <xs:element name="naziv_vakcine"/>
-            <xs:element name="datum_prve_doze"/>
-            <xs:element name="broj_serije"/>
-            <xs:element name="datum_druge_doze"/>
+            <xs:element name="naziv_vakcine" type="xs:string"/>
+            <xs:element name="datum_prve_doze" type="xs:date"/>
+            <xs:element name="broj_serije" type="xs:string"/>
+            <xs:element name="datum_druge_doze" type="xs:date"/>
         </xs:sequence>
     </xs:complexType>
 </xs:schema>

@@ -1,32 +1,47 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
     xmlns:vc="http://www.w3.org/2007/XMLSchema-versioning" elementFormDefault="qualified"
-    vc:minVersion="1.1" xmlns:va="http://vakcine.rs" targetNamespace="http://vakcine.rs"
-    xmlns:vk="http://vakcine.rs">
-
+    vc:minVersion="1.1" targetNamespace="http://ftn.uns.ac.rs/vakcine/sertifikat"
+    xmlns:sf="http://ftn.uns.ac.rs/vakcine/sertifikat">
     <xs:element name="zahtev_za_sertifikat">
         <xs:complexType>
             <xs:sequence>
-                <xs:element name="ime" type="xs:string"/>
-                <xs:element name="prezime" type="xs:string"/>
-                <xs:element name="datum_rodjenja" type="xs:date"/>
-                <xs:element name="pol" type="vk:Pol"/>
-                <xs:element name="JMBG">
-                    <xs:simpleType>
-                        <xs:restriction base="xs:positiveInteger">
-                            <xs:pattern value="/^(0[1-9]|[12][0-9]|3[01])(0[1-9]|1[012])[0-9]{9}$/"/>
-                            <xs:minExclusive value="13"/>
-                            <xs:maxExclusive value="13"/>
-                        </xs:restriction>
-                    </xs:simpleType>
-                </xs:element>
-                <xs:element name="broj_pasosa">
-                    <xs:simpleType>
-                        <xs:restriction base="xs:positiveInteger">
-                            <xs:minExclusive value="9"/>
-                            <xs:maxExclusive value="9"/>
-                        </xs:restriction>
-                    </xs:simpleType>
+                <xs:element name="licni_podaci">
+                    <xs:complexType>
+                        <xs:sequence>
+                            <xs:element name="ime_prezime">
+                                <xs:complexType>
+                                    <xs:sequence>
+                                        <xs:element name="ime" type="xs:string"/>
+                                        <xs:element name="prezime" type="xs:string"/>
+                                    </xs:sequence>
+                                </xs:complexType>
+                            </xs:element>
+                            <xs:element name="datum_rodjenja" type="xs:date"/>
+                            <xs:element name="pol">
+                                <xs:simpleType>
+                                    <xs:restriction base="xs:string">
+                                        <xs:enumeration value="Musko"/>
+                                        <xs:enumeration value="Zensko"/>
+                                    </xs:restriction>
+                                </xs:simpleType>
+                            </xs:element>
+                            <xs:element name="JMBG">
+                                <xs:simpleType>
+                                    <xs:restriction base="xs:positiveInteger">
+                                        <xs:totalDigits value="13"/>
+                                    </xs:restriction>
+                                </xs:simpleType>
+                            </xs:element>
+                            <xs:element name="broj_pasosa">
+                                <xs:simpleType>
+                                    <xs:restriction base="xs:positiveInteger">
+                                        <xs:totalDigits value="9"/>
+                                    </xs:restriction>
+                                </xs:simpleType>
+                            </xs:element>
+                        </xs:sequence>
+                    </xs:complexType>
                 </xs:element>
                 <xs:element name="razlog_za_zahtev" type="xs:string"/>
                 <xs:element name="mesto">
@@ -41,16 +56,4 @@
             </xs:sequence>
         </xs:complexType>
     </xs:element>
-    <xs:complexType name="Pol">
-        <xs:choice>
-            <xs:element name="Musko"/>
-            <xs:element name="Zensko"/>
-        </xs:choice>
-    </xs:complexType>
-    <xs:complexType name="Datum">
-        <xs:sequence>
-            <xs:element name="dan"/>
-            <xs:element name="godina"/>
-        </xs:sequence>
-    </xs:complexType>
 </xs:schema>
