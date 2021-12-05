@@ -2,42 +2,25 @@
 <xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
     xmlns:vc="http://www.w3.org/2007/XMLSchema-versioning" elementFormDefault="qualified"
     vc:minVersion="1.1" targetNamespace="http://ftn.uns.ac.rs/vakcine/sertifikat"
-    xmlns:sf="http://ftn.uns.ac.rs/vakcine/sertifikat">
+    xmlns:sf="http://ftn.uns.ac.rs/vakcine/sertifikat" xmlns:fv="http://ftn-vakcine.rs/types">
+    <xs:import namespace="http://ftn-vakcine.rs/types" schemaLocation="types.xsd"/>
     <xs:element name="zahtev_za_sertifikat">
         <xs:complexType>
             <xs:sequence>
                 <xs:element name="licni_podaci">
                     <xs:complexType>
                         <xs:sequence>
-                            <xs:element name="ime_prezime">
-                                <xs:complexType>
-                                    <xs:sequence>
-                                        <xs:element name="ime" type="xs:string"/>
-                                        <xs:element name="prezime" type="xs:string"/>
-                                    </xs:sequence>
-                                </xs:complexType>
-                            </xs:element>
+                            <xs:element name="ime_prezime" type="fv:Ime_prezime"> </xs:element>
                             <xs:element name="datum_rodjenja" type="xs:date"/>
-                            <xs:element name="pol">
-                                <xs:simpleType>
-                                    <xs:restriction base="xs:string">
-                                        <xs:enumeration value="Musko"/>
-                                        <xs:enumeration value="Zensko"/>
-                                    </xs:restriction>
-                                </xs:simpleType>
-                            </xs:element>
+                            <xs:element name="pol" type="fv:pol"/>
                             <xs:element name="JMBG">
                                 <xs:simpleType>
-                                    <xs:restriction base="xs:positiveInteger">
-                                        <xs:totalDigits value="13"/>
-                                    </xs:restriction>
+                                    <xs:restriction base="fv:JMBG"> </xs:restriction>
                                 </xs:simpleType>
                             </xs:element>
                             <xs:element name="broj_pasosa">
                                 <xs:simpleType>
-                                    <xs:restriction base="xs:positiveInteger">
-                                        <xs:totalDigits value="9"/>
-                                    </xs:restriction>
+                                    <xs:restriction base="fv:broj_pasosa"> </xs:restriction>
                                 </xs:simpleType>
                             </xs:element>
                         </xs:sequence>
