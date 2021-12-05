@@ -8,12 +8,12 @@
     <xs:element name="potvrda_o_vakcinaciji">
         <xs:complexType>
             <xs:sequence>
-                <xs:element name="licni_podaci" type="pov:Licni_podaci"/>
                 <xs:element name="sifra_potvrde" type="xs:string"/>
-                <xs:element name="zdravstvena_ustanova" type="xs:string"/>
-                <xs:element name="datum_izdavanja_potvrde" type="xs:date"/>
-                <xs:element name="qr_kod" type="xs:string"/>
+                <xs:element name="licni_podaci" type="pov:Licni_podaci"/>
                 <xs:element name="informacije_vakcinacije" type="pov:informacije_vakcinacija"/>
+                <xs:element name="datum_izdavanja_potvrde" type="xs:date"/>
+                <xs:element name="zdravstvena_ustanova" type="xs:string"/>
+                <xs:element name="qr_kod" type="xs:string"/>
             </xs:sequence>
         </xs:complexType>
     </xs:element>
@@ -37,9 +37,7 @@
             </xs:element>
             <xs:element name="JMBG">
                 <xs:simpleType>
-                    <xs:restriction base="xs:positiveInteger">
-                        <xs:pattern value="/^(0[1-9]|[12][0-9]|3[01])(0[1-9]|1[012])[0-9]{9}$/"/>
-                    </xs:restriction>
+                    <xs:restriction base="xs:positiveInteger"> </xs:restriction>
                 </xs:simpleType>
             </xs:element>
             <xs:element name="datum_rodjenja" type="xs:date"/>
@@ -47,10 +45,18 @@
     </xs:complexType>
     <xs:complexType name="informacije_vakcinacija">
         <xs:sequence>
-            <xs:element name="naziv_vakcine" type="xs:string"/>
-            <xs:element name="datum_prve_doze" type="xs:date"/>
-            <xs:element name="broj_serije" type="xs:string"/>
-            <xs:element name="datum_druge_doze" type="xs:date"/>
+            <xs:element maxOccurs="unbounded" minOccurs="1" ref="pov:informacije_o_dozi"/>
         </xs:sequence>
     </xs:complexType>
+    <xs:element name="informacije_o_dozi">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="naziv_vakcine" type="xs:string"/>
+                <xs:element name="datum_doze" type="xs:date"/>
+                <xs:element name="broj_serije" type="xs:positiveInteger"/>
+                <xs:element name="broj_doze" type="xs:positiveInteger"/>
+                <xs:element name="zdravstena_ustanova" type="xs:string"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
 </xs:schema>

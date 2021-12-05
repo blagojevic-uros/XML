@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<izvestaj_o_imunizaciji xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:noNamespaceSchemaLocation="file:/F:/4.%20Godina/XML/XML/schemas/izvestaj.xsd">
+    <pocetni_datum>2021-08-01</pocetni_datum>
+    <zavrsni_datum>2021-09-01</zavrsni_datum>
+    <broj_dokumenata_imunizaciju>2758</broj_dokumenata_imunizaciju>
+    <zahtevi_sertifikat>453</zahtevi_sertifikat>
+    <izdati_zahtevi_sertifikat>428</izdati_zahtevi_sertifikat>
+    <broj_doza>3225</broj_doza>
+    <raspored_doza_vakcina_broj_doze>
+        <doza_1>1789</doza_1>
+        <doza_2>1276</doza_2>
+        <doza_3>160</doza_3>
+    </raspored_doza_vakcina_broj_doze>
+    <raspored_doza_vakcina_proizvodjac>
+        <Pfizer>1625</Pfizer>
+        <Sinopharm>1100</Sinopharm>
+        <Sputnik_V>356</Sputnik_V>
+        <AstraZeneca>144</AstraZeneca>
+    </raspored_doza_vakcina_proizvodjac>
+    <datum>2022-09-11</datum>
+    <potpis>AJovanovic</potpis>
+</izvestaj_o_imunizaciji>

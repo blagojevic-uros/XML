@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<interesovanje xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:noNamespaceSchemaLocation="file:/F:/4.%20Godina/XML/XML/schemas/interesovanje.xsd">
+    <licni_podaci>
+        <drzavljanstvo>Drzavljanin_RS</drzavljanstvo>
+        <JMBG>094388852429</JMBG>
+        <ime>Zoran</ime>
+        <prezime>Petrović</prezime>
+        <email>petko@gmail.com</email>
+        <mobilni_telefon>0684281384</mobilni_telefon>
+        <fiksni_telefon>017489976</fiksni_telefon>
+    </licni_podaci>
+    <lokacija_vakcinisanja>Vranje</lokacija_vakcinisanja>
+    <tip_vakcine>Pfizer-BioNTech</tip_vakcine>
+    <datum>2021-05-07</datum>
+    <potpis>ZPetrović</potpis>
+    <davalac_krvi></davalac_krvi>
+</interesovanje>

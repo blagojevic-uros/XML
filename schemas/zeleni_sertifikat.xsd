@@ -6,12 +6,14 @@
     <xs:element name="zeleni_sertifikat">
         <xs:complexType>
             <xs:sequence>
+                <xs:element name="QR_code" type="xs:string"/>
                 <xs:element name="broj_sertifikata" type="xs:string"/>
                 <xs:element name="datum_izdavanja" type="xs:date"/>
                 <xs:element ref="licni_podaci"/>
                 <xs:element name="izdavac_sertifikata" type="xs:string"/>
                 <xs:element ref="vakcinacije"/>
                 <xs:element ref="testovi"/>
+                <xs:element minOccurs="0" ref="prelezana"/>
             </xs:sequence>
         </xs:complexType>
     </xs:element>
@@ -65,14 +67,14 @@
     <xs:element name="vakcinacije">
         <xs:complexType>
             <xs:sequence>
-                <xs:element maxOccurs="3" ref="vakcinacija"/>
+                <xs:element maxOccurs="unbounded" ref="vakcinacija" minOccurs="0"/>
             </xs:sequence>
         </xs:complexType>
     </xs:element>
     <xs:element name="testovi">
         <xs:complexType>
             <xs:sequence>
-                <xs:element maxOccurs="unbounded" ref="test"/>
+                <xs:element maxOccurs="unbounded" ref="test" minOccurs="0"/>
             </xs:sequence>
         </xs:complexType>
     </xs:element>
@@ -92,6 +94,14 @@
                         </xs:restriction>
                     </xs:simpleType>
                 </xs:element>
+                <xs:element name="laboratorija" type="xs:string"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="prelezana">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="datum_pozitivnog" type="xs:date"/>
                 <xs:element name="laboratorija" type="xs:string"/>
             </xs:sequence>
         </xs:complexType>
