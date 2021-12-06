@@ -1,19 +1,27 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
     xmlns:vc="http://www.w3.org/2007/XMLSchema-versioning" elementFormDefault="qualified"
-    vc:minVersion="1.1">
-
+    vc:minVersion="1.1" xmlns:fv="http://ftn-vakcine.rs/types"
+    targetNamespace="http://www.ftn-vakcine.rs/sertifikat"
+    xmlns:st="http://www.ftn-vakcine.rs/sertifikat">
+    <xs:import namespace="http://ftn-vakcine.rs/types" schemaLocation="types.xsd"/>
     <xs:element name="zeleni_sertifikat">
         <xs:complexType>
             <xs:sequence>
                 <xs:element name="QR_code" type="xs:string"/>
-                <xs:element name="broj_sertifikata" type="xs:string"/>
+                <xs:element name="broj_sertifikata">
+                    <xs:simpleType>
+                        <xs:restriction base="fv:sifra">
+                            <xs:pattern value="\d+/d{2}/"/>
+                        </xs:restriction>
+                    </xs:simpleType>
+                </xs:element>
                 <xs:element name="datum_izdavanja" type="xs:date"/>
-                <xs:element ref="licni_podaci"/>
+                <xs:element ref="st:licni_podaci"/>
                 <xs:element name="izdavac_sertifikata" type="xs:string"/>
-                <xs:element ref="vakcinacije"/>
-                <xs:element ref="testovi"/>
-                <xs:element minOccurs="0" ref="prelezana"/>
+                <xs:element ref="st:vakcinacije"/>
+                <xs:element ref="st:testovi"/>
+                <xs:element minOccurs="0" ref="st:prelezana"/>
             </xs:sequence>
         </xs:complexType>
     </xs:element>
@@ -67,14 +75,14 @@
     <xs:element name="vakcinacije">
         <xs:complexType>
             <xs:sequence>
-                <xs:element maxOccurs="unbounded" ref="vakcinacija" minOccurs="0"/>
+                <xs:element maxOccurs="unbounded" ref="st:vakcinacija" minOccurs="0"/>
             </xs:sequence>
         </xs:complexType>
     </xs:element>
     <xs:element name="testovi">
         <xs:complexType>
             <xs:sequence>
-                <xs:element maxOccurs="unbounded" ref="test" minOccurs="0"/>
+                <xs:element maxOccurs="unbounded" ref="st:test" minOccurs="0"/>
             </xs:sequence>
         </xs:complexType>
     </xs:element>

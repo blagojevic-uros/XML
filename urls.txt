@@ -1,0 +1,34 @@
+URLS:
+potvrda o vakcinaciji 
+
+http://www.ftn-vakcine.rs/potvrda/{sifra-potvrde-vakcinacije}
+http://www.ftn-vakcine.rs/potvrda/123123123/21
+
+digitalni sertifikat
+
+http://www.ftn-vakcine.rs/sertifikat/{sifra-sertifikata}
+http://www.ftn-vakcine.rs/sertifikat/123123123/21
+
+interesovanje
+
+http://www.ftn-vakcine.rs/interesovanje/vestacki-id(jmbg + broj puta)
+
+obrazac saglanosti
+
+http://www.ftn-vakcine.rs/saglanost/jmbg(broj_pasosa)
+http://www.ftn-vakcine.rs/saglanost/1231231232131123
+
+evidencija o vakcinaciji
+
+http://www.ftn-vakcine.rs/evidencija/vakcinacija/jmbg
+http://www.ftn-vakcine.rs/evidencija/vakcinacija/1231231232131123
+
+izvestaj o imunizaciji
+
+http://www.ftn-vakcine.rs/izvestaj/datum-od/datum-do
+http://www.ftn-vakcine.rs/izvestaj/2021-08-01/2021-09-01
+
+zahtev za sertifikat
+
+http://www.ftn-vakcine.rs/zahtev_sertifikat/jmbg/datum
+http://www.ftn-vakcine.rs/zahtev_sertifikat/12313131231/2021-12-01

@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
     xmlns:vc="http://www.w3.org/2007/XMLSchema-versioning" elementFormDefault="qualified"
-    vc:minVersion="1.1" targetNamespace="http://ftn-vakcine.rs" xmlns:fk="http://ftn-vakcine.rs"
-    xmlns:fv="http://ftn-vakcine.rs/types">
+    vc:minVersion="1.1" targetNamespace="http://www.ftn-vakcine.rs/saglanost"
+    xmlns:fk="http://www.ftn-vakcine.rs/saglanost" xmlns:fv="http://www.ftn-vakcine.rs/types">
     <xs:import namespace="http://ftn-vakcine.rs/types" schemaLocation="types.xsd"/>
     <xs:element name="saglasnost_za_imunizaciju">
         <xs:complexType>

@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
     xmlns:vc="http://www.w3.org/2007/XMLSchema-versioning" elementFormDefault="qualified"
-    vc:minVersion="1.1" targetNamespace="http://ftn.uns.ac.rs/vakcine/sertifikat"
-    xmlns:sf="http://ftn.uns.ac.rs/vakcine/sertifikat" xmlns:fv="http://ftn-vakcine.rs/types">
-    <xs:import namespace="http://ftn-vakcine.rs/types" schemaLocation="types.xsd"/>
+    vc:minVersion="1.1" targetNamespace="http://www.ftn-vakcine/zahtev_sertifikat"
+    xmlns:fv="http://www.ftn-vakcine.rs/types" xmlns:zs="http://www.ftn-vakcine/zahtev_sertifikat">
+    <xs:import namespace="http://www.ftn-vakcine.rs/types" schemaLocation="types.xsd"/>
     <xs:element name="zahtev_za_sertifikat">
         <xs:complexType>
             <xs:sequence>
