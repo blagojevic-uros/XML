@@ -1,23 +1,41 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<izvestaj_o_imunizaciji xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-    xsi:noNamespaceSchemaLocation="file:/F:/4.%20Godina/XML/XML/schemas/izvestaj.xsd">
-    <pocetni_datum>2021-08-01</pocetni_datum>
-    <zavrsni_datum>2021-09-01</zavrsni_datum>
-    <broj_dokumenata_imunizaciju>2758</broj_dokumenata_imunizaciju>
-    <zahtevi_sertifikat>453</zahtevi_sertifikat>
-    <izdati_zahtevi_sertifikat>428</izdati_zahtevi_sertifikat>
-    <broj_doza>3225</broj_doza>
+<izvestaj_o_imunizaciji xmlns="http://www.ftn-vakcine.rs/izvestaj"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.ftn-vakcine.rs/izvestaj ../schemas/izvestaj.xsd">
+    <pocetni_datum>2021-09-01</pocetni_datum>
+    <zavrsni_datum>2021-10-01</zavrsni_datum>
+    <broj_dokumenata_imunizaciju>123</broj_dokumenata_imunizaciju>
+    <zahtevi_sertifikat>109</zahtevi_sertifikat>
+    <izdati_zahtevi_sertifikat>55</izdati_zahtevi_sertifikat>
+    <broj_doza>555</broj_doza>
     <raspored_doza_vakcina_broj_doze>
-        <doza_1>1789</doza_1>
-        <doza_2>1276</doza_2>
-        <doza_3>160</doza_3>
+        <info_doza>
+            <doza>1</doza>
+            <kolicina>321</kolicina>
+        </info_doza>
+        <info_doza>
+            <doza>2</doza>
+            <kolicina>222</kolicina>
+        </info_doza>
+        <info_doza>
+            <doza>3</doza>
+            <kolicina>123</kolicina>
+        </info_doza>
     </raspored_doza_vakcina_broj_doze>
     <raspored_doza_vakcina_proizvodjac>
-        <Pfizer>1625</Pfizer>
-        <Sinopharm>1100</Sinopharm>
-        <Sputnik_V>356</Sputnik_V>
-        <AstraZeneca>144</AstraZeneca>
+        <info_proizvodjac>
+            <proizvodjac>AstraZeneca</proizvodjac>
+            <doze>123</doze>
+        </info_proizvodjac>
+        <info_proizvodjac>
+            <proizvodjac>Moderna</proizvodjac>
+            <doze>32</doze>
+        </info_proizvodjac>
+        <info_proizvodjac>
+            <proizvodjac>Pfizer-BioNTech</proizvodjac>
+            <doze>500</doze>
+        </info_proizvodjac>
     </raspored_doza_vakcina_proizvodjac>
-    <datum>2022-09-11</datum>
-    <potpis>AJovanovic</potpis>
+    <datum>2021-11-01</datum>
+    <potpis>PPera</potpis>
 </izvestaj_o_imunizaciji>

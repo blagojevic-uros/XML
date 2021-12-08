@@ -37,6 +37,7 @@
                 <xs:element name="datum_zahteva" type="xs:date"/>
                 <xs:element name="potpis" type="xs:string"/>
             </xs:sequence>
+            <xs:attribute name="sertifikat"/>
         </xs:complexType>
     </xs:element>
 </xs:schema>

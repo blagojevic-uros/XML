@@ -2,7 +2,8 @@
 <xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
     xmlns:vc="http://www.w3.org/2007/XMLSchema-versioning" elementFormDefault="qualified"
     vc:minVersion="1.1" xmlns:it="http://ftn.uns.ac.rs/vakcina/interesovanje"
-    xmlns:tp="http://ftn.uns.ac.rs/vakcine/tipovi" xmlns:fv="http://www.ftn-vakcine.rs/types">
+    xmlns:tp="http://ftn.uns.ac.rs/vakcine/tipovi" xmlns:fv="http://www.ftn-vakcine.rs/types"
+    targetNamespace="http://ftn.uns.ac.rs/vakcina/interesovanje">
     <xs:import namespace="http://www.ftn-vakcine.rs/types" schemaLocation="types.xsd"/>
     <xs:element name="interesovanje">
         <xs:complexType>
@@ -22,24 +23,9 @@
                             <xs:element name="JMBG" type="fv:JMBG"> </xs:element>
                             <xs:element name="ime" type="xs:string"/>
                             <xs:element name="prezime" type="xs:string"/>
-                            <xs:element name="email">
-                                <xs:simpleType>
-                                    <xs:restriction base="xs:string"> </xs:restriction>
-                                </xs:simpleType>
-                            </xs:element>
-                            <xs:element name="mobilni_telefon">
-                                <xs:simpleType>
-                                    <xs:restriction base="xs:positiveInteger">
-                                        <xs:pattern value="06[0-9]+"/>
-                                    </xs:restriction>
-                                </xs:simpleType>
-                            </xs:element>
-                            <xs:element name="fiksni_telefon">
-                                <xs:simpleType>
-                                    <xs:restriction base="xs:positiveInteger">
-                                        <xs:pattern value="0[0-9]+"/>
-                                    </xs:restriction>
-                                </xs:simpleType>
+                            <xs:element name="email" type="fv:email"> </xs:element>
+                            <xs:element name="mobilni_telefon" type="fv:mobilni_telefon"> </xs:element>
+                            <xs:element name="fiksni_telefon" type="fv:fiksni_telefon">
                             </xs:element>
                         </xs:sequence>
                     </xs:complexType>
@@ -50,6 +36,8 @@
                 <xs:element name="potpis" type="xs:string"/>
                 <xs:element minOccurs="0" name="davalac_krvi"/>
             </xs:sequence>
+            <xs:attribute name="potvrda_o_vakcinisanju"/>
+            <xs:attribute name="saglasnost_za_imunizaciju"/>
         </xs:complexType>
     </xs:element>
 </xs:schema>

@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<zahtev_za_sertifikat xmlns="http://ftn.uns.ac.rs/vakcine/sertifikat"
+<zahtev_za_sertifikat xmlns="http://www.ftn-vakcine/zahtev_sertifikat"
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-    xsi:schemaLocation="http://ftn.uns.ac.rs/vakcine/sertifikat file:/F:/4.%20Godina/XML/XML/schemas/zahtev_za_sertifikat.xsd">
+    xsi:schemaLocation="http://www.ftn-vakcine/zahtev_sertifikat ../schemas/zahtev_za_sertifikat.xsd">
     <licni_podaci>
         <ime_prezime>
-            <ime>Aleksandar</ime>
-            <prezime>Jovanović</prezime>
+            <ime xmlns="http://www.ftn-vakcine.rs/types">Aleksandar</ime>
+            <prezime xmlns="http://www.ftn-vakcine.rs/types">Jovanovic</prezime>
         </ime_prezime>
         <datum_rodjenja>1999-08-08</datum_rodjenja>
-        <pol>Musko</pol>
+        <pol>M</pol>
         <JMBG>0808999742049</JMBG>
         <broj_pasosa>052425937</broj_pasosa>
     </licni_podaci>

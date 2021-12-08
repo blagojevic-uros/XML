@@ -1,21 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
     xmlns:vc="http://www.w3.org/2007/XMLSchema-versioning" elementFormDefault="qualified"
-    vc:minVersion="1.1" xmlns:fv="http://ftn-vakcine.rs/types"
+    vc:minVersion="1.1" xmlns:fv="http://www.ftn-vakcine.rs/types"
     targetNamespace="http://www.ftn-vakcine.rs/sertifikat"
     xmlns:st="http://www.ftn-vakcine.rs/sertifikat">
-    <xs:import namespace="http://ftn-vakcine.rs/types" schemaLocation="types.xsd"/>
+    <xs:import namespace="http://www.ftn-vakcine.rs/types" schemaLocation="types.xsd"/>
     <xs:element name="zeleni_sertifikat">
         <xs:complexType>
             <xs:sequence>
                 <xs:element name="QR_code" type="xs:string"/>
-                <xs:element name="broj_sertifikata">
-                    <xs:simpleType>
-                        <xs:restriction base="fv:sifra">
-                            <xs:pattern value="\d+/d{2}/"/>
-                        </xs:restriction>
-                    </xs:simpleType>
-                </xs:element>
+                <xs:element name="broj_sertifikata" type="fv:sifra"> </xs:element>
                 <xs:element name="datum_izdavanja" type="xs:date"/>
                 <xs:element ref="st:licni_podaci"/>
                 <xs:element name="izdavac_sertifikata" type="xs:string"/>
@@ -23,41 +17,17 @@
                 <xs:element ref="st:testovi"/>
                 <xs:element minOccurs="0" ref="st:prelezana"/>
             </xs:sequence>
+            <xs:attribute name="zahtev_za_sertifikat" type="xs:string"/>
+            <xs:attribute name="potvrda_o_vakcinisanju"/>
         </xs:complexType>
     </xs:element>
     <xs:element name="licni_podaci">
         <xs:complexType>
             <xs:sequence>
-                <xs:element name="ime_prezime">
-                    <xs:complexType>
-                        <xs:sequence>
-                            <xs:element name="ime" type="xs:string"/>
-                            <xs:element name="prezime" type="xs:string"/>
-                        </xs:sequence>
-                    </xs:complexType>
-                </xs:element>
-                <xs:element maxOccurs="1" minOccurs="1" name="pol">
-                    <xs:simpleType>
-                        <xs:restriction base="xs:string">
-                            <xs:enumeration value="Musko"/>
-                            <xs:enumeration value="Zensko"/>
-                        </xs:restriction>
-                    </xs:simpleType>
-                </xs:element>
-                <xs:element name="JMBG">
-                    <xs:simpleType>
-                        <xs:restriction base="xs:positiveInteger">
-                            <xs:totalDigits value="13"/>
-                        </xs:restriction>
-                    </xs:simpleType>
-                </xs:element>
-                <xs:element name="broj_pasosa">
-                    <xs:simpleType>
-                        <xs:restriction base="xs:positiveInteger">
-                            <xs:totalDigits value="9"/>
-                        </xs:restriction>
-                    </xs:simpleType>
-                </xs:element>
+                <xs:element name="ime_prezime" type="fv:Ime_prezime"> </xs:element>
+                <xs:element maxOccurs="1" minOccurs="1" name="pol" type="fv:pol"> </xs:element>
+                <xs:element name="JMBG" type="fv:JMBG"> </xs:element>
+                <xs:element name="broj_pasosa" type="fv:broj_pasosa"> </xs:element>
             </xs:sequence>
         </xs:complexType>
     </xs:element>
@@ -66,7 +36,7 @@
             <xs:sequence>
                 <xs:element name="doza" type="xs:positiveInteger"/>
                 <xs:element name="tip" type="xs:string"/>
-                <xs:element name="proizvodjac" type="xs:string"/>
+                <xs:element name="proizvodjac" type="fv:tip_vakcine"/>
                 <xs:element name="datum" type="xs:date"/>
                 <xs:element name="zdravstvena_ustanova" type="xs:string"/>
             </xs:sequence>

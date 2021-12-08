@@ -1,35 +1,28 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<potvrda_o_vakcinaciji xmlns="http://www.ftn.uns.ac.rs/vakcine/potvrda"
+<potvrda_o_vakcinaciji xmlns="http://www.ftn-vakcine.rs/potvrda"
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-    xsi:schemaLocation="http://www.ftn.uns.ac.rs/vakcine/potvrda file:/F:/4.%20Godina/XML/XML/schemas/potvrda_o_vakcinisanju.xsd">
-    <sifra_potvrde>4778790-2559987</sifra_potvrde>
+    xmlns:fv="http://www.ftn-vakcine.rs/types"
+    xsi:schemaLocation="http://www.ftn-vakcine.rs/potvrda ../schemas/potvrda_o_vakcinisanju.xsd">
+    <sifra_potvrde></sifra_potvrde>
     <licni_podaci>
         <ime_prezime>
-            <ime>Darko</ime>
-            <prezime>Tica</prezime>
+            <fv:ime>Pera</fv:ime>
+            <fv:prezime>Perovic</fv:prezime>
         </ime_prezime>
-        <pol>Musko</pol>
-        <JMBG>042999985249</JMBG>
-        <datum_rodjenja>1999-04-05</datum_rodjenja>
+        <pol>M</pol>
+        <JMBG>1231231231234</JMBG>
+        <datum_rodjenja>1999-08-08</datum_rodjenja>
     </licni_podaci>
     <informacije_vakcinacije>
         <informacije_o_dozi>
-            <naziv_vakcine>Pfizer</naziv_vakcine>
-            <datum_doze>2021-04-05</datum_doze>
-            <broj_serije>3245</broj_serije>
+            <naziv_vakcine>Moderna</naziv_vakcine>
+            <datum_doze>2021-12-12</datum_doze>
+            <broj_serije>123</broj_serije>
             <broj_doze>1</broj_doze>
-            <zdravstena_ustanova>Opšta bolnica Bečej</zdravstena_ustanova>
-        </informacije_o_dozi>
-        <informacije_o_dozi>
-            <naziv_vakcine>Pfizer</naziv_vakcine>
-            <datum_doze>2021-04-19</datum_doze>
-            <broj_serije>3455</broj_serije>
-            <broj_doze>2</broj_doze>
-            <zdravstena_ustanova>Opšta bolnica Promenada</zdravstena_ustanova>
+            <zdravstena_ustanova>Novi Sad Promenada</zdravstena_ustanova>
         </informacije_o_dozi>
     </informacije_vakcinacije>
-    <datum_izdavanja_potvrde>2021-02-07</datum_izdavanja_potvrde>
-    <zdravstvena_ustanova>Opšta bolnica Bečej</zdravstvena_ustanova>
+    <datum_izdavanja_potvrde>2021-12-12</datum_izdavanja_potvrde>
+    <zdravstvena_ustanova>Novi Sad Bolnica</zdravstvena_ustanova>
     <qr_kod></qr_kod>
-    
 </potvrda_o_vakcinaciji>

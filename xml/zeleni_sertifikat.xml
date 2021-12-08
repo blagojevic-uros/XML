@@ -1,27 +1,39 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<zeleni_sertifikat xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-    xsi:noNamespaceSchemaLocation="file:/F:/4.%20Godina/XML/XML/schemas/zeleni_sertifikat.xsd">
+<zeleni_sertifikat xmlns="http://www.ftn-vakcine.rs/sertifikat"
+    xmlns:fv="http://www.ftn-vakcine.rs/types"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.ftn-vakcine.rs/sertifikat file:/D:/faks/4godina/xmlWebServiS/projekat/XML/schemas/zeleni_sertifikat.xsd">
     <QR_code></QR_code>
-    <broj_sertifikata>1785483/21</broj_sertifikata>
-    <datum_izdavanja>2021-11-04</datum_izdavanja>
+    <broj_sertifikata>1231231/21</broj_sertifikata>
+    <datum_izdavanja>2021-12-12</datum_izdavanja>
     <licni_podaci>
         <ime_prezime>
-            <ime>Aleksandar</ime>
-            <prezime>Jovanović</prezime>
+            <fv:ime>Aleksandar</fv:ime>
+            <fv:prezime>Perovic</fv:prezime>
         </ime_prezime>
-        <pol>Musko</pol>
-        <JMBG>0808999742049</JMBG>
-        <broj_pasosa>012001139</broj_pasosa>
+        <pol>M</pol>
+        <JMBG>1231231231234</JMBG>
+        <broj_pasosa>123123123</broj_pasosa>
     </licni_podaci>
-    <izdavac_sertifikata>Institute of Public Health of Serbia "Dr Milan Jovanović Batut"</izdavac_sertifikata>
+    <izdavac_sertifikata>Novi Sad Bolnica</izdavac_sertifikata>
     <vakcinacije>
-    
+        <vakcinacija>
+            <doza>1</doza>
+            <tip>123</tip>
+            <proizvodjac>AstraZeneca</proizvodjac>
+            <datum>2021-12-12</datum>
+            <zdravstvena_ustanova>Novi Sad Bolnica</zdravstvena_ustanova>
+        </vakcinacija>
     </vakcinacije>
     <testovi>
-       
+        <test>
+            <naziv></naziv>
+            <vrsta_uzorka></vrsta_uzorka>
+            <proizvodjac></proizvodjac>
+            <datum_vreme_uzorka>2021-12-12T12:12:00</datum_vreme_uzorka>
+            <datum_vreme_rezultata>2021-12-13T12:12:00</datum_vreme_rezultata>
+            <rezultat>Negativan</rezultat>
+            <laboratorija></laboratorija>
+        </test>
     </testovi>
-    <prelezana>
-        <datum_pozitivnog>2021-08-02</datum_pozitivnog>
-        <laboratorija>Opšta bolnica Vranje</laboratorija>
-    </prelezana>
 </zeleni_sertifikat>

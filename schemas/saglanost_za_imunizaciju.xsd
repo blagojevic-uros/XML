@@ -3,7 +3,7 @@
     xmlns:vc="http://www.w3.org/2007/XMLSchema-versioning" elementFormDefault="qualified"
     vc:minVersion="1.1" targetNamespace="http://www.ftn-vakcine.rs/saglanost"
     xmlns:fk="http://www.ftn-vakcine.rs/saglanost" xmlns:fv="http://www.ftn-vakcine.rs/types">
-    <xs:import namespace="http://ftn-vakcine.rs/types" schemaLocation="types.xsd"/>
+    <xs:import namespace="http://www.ftn-vakcine.rs/types" schemaLocation="types.xsd"/>
     <xs:element name="saglasnost_za_imunizaciju">
         <xs:complexType>
             <xs:sequence>
@@ -18,8 +18,10 @@
                 </xs:element>
                 <xs:element name="potpis" type="xs:string"/>
                 <xs:element name="datum" type="xs:date"/>
-                <xs:element ref="fk:evidencija_o_vakcinaciji"/>
+                <xs:element ref="fk:evidencija_o_vakcinaciji" minOccurs="0"/>
             </xs:sequence>
+            <xs:attribute name="potvrda_o_vakcinisanju"/>
+            <xs:attribute name="interesovanje"/>
         </xs:complexType>
     </xs:element>
     <xs:element name="licni_podaci">

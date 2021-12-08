@@ -11,8 +11,8 @@ http://www.ftn-vakcine.rs/sertifikat/123123123/21
 
 interesovanje
 
-http://www.ftn-vakcine.rs/interesovanje/vestacki-id(jmbg + broj puta)
-
+http://www.ftn-vakcine.rs/interesovanje/vestacki-id(jmbg + datum)
+http://www.ftn-vakcine.rs/interesovanje/12321313213
 obrazac saglanosti
 
 http://www.ftn-vakcine.rs/saglanost/jmbg(broj_pasosa)

@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<interesovanje xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-    xsi:noNamespaceSchemaLocation="file:/F:/4.%20Godina/XML/XML/schemas/interesovanje.xsd">
+<interesovanje xmlns="http://ftn.uns.ac.rs/vakcina/interesovanje"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="../schemas/interesovanje.xsd">
     <licni_podaci>
         <drzavljanstvo>Drzavljanin_RS</drzavljanstvo>
         <JMBG>094388852429</JMBG>
