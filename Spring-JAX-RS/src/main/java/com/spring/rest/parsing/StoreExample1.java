@@ -1,17 +1,15 @@
 package com.spring.rest.parsing;
 
 
-import java.awt.print.Book;
 import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.io.OutputStream;
-import java.math.BigDecimal;
 
 import javax.xml.bind.JAXBContext;
 import javax.xml.bind.Marshaller;
 import javax.xml.bind.Unmarshaller;
 
-import com.spring.rest.model.Interesovanje;
+import com.spring.rest.model.interesovanje.Interesovanje;
 import org.exist.xmldb.EXistResource;
 import org.xmldb.api.DatabaseManager;
 import org.xmldb.api.base.Collection;
@@ -98,11 +96,12 @@ public class StoreExample1 {
             res = (XMLResource) col.createResource(documentId, XMLResource.RESOURCE_TYPE);
 
             System.out.println("[INFO] Unmarshalling XML document to an JAXB instance: ");
-            JAXBContext context = JAXBContext.newInstance("com.spring.rest.model");
+            JAXBContext context = JAXBContext.newInstance("com.spring.rest.model.interesovanje");
 
             Unmarshaller unmarshaller = context.createUnmarshaller();
 
             Interesovanje interesovanje = (Interesovanje) unmarshaller.unmarshal(new File("src/main/resources/podaci/xml/interesovanje.xml"));
+            interesovanje.getLicniPodaci().setIme("Mare");
             System.out.println(interesovanje);
 
             Marshaller marshaller = context.createMarshaller();

@@ -6,7 +6,7 @@
 //
 
 
-package com.spring.rest.model;
+package com.spring.rest.model.interesovanje;
 
 import javax.xml.bind.annotation.XmlEnum;
 import javax.xml.bind.annotation.XmlEnumValue;
