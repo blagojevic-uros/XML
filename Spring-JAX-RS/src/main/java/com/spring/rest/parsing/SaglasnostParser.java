@@ -10,7 +10,8 @@ import javax.xml.bind.JAXBContext;
 import javax.xml.bind.Marshaller;
 import javax.xml.bind.Unmarshaller;
 
-import com.spring.rest.model.izvestaj.IzvestajOImunizaciji;
+import com.spring.rest.model.potvrda.PotvrdaOVakcinaciji;
+import com.spring.rest.model.saglasnost.SaglasnostZaImunizaciju;
 import org.xmldb.api.DatabaseManager;
 import org.xmldb.api.base.Collection;
 import org.xmldb.api.base.Database;
@@ -20,28 +21,26 @@ import org.xmldb.api.modules.XMLResource;
 import util.AuthenticationUtilities;
 import util.AuthenticationUtilities.ConnectionProperties;
 
-public class IzvestajParser {
+public class SaglasnostParser {
 
     private static ConnectionProperties conn;
 
     public static void main(String[] args) throws Exception {
-        String d1, d2;
-        d1 = "2021-08-01";
-        d2 = "2021-09-01";
-        List<String> list = IzvestajParser.make(d1, d2);
-        IzvestajParser.save(conn = AuthenticationUtilities.loadProperties(), list.get(0), list.get(1), list.get(2));
+        int id = 12345;
+        List<String> list = SaglasnostParser.make(id);
+        SaglasnostParser.save(conn = AuthenticationUtilities.loadProperties(), list.get(0), list.get(1), list.get(2));
     }
 
-    public static ArrayList<String> make(String date1, String date2) throws Exception {
+    public static ArrayList<String> make(int id) throws Exception {
 
         System.out.println("[INFO] Using defaults with ID.");
         String collectionId = null;
         String documentId = null;
         String filePath = null;
 
-        collectionId = "/db/izvestaj";
-        documentId = "interesovanje-" + date1 + "-" + date2 + ".xml";
-        filePath = "podaci/xml/izvestaj.xml";
+        collectionId = "/db/saglasnost";
+        documentId = "saglanost_za_imunizaciju-" + id + ".xml";
+        filePath = "podaci/xml/saglanost_za_imunizaciju.xml";
 
         System.out.println("\t- collection ID: " + collectionId);
         System.out.println("\t- document ID: " + documentId);
@@ -74,37 +73,37 @@ public class IzvestajParser {
         res = (XMLResource) col.createResource(documentId, XMLResource.RESOURCE_TYPE);
 
         JAXBContext context = unmarshall_1();
-        IzvestajOImunizaciji izvestaj = unmarshall_2(context);
-        marshall(res, context, izvestaj, os, col);
+        SaglasnostZaImunizaciju saglasnostZaImunizaciju = unmarshall_2(context);
+        marshall(res, context, saglasnostZaImunizaciju, os, col);
     }
 
     public static JAXBContext unmarshall_1() throws Exception{
 
         System.out.println("[INFO] Unmarshalling XML document to an JAXB instance: ");
-        JAXBContext context = JAXBContext.newInstance("com.spring.rest.model.izvestaj");
+        JAXBContext context = JAXBContext.newInstance("com.spring.rest.model.saglasnost");
 
         Unmarshaller unmarshaller = context.createUnmarshaller();
 
         return context;
     }
 
-    public static IzvestajOImunizaciji unmarshall_2(JAXBContext context) throws Exception{
+    public static SaglasnostZaImunizaciju unmarshall_2(JAXBContext context) throws Exception{
 
         Unmarshaller unmarshaller = context.createUnmarshaller();
 
-        IzvestajOImunizaciji izvestaj = (IzvestajOImunizaciji) unmarshaller.unmarshal(new File("src/main/resources/podaci/xml/izvestaj.xml"));
-        izvestaj.setPotpis("PemeX"); // Random name update for test
-        System.out.println(izvestaj);
+        SaglasnostZaImunizaciju saglasnostZaImunizaciju = (SaglasnostZaImunizaciju) unmarshaller.unmarshal(new File("src/main/resources/podaci/xml/saglanost_za_imunizaciju.xml"));
+        saglasnostZaImunizaciju.setInteresovanje("Random"); // Random name update for test
+        System.out.println(saglasnostZaImunizaciju);
 
-        return izvestaj;
+        return saglasnostZaImunizaciju;
     }
 
-    public static void marshall(XMLResource res, JAXBContext context, IzvestajOImunizaciji izvestaj, OutputStream os, Collection col) throws Exception{
+    public static void marshall(XMLResource res, JAXBContext context, SaglasnostZaImunizaciju saglasnostZaImunizaciju, OutputStream os, Collection col) throws Exception{
         Marshaller marshaller = context.createMarshaller();
         marshaller.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, Boolean.TRUE);
 
         // marshal the contents to an output stream
-        marshaller.marshal(izvestaj, os);
+        marshaller.marshal(saglasnostZaImunizaciju, os);
 
         // link the stream to the XML resource
         res.setContent(os);
@@ -165,5 +164,4 @@ public class IzvestajParser {
             return col;
         }
     }
-
 }
