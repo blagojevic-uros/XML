@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<potvrda_o_vakcinaciji xmlns="http://www.ftn-vakcine.rs/potvrda"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:fv="http://www.ftn-vakcine.rs/types"
+    xsi:schemaLocation="http://www.ftn-vakcine.rs/potvrda ../schemas/potvrda_o_vakcinisanju.xsd">
+    <sifra_potvrde></sifra_potvrde>
+    <licni_podaci>
+        <ime_prezime>
+            <fv:ime>Pera</fv:ime>
+            <fv:prezime>Perovic</fv:prezime>
+        </ime_prezime>
+        <pol>M</pol>
+        <JMBG>1231231231234</JMBG>
+        <datum_rodjenja>1999-08-08</datum_rodjenja>
+    </licni_podaci>
+    <informacije_vakcinacije>
+        <informacije_o_dozi>
+            <naziv_vakcine>Moderna</naziv_vakcine>
+            <datum_doze>2021-12-12</datum_doze>
+            <broj_serije>123</broj_serije>
+            <broj_doze>1</broj_doze>
+            <zdravstena_ustanova>Novi Sad Promenada</zdravstena_ustanova>
+        </informacije_o_dozi>
+    </informacije_vakcinacije>
+    <datum_izdavanja_potvrde>2021-12-12</datum_izdavanja_potvrde>
+    <zdravstvena_ustanova>Novi Sad Bolnica</zdravstvena_ustanova>
+    <qr_kod></qr_kod>
+</potvrda_o_vakcinaciji>
