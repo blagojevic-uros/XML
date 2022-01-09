@@ -5,6 +5,7 @@ import java.io.File;
 import java.io.OutputStream;
 import java.lang.reflect.Array;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 import javax.xml.bind.JAXBContext;
@@ -12,6 +13,7 @@ import javax.xml.bind.Marshaller;
 import javax.xml.bind.Unmarshaller;
 
 import com.spring.rest.model.interesovanje.Interesovanje;
+import com.spring.rest.model.izvestaj.IzvestajOImunizaciji;
 import org.xmldb.api.DatabaseManager;
 import org.xmldb.api.base.Collection;
 import org.xmldb.api.base.Database;
@@ -21,25 +23,28 @@ import org.xmldb.api.modules.XMLResource;
 import util.AuthenticationUtilities;
 import util.AuthenticationUtilities.ConnectionProperties;
 
-public class InteresovanjeParser {
+public class IzvestajParser {
 
     private static ConnectionProperties conn;
 
     public static void main(String[] args) throws Exception {
-        List<String> list = InteresovanjeParser.make(1234);
-        InteresovanjeParser.save(conn = AuthenticationUtilities.loadProperties(), list.get(0), list.get(1), list.get(2));
+        String d1, d2;
+        d1 = "2021-08-01";
+        d2 = "2021-09-01";
+        List<String> list = IzvestajParser.make(d1, d2);
+        IzvestajParser.save(conn = AuthenticationUtilities.loadProperties(), list.get(0), list.get(1), list.get(2));
     }
 
-    public static ArrayList<String> make(int id) throws Exception {
+    public static ArrayList<String> make(String date1, String date2) throws Exception {
 
         System.out.println("[INFO] Using defaults with ID.");
         String collectionId = null;
         String documentId = null;
         String filePath = null;
 
-        collectionId = "/db/interesovanje"; // /db/interesovanje
-        documentId = "interesovanje-" + id + ".xml"; // interesovanje-{id}
-        filePath = "podaci/xml/interesovanje.xml";
+        collectionId = "/db/izvestaj"; // /db/interesovanje
+        documentId = "interesovanje-" + date1 + "-" + date2 + ".xml"; // interesovanje-{id}
+        filePath = "podaci/xml/izvestaj.xml";
 
         System.out.println("\t- collection ID: " + collectionId);
         System.out.println("\t- document ID: " + documentId);
@@ -72,29 +77,29 @@ public class InteresovanjeParser {
         res = (XMLResource) col.createResource(documentId, XMLResource.RESOURCE_TYPE);
 
         JAXBContext context = unmarshall_1();
-        Interesovanje interesovanje = unmarshall_2(context);
-        marshall(res, context, interesovanje, os, col);
+        IzvestajOImunizaciji izvestaj = unmarshall_2(context);
+        marshall(res, context, izvestaj, os, col);
     }
 
     public static JAXBContext unmarshall_1() throws Exception{
 
         System.out.println("[INFO] Unmarshalling XML document to an JAXB instance: ");
-        JAXBContext context = JAXBContext.newInstance("com.spring.rest.model.interesovanje");
+        JAXBContext context = JAXBContext.newInstance("com.spring.rest.model.izvestaj");
 
         Unmarshaller unmarshaller = context.createUnmarshaller();
 
         return context;
     }
 
-    public static Interesovanje unmarshall_2(JAXBContext context) throws Exception{
+    public static IzvestajOImunizaciji unmarshall_2(JAXBContext context) throws Exception{
 
         Unmarshaller unmarshaller = context.createUnmarshaller();
 
-        Interesovanje interesovanje = (Interesovanje) unmarshaller.unmarshal(new File("src/main/resources/podaci/xml/interesovanje.xml"));
-        interesovanje.getLicniPodaci().setIme("Mare"); // Random name update for test
-        System.out.println(interesovanje);
+        IzvestajOImunizaciji izvestaj = (IzvestajOImunizaciji) unmarshaller.unmarshal(new File("src/main/resources/podaci/xml/interesovanje.xml"));
+        //izvestaj.get.setIme("Mare"); // Random name update for test
+        System.out.println(izvestaj);
 
-        return interesovanje;
+        return izvestaj;
     }
 
     public static void marshall(XMLResource res, JAXBContext context, Interesovanje interesovanje, OutputStream os, Collection col) throws Exception{
