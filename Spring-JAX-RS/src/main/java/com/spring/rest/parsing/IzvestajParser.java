@@ -95,19 +95,19 @@ public class IzvestajParser {
 
         Unmarshaller unmarshaller = context.createUnmarshaller();
 
-        IzvestajOImunizaciji izvestaj = (IzvestajOImunizaciji) unmarshaller.unmarshal(new File("src/main/resources/podaci/xml/interesovanje.xml"));
+        IzvestajOImunizaciji izvestaj = (IzvestajOImunizaciji) unmarshaller.unmarshal(new File("src/main/resources/podaci/xml/izvestaj.xml"));
         //izvestaj.get.setIme("Mare"); // Random name update for test
         System.out.println(izvestaj);
 
         return izvestaj;
     }
 
-    public static void marshall(XMLResource res, JAXBContext context, Interesovanje interesovanje, OutputStream os, Collection col) throws Exception{
+    public static void marshall(XMLResource res, JAXBContext context, IzvestajOImunizaciji izvestaj, OutputStream os, Collection col) throws Exception{
         Marshaller marshaller = context.createMarshaller();
         marshaller.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, Boolean.TRUE);
 
         // marshal the contents to an output stream
-        marshaller.marshal(interesovanje, os);
+        marshaller.marshal(izvestaj, os);
 
         // link the stream to the XML resource
         res.setContent(os);
