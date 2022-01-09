@@ -18,7 +18,7 @@
                 <xs:element name="zahtevi_sertifikat" type="xs:positiveInteger"/>
                 <xs:element name="izdati_zahtevi_sertifikat" type="xs:positiveInteger"/>
                 <xs:element name="broj_doza" type="xs:positiveInteger"/>
-                <xs:element ref="iz:raspored_doza_vakcina_proizvodjac"/>
+                <xs:element name="raspored_doza_vakcina_broj_doze" type="iz:raspored_doza_broj"> </xs:element>
                 <xs:element ref="iz:raspored_doza_vakcina_proizvodjac"/>
                 <xs:element name="datum" type="xs:date"/>
                 <xs:element name="potpis" type="xs:string"/>
