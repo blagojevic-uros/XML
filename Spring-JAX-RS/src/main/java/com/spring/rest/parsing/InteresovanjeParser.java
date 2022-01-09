@@ -1,15 +1,18 @@
 package com.spring.rest.parsing;
 
-
 import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.io.OutputStream;
+import java.lang.reflect.Array;
+import java.util.ArrayList;
+import java.util.List;
 
 import javax.xml.bind.JAXBContext;
 import javax.xml.bind.Marshaller;
 import javax.xml.bind.Unmarshaller;
 
 import com.spring.rest.model.interesovanje.Interesovanje;
+import com.sun.xml.xsom.impl.scd.Iterators;
 import org.exist.xmldb.EXistResource;
 import org.xmldb.api.DatabaseManager;
 import org.xmldb.api.base.Collection;
@@ -20,122 +23,95 @@ import org.xmldb.api.modules.XMLResource;
 import util.AuthenticationUtilities;
 import util.AuthenticationUtilities.ConnectionProperties;
 
-public class StoreExample1 {
+public class InteresovanjeParser {
 
     private static ConnectionProperties conn;
 
     public static void main(String[] args) throws Exception {
-        StoreExample1.run(conn = AuthenticationUtilities.loadProperties(), args);
+        List<String> list = InteresovanjeParser.make(1234);
+        InteresovanjeParser.save(conn = AuthenticationUtilities.loadProperties(), list.get(0), list.get(1), list.get(2));
     }
 
-    /**
-     * conn XML DB connection properties
-     * args[0] Should be the collection ID to access
-     * args[1] Should be the document ID to store in the collection
-     * args[2] Should be the document file path
-     */
-    public static void run(ConnectionProperties conn, String args[]) throws Exception {
+    public static ArrayList<String> make(int id) throws Exception {
 
-        System.out.println("[INFO] " + StoreExample1.class.getSimpleName());
-
-        // initialize collection and document identifiers
+        System.out.println("[INFO] Using defaults with ID.");
         String collectionId = null;
         String documentId = null;
         String filePath = null;
 
-        if (args.length == 3) {
-
-            System.out.println("[INFO] Passing the arguments... ");
-
-            collectionId = args[0];
-            documentId = args[1];
-
-            filePath = args[2];
-        } else {
-
-            System.out.println("[INFO] Using defaults.");
-
-            collectionId = "/db/sample/library"; // /db/interesovanje
-            documentId = "interesovanje.xml"; // interesovanje-{id}
-
-            filePath = "podaci/xml/interesovanje.xml";
-
-        }
+        collectionId = "/db/interesovanje"; // /db/interesovanje
+        documentId = "interesovanje-" + id + ".xml"; // interesovanje-{id}
+        filePath = "podaci/xml/interesovanje.xml";
 
         System.out.println("\t- collection ID: " + collectionId);
         System.out.println("\t- document ID: " + documentId);
         System.out.println("\t- file path: " + filePath + "\n");
 
-        // initialize database driver
+        ArrayList<String> ret = new ArrayList<String>();
+        ret.add(collectionId);
+        ret.add(documentId);
+        ret.add(filePath);
+        return ret;
+    }
+
+    public static void save(ConnectionProperties conn, String collectionId, String documentId, String filepath) throws Exception{
         System.out.println("[INFO] Loading driver class: " + conn.driver);
         Class<?> cl = Class.forName(conn.driver);
 
-
-        // encapsulation of the database driver functionality
         Database database = (Database) cl.newInstance();
         database.setProperty("create-database", "true");
 
-        // entry point for the API which enables you to get the Collection reference
         DatabaseManager.registerDatabase(database);
 
-        // a collection of Resources stored within an XML database
         Collection col = null;
         XMLResource res = null;
         OutputStream os = new ByteArrayOutputStream();
 
-        try {
+        System.out.println("[INFO] Retrieving the collection: " + collectionId);
+        col = getOrCreateCollection(collectionId);
 
-            System.out.println("[INFO] Retrieving the collection: " + collectionId);
-            col = getOrCreateCollection(collectionId);
+        System.out.println("[INFO] Inserting the document: " + documentId);
+        res = (XMLResource) col.createResource(documentId, XMLResource.RESOURCE_TYPE);
 
-            /*
-             *  create new XMLResource with a given id
-             *  an id is assigned to the new resource if left empty (null)
-             */
-            System.out.println("[INFO] Inserting the document: " + documentId);
-            res = (XMLResource) col.createResource(documentId, XMLResource.RESOURCE_TYPE);
+        JAXBContext context = unmarshall_1();
+        Interesovanje interesovanje = unmarshall_2(context);
+        marshall(res, context, interesovanje, os, col);
+    }
 
-            System.out.println("[INFO] Unmarshalling XML document to an JAXB instance: ");
-            JAXBContext context = JAXBContext.newInstance("com.spring.rest.model.interesovanje");
+    public static JAXBContext unmarshall_1() throws Exception{
 
-            Unmarshaller unmarshaller = context.createUnmarshaller();
+        System.out.println("[INFO] Unmarshalling XML document to an JAXB instance: ");
+        JAXBContext context = JAXBContext.newInstance("com.spring.rest.model.interesovanje");
 
-            Interesovanje interesovanje = (Interesovanje) unmarshaller.unmarshal(new File("src/main/resources/podaci/xml/interesovanje.xml"));
-            interesovanje.getLicniPodaci().setIme("Mare");
-            System.out.println(interesovanje);
+        Unmarshaller unmarshaller = context.createUnmarshaller();
 
-            Marshaller marshaller = context.createMarshaller();
-            marshaller.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, Boolean.TRUE);
+        return context;
+    }
 
-            // marshal the contents to an output stream
-            marshaller.marshal(interesovanje, os);
+    public static Interesovanje unmarshall_2(JAXBContext context) throws Exception{
 
-            // link the stream to the XML resource
-            res.setContent(os);
-            System.out.println("[INFO] Storing the document: " + res.getId());
+        Unmarshaller unmarshaller = context.createUnmarshaller();
 
-            col.storeResource(res);
-            System.out.println("[INFO] Done.");
+        Interesovanje interesovanje = (Interesovanje) unmarshaller.unmarshal(new File("src/main/resources/podaci/xml/interesovanje.xml"));
+        interesovanje.getLicniPodaci().setIme("Mare"); // Random name update for test
+        System.out.println(interesovanje);
 
-        } finally {
+        return interesovanje;
+    }
 
-            //don't forget to cleanup
-            if(res != null) {
-                try {
-                    ((EXistResource)res).freeResources();
-                } catch (XMLDBException xe) {
-                    xe.printStackTrace();
-                }
-            }
+    public static void marshall(XMLResource res, JAXBContext context, Interesovanje interesovanje, OutputStream os, Collection col) throws Exception{
+        Marshaller marshaller = context.createMarshaller();
+        marshaller.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, Boolean.TRUE);
 
-            if(col != null) {
-                try {
-                    col.close();
-                } catch (XMLDBException xe) {
-                    xe.printStackTrace();
-                }
-            }
-        }
+        // marshal the contents to an output stream
+        marshaller.marshal(interesovanje, os);
+
+        // link the stream to the XML resource
+        res.setContent(os);
+        System.out.println("[INFO] Storing the document: " + res.getId());
+
+        col.storeResource(res);
+        System.out.println("[INFO] Done.");
     }
 
 
@@ -189,4 +165,5 @@ public class StoreExample1 {
             return col;
         }
     }
+
 }
