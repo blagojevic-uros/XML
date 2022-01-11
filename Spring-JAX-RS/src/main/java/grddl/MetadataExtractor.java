@@ -124,7 +124,7 @@ public class MetadataExtractor {
 
         String filePath = "gen/grddl_metadata.rdf";
 
-        InputStream in = new FileInputStream(new File("data/rdfa/contacts.xml"));
+        InputStream in = new FileInputStream(new File("src/main/resources/podaci/rdf/rdfa/contacts.xml"));
 
         OutputStream out = new FileOutputStream(filePath);
 

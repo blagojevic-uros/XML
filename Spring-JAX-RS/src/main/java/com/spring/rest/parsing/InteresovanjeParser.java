@@ -8,6 +8,7 @@ import org.xmldb.api.base.XMLDBException;
 import org.xmldb.api.modules.XMLResource;
 import util.AuthenticationUtilities;
 import util.AuthenticationUtilities.ConnectionProperties;
+import util.ObjectParser;
 import util.XmlDatabaseUtil;
 
 import javax.xml.bind.JAXBContext;
@@ -23,6 +24,7 @@ public class InteresovanjeParser {
 
     private static ConnectionProperties conn;
     private static XmlDatabaseUtil xmlDatabaseUtil;
+    private static ObjectParser objectParser;
     public static void main(String[] args) throws Exception {
         List<String> list = InteresovanjeParser.make(1234);
         InteresovanjeParser.save(conn = AuthenticationUtilities.loadProperties(), list.get(0), list.get(1), list.get(2));
@@ -96,6 +98,8 @@ public class InteresovanjeParser {
     }
 
     public static void marshall(XMLResource res, JAXBContext context, Interesovanje interesovanje, OutputStream os, Collection col) throws Exception{
+
+//        objectParser.parseToXml(interesovanje);
         Marshaller marshaller = context.createMarshaller();
         marshaller.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, Boolean.TRUE);
 

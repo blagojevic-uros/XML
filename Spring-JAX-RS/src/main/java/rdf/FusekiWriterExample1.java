@@ -45,7 +45,7 @@ public class FusekiWriterExample1 {
         System.out.println("[INFO] Loading triples from an RDF/XML to a model...");
 
         // RDF triples which are to be loaded into the model
-        String rdfFilePath = "src/main/resources/podaci/rdf/rdf/person_metadata.rdf";
+        String rdfFilePath = "src/main/resources/podaci/rdf/rdf/interesovanje-123.rdf";
 
         // Creates a default model
         Model model = ModelFactory.createDefaultModel();

@@ -8,8 +8,9 @@
 
 package com.spring.rest.model.interesovanje;
 
-import javax.xml.bind.annotation.XmlRegistry;
+import com.spring.rest.model.types.ImePrezime;
 
+import javax.xml.bind.annotation.XmlRegistry;
 
 /**
  * This object contains factory methods for each 
