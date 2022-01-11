@@ -41,7 +41,7 @@ public class IzvestajParser {
         String filePath = null;
 
         collectionId = "/db/izvestaj";
-        documentId = "interesovanje-" + date1 + "-" + date2 + ".xml";
+        documentId = "izvestaj-" + date1 + "-" + date2 + ".xml";
         filePath = "podaci/xml/izvestaj.xml";
 
         System.out.println("\t- collection ID: " + collectionId);
