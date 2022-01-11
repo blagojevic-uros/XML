@@ -1,9 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
     xmlns:vc="http://www.w3.org/2007/XMLSchema-versioning" elementFormDefault="qualified"
-    vc:minVersion="1.1" targetNamespace="http://www.ftn-vakcine.rs/saglanost"
-    xmlns:fk="http://www.ftn-vakcine.rs/saglanost" xmlns:fv="http://www.ftn-vakcine.rs/types">
-    <xs:import namespace="http://www.ftn-vakcine.rs/types" schemaLocation="types.xsd"/>
+    vc:minVersion="1.1" targetNamespace="http://ftn.uns.ac.rs/vakcina/saglasnost"
+    xmlns:fk="http://ftn.uns.ac.rs/vakcina/saglasnost"
+    xmlns:fv="http://ftn.uns.ac.rs/vakcina/tipovi">
+    <xs:import namespace="http://ftn.uns.ac.rs/vakcina/tipovi" schemaLocation="types.xsd"/>
     <xs:element name="saglasnost_za_imunizaciju">
         <xs:complexType>
             <xs:sequence>

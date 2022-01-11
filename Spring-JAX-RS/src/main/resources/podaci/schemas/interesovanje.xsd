@@ -2,9 +2,9 @@
 <xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
     xmlns:vc="http://www.w3.org/2007/XMLSchema-versioning" elementFormDefault="qualified"
     vc:minVersion="1.1" xmlns:it="http://ftn.uns.ac.rs/vakcina/interesovanje"
-    xmlns:tp="http://ftn.uns.ac.rs/vakcine/tipovi" xmlns:fv="http://www.ftn-vakcine.rs/types"
+    xmlns:tp="http://ftn.uns.ac.rs/vakcine/tipovi" xmlns:fv="http://ftn.uns.ac.rs/vakcina/tipovi"
     targetNamespace="http://ftn.uns.ac.rs/vakcina/interesovanje">
-    <xs:import namespace="http://www.ftn-vakcine.rs/types" schemaLocation="types.xsd"/>
+    <xs:import namespace="http://ftn.uns.ac.rs/vakcina/tipovi" schemaLocation="types.xsd"/>
     <xs:element name="interesovanje">
         <xs:complexType>
             <xs:sequence>

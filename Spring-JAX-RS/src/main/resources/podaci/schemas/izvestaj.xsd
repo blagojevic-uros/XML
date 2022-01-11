@@ -1,10 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
     xmlns:vc="http://www.w3.org/2007/XMLSchema-versioning" elementFormDefault="qualified"
-    vc:minVersion="1.1" targetNamespace="http://www.ftn-vakcine.rs/izvestaj"
-    xmlns:iz="http://www.ftn-vakcine.rs/izvestaj" xmlns:fv="http://www.ftn-vakcine.rs/types">
+    vc:minVersion="1.1" targetNamespace="http://ftn.uns.ac.rs/vakcina/izvestaj"
+    xmlns:iz="http://ftn.uns.ac.rs/vakcina/izvestaj"
+    xmlns:fv="http://ftn.uns.ac.rs/vakcina/interesovanje">
 
-    <xs:import namespace="http://www.ftn-vakcine.rs/types" schemaLocation="types.xsd"/>
+    <xs:import namespace="http://ftn.uns.ac.rs/vakcina/interesovanje" schemaLocation="types.xsd"/>
     <xs:element name="izvestaj_o_imunizaciji">
         <xs:complexType>
             <xs:sequence>

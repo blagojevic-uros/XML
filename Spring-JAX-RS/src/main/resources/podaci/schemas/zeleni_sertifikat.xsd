@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
     xmlns:vc="http://www.w3.org/2007/XMLSchema-versioning" elementFormDefault="qualified"
-    vc:minVersion="1.1" xmlns:fv="http://www.ftn-vakcine.rs/types"
-    targetNamespace="http://www.ftn-vakcine.rs/sertifikat"
-    xmlns:st="http://www.ftn-vakcine.rs/sertifikat">
-    <xs:import namespace="http://www.ftn-vakcine.rs/types" schemaLocation="types.xsd"/>
+    vc:minVersion="1.1" xmlns:fv="http://ftn.uns.ac.rs/vakcina/tipovi"
+    targetNamespace="http://ftn.uns.ac.rs/vakcina/sertifikat"
+    xmlns:st="http://ftn.uns.ac.rs/vakcina/sertifikat">
+    <xs:import namespace="http://ftn.uns.ac.rs/vakcina/tipovi" schemaLocation="types.xsd"/>
     <xs:element name="zeleni_sertifikat">
         <xs:complexType>
             <xs:sequence>
