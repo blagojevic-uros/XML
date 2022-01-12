@@ -1,13 +1,26 @@
 package grddl;
 
 
-import org.xml.sax.SAXException;
+//import com.sun.org.apache.xalan.internal.xsltc.trax.TransformerFactoryImpl;
 
-import javax.xml.transform.*;
+import org.apache.jena.rdf.model.Model;
+import org.apache.jena.rdf.model.ModelFactory;
+import org.apache.jena.update.UpdateExecutionFactory;
+import org.apache.jena.update.UpdateFactory;
+import org.apache.jena.update.UpdateProcessor;
+import org.apache.jena.update.UpdateRequest;
+import org.xml.sax.SAXException;
+import util.RDFAuthenticationUtilities;
+import util.RDFAuthenticationUtilities.ConnectionProperties;
+import util.SparqlUtil;
+
+import javax.xml.transform.OutputKeys;
+import javax.xml.transform.Transformer;
+import javax.xml.transform.TransformerException;
+import javax.xml.transform.TransformerFactory;
 import javax.xml.transform.stream.StreamResult;
 import javax.xml.transform.stream.StreamSource;
 import java.io.*;
-
 /**
  *
  * Primer demonstrira ekstrakciju RDFa metapodataka iz
@@ -17,74 +30,13 @@ import java.io.*;
  */
 public class MetadataExtractor {
 
-    private TransformerFactory transformerFactory;
+    private final TransformerFactory transformerFactory = TransformerFactory.newInstance();
+    private static final String SPARQL_NAMED_GRAPH_URI = "/example/sparql/metadata";
+    private static final String XSLT_FILE = "src/main/resources/podaci/xsl/grddl.xsl";
 
-    private static final String XSLT_FILE = "data/xsl/grddl.xsl";
-
-    public MetadataExtractor() throws SAXException, IOException {
-
-        // Setup the XSLT transformer factory
-        transformerFactory = new TransformerFactory() {
-            @Override
-            public Transformer newTransformer(Source source) throws TransformerConfigurationException {
-                return null;
-            }
-
-            @Override
-            public Transformer newTransformer() throws TransformerConfigurationException {
-                return null;
-            }
-
-            @Override
-            public Templates newTemplates(Source source) throws TransformerConfigurationException {
-                return null;
-            }
-
-            @Override
-            public Source getAssociatedStylesheet(Source source, String media, String title, String charset) throws TransformerConfigurationException {
-                return null;
-            }
-
-            @Override
-            public void setURIResolver(URIResolver resolver) {
-
-            }
-
-            @Override
-            public URIResolver getURIResolver() {
-                return null;
-            }
-
-            @Override
-            public void setFeature(String name, boolean value) throws TransformerConfigurationException {
-
-            }
-
-            @Override
-            public boolean getFeature(String name) {
-                return false;
-            }
-
-            @Override
-            public void setAttribute(String name, Object value) {
-
-            }
-
-            @Override
-            public Object getAttribute(String name) {
-                return null;
-            }
-
-            @Override
-            public void setErrorListener(ErrorListener listener) {
-
-            }
-
-            @Override
-            public ErrorListener getErrorListener() {
-                return null;
-            }
-        };
+    private final ConnectionProperties conn;
+    public MetadataExtractor(RDFAuthenticationUtilities.ConnectionProperties conn) throws SAXException, IOException {
+            this.conn = conn;
     }
 
     /**
@@ -94,6 +46,11 @@ public class MetadataExtractor {
      * @param in XML containing input stream
      * @param out RDF/XML output stream
      */
+
+    public void extractAndSave(String xmlFilePath, String path) throws FileNotFoundException, TransformerException {
+        extractMetadata(new FileInputStream(xmlFilePath), new FileOutputStream(path));
+        saveRdf(path);
+    }
     public void extractMetadata(InputStream in, OutputStream out) throws FileNotFoundException, TransformerException {
 
         // Create transformation source
@@ -116,28 +73,25 @@ public class MetadataExtractor {
         grddlTransformer.transform(source, result);
 
     }
+    private void saveRdf(String path){
+        Model model = ModelFactory.createDefaultModel();
+        model.read(path);
 
+        ByteArrayOutputStream out = new ByteArrayOutputStream();
+        model.write(out, SparqlUtil.NTRIPLES);
 
-    public void test() throws Exception {
-
-        System.out.println("[INFO] " + MetadataExtractor.class.getSimpleName());
-
-        String filePath = "gen/grddl_metadata.rdf";
-
-        InputStream in = new FileInputStream(new File("src/main/resources/podaci/rdf/rdfa/contacts.xml"));
-
-        OutputStream out = new FileOutputStream(filePath);
-
-        extractMetadata(in, out);
-
-        System.out.println("[INFO] File \"" + filePath + "\" generated successfully.");
-
-        System.out.println("[INFO] End.");
+        String sparqlUpdate = SparqlUtil.insertData(conn.dataEndpoint + SPARQL_NAMED_GRAPH_URI, out.toString());
+        System.out.println(sparqlUpdate);
+        UpdateRequest update = UpdateFactory.create(sparqlUpdate);
+        System.out.println("[INFO] Selecting the triples from the named graph \"" + SPARQL_NAMED_GRAPH_URI + "\".");
+        UpdateProcessor processor = UpdateExecutionFactory.createRemote(update, conn.updateEndpoint);
+        processor.execute();
 
     }
 
-    public static void main(String[] args) throws Exception {
-        new MetadataExtractor().test();
-    }
+
+//    public static void main(String[] args) throws Exception {
+//        new MetadataExtractor().test();
+//    }
 
 }

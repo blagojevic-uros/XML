@@ -1,12 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<saglasnost_za_imunizaciju xmlns="http://www.ftn-vakcine.rs/saglanost"
-    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-    xsi:schemaLocation="http://www.ftn-vakcine.rs/saglanost ../schemas/saglanost_za_imunizaciju.xsd"
-    interesovanje="123123">
+<?xml-stylesheet type="text/xsl" href="../xsl/grddl.xsl"?>
+<saglasnost_za_imunizaciju xmlns="http://ftn.uns.ac.rs/vakcina/saglasnost"
+                           xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                           xmlns:pred="http://www.ftn.uns.ac.rs/rdf/saglasnost/predicate/"
+                           xsi:schemaLocation="../schemas/saglanost_za_imunizaciju.xsd"
+                           about="http://www.ftn.uns.ac.rs/rdf/saglasnost/123"
+                           id="123" rel="pred:potvrda"
+                           href="http://www.ftn.uns.ac.rs/rdf/potvrda/123">
     <licni_podaci>
         <drzavljanstvo>
             <srpsko>
-            <JMBG property="pred:jmbg">0808999742049</JMBG>    
+                <JMBG property="pred:jmbg">0808999742049</JMBG>
             </srpsko>
         </drzavljanstvo>
         <prezime>Petrovic</prezime>
@@ -33,7 +37,7 @@
         <naziv_leka>Brufen</naziv_leka>
     </saglanost>
     <potpis>PPera</potpis>
-    <datum>2021-12-12</datum>
+    <datum property="pred:datum">2021-12-12</datum>
     <evidencija_o_vakcinaciji>
         <zdravstvena_ustanova>Bolnica Novi Sad</zdravstvena_ustanova>
         <vakcinijski_punkt>123</vakcinijski_punkt>

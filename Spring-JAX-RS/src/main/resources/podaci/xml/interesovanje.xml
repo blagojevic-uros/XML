@@ -1,7 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/xsl" href="../xsl/grddl.xsl"?>
 <interesovanje xmlns="http://ftn.uns.ac.rs/vakcina/interesovanje"
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-    xsi:schemaLocation="../schemas/interesovanje.xsd">
+    xmlns:pred="http://www.ftn.uns.ac.rs/rdf/interesovanje/predicate/"
+    xsi:schemaLocation="../schemas/interesovanje.xsd"
+    about="http://www.ftn.uns.ac.rs/rdf/interesovanje/123"
+               rel="pred:saglasnostOd"
+    id="123" href="http://www.ftn.uns.ac.rs/rdf/saglasnost/123">
     <licni_podaci>
         <drzavljanstvo property="pred:drzavljanstvo">Drzavljanin_RS</drzavljanstvo>
         <JMBG property="pred:jmbg">094388852429</JMBG>

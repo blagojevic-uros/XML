@@ -1,16 +1,5 @@
 package com.spring.rest.parsing;
 
-import java.io.ByteArrayOutputStream;
-import java.io.File;
-import java.io.OutputStream;
-import java.util.ArrayList;
-import java.util.List;
-
-import javax.xml.bind.JAXBContext;
-import javax.xml.bind.Marshaller;
-import javax.xml.bind.Unmarshaller;
-
-import com.spring.rest.model.potvrda.PotvrdaOVakcinaciji;
 import com.spring.rest.model.zahtev.ZahtevZaSertifikat;
 import org.xmldb.api.DatabaseManager;
 import org.xmldb.api.base.Collection;
@@ -20,6 +9,15 @@ import org.xmldb.api.modules.CollectionManagementService;
 import org.xmldb.api.modules.XMLResource;
 import util.AuthenticationUtilities;
 import util.AuthenticationUtilities.ConnectionProperties;
+
+import javax.xml.bind.JAXBContext;
+import javax.xml.bind.Marshaller;
+import javax.xml.bind.Unmarshaller;
+import java.io.ByteArrayOutputStream;
+import java.io.File;
+import java.io.OutputStream;
+import java.util.ArrayList;
+import java.util.List;
 
 public class ZahtevParser {
 
@@ -92,7 +90,7 @@ public class ZahtevParser {
         Unmarshaller unmarshaller = context.createUnmarshaller();
 
         ZahtevZaSertifikat zahtevZaSertifikat = (ZahtevZaSertifikat) unmarshaller.unmarshal(new File("src/main/resources/podaci/xml/zahtev_za_sertifikat.xml"));
-        zahtevZaSertifikat.setMesto("Gornji Milanovac"); // Random name update for test
+//        zahtevZaSertifikat.setMesto(new ZahtevZaSertifikat.Mesto(""))// Random name update for test
         System.out.println(zahtevZaSertifikat);
 
         return zahtevZaSertifikat;

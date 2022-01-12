@@ -2,18 +2,31 @@
 <xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
     xmlns:vc="http://www.w3.org/2007/XMLSchema-versioning" elementFormDefault="qualified"
     vc:minVersion="1.1" targetNamespace="http://ftn.uns.ac.rs/vakcina/izvestaj"
-    xmlns:iz="http://ftn.uns.ac.rs/vakcina/izvestaj"
-    xmlns:fv="http://ftn.uns.ac.rs/vakcina/interesovanje">
+    xmlns:iz="http://ftn.uns.ac.rs/vakcina/izvestaj" xmlns:fv="http://ftn.uns.ac.rs/vakcina/tipovi">
 
-    <xs:import namespace="http://ftn.uns.ac.rs/vakcina/interesovanje" schemaLocation="types.xsd"/>
+    <xs:import namespace="http://ftn.uns.ac.rs/vakcina/tipovi" schemaLocation="types.xsd"/>
     <xs:element name="izvestaj_o_imunizaciji">
         <xs:complexType>
             <xs:sequence>
-                <xs:element name="pocetni_datum" type="xs:date"/>
+                <xs:element name="pocetni_datum">
+                    <xs:complexType>
+                        <xs:simpleContent>
+                            <xs:extension base="xs:date">
+                                <xs:attribute name="property"/>
+                                <xs:attribute name="datatype"/>
+                            </xs:extension>
+                        </xs:simpleContent>
+                    </xs:complexType>
+                </xs:element>
                 <xs:element name="zavrsni_datum">
-                    <xs:simpleType>
-                        <xs:restriction base="xs:date"/>
-                    </xs:simpleType>
+                    <xs:complexType>
+                        <xs:simpleContent>
+                            <xs:extension base="xs:date">
+                                <xs:attribute name="property"/>
+                                <xs:attribute name="datatype"/>
+                            </xs:extension>
+                        </xs:simpleContent>
+                    </xs:complexType>
                 </xs:element>
                 <xs:element name="broj_dokumenata_imunizaciju" type="xs:positiveInteger"/>
                 <xs:element name="zahtevi_sertifikat" type="xs:positiveInteger"/>

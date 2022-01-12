@@ -1,9 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<izvestaj_o_imunizaciji xmlns="http://www.ftn-vakcine.rs/izvestaj"
-    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-    xsi:schemaLocation="http://www.ftn-vakcine.rs/izvestaj ../schemas/izvestaj.xsd">
-    <pocetni_datum>2021-09-01</pocetni_datum>
-    <zavrsni_datum>2021-10-01</zavrsni_datum>
+<izvestaj_o_imunizaciji xmlns="http://ftn.uns.ac.rs/vakcina/izvestaj"
+                        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                        about="http://www.ftn.uns.ac.rs/rdf/izvestaj/2021-09-01/2021-10-01"
+                        xmlns:pred="http://www.ftn.uns.ac.rs/rdf/izvestaj/predicate/"
+                        xsi:schemaLocation="../schemas/izvestaj.xsd">
+    <pocetni_datum property="pred:pocetniDatum">2021-09-01</pocetni_datum>
+    <zavrsni_datum property="pred:krajnjiDatum">2021-10-01</zavrsni_datum>
     <broj_dokumenata_imunizaciju>123</broj_dokumenata_imunizaciju>
     <zahtevi_sertifikat>109</zahtevi_sertifikat>
     <izdati_zahtevi_sertifikat>55</izdati_zahtevi_sertifikat>

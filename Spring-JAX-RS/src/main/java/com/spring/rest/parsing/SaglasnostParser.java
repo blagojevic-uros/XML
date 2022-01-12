@@ -1,16 +1,5 @@
 package com.spring.rest.parsing;
 
-import java.io.ByteArrayOutputStream;
-import java.io.File;
-import java.io.OutputStream;
-import java.util.ArrayList;
-import java.util.List;
-
-import javax.xml.bind.JAXBContext;
-import javax.xml.bind.Marshaller;
-import javax.xml.bind.Unmarshaller;
-
-import com.spring.rest.model.potvrda.PotvrdaOVakcinaciji;
 import com.spring.rest.model.saglasnost.SaglasnostZaImunizaciju;
 import org.xmldb.api.DatabaseManager;
 import org.xmldb.api.base.Collection;
@@ -20,6 +9,15 @@ import org.xmldb.api.modules.CollectionManagementService;
 import org.xmldb.api.modules.XMLResource;
 import util.AuthenticationUtilities;
 import util.AuthenticationUtilities.ConnectionProperties;
+
+import javax.xml.bind.JAXBContext;
+import javax.xml.bind.Marshaller;
+import javax.xml.bind.Unmarshaller;
+import java.io.ByteArrayOutputStream;
+import java.io.File;
+import java.io.OutputStream;
+import java.util.ArrayList;
+import java.util.List;
 
 public class SaglasnostParser {
 
@@ -40,7 +38,7 @@ public class SaglasnostParser {
 
         collectionId = "/db/saglasnost";
         documentId = "saglanost_za_imunizaciju-" + id + ".xml";
-        filePath = "podaci/xml/saglanost_za_imunizaciju.xml";
+        filePath = "podaci/xml/saglasnost_za_imunizaciju.xml";
 
         System.out.println("\t- collection ID: " + collectionId);
         System.out.println("\t- document ID: " + documentId);
@@ -91,7 +89,7 @@ public class SaglasnostParser {
 
         Unmarshaller unmarshaller = context.createUnmarshaller();
 
-        SaglasnostZaImunizaciju saglasnostZaImunizaciju = (SaglasnostZaImunizaciju) unmarshaller.unmarshal(new File("src/main/resources/podaci/xml/saglanost_za_imunizaciju.xml"));
+        SaglasnostZaImunizaciju saglasnostZaImunizaciju = (SaglasnostZaImunizaciju) unmarshaller.unmarshal(new File("src/main/resources/podaci/xml/saglasnost_za_imunizaciju.xml"));
         saglasnostZaImunizaciju.setInteresovanje("Random"); // Random name update for test
         System.out.println(saglasnostZaImunizaciju);
 
