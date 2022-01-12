@@ -23,8 +23,8 @@
     <rdf:Description rdf:about="http://www.ftn.uns.ac.rs/rdf/saglasnost/123">
         <pred:jmbg xmlns:pred="http://www.ftn.uns.ac.rs/rdf/saglasnost/predicate/" rdf:datatype="http://www.w3.org/2001/XMLSchemastring">0808999742049</pred:jmbg>
         <pred:drzavljanstvo xmlns:pred="http://www.ftn.uns.ac.rs/rdf/saglasnost/predicate/" rdf:datatype="http://www.w3.org/2001/XMLSchemastring">Drzavljanin_RS</pred:drzavljanstvo>
-         <pred:radniStatus xmlns:pred="http://www.ftn.uns.ac.rs/rdf/saglasnost/predicate/" rdf:datatype="http://www.w3.org/2001/XMLSchemastring">zaposlen</pred:radniStatus>
-         <pred:korisnikSocZastite xmlns:pred="http://www.ftn.uns.ac.rs/rdf/saglasnost/predicate/" rdf:datatype="http://www.w3.org/2001/XMLSchemastring">koristi</pred:korisnikSocZastite>
+        <pred:radniStatus xmlns:pred="http://www.ftn.uns.ac.rs/rdf/saglasnost/predicate/" rdf:datatype="http://www.w3.org/2001/XMLSchemastring">zaposlen</pred:radniStatus>
+        <pred:korisnikSocZastite xmlns:pred="http://www.ftn.uns.ac.rs/rdf/saglasnost/predicate/" rdf:datatype="http://www.w3.org/2001/XMLSchemastring">koristi</pred:korisnikSocZastite>
         <pred:lokacijaVakcinisanja xmlns:pred="http://www.ftn.uns.ac.rs/rdf/saglasnost/predicate/" rdf:datatype="http://www.w3.org/2001/XMLSchemastring">Vranje</pred:lokacijaVakcinisanja>
         <pred:vakcina xmlns:pred="http://www.ftn.uns.ac.rs/rdf/saglasnost/predicate/" rdf:datatype="http://www.w3.org/2001/XMLSchemastring">Pfizer-BioNTech</pred:vakcina>
         <pred:datum  xmlns:pred="http://www.ftn.uns.ac.rs/rdf/saglasnost/predicate/" rdf:datatype="http://www.w3.org/2001/XMLSchemastring">2021-12-12</pred:datum>
