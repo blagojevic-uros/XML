@@ -11,15 +11,15 @@
     <raspored_doza_vakcina_broj_doze>
         <info_doza>
             <doza>1</doza>
-            <kolicina>321</kolicina>
+            <kolicina>123</kolicina>
         </info_doza>
         <info_doza>
             <doza>2</doza>
-            <kolicina>222</kolicina>
+            <kolicina>345</kolicina>
         </info_doza>
         <info_doza>
             <doza>3</doza>
-            <kolicina>123</kolicina>
+            <kolicina>678</kolicina>
         </info_doza>
     </raspored_doza_vakcina_broj_doze>
     <raspored_doza_vakcina_proizvodjac>
