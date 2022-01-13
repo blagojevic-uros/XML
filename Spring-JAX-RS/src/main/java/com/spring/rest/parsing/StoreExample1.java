@@ -1,14 +1,6 @@
 package com.spring.rest.parsing;
 
 
-import java.io.ByteArrayOutputStream;
-import java.io.File;
-import java.io.OutputStream;
-
-import javax.xml.bind.JAXBContext;
-import javax.xml.bind.Marshaller;
-import javax.xml.bind.Unmarshaller;
-
 import com.spring.rest.model.interesovanje.Interesovanje;
 import org.exist.xmldb.EXistResource;
 import org.xmldb.api.DatabaseManager;
@@ -19,6 +11,13 @@ import org.xmldb.api.modules.CollectionManagementService;
 import org.xmldb.api.modules.XMLResource;
 import util.AuthenticationUtilities;
 import util.AuthenticationUtilities.ConnectionProperties;
+
+import javax.xml.bind.JAXBContext;
+import javax.xml.bind.Marshaller;
+import javax.xml.bind.Unmarshaller;
+import java.io.ByteArrayOutputStream;
+import java.io.File;
+import java.io.OutputStream;
 
 public class StoreExample1 {
 
@@ -55,8 +54,8 @@ public class StoreExample1 {
 
             System.out.println("[INFO] Using defaults.");
 
-            collectionId = "/db/sample/library";
-            documentId = "interesovanje.xml";
+            collectionId = "/db/sample/library"; // /db/interesovanje
+            documentId = "interesovanje.xml"; // interesovanje-{id}
 
             filePath = "podaci/xml/interesovanje.xml";
 

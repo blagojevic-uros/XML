@@ -1,0 +1,8 @@
+<rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:h="http://www.w3.org/1999/xhtml">
+  <rdf:Description rdf:about="http://www.ftn.uns.ac.rs/rdf/izvestaj/2021-09-01/2021-10-01">
+    <pred:pocetniDatum xmlns:pred="http://www.ftn.uns.ac.rs/rdf/izvestaj/predicate/" rdf:datatype="http://www.w3.org/1999/02/22-rdf-syntax-ns#XMLLiteral">2021-09-01</pred:pocetniDatum>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.ftn.uns.ac.rs/rdf/izvestaj/2021-09-01/2021-10-01">
+    <pred:krajnjiDatum xmlns:pred="http://www.ftn.uns.ac.rs/rdf/izvestaj/predicate/" rdf:datatype="http://www.w3.org/1999/02/22-rdf-syntax-ns#XMLLiteral">2021-10-01</pred:krajnjiDatum>
+  </rdf:Description>
+</rdf:RDF>
