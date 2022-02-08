@@ -1,24 +1,38 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
     xmlns:vc="http://www.w3.org/2007/XMLSchema-versioning" elementFormDefault="qualified"
-    vc:minVersion="1.1" targetNamespace="http://www.ftn-vakcine.rs/izvestaj"
-    xmlns:iz="http://www.ftn-vakcine.rs/izvestaj" xmlns:fv="http://www.ftn-vakcine.rs/types">
+    vc:minVersion="1.1" targetNamespace="http://ftn.uns.ac.rs/vakcina/izvestaj"
+    xmlns:iz="http://ftn.uns.ac.rs/vakcina/izvestaj" xmlns:fv="http://ftn.uns.ac.rs/vakcina/tipovi">
 
-    <xs:import namespace="http://www.ftn-vakcine.rs/types" schemaLocation="types.xsd"/>
+    <xs:import namespace="http://ftn.uns.ac.rs/vakcina/tipovi" schemaLocation="types.xsd"/>
     <xs:element name="izvestaj_o_imunizaciji">
         <xs:complexType>
             <xs:sequence>
-                <xs:element name="pocetni_datum" type="xs:date"/>
+                <xs:element name="pocetni_datum">
+                    <xs:complexType>
+                        <xs:simpleContent>
+                            <xs:extension base="xs:date">
+                                <xs:attribute name="property"/>
+                                <xs:attribute name="datatype"/>
+                            </xs:extension>
+                        </xs:simpleContent>
+                    </xs:complexType>
+                </xs:element>
                 <xs:element name="zavrsni_datum">
-                    <xs:simpleType>
-                        <xs:restriction base="xs:date"/>
-                    </xs:simpleType>
+                    <xs:complexType>
+                        <xs:simpleContent>
+                            <xs:extension base="xs:date">
+                                <xs:attribute name="property"/>
+                                <xs:attribute name="datatype"/>
+                            </xs:extension>
+                        </xs:simpleContent>
+                    </xs:complexType>
                 </xs:element>
                 <xs:element name="broj_dokumenata_imunizaciju" type="xs:positiveInteger"/>
                 <xs:element name="zahtevi_sertifikat" type="xs:positiveInteger"/>
                 <xs:element name="izdati_zahtevi_sertifikat" type="xs:positiveInteger"/>
                 <xs:element name="broj_doza" type="xs:positiveInteger"/>
-                <xs:element ref="iz:raspored_doza_vakcina_proizvodjac"/>
+                <xs:element name="raspored_doza_vakcina_broj_doze" type="iz:raspored_doza_broj"> </xs:element>
                 <xs:element ref="iz:raspored_doza_vakcina_proizvodjac"/>
                 <xs:element name="datum" type="xs:date"/>
                 <xs:element name="potpis" type="xs:string"/>

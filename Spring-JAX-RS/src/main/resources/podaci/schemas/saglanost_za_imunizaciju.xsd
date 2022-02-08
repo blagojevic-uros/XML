@@ -1,9 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
     xmlns:vc="http://www.w3.org/2007/XMLSchema-versioning" elementFormDefault="qualified"
-    vc:minVersion="1.1" targetNamespace="http://www.ftn-vakcine.rs/saglanost"
-    xmlns:fk="http://www.ftn-vakcine.rs/saglanost" xmlns:fv="http://www.ftn-vakcine.rs/types">
-    <xs:import namespace="http://www.ftn-vakcine.rs/types" schemaLocation="types.xsd"/>
+    vc:minVersion="1.1" targetNamespace="http://ftn.uns.ac.rs/vakcina/saglasnost"
+    xmlns:fk="http://ftn.uns.ac.rs/vakcina/saglasnost"
+    xmlns:fv="http://ftn.uns.ac.rs/vakcina/tipovi">
+    <xs:import namespace="http://ftn.uns.ac.rs/vakcina/tipovi" schemaLocation="types.xsd"/>
     <xs:element name="saglasnost_za_imunizaciju">
         <xs:complexType>
             <xs:sequence>
@@ -17,12 +18,24 @@
                     </xs:complexType>
                 </xs:element>
                 <xs:element name="potpis" type="xs:string"/>
-                <xs:element name="datum" type="xs:date"/>
+                <xs:element name="datum">
+                    <xs:complexType>
+                        <xs:simpleContent>
+                            <xs:extension base="xs:date">
+                                <xs:attribute name="property"/>
+                                <xs:attribute name="datatype"/>
+                            </xs:extension>
+                        </xs:simpleContent>
+                    </xs:complexType>
+                </xs:element>
                 <xs:element ref="fk:evidencija_o_vakcinaciji" minOccurs="1"/>
             </xs:sequence>
             <xs:attribute name="potvrda_o_vakcinisanju"/>
             <xs:attribute name="interesovanje"/>
             <xs:attribute name="id"/>
+            <xs:attribute name="about"/>
+            <xs:attribute name="rel"/>
+            <xs:attribute name="href"/>
         </xs:complexType>
     </xs:element>
     <xs:element name="evidencija_o_vakcinaciji">
@@ -55,7 +68,16 @@
     </xs:complexType>
     <xs:complexType name="TVakcinisanje">
         <xs:sequence>
-            <xs:element name="naziv_vakcine" type="fv:tip_vakcine"/>
+            <xs:element name="naziv_vakcine">
+                <xs:complexType>
+                    <xs:simpleContent>
+                        <xs:extension base="fv:tip_vakcine">
+                            <xs:attribute name="property"/>
+                            <xs:attribute name="datatype"/>
+                        </xs:extension>
+                    </xs:simpleContent>
+                </xs:complexType>
+            </xs:element>
             <xs:element name="datum_davanja" type="xs:date"/>
             <xs:element name="nacin_davanja" type="xs:string"/>
             <xs:element name="ekstremitet">
@@ -114,6 +136,8 @@
                         <xs:sequence>
                             <xs:element name="naziv_opstine" type="xs:string"/>
                         </xs:sequence>
+                        <xs:attribute name="property"/>
+                        <xs:attribute name="datatype"/>
                     </xs:complexType>
                 </xs:element>
             </xs:sequence>
@@ -125,12 +149,23 @@
                 <xs:element ref="fk:srpsko"/>
                 <xs:element ref="fk:strano"/>
             </xs:choice>
+            <xs:attribute name="property"/>
+            <xs:attribute name="datatype"/>
         </xs:complexType>
     </xs:element>
     <xs:element name="srpsko">
         <xs:complexType>
             <xs:sequence>
-                <xs:element name="JMBG" type="fv:JMBG"/>
+                <xs:element name="JMBG">
+                    <xs:complexType>
+                        <xs:simpleContent>
+                            <xs:extension base="fv:JMBG">
+                                <xs:attribute name="property"/>
+                                <xs:attribute name="datatype"/>
+                            </xs:extension>
+                        </xs:simpleContent>
+                    </xs:complexType>
+                </xs:element>
             </xs:sequence>
         </xs:complexType>
     </xs:element>
@@ -138,7 +173,16 @@
         <xs:complexType>
             <xs:sequence>
                 <xs:element name="naziv_drzavljanstva" type="xs:string"/>
-                <xs:element name="broj_pasosa_ebs" type="fv:broj_pasosa"/>
+                <xs:element name="broj_pasosa_ebs">
+                    <xs:complexType>
+                        <xs:simpleContent>
+                            <xs:extension base="fv:broj_pasosa">
+                                <xs:attribute name="property"/>
+                                <xs:attribute name="datatype"/>
+                            </xs:extension>
+                        </xs:simpleContent>
+                    </xs:complexType>
+                </xs:element>
             </xs:sequence>
         </xs:complexType>
     </xs:element>

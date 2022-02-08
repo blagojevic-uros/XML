@@ -1,10 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <interesovanje xmlns="http://ftn.uns.ac.rs/vakcina/interesovanje"
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-    xsi:schemaLocation="../schemas/interesovanje.xsd">
+    xmlns:pred="http://www.ftn.uns.ac.rs/rdf/interesovanje/predicate/"
+    xsi:schemaLocation="../schemas/interesovanje.xsd"
+    saglasnost_za_imunizaciju="http://www.ftn-vakcine.rs/saglanost/123123"
+    id="1">
     <licni_podaci>
         <drzavljanstvo>Drzavljanin_RS</drzavljanstvo>
-        <JMBG>094388852429</JMBG>
+        <JMBG property="pred:JMBG">094388852429</JMBG>
         <ime>Zoran</ime>
         <prezime>Petrović</prezime>
         <email>petko@gmail.com</email>

@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
     xmlns:vc="http://www.w3.org/2007/XMLSchema-versioning" elementFormDefault="qualified"
-    vc:minVersion="1.1" targetNamespace="http://www.ftn-vakcine/zahtev_sertifikat"
-    xmlns:fv="http://www.ftn-vakcine.rs/types" xmlns:zs="http://www.ftn-vakcine/zahtev_sertifikat">
-    <xs:import namespace="http://www.ftn-vakcine.rs/types" schemaLocation="types.xsd"/>
+    vc:minVersion="1.1" targetNamespace="http://ftn.uns.ac.rs/vakcina/zahtev"
+    xmlns:fv="http://ftn.uns.ac.rs/vakcina/tipovi" xmlns="http://ftn.uns.ac.rs/vakcina/zahtev">
+    <xs:import namespace="http://ftn.uns.ac.rs/vakcina/tipovi" schemaLocation="types.xsd"/>
     <xs:element name="zahtev_za_sertifikat">
         <xs:complexType>
             <xs:sequence>
@@ -14,9 +14,14 @@
                             <xs:element name="datum_rodjenja" type="xs:date"/>
                             <xs:element name="pol" type="fv:pol"/>
                             <xs:element name="JMBG">
-                                <xs:simpleType>
-                                    <xs:restriction base="fv:JMBG"> </xs:restriction>
-                                </xs:simpleType>
+                                <xs:complexType>
+                                    <xs:simpleContent>
+                                        <xs:extension base="fv:JMBG">
+                                            <xs:attribute name="prop"/>
+                                            <xs:attribute name="datatype"/>
+                                        </xs:extension>
+                                    </xs:simpleContent>
+                                </xs:complexType>
                             </xs:element>
                             <xs:element name="broj_pasosa">
                                 <xs:simpleType>
@@ -28,17 +33,32 @@
                 </xs:element>
                 <xs:element name="razlog_za_zahtev" type="xs:string"/>
                 <xs:element name="mesto">
-                    <xs:simpleType>
-                        <xs:restriction base="xs:string">
-                            <xs:minLength value="3"/>
-                        </xs:restriction>
-                    </xs:simpleType>
+                    <xs:complexType>
+                        <xs:simpleContent>
+                            <xs:extension base="xs:string">
+                                <xs:attribute name="prop"/>
+                                <xs:attribute name="datatype"/>
+                            </xs:extension>
+                        </xs:simpleContent>
+                    </xs:complexType>
                 </xs:element>
-                <xs:element name="datum_zahteva" type="xs:date"/>
+                <xs:element name="datum_zahteva">
+                    <xs:complexType>
+                        <xs:simpleContent>
+                            <xs:extension base="xs:date">
+                                <xs:attribute name="prop"/>
+                                <xs:attribute name="datatype"/>
+                            </xs:extension>
+                        </xs:simpleContent>
+                    </xs:complexType>
+                </xs:element>
                 <xs:element name="potpis" type="xs:string"/>
             </xs:sequence>
             <xs:attribute name="sertifikat"/>
             <xs:attribute name="id"/>
+            <xs:attribute name="about"/>
+            <xs:attribute name="rel"/>
+            <xs:attribute name="href"/>
         </xs:complexType>
     </xs:element>
 </xs:schema>

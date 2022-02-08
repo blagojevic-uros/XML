@@ -1,10 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/xsl" href="../xsl/grddl.xsl"?>
 <interesovanje xmlns="http://ftn.uns.ac.rs/vakcina/interesovanje"
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-    xsi:schemaLocation="../schemas/interesovanje.xsd">
+    xmlns:pred="http://www.ftn.uns.ac.rs/rdf/interesovanje/predicate/"
+    xsi:schemaLocation="../schemas/interesovanje.xsd"
+    about="http://www.ftn.uns.ac.rs/rdf/interesovanje/123"
+               rel="pred:saglasnostOd"
+    id="123" href="http://www.ftn.uns.ac.rs/rdf/saglasnost/123">
     <licni_podaci>
-        <drzavljanstvo>Drzavljanin_RS</drzavljanstvo>
-        <JMBG>094388852429</JMBG>
+        <drzavljanstvo property="pred:drzavljanstvo">Drzavljanin_RS</drzavljanstvo>
+        <JMBG property="pred:jmbg">094388852429</JMBG>
         <ime>Zoran</ime>
         <prezime>Petrović</prezime>
         <email>petko@gmail.com</email>
@@ -12,7 +17,7 @@
         <fiksni_telefon>017489976</fiksni_telefon>
     </licni_podaci>
     <lokacija_vakcinisanja>Vranje</lokacija_vakcinisanja>
-    <tip_vakcine>Pfizer-BioNTech</tip_vakcine>
+    <tip_vakcine property="pred:vakcina">Pfizer-BioNTech</tip_vakcine>
     <datum>2021-05-07</datum>
     <potpis>ZPetrović</potpis>
     <davalac_krvi></davalac_krvi>
