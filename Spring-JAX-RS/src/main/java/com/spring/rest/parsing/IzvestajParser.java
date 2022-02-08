@@ -1,32 +1,23 @@
 package com.spring.rest.parsing;
 
+import model.izvestaj.IzvestajOImunizaciji;
+import org.xmldb.api.DatabaseManager;
+import org.xmldb.api.base.Collection;
+import org.xmldb.api.base.Database;
+import org.xmldb.api.base.XMLDBException;
+import org.xmldb.api.modules.XMLResource;
+import util.AuthenticationUtilities;
+import util.AuthenticationUtilities.ConnectionProperties;
+import util.XmlDatabaseUtil;
+
+import javax.xml.bind.JAXBContext;
+import javax.xml.bind.Marshaller;
+import javax.xml.bind.Unmarshaller;
 import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.io.OutputStream;
 import java.util.ArrayList;
 import java.util.List;
-
-import javax.xml.bind.JAXBContext;
-import javax.xml.bind.Marshaller;
-import javax.xml.bind.Unmarshaller;
-
-<<<<<<< Updated upstream
-import com.spring.rest.model.izvestaj.IzvestajOImunizaciji;
-=======
-import model.izvestaj.IzvestajOImunizaciji;
->>>>>>> Stashed changes
-import org.xmldb.api.DatabaseManager;
-import org.xmldb.api.base.Collection;
-import org.xmldb.api.base.Database;
-import org.xmldb.api.base.XMLDBException;
-<<<<<<< Updated upstream
-import org.xmldb.api.modules.CollectionManagementService;
-=======
->>>>>>> Stashed changes
-import org.xmldb.api.modules.XMLResource;
-import util.AuthenticationUtilities;
-import util.AuthenticationUtilities.ConnectionProperties;
-import util.XmlDatabaseUtil;
 
 public class IzvestajParser {
 

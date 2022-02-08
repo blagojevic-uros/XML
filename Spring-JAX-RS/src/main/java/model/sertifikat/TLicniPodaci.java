@@ -8,25 +8,11 @@
 
 package model.sertifikat;
 
-<<<<<<< Updated upstream:Spring-JAX-RS/src/main/java/com/spring/rest/model/sertifikat/TLicniPodaci.java
-import com.spring.rest.model.tipovi.ImePrezime;
-import com.spring.rest.model.tipovi.Pol;
 
-import javax.xml.bind.annotation.*;
-=======
-<<<<<<< Updated upstream:Spring-JAX-RS/src/main/java/com/spring/rest/model/sertifikat/TLicniPodaci.java
-import javax.xml.bind.annotation.XmlAccessType;
-import javax.xml.bind.annotation.XmlAccessorType;
-import javax.xml.bind.annotation.XmlElement;
-import javax.xml.bind.annotation.XmlSchemaType;
-import javax.xml.bind.annotation.XmlType;
-=======
 import model.tipovi.ImePrezime;
 import model.tipovi.Pol;
 
 import javax.xml.bind.annotation.*;
->>>>>>> Stashed changes:Spring-JAX-RS/src/main/java/model/sertifikat/TLicniPodaci.java
->>>>>>> Stashed changes:Spring-JAX-RS/src/main/java/model/sertifikat/TLicniPodaci.java
 
 
 /**

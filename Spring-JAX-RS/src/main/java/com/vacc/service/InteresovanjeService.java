@@ -1,10 +1,10 @@
 package com.vacc.service;
 
 import com.vacc.dao.InteresovanjeDAO;
-import model.interesovanje.Interesovanje;
 import org.springframework.stereotype.Service;
 import org.xmldb.api.base.XMLDBException;
 import org.xmldb.api.modules.XMLResource;
+import model.interesovanje.*;
 import util.ObjectParser;
 
 import java.util.List;

@@ -5,14 +5,6 @@
 // Generated on: 2022.01.12 at 07:35:56 PM CET 
 //
 
-<<<<<<< Updated upstream:Spring-JAX-RS/src/main/java/com/spring/rest/model/potvrda/package-info.java
-@javax.xml.bind.annotation.XmlSchema(namespace = "http://ftn.uns.ac.rs/vakcina/potvrda", elementFormDefault = javax.xml.bind.annotation.XmlNsForm.QUALIFIED)
-=======
-<<<<<<< Updated upstream:Spring-JAX-RS/src/main/java/com/spring/rest/model/potvrda/package-info.java
-@javax.xml.bind.annotation.XmlSchema(namespace = "http://www.ftn-vakcine.rs/potvrda", elementFormDefault = javax.xml.bind.annotation.XmlNsForm.QUALIFIED)
->>>>>>> Stashed changes:Spring-JAX-RS/src/main/java/model/potvrda/package-info.java
-package com.spring.rest.model.potvrda;
-=======
+
 @javax.xml.bind.annotation.XmlSchema(namespace = "http://ftn.uns.ac.rs/vakcina/potvrda", elementFormDefault = javax.xml.bind.annotation.XmlNsForm.QUALIFIED)
 package model.potvrda;
->>>>>>> Stashed changes:Spring-JAX-RS/src/main/java/model/potvrda/package-info.java

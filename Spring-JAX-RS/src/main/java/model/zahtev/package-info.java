@@ -5,14 +5,5 @@
 // Generated on: 2022.01.12 at 07:36:09 PM CET 
 //
 
-<<<<<<< Updated upstream:Spring-JAX-RS/src/main/java/com/spring/rest/model/zahtev/package-info.java
-@javax.xml.bind.annotation.XmlSchema(namespace = "http://ftn.uns.ac.rs/vakcina/zahtev", elementFormDefault = javax.xml.bind.annotation.XmlNsForm.QUALIFIED)
-=======
-<<<<<<< Updated upstream:Spring-JAX-RS/src/main/java/com/spring/rest/model/zahtev/package-info.java
-@javax.xml.bind.annotation.XmlSchema(namespace = "http://www.ftn-vakcine.rs/types", elementFormDefault = javax.xml.bind.annotation.XmlNsForm.QUALIFIED)
->>>>>>> Stashed changes:Spring-JAX-RS/src/main/java/model/zahtev/package-info.java
-package com.spring.rest.model.zahtev;
-=======
 @javax.xml.bind.annotation.XmlSchema(namespace = "http://ftn.uns.ac.rs/vakcina/zahtev", elementFormDefault = javax.xml.bind.annotation.XmlNsForm.QUALIFIED)
 package model.zahtev;
->>>>>>> Stashed changes:Spring-JAX-RS/src/main/java/model/zahtev/package-info.java

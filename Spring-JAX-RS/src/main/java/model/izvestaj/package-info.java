@@ -5,10 +5,5 @@
 // Generated on: 2022.01.04 at 09:54:34 PM CET 
 //
 
-<<<<<<< Updated upstream:Spring-JAX-RS/src/main/java/com/spring/rest/model/izvestaj/package-info.java
-@javax.xml.bind.annotation.XmlSchema(namespace = "http://www.ftn-vakcine.rs/izvestaj", elementFormDefault = javax.xml.bind.annotation.XmlNsForm.QUALIFIED)
-package com.spring.rest.model.izvestaj;
-=======
 @javax.xml.bind.annotation.XmlSchema(namespace = "http://ftn.uns.ac.rs/vakcina/izvestaj", elementFormDefault = javax.xml.bind.annotation.XmlNsForm.QUALIFIED)
 package model.izvestaj;
->>>>>>> Stashed changes:Spring-JAX-RS/src/main/java/model/izvestaj/package-info.java

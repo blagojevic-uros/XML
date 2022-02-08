@@ -8,24 +8,10 @@
 
 package model.saglasnost;
 
-<<<<<<< Updated upstream:Spring-JAX-RS/src/main/java/com/spring/rest/model/saglasnost/LicniPodaci.java
-import com.spring.rest.model.tipovi.Pol;
 
-import javax.xml.bind.annotation.*;
-=======
-<<<<<<< Updated upstream:Spring-JAX-RS/src/main/java/com/spring/rest/model/saglasnost/LicniPodaci.java
-import javax.xml.bind.annotation.XmlAccessType;
-import javax.xml.bind.annotation.XmlAccessorType;
-import javax.xml.bind.annotation.XmlElement;
-import javax.xml.bind.annotation.XmlRootElement;
-import javax.xml.bind.annotation.XmlSchemaType;
-import javax.xml.bind.annotation.XmlType;
-=======
 import model.tipovi.Pol;
 
 import javax.xml.bind.annotation.*;
->>>>>>> Stashed changes:Spring-JAX-RS/src/main/java/model/saglasnost/LicniPodaci.java
->>>>>>> Stashed changes:Spring-JAX-RS/src/main/java/model/saglasnost/LicniPodaci.java
 import javax.xml.datatype.XMLGregorianCalendar;
 
 

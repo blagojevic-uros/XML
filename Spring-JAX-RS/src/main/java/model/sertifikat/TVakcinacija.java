@@ -8,25 +8,10 @@
 
 package model.sertifikat;
 
-<<<<<<< Updated upstream:Spring-JAX-RS/src/main/java/com/spring/rest/model/sertifikat/TVakcinacija.java
-import com.spring.rest.model.tipovi.TipVakcine;
 
-import javax.xml.bind.annotation.*;
-=======
-<<<<<<< Updated upstream:Spring-JAX-RS/src/main/java/com/spring/rest/model/sertifikat/TVakcinacija.java
-=======
 import model.tipovi.TipVakcine;
 
 import javax.xml.bind.annotation.*;
-import javax.xml.datatype.XMLGregorianCalendar;
->>>>>>> Stashed changes:Spring-JAX-RS/src/main/java/model/sertifikat/TVakcinacija.java
-import java.math.BigInteger;
-import javax.xml.bind.annotation.XmlAccessType;
-import javax.xml.bind.annotation.XmlAccessorType;
-import javax.xml.bind.annotation.XmlElement;
-import javax.xml.bind.annotation.XmlSchemaType;
-import javax.xml.bind.annotation.XmlType;
->>>>>>> Stashed changes:Spring-JAX-RS/src/main/java/model/sertifikat/TVakcinacija.java
 import javax.xml.datatype.XMLGregorianCalendar;
 import java.math.BigInteger;
 

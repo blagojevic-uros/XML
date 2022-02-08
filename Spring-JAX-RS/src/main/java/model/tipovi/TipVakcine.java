@@ -6,11 +6,9 @@
 //
 
 
-<<<<<<< Updated upstream:Spring-JAX-RS/src/main/java/com/spring/rest/model/zahtev/TipVakcine.java
-package com.spring.rest.model.zahtev;
-=======
+
 package model.tipovi;
->>>>>>> Stashed changes:Spring-JAX-RS/src/main/java/model/tipovi/TipVakcine.java
+
 
 import javax.xml.bind.annotation.XmlEnum;
 import javax.xml.bind.annotation.XmlEnumValue;

@@ -5,10 +5,5 @@
 // Generated on: 2022.01.04 at 09:58:55 PM CET 
 //
 
-<<<<<<< Updated upstream:Spring-JAX-RS/src/main/java/com/spring/rest/model/saglasnost/package-info.java
-@javax.xml.bind.annotation.XmlSchema(namespace = "http://www.ftn-vakcine.rs/saglanost", elementFormDefault = javax.xml.bind.annotation.XmlNsForm.QUALIFIED)
-package com.spring.rest.model.saglasnost;
-=======
 @javax.xml.bind.annotation.XmlSchema(namespace = "http://ftn.uns.ac.rs/vakcina/saglasnost", elementFormDefault = javax.xml.bind.annotation.XmlNsForm.QUALIFIED)
 package model.saglasnost;
->>>>>>> Stashed changes:Spring-JAX-RS/src/main/java/model/saglasnost/package-info.java

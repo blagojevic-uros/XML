@@ -1,11 +1,7 @@
 package com.spring.rest.parsing;
 
-<<<<<<< Updated upstream
-import com.spring.rest.model.interesovanje.Interesovanje;
-=======
 import model.interesovanje.Interesovanje;
 import org.exist.xmldb.EXistResource;
->>>>>>> Stashed changes
 import org.xmldb.api.DatabaseManager;
 import org.xmldb.api.base.Collection;
 import org.xmldb.api.base.Database;
@@ -17,15 +13,10 @@ import util.ObjectParser;
 import util.XmlDatabaseUtil;
 
 import javax.xml.bind.JAXBContext;
-<<<<<<< Updated upstream
-import javax.xml.bind.Marshaller;
-import javax.xml.bind.Unmarshaller;
-=======
 import javax.xml.bind.JAXBException;
 import javax.xml.bind.Marshaller;
 import javax.xml.bind.Unmarshaller;
 import javax.xml.transform.OutputKeys;
->>>>>>> Stashed changes
 import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.io.OutputStream;
@@ -38,14 +29,9 @@ public class InteresovanjeParser {
     private static XmlDatabaseUtil xmlDatabaseUtil;
     private static ObjectParser objectParser;
     public static void main(String[] args) throws Exception {
-<<<<<<< Updated upstream
-        List<String> list = InteresovanjeParser.make(1234);
-        InteresovanjeParser.save(conn = AuthenticationUtilities.loadProperties(), list.get(0), list.get(1), list.get(2));
-=======
         List<String> list = InteresovanjeParser.make(123456);
         InteresovanjeParser.save(conn = AuthenticationUtilities.loadProperties(), list.get(0), list.get(1), list.get(2));
         InteresovanjeParser.retrive(conn = AuthenticationUtilities.loadProperties(), list.get(0), list.get(1));
->>>>>>> Stashed changes
     }
 
     public static ArrayList<String> make(int id) throws Exception {
@@ -97,11 +83,7 @@ public class InteresovanjeParser {
     public static JAXBContext unmarshall_1() throws Exception{
 
         System.out.println("[INFO] Unmarshalling XML document to an JAXB instance: ");
-<<<<<<< Updated upstream
-        JAXBContext context = JAXBContext.newInstance("com.spring.rest.model.interesovanje");
-=======
         JAXBContext context = JAXBContext.newInstance(Interesovanje.class);
->>>>>>> Stashed changes
 
         Unmarshaller unmarshaller = context.createUnmarshaller();
 
@@ -141,8 +123,6 @@ public class InteresovanjeParser {
         return XmlDatabaseUtil.getOrCreateCollection(conn, collectionUri, 0);
     }
 
-<<<<<<< Updated upstream
-=======
     private static void retrive(ConnectionProperties conn,String collectionId, String documentId) throws ClassNotFoundException, InstantiationException, IllegalAccessException, XMLDBException {
         // initialize database driver
         System.out.println("[INFO] Loading driver class: " + conn.driver);
@@ -203,5 +183,4 @@ public class InteresovanjeParser {
         }
     }
 
->>>>>>> Stashed changes
 }

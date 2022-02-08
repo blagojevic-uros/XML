@@ -8,23 +8,10 @@
 
 package model.saglasnost;
 
-<<<<<<< Updated upstream:Spring-JAX-RS/src/main/java/com/spring/rest/model/saglasnost/TVakcinisanje.java
-import com.spring.rest.model.tipovi.TipVakcine;
 
-import javax.xml.bind.annotation.*;
-=======
-<<<<<<< Updated upstream:Spring-JAX-RS/src/main/java/com/spring/rest/model/saglasnost/TVakcinisanje.java
-import javax.xml.bind.annotation.XmlAccessType;
-import javax.xml.bind.annotation.XmlAccessorType;
-import javax.xml.bind.annotation.XmlElement;
-import javax.xml.bind.annotation.XmlSchemaType;
-import javax.xml.bind.annotation.XmlType;
-=======
 import model.tipovi.TipVakcine;
 
 import javax.xml.bind.annotation.*;
->>>>>>> Stashed changes:Spring-JAX-RS/src/main/java/model/saglasnost/TVakcinisanje.java
->>>>>>> Stashed changes:Spring-JAX-RS/src/main/java/model/saglasnost/TVakcinisanje.java
 import javax.xml.datatype.XMLGregorianCalendar;
 
 

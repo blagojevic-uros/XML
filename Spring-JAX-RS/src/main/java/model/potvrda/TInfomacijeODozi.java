@@ -8,25 +8,9 @@
 
 package model.potvrda;
 
-<<<<<<< Updated upstream:Spring-JAX-RS/src/main/java/com/spring/rest/model/potvrda/TInfomacijeODozi.java
-import com.spring.rest.model.tipovi.TipVakcine;
-
-import javax.xml.bind.annotation.*;
-=======
-<<<<<<< Updated upstream:Spring-JAX-RS/src/main/java/com/spring/rest/model/potvrda/TInfomacijeODozi.java
-=======
 import model.tipovi.TipVakcine;
 
 import javax.xml.bind.annotation.*;
-import javax.xml.datatype.XMLGregorianCalendar;
->>>>>>> Stashed changes:Spring-JAX-RS/src/main/java/model/potvrda/TInfomacijeODozi.java
-import java.math.BigInteger;
-import javax.xml.bind.annotation.XmlAccessType;
-import javax.xml.bind.annotation.XmlAccessorType;
-import javax.xml.bind.annotation.XmlElement;
-import javax.xml.bind.annotation.XmlSchemaType;
-import javax.xml.bind.annotation.XmlType;
->>>>>>> Stashed changes:Spring-JAX-RS/src/main/java/model/potvrda/TInfomacijeODozi.java
 import javax.xml.datatype.XMLGregorianCalendar;
 import java.math.BigInteger;
 

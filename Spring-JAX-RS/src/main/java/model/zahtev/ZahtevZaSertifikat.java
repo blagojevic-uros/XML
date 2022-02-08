@@ -8,27 +8,11 @@
 
 package model.zahtev;
 
-<<<<<<< Updated upstream:Spring-JAX-RS/src/main/java/com/spring/rest/model/zahtev/ZahtevZaSertifikat.java
-import com.spring.rest.model.tipovi.ImePrezime;
-import com.spring.rest.model.tipovi.Pol;
 
-import javax.xml.bind.annotation.*;
-=======
-<<<<<<< Updated upstream:Spring-JAX-RS/src/main/java/com/spring/rest/model/zahtev/ZahtevZaSertifikat.java
-import javax.xml.bind.annotation.XmlAccessType;
-import javax.xml.bind.annotation.XmlAccessorType;
-import javax.xml.bind.annotation.XmlAttribute;
-import javax.xml.bind.annotation.XmlElement;
-import javax.xml.bind.annotation.XmlRootElement;
-import javax.xml.bind.annotation.XmlSchemaType;
-import javax.xml.bind.annotation.XmlType;
-=======
 import model.tipovi.ImePrezime;
 import model.tipovi.Pol;
 
 import javax.xml.bind.annotation.*;
->>>>>>> Stashed changes:Spring-JAX-RS/src/main/java/model/zahtev/ZahtevZaSertifikat.java
->>>>>>> Stashed changes:Spring-JAX-RS/src/main/java/model/zahtev/ZahtevZaSertifikat.java
 import javax.xml.datatype.XMLGregorianCalendar;
 
 

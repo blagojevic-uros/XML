@@ -8,18 +8,10 @@
 
 package model.izvestaj;
 
-<<<<<<< Updated upstream:Spring-JAX-RS/src/main/java/com/spring/rest/model/izvestaj/TProizvodjac.java
-=======
 import model.tipovi.TipVakcine;
 
 import javax.xml.bind.annotation.*;
->>>>>>> Stashed changes:Spring-JAX-RS/src/main/java/model/izvestaj/TProizvodjac.java
 import java.math.BigInteger;
-import javax.xml.bind.annotation.XmlAccessType;
-import javax.xml.bind.annotation.XmlAccessorType;
-import javax.xml.bind.annotation.XmlElement;
-import javax.xml.bind.annotation.XmlSchemaType;
-import javax.xml.bind.annotation.XmlType;
 
 
 /**
