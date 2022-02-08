@@ -1,5 +1,10 @@
 <rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+<<<<<<< Updated upstream
     xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#">
+=======
+    xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+    xmlns:base=""http://www.ftn.uns.ac.rs/rdf/saglasnost">
+>>>>>>> Stashed changes
 
     <rdfs:Class rdf:ID="Saglasnost_za_imunizaciju">
         <rdfs:comment>Saglasnost za imunizaciju klasa</rdfs:comment>

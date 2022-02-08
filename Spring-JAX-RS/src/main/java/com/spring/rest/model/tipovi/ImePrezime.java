@@ -6,7 +6,15 @@
 //
 
 
+<<<<<<< Updated upstream:Spring-JAX-RS/src/main/java/com/spring/rest/model/tipovi/ImePrezime.java
 package com.spring.rest.model.tipovi;
+=======
+<<<<<<< Updated upstream:Spring-JAX-RS/src/main/java/com/spring/rest/model/zahtev/ImePrezime.java
+package com.spring.rest.model.zahtev;
+=======
+package model.tipovi;
+>>>>>>> Stashed changes:Spring-JAX-RS/src/main/java/model/tipovi/ImePrezime.java
+>>>>>>> Stashed changes:Spring-JAX-RS/src/main/java/com/spring/rest/model/zahtev/ImePrezime.java
 
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;

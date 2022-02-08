@@ -1,7 +1,22 @@
 package com.spring.rest.parsing;
 
 
+<<<<<<< Updated upstream
+=======
+<<<<<<< Updated upstream
+import java.io.ByteArrayOutputStream;
+import java.io.File;
+import java.io.OutputStream;
+
+import javax.xml.bind.JAXBContext;
+import javax.xml.bind.Marshaller;
+import javax.xml.bind.Unmarshaller;
+
+>>>>>>> Stashed changes
 import com.spring.rest.model.interesovanje.Interesovanje;
+=======
+import model.interesovanje.Interesovanje;
+>>>>>>> Stashed changes
 import org.exist.xmldb.EXistResource;
 import org.xmldb.api.DatabaseManager;
 import org.xmldb.api.base.Collection;

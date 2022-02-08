@@ -6,7 +6,15 @@
 //
 
 
+<<<<<<< Updated upstream:Spring-JAX-RS/src/main/java/com/spring/rest/model/types/Pol.java
 package com.spring.rest.model.types;
+=======
+<<<<<<< Updated upstream:Spring-JAX-RS/src/main/java/com/spring/rest/model/potvrda/Pol.java
+package com.spring.rest.model.potvrda;
+=======
+package model.types;
+>>>>>>> Stashed changes:Spring-JAX-RS/src/main/java/model/types/Pol.java
+>>>>>>> Stashed changes:Spring-JAX-RS/src/main/java/com/spring/rest/model/potvrda/Pol.java
 
 import javax.xml.bind.annotation.XmlEnum;
 import javax.xml.bind.annotation.XmlType;

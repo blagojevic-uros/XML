@@ -1,6 +1,10 @@
 package rdf;
 
+<<<<<<< Updated upstream
 import grddl.MetadataExtractor;
+=======
+import util.grddl.MetadataExtractor;
+>>>>>>> Stashed changes
 import org.xml.sax.SAXException;
 import util.RDFAuthenticationUtilities;
 

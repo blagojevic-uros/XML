@@ -6,7 +6,15 @@
 //
 
 
+<<<<<<< Updated upstream:Spring-JAX-RS/src/main/java/com/spring/rest/model/tipovi/TipVakcine.java
 package com.spring.rest.model.tipovi;
+=======
+<<<<<<< Updated upstream:Spring-JAX-RS/src/main/java/com/spring/rest/model/zahtev/TipVakcine.java
+package com.spring.rest.model.zahtev;
+=======
+package model.tipovi;
+>>>>>>> Stashed changes:Spring-JAX-RS/src/main/java/model/tipovi/TipVakcine.java
+>>>>>>> Stashed changes:Spring-JAX-RS/src/main/java/com/spring/rest/model/zahtev/TipVakcine.java
 
 import javax.xml.bind.annotation.XmlEnum;
 import javax.xml.bind.annotation.XmlEnumValue;
@@ -37,8 +45,8 @@ public enum TipVakcine {
 
     @XmlEnumValue("Pfizer-BioNTech")
     PFIZER_BIO_N_TECH("Pfizer-BioNTech"),
-    @XmlEnumValue("Sputnik V (Gamaleya \u0438\u0441\u0442\u0440\u0430\u0436\u0438\u0432\u0430\u0447\u043a\u0438 \u0446\u0435\u043d\u0442\u0430\u0440)")
-    SPUTNIK_V_GAMALEYA_\u0418\u0421\u0422\u0420\u0410\u0416\u0418\u0412\u0410\u0427\u041a\u0418_\u0426\u0415\u041d\u0422\u0410\u0420("Sputnik V (Gamaleya \u0438\u0441\u0442\u0440\u0430\u0436\u0438\u0432\u0430\u0447\u043a\u0438 \u0446\u0435\u043d\u0442\u0430\u0440)"),
+    @XmlEnumValue("Sputnik V")
+    SPUTNIK_V("Sputnik V"),
     @XmlEnumValue("Sinopharm")
     SINOPHARM("Sinopharm"),
     @XmlEnumValue("AstraZeneca")

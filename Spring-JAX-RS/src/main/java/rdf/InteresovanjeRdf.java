@@ -1,6 +1,10 @@
 package rdf;
 
+<<<<<<< Updated upstream
 import grddl.MetadataExtractor;
+=======
+import util.grddl.MetadataExtractor;
+>>>>>>> Stashed changes
 import org.apache.jena.query.QueryExecution;
 import org.apache.jena.query.QueryExecutionFactory;
 import org.apache.jena.query.ResultSet;

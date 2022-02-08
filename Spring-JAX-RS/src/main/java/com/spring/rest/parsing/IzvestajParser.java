@@ -10,12 +10,19 @@ import javax.xml.bind.JAXBContext;
 import javax.xml.bind.Marshaller;
 import javax.xml.bind.Unmarshaller;
 
+<<<<<<< Updated upstream
 import com.spring.rest.model.izvestaj.IzvestajOImunizaciji;
+=======
+import model.izvestaj.IzvestajOImunizaciji;
+>>>>>>> Stashed changes
 import org.xmldb.api.DatabaseManager;
 import org.xmldb.api.base.Collection;
 import org.xmldb.api.base.Database;
 import org.xmldb.api.base.XMLDBException;
+<<<<<<< Updated upstream
 import org.xmldb.api.modules.CollectionManagementService;
+=======
+>>>>>>> Stashed changes
 import org.xmldb.api.modules.XMLResource;
 import util.AuthenticationUtilities;
 import util.AuthenticationUtilities.ConnectionProperties;

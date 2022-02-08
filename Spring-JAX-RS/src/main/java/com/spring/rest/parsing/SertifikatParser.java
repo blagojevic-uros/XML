@@ -10,7 +10,11 @@ import javax.xml.bind.JAXBContext;
 import javax.xml.bind.Marshaller;
 import javax.xml.bind.Unmarshaller;
 
+<<<<<<< Updated upstream
 import com.spring.rest.model.sertifikat.ZeleniSertifikat;
+=======
+import model.sertifikat.ZeleniSertifikat;
+>>>>>>> Stashed changes
 import org.xmldb.api.DatabaseManager;
 import org.xmldb.api.base.Collection;
 import org.xmldb.api.base.Database;

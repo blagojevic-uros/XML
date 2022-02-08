@@ -6,7 +6,7 @@
     <xs:simpleType name="tip_vakcine">
         <xs:restriction base="xs:string">
             <xs:enumeration value="Pfizer-BioNTech"/>
-            <xs:enumeration value="Sputnik V (Gamaleya истраживачки центар)"/>
+            <xs:enumeration value="Sputnik V"/>
             <xs:enumeration value="Sinopharm"/>
             <xs:enumeration value="AstraZeneca"/>
             <xs:enumeration value="Moderna"/>
@@ -54,5 +54,15 @@
     </xs:simpleType>
     <xs:simpleType name="sifra">
         <xs:restriction base="xs:string"> </xs:restriction>
+    </xs:simpleType>
+    <xs:simpleType name="tip_vakcine_interesovanje">
+        <xs:restriction base="xs:string">
+            <xs:enumeration value="Pfizer-BioNTech"/>
+            <xs:enumeration value="Sputnik V (Gamaleya истраживачки центар)"/>
+            <xs:enumeration value="Sinopharm"/>
+            <xs:enumeration value="AstraZeneca"/>
+            <xs:enumeration value="Moderna"/>
+            <xs:enumeration value="Bilo koja"/>
+        </xs:restriction>
     </xs:simpleType>
 </xs:schema>

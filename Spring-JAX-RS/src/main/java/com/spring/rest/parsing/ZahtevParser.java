@@ -1,6 +1,10 @@
 package com.spring.rest.parsing;
 
+<<<<<<< Updated upstream
 import com.spring.rest.model.zahtev.ZahtevZaSertifikat;
+=======
+import model.zahtev.ZahtevZaSertifikat;
+>>>>>>> Stashed changes
 import org.xmldb.api.DatabaseManager;
 import org.xmldb.api.base.Collection;
 import org.xmldb.api.base.Database;

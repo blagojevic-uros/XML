@@ -6,7 +6,15 @@
 //
 
 
+<<<<<<< Updated upstream:Spring-JAX-RS/src/main/java/com/spring/rest/model/types/TDoza.java
 package com.spring.rest.model.types;
+=======
+<<<<<<< Updated upstream:Spring-JAX-RS/src/main/java/com/spring/rest/model/interesovanje/ImePrezime.java
+package com.spring.rest.model.interesovanje;
+=======
+package model.types;
+>>>>>>> Stashed changes:Spring-JAX-RS/src/main/java/model/types/TDoza.java
+>>>>>>> Stashed changes:Spring-JAX-RS/src/main/java/com/spring/rest/model/interesovanje/ImePrezime.java
 
 import java.math.BigInteger;
 import javax.xml.bind.annotation.XmlAccessType;

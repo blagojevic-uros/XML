@@ -6,7 +6,15 @@
 //
 
 
+<<<<<<< Updated upstream:Spring-JAX-RS/src/main/java/types/ImePrezime.java
 package types;
+=======
+<<<<<<< Updated upstream:Spring-JAX-RS/src/main/java/com/spring/rest/model/izvestaj/ImePrezime.java
+package com.spring.rest.model.izvestaj;
+=======
+package model.types;
+>>>>>>> Stashed changes:Spring-JAX-RS/src/main/java/model/types/ImePrezime.java
+>>>>>>> Stashed changes:Spring-JAX-RS/src/main/java/com/spring/rest/model/izvestaj/ImePrezime.java
 
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
