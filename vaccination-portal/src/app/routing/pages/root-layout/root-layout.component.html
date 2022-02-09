@@ -1,4 +1,4 @@
-<div class="container-fluid">
+<!-- <div class="container-fluid">
   <div class="row primer">
     <div class="col">
       <app-header></app-header>
@@ -10,4 +10,12 @@
       <router-outlet></router-outlet>
     </div>
   </div>
+</div> -->
+<div class="parent">
+  <div class="header"><app-header></app-header></div>
+  <!-- <header><app-header></app-header></header> -->
+  <div class="left-sidebar"></div>
+  <div class="main"><router-outlet></router-outlet></div>
+  <div class="right-sidebar"></div>
+  <footer><p>Mladduf corp. - forever</p></footer>
 </div>
