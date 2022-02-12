@@ -1,12 +1,13 @@
 package com.vacc.service;
 
 import com.vacc.dao.InteresovanjeDAO;
+import model.interesovanje.Interesovanje;
 import org.springframework.stereotype.Service;
 import org.xmldb.api.base.XMLDBException;
 import org.xmldb.api.modules.XMLResource;
-import model.interesovanje.*;
 import util.ObjectParser;
 
+import java.util.Date;
 import java.util.List;
 import java.util.UUID;
 
@@ -14,19 +15,14 @@ import java.util.UUID;
 public class InteresovanjeService {
 
     private final ObjectParser objectParser;
-//    private final DataAccessLayer dao;
     private final InteresovanjeDAO interesovanjeDAO;
-
+    private final EmailService emailService;
     private final String folderPath="/db/interesovanje";
-    public InteresovanjeService(ObjectParser objectParser,InteresovanjeDAO interesovanjeDAO) {
+    public InteresovanjeService(ObjectParser objectParser, InteresovanjeDAO interesovanjeDAO, EmailService emailService) {
         this.objectParser = objectParser;
-//        this.dao = dao;
         this.interesovanjeDAO = interesovanjeDAO;
+        this.emailService = emailService;
     }
-
-//    public Interesovanje getById(String id) {
-//        this.dao.getById()
-//    }
 
     public String save(Interesovanje interesovanje) throws Exception{
         String uniqueID = UUID.randomUUID().toString();
@@ -34,8 +30,13 @@ public class InteresovanjeService {
         interesovanje.setAbout("http://www.ftn.uns.ac.rs/rdf/interesovanje/" + uniqueID);
         interesovanje.setRel("pred:saglasnostOd");
         String documentId = "interesovanje-" + uniqueID + ".xml";
+        //TODO: provera da li je vec izdao sta je trebao
+        //TODO: naci termin u narednih 7 dana
+        emailService.sendMailForSaglasnost(interesovanje.getLicniPodaci().getEmail(),new Date());
         try{
             this.interesovanjeDAO.save(folderPath,documentId,interesovanje,Interesovanje.class);
+
+
             return uniqueID;
         }
         catch (Exception e){

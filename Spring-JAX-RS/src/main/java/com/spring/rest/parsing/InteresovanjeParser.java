@@ -41,7 +41,7 @@ public class InteresovanjeParser {
         String documentId = null;
         String filePath = null;
 
-        collectionId = "/db/interesovanje"; // /db/interesovanje
+        collectionId = "/db/vakcine"; // /db/interesovanje
         documentId = "interesovanje-" + id + ".xml"; // interesovanje-{id}
         filePath = "podaci/xml/interesovanje.xml";
 

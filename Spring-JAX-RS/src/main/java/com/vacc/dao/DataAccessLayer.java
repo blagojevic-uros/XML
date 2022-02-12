@@ -33,8 +33,13 @@ public class DataAccessLayer {
             ex.printStackTrace();
         }
     }
+    public void saveList(String folderId,List<String> documentIds,List<?> objects,Class<?> classOfObject){
+        for (int i = 0; i < documentIds.size(); i++) {
+            save(folderId,documentIds.get(i),objects.get(i),classOfObject);
+        }
+    }
 
-    public void save(String folderId, String documentId, model.interesovanje.Interesovanje object, Class<?> classOfObject){
+    public void save(String folderId, String documentId, Object object, Class<?> classOfObject){
         try {
             Class<?> cl = Class.forName(this.dbConfig.getDriver());
             Database database = (Database) cl.newInstance();
@@ -81,8 +86,8 @@ public class DataAccessLayer {
                     // child collection does not exist
 
                     String parentPath = path.substring(0, path.lastIndexOf("/"));
-                    Collection parentCol = DatabaseManager.getCollection(this.dbConfig.getUrl() + collectionUri, this.dbConfig.getUsername(), this.dbConfig.getPassword());
-
+                    System.out.println(parentPath);
+                    Collection parentCol = DatabaseManager.getCollection(this.dbConfig.getUrl() + parentPath, this.dbConfig.getUsername(), this.dbConfig.getPassword());
                     CollectionManagementService mgt = (CollectionManagementService) parentCol.getService("CollectionManagementService", "1.0");
 
                     System.out.println("[INFO] Creating the collection: " + pathSegments[pathSegmentOffset]);
@@ -129,17 +134,11 @@ public class DataAccessLayer {
     public List<String> getAllDocumentNames(String collectionId) throws XMLDBException {
         Collection col = null;
         List<String> values = new ArrayList<>();
-//        String xPath = "//interesovanje/licni_podaci[JMBG ='1231231231123']";
         try {
             System.out.println("[INFO] Retrieving the collection: " + this.dbConfig.getUrl() + collectionId);
             col = DatabaseManager.getCollection(this.dbConfig.getUrl() + collectionId);
 
             values = Arrays.asList(col.listResources());
-//            Resource res = null;
-//            while(i.hasMoreResources()) {
-//                res = i.nextResource();
-//                System.out.println(res.getContent());
-//            }
         }
         catch(XMLDBException xe){
             xe.printStackTrace();
