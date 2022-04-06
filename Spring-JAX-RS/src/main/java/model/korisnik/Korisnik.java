@@ -1,14 +1,11 @@
 package model.korisnik;
 
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 import model.role.Role;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
-import javax.xml.bind.annotation.XmlRootElement;
+import javax.xml.bind.annotation.*;
 import java.util.Collection;
 import java.util.List;
 
@@ -16,6 +13,8 @@ import java.util.List;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
+@ToString
+@XmlAccessorType(XmlAccessType.FIELD)
 @XmlRootElement(name = "korisnik")
 public class Korisnik implements UserDetails {
 
@@ -26,6 +25,8 @@ public class Korisnik implements UserDetails {
 
     private String ime;
     private String prezime;
+    @XmlElementWrapper(name="roles", required=false)
+    @XmlElement(name="role", required=false)
     private List<Role> roles;
 
     @Override

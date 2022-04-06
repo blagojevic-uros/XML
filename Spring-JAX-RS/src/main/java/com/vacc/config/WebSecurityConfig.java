@@ -24,17 +24,13 @@ import org.springframework.security.web.authentication.www.BasicAuthenticationFi
 @ComponentScan
 public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
-
     @Autowired
-    private KorisnikService korisnikService;
-
+    private KorisnikService clientService;
     @Autowired
     private TokenUtils tokenUtils;
 
     @Autowired
     private RestAuthenticationEntryPoint restAuthenticationEntryPoint;
-
-
 
     @Bean
     public PasswordEncoder encoder() {
@@ -48,21 +44,22 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     }
     @Autowired
     public void configureGlobal(AuthenticationManagerBuilder auth) throws Exception {
-        auth.userDetailsService(korisnikService).passwordEncoder(passwordEncoder());
+        System.out.println("asdasd" + auth);
+        auth.userDetailsService(clientService).passwordEncoder(passwordEncoder());
     }
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         http.cors().and().csrf().disable()
                 .authorizeRequests()
                 .antMatchers("/auth/**").permitAll()
-                .antMatchers("/interesovanje/**").permitAll()
+                .antMatchers("/api/interesovanje/**").permitAll()
                 .anyRequest().authenticated()
                 .and()
                 .exceptionHandling().authenticationEntryPoint(restAuthenticationEntryPoint).and()
                 .sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS);
 
         // umetni custom filter TokenAuthenticationFilter kako bi se vrsila provera JWT tokena umesto cistih korisnickog imena i lozinke (koje radi BasicAuthenticationFilter)
-        http.addFilterBefore(new TokenAuthenticationFilter(tokenUtils, korisnikService), BasicAuthenticationFilter.class);
+        http.addFilterBefore(new TokenAuthenticationFilter(tokenUtils, clientService), BasicAuthenticationFilter.class);
 
     }
 

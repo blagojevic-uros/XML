@@ -7,8 +7,10 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { RootLayoutComponent } from './routing/pages/root-layout/root-layout.component';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { SharedModule } from './shared/shared.module';
+import { ReactiveFormsModule } from '@angular/forms';
+import { NotFoundPageComponent } from './routing/pages/not-found-page/not-found-page.component';
 @NgModule({
-  declarations: [AppComponent, RootLayoutComponent],
+  declarations: [AppComponent, RootLayoutComponent, NotFoundPageComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,
@@ -16,6 +18,7 @@ import { SharedModule } from './shared/shared.module';
     HttpClientModule,
     MatSnackBarModule,
     SharedModule,
+    ReactiveFormsModule,
   ],
   providers: [],
   bootstrap: [AppComponent],

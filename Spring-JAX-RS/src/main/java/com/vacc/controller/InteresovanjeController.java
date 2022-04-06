@@ -51,11 +51,13 @@ public class InteresovanjeController {
         return new ResponseEntity<>(this.interesovanjeService.getById(id), HttpStatus.OK);
     }
     @GetMapping("/object/{id}")
+    @Produces("application/xml")
     public ResponseEntity<Interesovanje> getOneObject(@PathVariable("id") String id) throws Exception{
         return new ResponseEntity<>(this.interesovanjeService.getByIdObject(id), HttpStatus.OK);
     }
 
     @GetMapping("/all/{jmbg}")
+    @Produces("application/xml")
     public ResponseEntity<List<Interesovanje>> getAllJMBG(@PathVariable("jmbg") String jmbg) throws XMLDBException {
         return new ResponseEntity<>(this.interesovanjeService.getAllJMBG(jmbg),HttpStatus.OK);
     }

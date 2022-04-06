@@ -21,7 +21,6 @@ public class ObjectParser {
 
         return unmarshaller.unmarshal(resource.getContentAsDOM());
     }
-
     public static OutputStream parseToXml(Object object, Class<?> classOfObject) throws JAXBException {
         JAXBContext context = JAXBContext.newInstance(classOfObject);
 

@@ -1,15 +1,16 @@
 package model.role;
 
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 import org.springframework.security.core.GrantedAuthority;
+
+import javax.xml.bind.annotation.XmlRootElement;
 
 @NoArgsConstructor
 @AllArgsConstructor
 @Getter
 @Setter
+@ToString
+@XmlRootElement(name = "role")
 public class Role implements GrantedAuthority {
 
     private static final long serialVersionUID = 1L;

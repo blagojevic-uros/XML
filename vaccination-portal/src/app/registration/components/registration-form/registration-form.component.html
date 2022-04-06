@@ -1,0 +1,20 @@
+<form [formGroup]="registracijaForm" class="containter" (ngSubmit)="onSubmit()">
+  <h2>Registracija korisnika</h2>
+  <mat-form-field appearance="outline">
+    <mat-label>Ime</mat-label>
+    <input matInput id="ime" formControlName="ime" type="text" />
+  </mat-form-field>
+  <mat-form-field appearance="outline">
+    <mat-label>Prezime </mat-label>
+    <input matInput formControlName="prezime" />
+  </mat-form-field>
+  <button
+    mat-flat-button
+    class="align-right"
+    color="primary"
+    type="submit"
+    [disabled]="!registracijaForm.valid"
+  >
+    Registruj se
+  </button>
+</form>
