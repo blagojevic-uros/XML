@@ -9,6 +9,10 @@ import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { SharedModule } from './shared/shared.module';
 import { ReactiveFormsModule } from '@angular/forms';
 import { NotFoundPageComponent } from './routing/pages/not-found-page/not-found-page.component';
+import { MatRadioModule } from '@angular/material/radio';
+
+
+
 @NgModule({
   declarations: [AppComponent, RootLayoutComponent, NotFoundPageComponent],
   imports: [
@@ -19,6 +23,7 @@ import { NotFoundPageComponent } from './routing/pages/not-found-page/not-found-
     MatSnackBarModule,
     SharedModule,
     ReactiveFormsModule,
+    MatRadioModule,
   ],
   providers: [],
   bootstrap: [AppComponent],

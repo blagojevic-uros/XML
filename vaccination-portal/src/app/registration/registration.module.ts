@@ -15,6 +15,7 @@ import { MatTooltipModule } from '@angular/material/tooltip';
 import { MatIconModule } from '@angular/material/icon';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { ReactiveFormsModule } from '@angular/forms';
+import { MatRadioModule } from '@angular/material/radio';
 
 @NgModule({
   declarations: [RegistrationPageComponent, RegistrationFormComponent],
@@ -31,6 +32,7 @@ import { ReactiveFormsModule } from '@angular/forms';
     MatTooltipModule,
     MatIconModule,
     MatCheckboxModule,
+    MatRadioModule,
   ],
 })
 export class RegistrationModule {}
