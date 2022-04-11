@@ -3,6 +3,7 @@
   justify-content: center;
   align-items: center;
   flex-direction: column;
+  //background-color: yellow;
 }
 .mat-form-field {
   width: 450px !important;
@@ -10,4 +11,13 @@
 
 .align-right {
   align-self: flex-end;
+}
+
+.align-left {
+  align-self: flex-start;
+}
+
+#female{
+  margin-left: 20px;
+  margin-bottom: 20px
 }

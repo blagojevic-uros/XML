@@ -7,38 +7,24 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
   styleUrls: ['./registration-form.component.scss'],
 })
 export class RegistrationFormComponent implements OnInit {
-  @Input() registracijaForm!: FormGroup;
+  registracijaForm!: FormGroup;
   @Output() submitFormEvent = new EventEmitter();
   constructor(private fb: FormBuilder) 
   {
-    this.registracijaForm = this.fb.group({
-      licniPodaci: this.fb.group({
-        ime: this.fb.group({
-          value: ['', Validators.required],
-        }),
-        prezime: this.fb.group({
-          value: ['', Validators.required],
-        }),
-        datumRodjenja: this.fb.group({
-          value: ['', Validators.required],
-        }),
-        jmbg: this.fb.group({
-          value: ['', Validators.required],
-        }),
-        brojPasosa: this.fb.group({
-          value: ['', Validators.required],
-        }),
-        email: this.fb.group({
-          value: ['', Validators.required],
-        }),
-        brojTelefona: this.fb.group({
-          value: ['', Validators.required],
-        }),
-        fiksniTelefon: this.fb.group({
-          value: ['', Validators.required],
-        }),
-      }),
-    });
+    (this.registracijaForm = this.fb.group({
+      ime: ['', Validators.required],
+      prezime: ['', Validators.required],
+      datumRodjenja: ['', Validators.required],
+      jmbg: ['', Validators.required],
+      brojPasosa: ['', Validators.required],
+      email: ['', Validators.required],
+      mobilniTelefon: ['', Validators.required],
+      fiksniTelefon: ['', Validators.required],
+      adresa: ['', Validators.required],
+      postanskiBroj: ['', Validators.required],
+      mesto: ['', Validators.required],
+      opstina: ['', Validators.required],
+    }));
   }
 
   ngOnInit(): void {}

@@ -12,10 +12,6 @@
     <mat-label>Datum Rođenja </mat-label>
     <input matInput formControlName="datumRodjenja" />
   </mat-form-field>
-  <mat-radio-group aria-label="Pol">
-    <mat-radio-button value="1">Muški</mat-radio-button>
-    <mat-radio-button value="2">Ženski</mat-radio-button>
-  </mat-radio-group>
   <mat-form-field appearance="outline">
     <mat-label>JMBG </mat-label>
     <input matInput formControlName="jmbg" />
@@ -23,6 +19,38 @@
   <mat-form-field appearance="outline">
     <mat-label>Broj Pasoša </mat-label>
     <input matInput formControlName="brojPasosa" />
+  </mat-form-field>
+  <mat-radio-group aria-label="Pol">
+    <mat-radio-button value="1" id="male">Muški</mat-radio-button>
+    <mat-radio-button value="2" id="female">Ženski</mat-radio-button>
+  </mat-radio-group>
+  <mat-form-field appearance="outline">
+    <mat-label>Adresa (Ulica i Broj) </mat-label>
+    <input matInput formControlName="adresa" />
+  </mat-form-field>
+  <mat-form-field appearance="outline">
+    <mat-label>Mesto/Grad </mat-label>
+    <input matInput formControlName="mesto" />
+  </mat-form-field>
+  <mat-form-field appearance="outline">
+    <mat-label>Opština </mat-label>
+    <input matInput formControlName="opstina" />
+  </mat-form-field>
+  <mat-form-field appearance="outline">
+    <mat-label>Poštanski Broj </mat-label>
+    <input matInput formControlName="postanskiBroj" />
+  </mat-form-field>
+  <mat-form-field appearance="outline">
+    <mat-label>Fiksni Telefon </mat-label>
+    <input matInput formControlName="fiksniTelefon" />
+  </mat-form-field>
+  <mat-form-field appearance="outline">
+    <mat-label>Mobilni Telefon </mat-label>
+    <input matInput formControlName="mobilniTelefon" />
+  </mat-form-field>
+  <mat-form-field appearance="outline">
+    <mat-label>Email Adresa </mat-label>
+    <input matInput formControlName="email" />
   </mat-form-field>
   <button
     mat-flat-button
