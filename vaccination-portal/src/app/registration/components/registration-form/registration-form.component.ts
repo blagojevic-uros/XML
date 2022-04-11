@@ -1,5 +1,7 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { RegistrationService } from '../../service/registration.service';
+
 
 @Component({
   selector: 'app-registration-form',
@@ -9,7 +11,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 export class RegistrationFormComponent implements OnInit {
   registracijaForm!: FormGroup;
   @Output() submitFormEvent = new EventEmitter();
-  constructor(private fb: FormBuilder) 
+  constructor(private fb: FormBuilder, private registrovanjeService: RegistrationService) 
   {
     (this.registracijaForm = this.fb.group({
       ime: ['', Validators.required],
@@ -28,5 +30,12 @@ export class RegistrationFormComponent implements OnInit {
   }
 
   ngOnInit(): void {}
-  onSubmit() {}
+  onSubmit() {
+
+    this.registrovanjeService
+      .save(this.registracijaForm.value)
+      .subscribe((res: string) => {
+      });
+
+  }
 }
