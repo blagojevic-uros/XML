@@ -20,11 +20,22 @@ public class Korisnik implements UserDetails {
 
     private Long id;
 
-    private String username;
+    private String username; // Ocemo email kao username?
     private String password;
 
     private String ime;
     private String prezime;
+    private String datum;
+    private int jmbg;
+    private int brojPasosa;
+    private String pol; // Moze enum?
+    private String adresa;
+    private String mesto;
+    private String opstina;
+    private int postanskiBroj;
+    private int fiksni;
+    private int mobilni;
+    private String email;
     @XmlElementWrapper(name="roles", required=false)
     @XmlElement(name="role", required=false)
     private List<Role> roles;

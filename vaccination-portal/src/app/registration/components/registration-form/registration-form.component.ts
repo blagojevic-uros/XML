@@ -26,6 +26,7 @@ export class RegistrationFormComponent implements OnInit {
       postanskiBroj: ['', Validators.required],
       mesto: ['', Validators.required],
       opstina: ['', Validators.required],
+      sifra: ['', Validators.required]
     }));
   }
 

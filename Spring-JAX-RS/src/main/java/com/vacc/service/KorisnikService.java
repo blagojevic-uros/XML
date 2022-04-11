@@ -3,10 +3,15 @@ package com.vacc.service;
 import com.vacc.Exception.NotFoundException;
 import com.vacc.dao.KorisnikDAO;
 import lombok.SneakyThrows;
+import model.interesovanje.Interesovanje;
+import model.korisnik.Korisnik;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
+
+import java.util.Date;
+import java.util.UUID;
 
 @Service
 public class KorisnikService implements UserDetailsService {
@@ -15,6 +20,7 @@ public class KorisnikService implements UserDetailsService {
     public KorisnikService(KorisnikDAO korisnikDAO) {
         this.korisnikDAO = korisnikDAO;
     }
+    private final String folderPath="/db/korisnik";
 
     @SneakyThrows
     @Override
@@ -38,5 +44,18 @@ public class KorisnikService implements UserDetailsService {
         }
 
     }
+    public String save(Korisnik korisnik) throws Exception{
+        //emailService.sendMailForSaglasnost(interesovanje.getLicniPodaci().getEmail(),new Date());
+        String uniqueID = UUID.randomUUID().toString();
+        String documentId = "interesovanje-" + uniqueID + ".xml";
+        try{
+            this.korisnikDAO.save(folderPath, uniqueID, korisnik, Korisnik.class);
 
+            // TODO: Vratiti id za http
+            return "uniqueID";
+        }
+        catch (Exception e){
+            throw new Exception();
+        }
+    }
 }
