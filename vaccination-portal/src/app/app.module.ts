@@ -7,12 +7,10 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { RootLayoutComponent } from './routing/pages/root-layout/root-layout.component';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { SharedModule } from './shared/shared.module';
-import { ReactiveFormsModule } from '@angular/forms';
+import { ReactiveFormsModule,FormsModule } from '@angular/forms';
 import { NotFoundPageComponent } from './routing/pages/not-found-page/not-found-page.component';
-import { ImunizacijaFormComponent } from './imunizacija/components/imunizacija-form/imunizacija-form.component';
-import { CreateImunizacijaComponent } from './imunizacija/pages/create-imunizacija/create-imunizacija.component';
 @NgModule({
-  declarations: [AppComponent, RootLayoutComponent, NotFoundPageComponent, ImunizacijaFormComponent, CreateImunizacijaComponent],
+  declarations: [AppComponent, RootLayoutComponent, NotFoundPageComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,
@@ -21,6 +19,7 @@ import { CreateImunizacijaComponent } from './imunizacija/pages/create-imunizaci
     MatSnackBarModule,
     SharedModule,
     ReactiveFormsModule,
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent],

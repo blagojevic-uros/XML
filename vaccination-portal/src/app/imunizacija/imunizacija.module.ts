@@ -32,4 +32,4 @@ import { MatCheckboxModule } from '@angular/material/checkbox';
     MatCheckboxModule,
   ],
 })
-export class InteresovanjeModule {}
+export class ImunizacijaModule {}

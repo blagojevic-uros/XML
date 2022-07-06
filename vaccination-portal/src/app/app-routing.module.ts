@@ -35,6 +35,14 @@ const routes: Routes = [
       ),
   },
   {
+    path: 'imunizacija',
+    component: RootLayoutComponent,
+    loadChildren: () =>
+      import('./imunizacija/imunizacija.module').then(
+        (m) => m.ImunizacijaModule
+      ),
+  },
+  {
     path: '**',
     component: NotFoundPageComponent,
   },
