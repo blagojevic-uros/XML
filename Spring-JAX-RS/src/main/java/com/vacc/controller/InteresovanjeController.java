@@ -19,10 +19,9 @@ public class InteresovanjeController {
     private final InteresovanjeService interesovanjeService;
 
     public InteresovanjeController(InteresovanjeService interesovanjeService){
-
         this.interesovanjeService = interesovanjeService;
     }
-    
+
     @PostMapping("/save")
     @Produces("application/xml")
     public ResponseEntity<String> save(@RequestBody Interesovanje interesovanje) throws Exception {

@@ -9,8 +9,10 @@ import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { SharedModule } from './shared/shared.module';
 import { ReactiveFormsModule } from '@angular/forms';
 import { NotFoundPageComponent } from './routing/pages/not-found-page/not-found-page.component';
+import { ImunizacijaFormComponent } from './imunizacija/components/imunizacija-form/imunizacija-form.component';
+import { CreateImunizacijaComponent } from './imunizacija/pages/create-imunizacija/create-imunizacija.component';
 @NgModule({
-  declarations: [AppComponent, RootLayoutComponent, NotFoundPageComponent],
+  declarations: [AppComponent, RootLayoutComponent, NotFoundPageComponent, ImunizacijaFormComponent, CreateImunizacijaComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,

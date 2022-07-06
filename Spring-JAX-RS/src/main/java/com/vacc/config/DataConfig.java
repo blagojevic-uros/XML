@@ -21,6 +21,7 @@ import java.util.stream.Collectors;
 public class DataConfig {
     @Bean
     CommandLineRunner DataConfigCMDLineRunner(VakcinaDAO vakcinaDAO, KorisnikDAO korisnikDAO, RoleDAO roleDAO) {
+//        return null;
         return args -> {
             Vakcina v1 = new Vakcina(1,"Pfizer-BioNTech",100);
             Vakcina v2 = new Vakcina(2,"Sputnik V",100);
@@ -29,7 +30,7 @@ public class DataConfig {
             Vakcina v5 = new Vakcina(5,"Moderna",100);
             List<Vakcina> vakcinaList = List.of(v1,v2,v3,v4,v5);
             List<String> dokumentNames = vakcinaList.stream().map(Vakcina::getNaziv).collect(Collectors.toList());
-            vakcinaDAO.saveList(vakcinaDAO.getFolderPath(),dokumentNames,vakcinaList,Vakcina.class);
+            //vakcinaDAO.saveList(vakcinaDAO.getFolderPath(),dokumentNames,vakcinaList,Vakcina.class);
             Role r1 = new Role(1L,"ROLE_PACIJENT");
             List<Role> roles = new ArrayList<>();
             roles.add(r1);
