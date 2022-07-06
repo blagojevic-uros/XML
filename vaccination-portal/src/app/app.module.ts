@@ -9,6 +9,10 @@ import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { SharedModule } from './shared/shared.module';
 import { ReactiveFormsModule } from '@angular/forms';
 import { NotFoundPageComponent } from './routing/pages/not-found-page/not-found-page.component';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatInputModule } from '@angular/material/input';
+import { FormsModule } from '@angular/forms';
+
 @NgModule({
   declarations: [AppComponent, RootLayoutComponent, NotFoundPageComponent],
   imports: [
@@ -19,8 +23,11 @@ import { NotFoundPageComponent } from './routing/pages/not-found-page/not-found-
     MatSnackBarModule,
     SharedModule,
     ReactiveFormsModule,
+    FormsModule,
+    MatFormFieldModule,
+    MatInputModule
   ],
   providers: [],
   bootstrap: [AppComponent],
 })
-export class AppModule {}
+export class AppModule { }

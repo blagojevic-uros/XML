@@ -48,7 +48,11 @@ public class InteresovanjeController {
     @GetMapping("/{id}")
     @Produces("application/xml")
     public ResponseEntity<String> getOne(@PathVariable("id") String id) throws Exception {
-        return new ResponseEntity<>(this.interesovanjeService.getById(id), HttpStatus.OK);
+        try{
+            return new ResponseEntity<>(this.interesovanjeService.getById(id), HttpStatus.OK);
+        }catch(Exception e){
+            return new ResponseEntity<>(e.getMessage(), HttpStatus.BAD_REQUEST);
+        }
     }
     @GetMapping("/object/{id}")
     @Produces("application/xml")

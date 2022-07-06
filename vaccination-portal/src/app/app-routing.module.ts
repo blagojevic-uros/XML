@@ -35,6 +35,14 @@ const routes: Routes = [
       ),
   },
   {
+    path: 'saglasnost',
+    component: RootLayoutComponent,
+    loadChildren: () =>
+      import('./saglasnost/saglasnost.module').then(
+        (m) => m.SaglasnostModule
+      )
+  },
+  {
     path: '**',
     component: NotFoundPageComponent,
   },
@@ -44,4 +52,4 @@ const routes: Routes = [
   imports: [RouterModule.forRoot(routes), SharedModule],
   exports: [RouterModule],
 })
-export class AppRoutingModule {}
+export class AppRoutingModule { }
