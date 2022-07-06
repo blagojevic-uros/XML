@@ -53,10 +53,17 @@
                 <input matInput formControlName="imeRoditelja" />
             </mat-form-field>
 
-            <mat-label>Musko <input id="pol" type="radio" name="pol" value="musko" [checked]="true"
-                    (change)="polChange('musko')" /></mat-label>
-            <mat-label>Žensko <input id="pol" type="radio" name="pol" value="zensko" [checked]="false"
-                    (change)="polChange('zensko')" /></mat-label>
+            <!-- <mat-label>Musko <input id="pol" type="radio" name="pol" value="M" [checked]="true"
+                    (change)="polChange('M')" /></mat-label>
+            <mat-label>Žensko <input id="pol" type="radio" name="pol" value="Z" [checked]="false"
+                    (change)="polChange('Z')" /></mat-label> -->
+
+            <mat-radio-group aria-labelledby="example-radio-group-label" class="example-radio-group"
+                formControlName="pol">
+                <mat-radio-button class="example-radio-button" *ngFor="let pol1 of pols" [value]="pol1">
+                    {{pol1}}
+                </mat-radio-button>
+            </mat-radio-group>
 
             <mat-form-field appearance="outline">
                 <mat-label>Datum rodjenja </mat-label>
@@ -100,7 +107,7 @@
             <div formGroupName="radniStatus" class="containter">
                 <mat-form-field appearance="outline">
                     <mat-label>Radni status</mat-label>
-                    <mat-select formControlName="value">
+                    <mat-select formControlName="radniStatus">
                         <mat-option value="Zaposlen">Zaposlen</mat-option>
                         <mat-option value="Penzioner">Penzioner</mat-option>
                         <mat-option value="Nezaposlen">Nezaposlen</mat-option>
@@ -114,7 +121,7 @@
             <div formGroupName="zanimanjeZaposlenog" class="containter">
                 <mat-form-field appearance="outline">
                     <mat-label>Zanimanje zaposlenog</mat-label>
-                    <mat-select formControlName="value">
+                    <mat-select formControlName="zanimanjeZaposlenog">
                         <mat-option value="Zdravstvena zastita">Zdravstvena zaštita</mat-option>
                         <mat-option value="Socijalna zastita">Socijalna zaštita</mat-option>
                         <mat-option value="Prosveta">Prosveta</mat-option>
@@ -133,7 +140,7 @@
             </div>
             <!--KRAJ LICNI PODACI-->
         </div>
-        <button mat-flat-button class="align-center" color="primary" type="submit" [disabled]="!saglasnostForm.valid">
+        <button mat-flat-button class="align-center" color="primary" type="submit">
             Submit
         </button>
     </form>

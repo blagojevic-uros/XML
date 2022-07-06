@@ -14,14 +14,15 @@ export class SaglasnostFormComponent implements OnInit {
   @Input() saglasnostForm!: FormGroup;
   @Output() submitFormEvent = new EventEmitter();
   drzavljanstvo: string = "Drzavljanin_RS";
-  pol: string = "musko"
+  // pol: string = "M"
+  pols: string[] = ['M', 'Z'];
   drzavljanstvoChange(value: string) {
     this.drzavljanstvo = value;
   }
 
-  polChange(value: string) {
-    this.pol = value;
-  }
+  // polChange(value: string) {
+  //   this.pol = value;
+  // }
 
   constructor(private fb: FormBuilder) { }
 

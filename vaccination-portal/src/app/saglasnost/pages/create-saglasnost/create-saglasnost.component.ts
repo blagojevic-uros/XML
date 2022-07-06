@@ -10,6 +10,7 @@ import { SaglasnostService } from '../../service/saglasnost.service';
 })
 export class CreateSaglasnostComponent implements OnInit {
   saglasnostForm!: FormGroup;
+
   constructor(
     private fb: FormBuilder,
     private saglasnostService: SaglasnostService,
@@ -42,12 +43,14 @@ export class CreateSaglasnostComponent implements OnInit {
         fiksniBroj: [''],
         mobilniBroj: ['', Validators.required],
         email: ['', Validators.required],
-        radniStatus: this.fb.group({
-          value: ['']
-        }),
-        zanimanjeZaposlenog: this.fb.group({
-          value: ['']
-        }),
+        radniStatus: ['', Validators.required],
+        zanimanjeZaposlenog: ['', Validators.required],
+        // radniStatus: this.fb.group({
+        //   value: ['']
+        // }),
+        // zanimanjeZaposlenog: this.fb.group({
+        //   value: ['']
+        // }),
         korisnikSocZastite: this.fb.group({
           value: [''],
         }),

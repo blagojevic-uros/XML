@@ -14,6 +14,8 @@ import { MatCheckboxModule } from '@angular/material/checkbox';
 import { CreateSaglasnostComponent } from './pages/create-saglasnost/create-saglasnost.component';
 import { SaglasnostFormComponent } from './components/saglasnost-form/saglasnost-form.component';
 import { SaglasnostRoutingModule } from './saglasnost-routing.module';
+import { MatRadioModule } from '@angular/material/radio';
+
 @NgModule({
     declarations: [CreateSaglasnostComponent, SaglasnostFormComponent],
     imports: [
@@ -29,6 +31,7 @@ import { SaglasnostRoutingModule } from './saglasnost-routing.module';
         MatTooltipModule,
         MatIconModule,
         MatCheckboxModule,
+        MatRadioModule
 
 
     ],
