@@ -9,7 +9,7 @@
         <xs:complexType>
             <xs:sequence>
                 <xs:element ref="fk:licni_podaci"/>
-                <xs:element name="saglanost">
+                <xs:element name="saglasnost">
                     <xs:complexType>
                         <xs:sequence>
                             <xs:element minOccurs="0" name="saglasan_sam"/>

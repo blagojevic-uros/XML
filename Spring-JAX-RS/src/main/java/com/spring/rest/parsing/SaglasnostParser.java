@@ -37,7 +37,7 @@ public class SaglasnostParser {
         String filePath = null;
 
         collectionId = "/db/saglasnost";
-        documentId = "saglanost_za_imunizaciju-" + id + ".xml";
+        documentId = "saglasnost_za_imunizaciju-" + id + ".xml";
         filePath = "podaci/xml/saglasnost_za_imunizaciju.xml";
 
         System.out.println("\t- collection ID: " + collectionId);

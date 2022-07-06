@@ -21,12 +21,16 @@ public class SaglasnostService {
         this.saglasnostDAO = saglasnostDAO;
 
     }
-    public String save(LicniPodaci saglasnost) throws Exception{
+    public String save(SaglasnostZaImunizaciju saglasnost) throws Exception{
         String uniqueID = UUID.randomUUID().toString();
         String documentId = "saglasnost-" + uniqueID + ".xml";
         //emailService.sendMailForSaglasnost(interesovanje.getLicniPodaci().getEmail(),new Date());
+//        SaglasnostZaImunizaciju saglasnostZaImunizaciju = new SaglasnostZaImunizaciju();
+//        saglasnostZaImunizaciju.setLicniPodaci(saglasnost);
+//        saglasnostZaImunizaciju.setId(uniqueID);
+//        saglasnostZaImunizaciju.setRel("pred:interesovanjeOd");
         try{
-            //this.saglasnostDAO.save(folderPath,documentId,interesovanje,Interesovanje.class);
+            this.saglasnostDAO.save(folderPath,documentId,saglasnost,SaglasnostZaImunizaciju.class);
             return "good";
         }
         catch (Exception e){

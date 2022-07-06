@@ -26,7 +26,7 @@ public class SaglasnostController {
 
     @PostMapping("/save")
     @Produces("application/xml")
-    public ResponseEntity<String> save(@RequestBody LicniPodaci saglasnost) throws Exception {
+    public ResponseEntity<String> save(@RequestBody SaglasnostZaImunizaciju saglasnost) throws Exception {
         try{
             this.saglasnostService.save(saglasnost);
             return new ResponseEntity<>("Kreirani licni podaci za saglasnost", HttpStatus.OK);

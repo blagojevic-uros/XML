@@ -33,9 +33,9 @@
             <naziv_opstine>Novi Sad</naziv_opstine>
         </korisnik_soc_zastite>
     </licni_podaci>
-    <saglanost>
+    <saglasnost>
         <naziv_leka>Brufen</naziv_leka>
-    </saglanost>
+    </saglasnost>
     <potpis>PPera</potpis>
     <datum property="pred:datum">2021-12-12</datum>
     <evidencija_o_vakcinaciji>
