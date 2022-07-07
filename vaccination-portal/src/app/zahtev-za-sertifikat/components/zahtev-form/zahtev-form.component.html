@@ -57,12 +57,6 @@
           <input matInput formControlName="mesto" />
         </mat-form-field>
     </div>
-    <div formGroupName="datum" class="containter">
-        <mat-form-field appearance="outline">
-          <mat-label>Datum</mat-label>
-          <input matInput formControlName="datum" type="date"/>
-        </mat-form-field>
-    </div>
       <div formGroupName="potpis" class="containter">
         <mat-form-field appearance="outline">
           <mat-label>Potpis</mat-label>
@@ -74,7 +68,6 @@
         class="align-right"
         color="primary"
         type="submit"
-        [disabled]="!zahtevForm.valid"
     >
     Submit
     </button>
