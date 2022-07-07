@@ -30,11 +30,18 @@ public class DataConfig {
             Vakcina v5 = new Vakcina(5,"Moderna",100);
             List<Vakcina> vakcinaList = List.of(v1,v2,v3,v4,v5);
             List<String> dokumentNames = vakcinaList.stream().map(Vakcina::getNaziv).collect(Collectors.toList());
-            //vakcinaDAO.saveList(vakcinaDAO.getFolderPath(),dokumentNames,vakcinaList,Vakcina.class);
+            vakcinaDAO.saveList(vakcinaDAO.getFolderPath(),dokumentNames,vakcinaList,Vakcina.class);
             Role r1 = new Role(1L,"ROLE_PACIJENT");
+            Role r2 = new Role(2L,"ROLE_Z_RADNIK");
+
+            roleDAO.save("/db/role","PACIJENT",r1,Role.class);
+            roleDAO.save("/db/role","Z_RADNIK",r2,Role.class);
+
+
             List<Role> roles = new ArrayList<>();
             roles.add(r1);
-            roleDAO.save("/db/role","PACIJENT",r1,Role.class);
+
+
             Korisnik k = new Korisnik(1L,"pera","$2a$12$BKZlNSMhhIVTVsiPt9Qz8eXX/eEoCkP851wlR3/mxJqbfdWsOjgM6","Pera","Peric",roles);
             korisnikDAO.save("/db/korisnik",k.getUsername() + ".xml",k,Korisnik.class);
         };
