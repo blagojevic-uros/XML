@@ -9,7 +9,7 @@ import {ZahtevZaSertifikatService} from '../../service/zahtev-za-sertifikat.serv
   styleUrls: ['./zahtev-page.component.scss']
 })
 export class ZahtevPageComponent implements OnInit {
-  zahtevForm!: FormGroup
+  zahtevForm!: FormGroup;
   currentDate: string = new Date().toISOString().split('T')[0];
   constructor(
     private fb: FormBuilder,
@@ -21,25 +21,19 @@ export class ZahtevPageComponent implements OnInit {
             ime: ['', Validators.required],
             prezime: ['', Validators.required],
         }),
-        datumRodjenja: this.fb.group({
+        datumRodjenja: ['', Validators.required],
+        pol:  ['M', Validators.required],
+        jmbg: this.fb.group({
           value: ['', Validators.required],
         }),
-        pol: this.fb.group({
-          value: ['', Validators.required],
-        }),
-        jmbg: ['', Validators.required],
         brojPasosa: ['', Validators.required],
       }),
-      razlogZaZahtev: this.fb.group({
-        value: ['', Validators.required],
-      }),
+      razlogZaZahtev:  ['', Validators.required],
       mesto: this.fb.group({
         value: ['', Validators.required],
       }),
-      datum: this.fb.group({
-        value: [this.currentDate],
-      }),
-      potpis: ['', Validators.required],
+      datum:  [this.currentDate],
+      potpis: ['', Validators.required]
     });
   }
   onSubmit() {
