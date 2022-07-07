@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
+    xmlns:vc="http://www.w3.org/2007/XMLSchema-versioning" elementFormDefault="qualified"
+    vc:minVersion="1.1" targetNamespace="http://ftn.uns.ac.rs/vakcina/izvestaj"
+    xmlns:iz="http://ftn.uns.ac.rs/vakcina/izvestaj" xmlns:fv="http://ftn.uns.ac.rs/vakcina/tipovi">
+
+    <xs:import namespace="http://ftn.uns.ac.rs/vakcina/tipovi" schemaLocation="types.xsd"/>
+    <xs:element name="izvestaj_o_imunizaciji">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="pocetni_datum">
+                    <xs:complexType>
+                        <xs:simpleContent>
+                            <xs:extension base="xs:date">
+                                <xs:attribute name="property"/>
+                                <xs:attribute name="datatype"/>
+                            </xs:extension>
+                        </xs:simpleContent>
+                    </xs:complexType>
+                </xs:element>
+                <xs:element name="zavrsni_datum">
+                    <xs:complexType>
+                        <xs:simpleContent>
+                            <xs:extension base="xs:date">
+                                <xs:attribute name="property"/>
+                                <xs:attribute name="datatype"/>
+                            </xs:extension>
+                        </xs:simpleContent>
+                    </xs:complexType>
+                </xs:element>
+                <xs:element name="broj_dokumenata_imunizaciju" type="xs:positiveInteger"/>
+                <xs:element name="zahtevi_sertifikat" type="xs:positiveInteger"/>
+                <xs:element name="izdati_zahtevi_sertifikat" type="xs:positiveInteger"/>
+                <xs:element name="broj_doza" type="xs:positiveInteger"/>
+                <xs:element name="raspored_doza_vakcina_broj_doze" type="iz:raspored_doza_broj"> </xs:element>
+                <xs:element ref="iz:raspored_doza_vakcina_proizvodjac"/>
+                <xs:element name="datum" type="xs:date"/>
+                <xs:element name="potpis" type="xs:string"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    <xs:complexType name="raspored_doza_proizvodjac">
+        <xs:sequence>
+            <xs:element maxOccurs="unbounded" minOccurs="0" ref="iz:info_proizvodjac"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="raspored_doza_broj">
+        <xs:sequence>
+            <xs:element maxOccurs="unbounded" minOccurs="0" ref="iz:info_doza"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="TProizvodjac">
+        <xs:sequence>
+            <xs:element name="proizvodjac" type="fv:tip_vakcine"/>
+            <xs:element name="doze" type="xs:positiveInteger"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="TDoza">
+        <xs:sequence>
+            <xs:element name="doza" type="xs:positiveInteger"/>
+            <xs:element name="kolicina" type="xs:positiveInteger"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:element name="raspored_doza_vakcina_proizvodjac" type="iz:raspored_doza_proizvodjac"> </xs:element>
+    <xs:element name="raspored_doza_vakcina_broj_doze" type="iz:raspored_doza_broj"> </xs:element>
+    <xs:element name="info_proizvodjac" type="iz:TProizvodjac"> </xs:element>
+    <xs:element name="info_doza" type="iz:TDoza"> </xs:element>
+</xs:schema>

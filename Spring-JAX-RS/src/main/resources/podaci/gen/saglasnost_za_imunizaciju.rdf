@@ -1,0 +1,14 @@
+<rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:h="http://www.w3.org/1999/xhtml">
+  <rdf:Description rdf:about="http://www.ftn.uns.ac.rs/rdf/saglasnost/123">
+    <pred:potvrda xmlns:pred="http://www.ftn.uns.ac.rs/rdf/saglasnost/predicate/" rdf:resource="http://www.ftn.uns.ac.rs/rdf/potvrda/123"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.ftn.uns.ac.rs/rdf/saglasnost/123">
+    <pred:jmbg xmlns:pred="http://www.ftn.uns.ac.rs/rdf/saglasnost/predicate/" rdf:datatype="http://www.w3.org/1999/02/22-rdf-syntax-ns#XMLLiteral">0808999742049</pred:jmbg>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.ftn.uns.ac.rs/rdf/saglasnost/123">
+    <pred:datum xmlns:pred="http://www.ftn.uns.ac.rs/rdf/saglasnost/predicate/" rdf:datatype="http://www.w3.org/1999/02/22-rdf-syntax-ns#XMLLiteral">2021-12-12</pred:datum>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.ftn.uns.ac.rs/rdf/saglasnost/123">
+    <pred:vakcina xmlns:pred="http://www.ftn.uns.ac.rs/rdf/saglasnost/predicate/" rdf:datatype="http://www.w3.org/1999/02/22-rdf-syntax-ns#XMLLiteral">Pfizer-BioNTech</pred:vakcina>
+  </rdf:Description>
+</rdf:RDF>

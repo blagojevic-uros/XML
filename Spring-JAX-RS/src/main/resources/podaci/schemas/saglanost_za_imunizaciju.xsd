@@ -1,0 +1,215 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
+    xmlns:vc="http://www.w3.org/2007/XMLSchema-versioning" elementFormDefault="qualified"
+    vc:minVersion="1.1" targetNamespace="http://ftn.uns.ac.rs/vakcina/saglasnost"
+    xmlns:fk="http://ftn.uns.ac.rs/vakcina/saglasnost"
+    xmlns:fv="http://ftn.uns.ac.rs/vakcina/tipovi">
+    <xs:import namespace="http://ftn.uns.ac.rs/vakcina/tipovi" schemaLocation="types.xsd"/>
+    <xs:element name="saglasnost_za_imunizaciju">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element ref="fk:licni_podaci"/>
+                <xs:element name="saglanost">
+                    <xs:complexType>
+                        <xs:sequence>
+                            <xs:element minOccurs="0" name="saglasan_sam"/>
+                            <xs:element name="naziv_leka" type="xs:string"/>
+                        </xs:sequence>
+                    </xs:complexType>
+                </xs:element>
+                <xs:element name="potpis" type="xs:string"/>
+                <xs:element name="datum">
+                    <xs:complexType>
+                        <xs:simpleContent>
+                            <xs:extension base="xs:date">
+                                <xs:attribute name="property"/>
+                                <xs:attribute name="datatype"/>
+                            </xs:extension>
+                        </xs:simpleContent>
+                    </xs:complexType>
+                </xs:element>
+                <xs:element ref="fk:evidencija_o_vakcinaciji" minOccurs="1"/>
+            </xs:sequence>
+            <xs:attribute name="potvrda_o_vakcinisanju"/>
+            <xs:attribute name="interesovanje"/>
+            <xs:attribute name="id"/>
+            <xs:attribute name="about"/>
+            <xs:attribute name="rel"/>
+            <xs:attribute name="href"/>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="evidencija_o_vakcinaciji">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="zdravstvena_ustanova" type="xs:string"/>
+                <xs:element name="vakcinijski_punkt" type="xs:string"/>
+                <xs:element ref="fk:lekar"/>
+                <xs:element name="tabela_vakcinisanja">
+                    <xs:complexType>
+                        <xs:sequence>
+                            <xs:element maxOccurs="unbounded" ref="fk:vakcinisanje" minOccurs="0"/>
+                        </xs:sequence>
+                    </xs:complexType>
+                </xs:element>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    <xs:complexType name="TLekar">
+        <xs:sequence>
+            <xs:element name="ime" type="xs:string"/>
+            <xs:element name="prezime" type="xs:string"/>
+            <xs:element name="faksimil" type="xs:string"/>
+            <xs:element name="broj_telefona">
+                <xs:simpleType>
+                    <xs:restriction base="fv:mobilni_telefon"> </xs:restriction>
+                </xs:simpleType>
+            </xs:element>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="TVakcinisanje">
+        <xs:sequence>
+            <xs:element name="naziv_vakcine">
+                <xs:complexType>
+                    <xs:simpleContent>
+                        <xs:extension base="fv:tip_vakcine">
+                            <xs:attribute name="property"/>
+                            <xs:attribute name="datatype"/>
+                        </xs:extension>
+                    </xs:simpleContent>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="datum_davanja" type="xs:date"/>
+            <xs:element name="nacin_davanja" type="xs:string"/>
+            <xs:element name="ekstremitet">
+                <xs:simpleType>
+                    <xs:restriction base="xs:string">
+                        <xs:enumeration value="leva_ruka"/>
+                        <xs:enumeration value="desna_ruka"/>
+                    </xs:restriction>
+                </xs:simpleType>
+            </xs:element>
+            <xs:element name="serija_vakcine" type="xs:string"/>
+            <xs:element name="proizvodjac" type="fv:tip_vakcine"/>
+            <xs:element name="nezeljena_reakcija" type="xs:string"/>
+            <xs:element name="potpis_lekara" type="xs:string"/>
+            <xs:element name="privremene_kontraindikacije">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element name="datum" type="xs:date"/>
+                        <xs:element name="dijagnoza" type="xs:string"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element minOccurs="0" name="odluka_komisije" type="xs:string"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:element name="licni_podaci">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element ref="fk:drzavljanstvo"/>
+                <xs:element name="prezime" type="xs:string"/>
+                <xs:element name="ime" type="xs:string"/>
+                <xs:element name="ime_roditelja" type="xs:string"/>
+                <xs:element name="pol">
+                    <xs:simpleType>
+                        <xs:restriction base="fv:pol"> </xs:restriction>
+                    </xs:simpleType>
+                </xs:element>
+                <xs:element name="datum_rodjenja" type="xs:date"/>
+                <xs:element name="mesto_rodjenja" type="xs:string"/>
+                <xs:element name="adresa">
+                    <xs:complexType>
+                        <xs:sequence>
+                            <xs:element name="ulica_broj" type="xs:string"/>
+                            <xs:element name="mesto_naselje" type="xs:string"/>
+                            <xs:element name="opstina_grad" type="xs:string"/>
+                        </xs:sequence>
+                    </xs:complexType>
+                </xs:element>
+                <xs:element name="fiksni_broj" type="fv:fiksni_telefon"/>
+                <xs:element name="mobilni_broj" type="fv:mobilni_telefon"/>
+                <xs:element name="email" type="fv:email"/>
+                <xs:element ref="fk:radni_status"/>
+                <xs:element minOccurs="0" ref="fk:zanimanje_zaposlenog"/>
+                <xs:element minOccurs="0" name="korisnik_soc_zastite">
+                    <xs:complexType>
+                        <xs:sequence>
+                            <xs:element name="naziv_opstine" type="xs:string"/>
+                        </xs:sequence>
+                        <xs:attribute name="property"/>
+                        <xs:attribute name="datatype"/>
+                    </xs:complexType>
+                </xs:element>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="drzavljanstvo">
+        <xs:complexType>
+            <xs:choice>
+                <xs:element ref="fk:srpsko"/>
+                <xs:element ref="fk:strano"/>
+            </xs:choice>
+            <xs:attribute name="property"/>
+            <xs:attribute name="datatype"/>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="srpsko">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="JMBG">
+                    <xs:complexType>
+                        <xs:simpleContent>
+                            <xs:extension base="fv:JMBG">
+                                <xs:attribute name="property"/>
+                                <xs:attribute name="datatype"/>
+                            </xs:extension>
+                        </xs:simpleContent>
+                    </xs:complexType>
+                </xs:element>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="strano">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="naziv_drzavljanstva" type="xs:string"/>
+                <xs:element name="broj_pasosa_ebs">
+                    <xs:complexType>
+                        <xs:simpleContent>
+                            <xs:extension base="fv:broj_pasosa">
+                                <xs:attribute name="property"/>
+                                <xs:attribute name="datatype"/>
+                            </xs:extension>
+                        </xs:simpleContent>
+                    </xs:complexType>
+                </xs:element>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="radni_status">
+        <xs:simpleType>
+            <xs:restriction base="xs:string">
+                <xs:enumeration value="zaposlen"/>
+                <xs:enumeration value="nezaposlen"/>
+                <xs:enumeration value="penzioner"/>
+                <xs:enumeration value="ucenik"/>
+                <xs:enumeration value="student"/>
+                <xs:enumeration value="dete"/>
+            </xs:restriction>
+        </xs:simpleType>
+    </xs:element>
+    <xs:element name="zanimanje_zaposlenog">
+        <xs:simpleType>
+            <xs:restriction base="xs:string">
+                <xs:enumeration value="zdravstvena_zastita"/>
+                <xs:enumeration value="socijalna_zastita"/>
+                <xs:enumeration value="prosveta"/>
+                <xs:enumeration value="mup"/>
+                <xs:enumeration value="vojska_rs"/>
+                <xs:enumeration value="drugo"/>
+            </xs:restriction>
+        </xs:simpleType>
+    </xs:element>
+    <xs:element name="vakcinisanje" type="fk:TVakcinisanje"> </xs:element>
+    <xs:element name="lekar" type="fk:TLekar"> </xs:element>
+</xs:schema>
