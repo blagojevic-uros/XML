@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<zahtev_za_sertifikat xmlns="http://www.ftn-vakcine/zahtev_sertifikat"
+<zahtev_za_sertifikat xmlns="http://ftn.uns.ac.rs/vakcina/zahtev"
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
     xsi:schemaLocation="http://www.ftn-vakcine/zahtev_sertifikat ../schemas/zahtev_za_sertifikat.xsd">
     <licni_podaci>
