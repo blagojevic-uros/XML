@@ -43,6 +43,14 @@ const routes: Routes = [
       ),
   },
   {
+    path: 'zahtev',
+    component: RootLayoutComponent,
+    loadChildren: () =>
+      import('./zahtev-za-sertifikat/zahtev-za-sertifikat.module').then(
+        (m) => m.ZahtevZaSertifikatModule
+      ),
+  },
+  {
     path: '**',
     component: NotFoundPageComponent,
   },
