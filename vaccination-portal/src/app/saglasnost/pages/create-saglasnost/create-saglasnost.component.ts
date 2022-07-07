@@ -10,7 +10,7 @@ import { SaglasnostService } from '../../service/saglasnost.service';
 })
 export class CreateSaglasnostComponent implements OnInit {
   saglasnostForm!: FormGroup;
-
+  bol!: false;
   constructor(
     private fb: FormBuilder,
     private saglasnostService: SaglasnostService,
@@ -18,17 +18,29 @@ export class CreateSaglasnostComponent implements OnInit {
   ) {
     this.saglasnostForm = this.fb.group({
       licniPodaci: this.fb.group({
-        // drzavljanstvo: this.fb.group({
-        //   value: ['', Validators.required],
+        drzavljanstvo: this.fb.group({
+          srpsko: this.fb.group({
+            jmbg: this.fb.group({
+              value: ['', Validators.required],
+            }),
+          }),
+          strano: this.fb.group({
+            brPasosa: this.fb.group({
+              valueBrPasosa: ['', Validators.required],
+            }),
+            nazivStranog: this.fb.group({
+              valueStrani: ['', Validators.required],
+            }),
+          }),
+        }),
+        // jmbg: this.fb.group({
+        //   value: [''],
         // }),
-        jmbg: this.fb.group({
-          value: [''],
-        }),
 
-        brPasosa: this.fb.group({
-          valueStrani: [''],
-          valueBrPasosa: [''],
-        }),
+        // brPasosa: this.fb.group({
+        //   valueStrani: [''],
+        //   valueBrPasosa: [''],
+        // }),
         prezime: ['', Validators.required],
         ime: ['', Validators.required],
         imeRoditelja: ['', Validators.required],

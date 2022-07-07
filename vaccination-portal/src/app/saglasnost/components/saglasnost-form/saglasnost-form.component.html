@@ -5,7 +5,7 @@
         <!--LICNI PODACI POCETAK-->
         <div formGroupName="licniPodaci" class="containter">
             <div class="containter">
-
+                <!--SREDI DRZAVLJANSTVO-->
                 <mat-label>Srpsko <input id="drzavljanstvo" type="radio" name="drzavljanstvo" value="Drzavljanin_RS"
                         [checked]="true" (change)="drzavljanstvoChange('Drzavljanin_RS')" /></mat-label>
                 <mat-label>Strani sa boravkom <input id="srpsko" type="radio" name="drzavljanstvo"
@@ -14,30 +14,42 @@
                 <mat-label>Strani bez boravka <input id="srpsko" type="radio" name="drzavljanstvo"
                         value="STRANI_BEZ_BORAVKA" [checked]="false"
                         (change)="drzavljanstvoChange('STRANI_BEZ_BORAVKA')" /></mat-label>
-
+                <!-- <mat-radio-group aria-labelledby="example-radio-group-label" class="example-radio-group">
+                    <mat-radio-button class="example-radio-button" *ngFor="let drz of drzavljanstva" [value]="drz">
+                        {{drz}}
+                    </mat-radio-button>
+                </mat-radio-group> -->
             </div>
-            <div *ngIf="drzavljanstvo == 'Drzavljanin_RS'">
-                <div formGroupName="jmbg" class="containter">
-                    <mat-form-field appearance="outline">
-                        <mat-label>JMBG</mat-label>
-                        <input matInput formControlName="value" pattern="[0-9]{13}" />
-                    </mat-form-field>
+            <!--DRZAVLJANSTVO-->
+            <div formGroupName="drzavljanstvo" class="containter">
+                <div *ngIf="drzavljanstvo == 'Drzavljanin_RS'">
+                    <div formGroupName="srpsko" class="containter">
+                        <div formGroupName="jmbg" class="containter">
+                            <mat-form-field appearance="outline">
+                                <mat-label>JMBG</mat-label>
+                                <input matInput formControlName="value" pattern="[0-9]{13}" />
+                            </mat-form-field>
+                        </div>
+                    </div>
+
                 </div>
-
-            </div>
-            <div *ngIf="drzavljanstvo != 'Drzavljanin_RS'">
-                <div formGroupName="brPasosa" class="containter">
-                    <mat-form-field appearance="outline">
-                        <mat-label>Broj pasoša</mat-label>
-                        <input matInput formControlName="valueBrPasosa" />
-                    </mat-form-field>
-                    <mat-form-field appearance="outline">
-                        <mat-label>Naziv stranog drzavljanstva</mat-label>
-                        <input matInput formControlName="valueStrani" />
-                    </mat-form-field>
+                <div *ngIf="drzavljanstvo != 'Drzavljanin_RS'">
+                    <div formGroupName="strano" class="containter">
+                        <div formGroupName="brPasosa" class="containter">
+                            <mat-form-field appearance="outline">
+                                <mat-label>Broj pasoša</mat-label>
+                                <input matInput formControlName="valueBrPasosa" />
+                            </mat-form-field>
+                        </div>
+                        <div formGroupName="nazivStranog" class="containter">
+                            <mat-form-field appearance="outline">
+                                <mat-label>Naziv stranog drzavljanstva</mat-label>
+                                <input matInput formControlName="valueStrani" />
+                            </mat-form-field>
+                        </div>
+                    </div>
                 </div>
             </div>
-
             <mat-form-field appearance="outline">
                 <mat-label>Prezime </mat-label>
                 <input matInput formControlName="prezime" />
@@ -52,11 +64,6 @@
                 <mat-label>Ime Roditelja </mat-label>
                 <input matInput formControlName="imeRoditelja" />
             </mat-form-field>
-
-            <!-- <mat-label>Musko <input id="pol" type="radio" name="pol" value="M" [checked]="true"
-                    (change)="polChange('M')" /></mat-label>
-            <mat-label>Žensko <input id="pol" type="radio" name="pol" value="Z" [checked]="false"
-                    (change)="polChange('Z')" /></mat-label> -->
 
             <mat-radio-group aria-labelledby="example-radio-group-label" class="example-radio-group"
                 formControlName="pol">
