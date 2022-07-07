@@ -1,4 +1,10 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit, Output, EventEmitter } from '@angular/core';
+import {
+  FormGroup,
+  FormControl,
+  FormBuilder,
+  Validators,
+} from '@angular/forms';
 
 @Component({
   selector: 'app-zahtev-form',
@@ -7,9 +13,13 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ZahtevFormComponent implements OnInit {
 
-  constructor() { }
+  @Input() zahtevForm!: FormGroup;
+  @Output() submitFormEvent = new EventEmitter();
+  constructor(private fb: FormBuilder) {}
 
-  ngOnInit(): void {
+  ngOnInit(): void {}
+
+  onSubmit() {
+    this.submitFormEvent.emit();
   }
-
 }
