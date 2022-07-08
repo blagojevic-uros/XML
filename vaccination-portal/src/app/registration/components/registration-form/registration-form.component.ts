@@ -12,5 +12,7 @@ export class RegistrationFormComponent implements OnInit {
   constructor(private fb: FormBuilder) {}
 
   ngOnInit(): void {}
-  onSubmit() {}
+  onSubmit() {
+    this.submitFormEvent.emit();
+  }
 }

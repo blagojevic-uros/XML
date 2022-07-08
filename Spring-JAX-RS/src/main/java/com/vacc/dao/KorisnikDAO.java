@@ -25,6 +25,7 @@ public class KorisnikDAO extends DataAccessLayer{
         Korisnik korisnik = (Korisnik) ObjectParser.parseToObject(getById(username + ".xml", folderPath), Korisnik.class);
         return korisnik;
     }
+
     //TODO: proveriti zasto ne radi
     public UserDetails getByUsername1(String username){
         String xPath = "//korisnik[username ='" + username + "']";

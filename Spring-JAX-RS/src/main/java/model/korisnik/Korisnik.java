@@ -22,7 +22,8 @@ public class Korisnik implements UserDetails {
 
     private String username;
     private String password;
-
+    private String jmbg;
+    private String passportNumber;
     private String ime;
     private String prezime;
     @XmlElementWrapper(name="roles", required=false)

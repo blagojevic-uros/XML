@@ -6,12 +6,10 @@ import model.saglasnost.Drzavljanstvo;
 import model.saglasnost.LicniPodaci;
 import model.saglasnost.SaglasnostZaImunizaciju;
 import model.saglasnost.Srpsko;
+import org.apache.coyote.Response;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.server.ResponseStatusException;
 
 import javax.ws.rs.Produces;
@@ -37,6 +35,19 @@ public class SaglasnostController {
             throw new ResponseStatusException(HttpStatus.BAD_REQUEST, e.getMessage());
         }
     }
+
+    @GetMapping("/imunizacija")
+    @Produces("application/xml")
+    public ResponseEntity<?> getSaglasnostForUpdate(@RequestParam("jmbg") String jmbg){
+        try{
+            return new ResponseEntity<>(this.saglasnostService.getByJmbgOrPassportNumber(jmbg), HttpStatus.OK);
+        }catch(Exception e){
+            return new ResponseEntity<>(e.getMessage(), HttpStatus.BAD_REQUEST);
+        }
+    }
+
+
+
     @PostMapping("/test")
     @Produces("application/xml")
     public ResponseEntity<String> save() throws Exception {
