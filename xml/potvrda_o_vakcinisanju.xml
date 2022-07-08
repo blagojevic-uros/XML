@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<potvrda_o_vakcinaciji xmlns="http://www.ftn-vakcine.rs/potvrda"
+<potvrda_o_vakcinaciji xmlns="http://ftn.uns.ac.rs/vakcina/potvrda"
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
     xmlns:fv="http://www.ftn-vakcine.rs/types"
     xsi:schemaLocation="http://www.ftn-vakcine.rs/potvrda ../schemas/potvrda_o_vakcinisanju.xsd">
