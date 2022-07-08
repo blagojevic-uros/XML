@@ -15,8 +15,9 @@ import { MatNativeDateModule } from '@angular/material/core';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { MatIconModule } from '@angular/material/icon';
 import { MatCheckboxModule } from '@angular/material/checkbox';
+import { AllInteresovanjaComponent } from './pages/all-interesovanja/all-interesovanja.component';
 @NgModule({
-  declarations: [CreateInterosavenjeComponent, InteresovanjeFormComponent],
+  declarations: [CreateInterosavenjeComponent, InteresovanjeFormComponent, AllInteresovanjaComponent],
   imports: [
     CommonModule,
     InteresovanjeRoutingModule,

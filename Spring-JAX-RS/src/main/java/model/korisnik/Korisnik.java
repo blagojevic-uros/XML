@@ -22,10 +22,11 @@ public class Korisnik implements UserDetails {
 
     private String username;
     private String password;
-    private String jmbg;
-    private String passportNumber;
+
     private String ime;
     private String prezime;
+    private String passportNumber;
+    private String jmbg;
     @XmlElementWrapper(name="roles", required=false)
     @XmlElement(name="role", required=false)
     private List<Role> roles;

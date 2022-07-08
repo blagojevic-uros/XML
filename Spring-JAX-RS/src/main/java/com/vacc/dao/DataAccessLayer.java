@@ -7,6 +7,7 @@ import org.xmldb.api.base.*;
 import org.xmldb.api.modules.CollectionManagementService;
 import org.xmldb.api.modules.XMLResource;
 import org.xmldb.api.modules.XPathQueryService;
+import org.xmldb.api.modules.XQueryService;
 
 import javax.xml.bind.JAXBContext;
 import javax.xml.bind.Marshaller;
@@ -44,7 +45,6 @@ public class DataAccessLayer {
 
     public void save(String folderId, String documentId, Object object, Class<?> classOfObject){
         try {
-            //folderId = folderId + ".xml";
             Class<?> cl = Class.forName(this.dbConfig.getDriver());
             Database database = (Database) cl.newInstance();
             database.setProperty("create-database", "true");
@@ -157,6 +157,34 @@ public class DataAccessLayer {
         xpathService.setProperty("indent", "yes");
         xpathService.setNamespace("", namespace);
         ResourceSet result =  xpathService.query(xPath);
+        ResourceIterator i = result.getIterator();
+
+        List<T> results = new ArrayList<>();
+        Resource res;
+        while(i.hasMoreResources()) {
+            try {
+                res = i.nextResource();
+                results.add((T) res.getContent());
+
+            } catch(XMLDBException xe) {
+                xe.printStackTrace();
+            }
+
+        }
+
+
+        return results;
+    }
+
+    @SuppressWarnings("unchecked")
+    public <T> List<T> xQueryResult(String collectionPath, String xQuery, String namespace, Class<T> clazz) throws XMLDBException {
+        Collection col;
+        col = DatabaseManager.getCollection(collectionPath);
+        XQueryService xqueryService = (XQueryService) col.getService("XQueryService", "1.0");
+        xqueryService.setProperty("indent", "yes");
+        xqueryService.setNamespace("", namespace);
+        CompiledExpression compiledXquery = xqueryService.compile(xQuery);
+        ResourceSet result = xqueryService.execute(compiledXquery);
         ResourceIterator i = result.getIterator();
 
         List<T> results = new ArrayList<>();

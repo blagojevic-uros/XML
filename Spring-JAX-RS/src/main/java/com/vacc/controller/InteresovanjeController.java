@@ -3,8 +3,11 @@ package com.vacc.controller;
 
 import com.vacc.service.InteresovanjeService;
 import model.interesovanje.Interesovanje;
+import model.korisnik.Korisnik;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
+import org.springframework.security.core.Authentication;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.server.ResponseStatusException;
 import org.xmldb.api.base.XMLDBException;
@@ -36,6 +39,7 @@ public class InteresovanjeController {
     }
     @GetMapping("/all")
     @Produces("application/xml")
+    @PreAuthorize("hasRole('ROLE_PACIJENT')")
     public ResponseEntity<List<String>> getAll() throws Exception {
         try{
             return new ResponseEntity<>(this.interesovanjeService.getAll(), HttpStatus.OK);
@@ -59,9 +63,11 @@ public class InteresovanjeController {
         return new ResponseEntity<>(this.interesovanjeService.getByIdObject(id), HttpStatus.OK);
     }
 
-    @GetMapping("/all/{jmbg}")
+    @GetMapping("/jmbg")
     @Produces("application/xml")
-    public ResponseEntity<List<Interesovanje>> getAllJMBG(@PathVariable("jmbg") String jmbg) throws XMLDBException {
-        return new ResponseEntity<>(this.interesovanjeService.getAllJMBG(jmbg),HttpStatus.OK);
+    @PreAuthorize("hasRole('ROLE_PACIJENT')")
+    public ResponseEntity<List<Interesovanje>> getAllJMBG(Authentication authentication) throws XMLDBException {
+        Korisnik k = (Korisnik) authentication.getPrincipal();
+        return new ResponseEntity<>(this.interesovanjeService.getAllJMBG(k.getJmbg()),HttpStatus.OK);
     }
 }
