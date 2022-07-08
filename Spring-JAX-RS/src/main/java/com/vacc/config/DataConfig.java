@@ -21,8 +21,8 @@ import java.util.stream.Collectors;
 public class DataConfig {
     @Bean
     CommandLineRunner DataConfigCMDLineRunner(VakcinaDAO vakcinaDAO, KorisnikDAO korisnikDAO, RoleDAO roleDAO) {
-//        return null;
         return args -> {
+
             Vakcina v1 = new Vakcina(1,"Pfizer-BioNTech",100);
             Vakcina v2 = new Vakcina(2,"Sputnik V",100);
             Vakcina v3 = new Vakcina(3,"Sinopharm",100);
@@ -44,6 +44,7 @@ public class DataConfig {
 
             Korisnik k = new Korisnik(1L,"pera","$2a$12$BKZlNSMhhIVTVsiPt9Qz8eXX/eEoCkP851wlR3/mxJqbfdWsOjgM6","Pera","Peric",roles);
             korisnikDAO.save("/db/korisnik",k.getUsername() + ".xml",k,Korisnik.class);
+
         };
     }
 }

@@ -32,7 +32,7 @@ public class InteresovanjeService {
         String documentId = "interesovanje-" + uniqueID + ".xml";
         //TODO: provera da li je vec izdao sta je trebao
         //TODO: naci termin u narednih 7 dana
-        emailService.sendMailForSaglasnost(interesovanje.getLicniPodaci().getEmail(),new Date());
+        //emailService.sendMailForSaglasnost(interesovanje.getLicniPodaci().getEmail(),new Date());
         try{
             this.interesovanjeDAO.save(folderPath,documentId,interesovanje,Interesovanje.class);
 

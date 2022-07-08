@@ -10,6 +10,10 @@ import { SharedModule } from './shared/shared.module';
 import { ReactiveFormsModule,FormsModule } from '@angular/forms';
 import { NotFoundPageComponent } from './routing/pages/not-found-page/not-found-page.component';
 import { AuthInterceptor } from './shared/interceptors/interceptor.interceptor';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatInputModule } from '@angular/material/input';
+
+
 @NgModule({
   declarations: [AppComponent, RootLayoutComponent, NotFoundPageComponent],
   imports: [
@@ -24,7 +28,11 @@ import { AuthInterceptor } from './shared/interceptors/interceptor.interceptor';
   ],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true },
+
+    FormsModule,
+    MatFormFieldModule,
+    MatInputModule
   ],
   bootstrap: [AppComponent],
 })
-export class AppModule {}
+export class AppModule { }
