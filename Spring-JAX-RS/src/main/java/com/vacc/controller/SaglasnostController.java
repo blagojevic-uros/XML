@@ -39,6 +39,16 @@ public class SaglasnostController {
         }
     }
 
+    @GetMapping("")
+    public ResponseEntity<?> getSaglasnost(@RequestParam("jmbg") String jmbg) throws Exception {
+        try{
+            return new ResponseEntity<>(this.saglasnostService.getByIdObject(jmbg), HttpStatus.OK);
+        }
+        catch (Exception e){
+            throw new Exception();
+        }
+    }
+
     @GetMapping("/imunizacija")
     @Produces("application/xml")
     public ResponseEntity<?> getSaglasnostForUpdate(@RequestParam("jmbg") String jmbg){

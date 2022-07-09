@@ -2,6 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { ImunizacijaService } from '../../service/imunizacija.service';
+import { HttpClient } from '@angular/common/http';
+import { Saglasnost } from 'src/app/saglasnost/model/saglanosts';
+
 
 @Component({
   selector: 'app-create-imunizacija',
@@ -11,13 +14,19 @@ import { ImunizacijaService } from '../../service/imunizacija.service';
 export class CreateImunizacijaComponent implements OnInit {
   imunizacijaForm!: FormGroup;
   currentDate: string = new Date().toISOString().split('T')[0];
+  saglasnost: any;
+
   constructor(
     private fb: FormBuilder,
     private imunizacijaService: ImunizacijaService,
-    private _snackBar: MatSnackBar
+    private _snackBar: MatSnackBar,
+    private http: HttpClient
   ) {
     this.imunizacijaForm = this.fb.group({
       licniPodaci: this.fb.group({
+        pol: [{value: '',disabled:true}],
+        datum: [{value: '',disabled:true}],
+        drzavljanstvo: [{value: '',disabled:true}],
         jmbg: [{value: '',disabled:true}],
         imePacijenta: [{value: '',disabled:true}],
         prezimePacijenta: [{value: '',disabled:true}],
@@ -51,7 +60,15 @@ export class CreateImunizacijaComponent implements OnInit {
         this._snackBar.open(res, 'Close');
       });
   }
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.imunizacijaService.getSaglasnost('123123123').subscribe(response => {
+
+      this.saglasnost = response;
+      // this.saglasnost = response as Saglasnost;
+      console.log(response);
+      console.log(this.saglasnost.ime)
+    });
+  }
 }
 
 

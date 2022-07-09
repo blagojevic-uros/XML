@@ -1,4 +1,4 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 
 @Injectable({
@@ -11,6 +11,13 @@ export class ImunizacijaService {
       'http://localhost:9090/api/interesovanje/save',
       interesovanje,
       { responseType: 'text' }
+    );
+  }
+  getSaglasnost(jmbg : string | number){
+  const params = new HttpParams().append('jmbg', jmbg);
+    return this.http.get(
+      'http://localhost:9090/api/saglasnost',
+      { responseType: 'text',params }
     );
   }
 }

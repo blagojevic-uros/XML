@@ -58,6 +58,8 @@ public class SaglasnostService {
     public SaglasnostZaImunizaciju getByIdObject(String jmbg) throws Exception {
         try{
             String documentId = "saglasnost-" + jmbg + ".xml";
+            System.out.println(documentId);
+            System.out.println("*********************");
             XMLResource content = this.saglasnostDAO.getById(documentId,saglasnostDAO.getFolderPath());
             return (SaglasnostZaImunizaciju) ObjectParser.parseToObject(content,SaglasnostZaImunizaciju.class);
         }
