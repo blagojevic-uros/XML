@@ -176,32 +176,6 @@ public class DataAccessLayer {
         return results;
     }
 
-    @SuppressWarnings("unchecked")
-    public <T> List<T> xQueryResult(String collectionPath, String xQuery, String namespace, Class<T> clazz) throws XMLDBException {
-        Collection col;
-        col = DatabaseManager.getCollection(collectionPath);
-        XQueryService xqueryService = (XQueryService) col.getService("XQueryService", "1.0");
-        xqueryService.setProperty("indent", "yes");
-        xqueryService.setNamespace("", namespace);
-        CompiledExpression compiledXquery = xqueryService.compile(xQuery);
-        ResourceSet result = xqueryService.execute(compiledXquery);
-        ResourceIterator i = result.getIterator();
 
-        List<T> results = new ArrayList<>();
-        Resource res;
-        while(i.hasMoreResources()) {
-            try {
-                res = i.nextResource();
-                results.add((T) res.getContent());
-
-            } catch(XMLDBException xe) {
-                xe.printStackTrace();
-            }
-
-        }
-
-
-        return results;
-    }
 
 }

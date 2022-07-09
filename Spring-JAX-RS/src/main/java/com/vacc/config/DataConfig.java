@@ -24,12 +24,12 @@ public class DataConfig {
         return args -> {
 
             Vakcina v1 = new Vakcina(1,"Pfizer-BioNTech",100);
-            Vakcina v2 = new Vakcina(2,"Sputnik V",100);
+            Vakcina v2 = new Vakcina(2,"Sputnik_V",100);
             Vakcina v3 = new Vakcina(3,"Sinopharm",100);
             Vakcina v4 = new Vakcina(4,"AstraZeneca",100);
             Vakcina v5 = new Vakcina(5,"Moderna",100);
             List<Vakcina> vakcinaList = List.of(v1,v2,v3,v4,v5);
-            List<String> dokumentNames = vakcinaList.stream().map(Vakcina::getNaziv).collect(Collectors.toList());
+            List<String> dokumentNames = vakcinaList.stream().map(vakcina-> vakcina.getNaziv() + ".xml").collect(Collectors.toList());
             vakcinaDAO.saveList(vakcinaDAO.getFolderPath(),dokumentNames,vakcinaList,Vakcina.class);
             Role r1 = new Role(1L,"ROLE_PACIJENT");
             Role r2 = new Role(2L,"ROLE_Z_RADNIK");

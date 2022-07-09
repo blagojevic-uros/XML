@@ -23,6 +23,8 @@
     "@auth0/angular-jwt": "^5.0.2",
     "rxjs": "~7.4.0",
     "tslib": "^2.3.0",
+    "vkbeautify": "^0.99.3",
+    "xml-beautify": "^1.2.3",
     "zone.js": "~0.11.4"
   },
   "devDependencies": {
@@ -31,12 +33,14 @@
     "@angular/compiler-cli": "~13.0.0",
     "@types/jasmine": "~3.10.0",
     "@types/node": "^12.11.1",
+    "@types/vkbeautify": "^0.99.2",
     "jasmine-core": "~3.10.0",
     "karma": "~6.3.0",
     "karma-chrome-launcher": "~3.1.0",
     "karma-coverage": "~2.0.3",
     "karma-jasmine": "~4.0.0",
     "karma-jasmine-html-reporter": "~1.7.0",
-    "typescript": "~4.4.3"
+    "typescript": "~4.4.3",
+    "xml-beautifier": "^0.5.0"
   }
 }

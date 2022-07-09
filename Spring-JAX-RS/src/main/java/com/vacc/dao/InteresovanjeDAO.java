@@ -24,7 +24,8 @@ public class InteresovanjeDAO extends  DataAccessLayer{
 
     public List<Interesovanje> getAll(String jmbg){
 
-        String xPath = "//interesovanje/licni_podaci[JMBG ='" + jmbg + "']";
+//        String xPath = "//interesovanje[licni_podaci/JMBG ='" + jmbg + "']";
+        String xPath = "//interesovanje[licni_podaci/JMBG ='" + jmbg + "']";
         List<Interesovanje> interesovanja = new ArrayList<>();
         try{
             interesovanja = this.xPathResult(this.dbConfig.getUrl()+folderPath, xPath,"http://ftn.uns.ac.rs/vakcina/interesovanje",Interesovanje.class);
@@ -32,6 +33,7 @@ public class InteresovanjeDAO extends  DataAccessLayer{
         catch(XMLDBException xe){
             xe.printStackTrace();
         }
+        System.out.println(interesovanja);
         return interesovanja;
     }
 

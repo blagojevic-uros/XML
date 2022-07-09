@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
+    xmlns:vc="http://www.w3.org/2007/XMLSchema-versioning" elementFormDefault="qualified"
+    vc:minVersion="1.1" targetNamespace="http://ftn.uns.ac.rs/vakcina/potvrda"
+    xmlns:pov="http://ftn.uns.ac.rs/vakcina/potvrda" xmlns:fv="http://ftn.uns.ac.rs/vakcina/tipovi">
+    <xs:import namespace="http://ftn.uns.ac.rs/vakcina/tipovi" schemaLocation="types.xsd"/>
+    <xs:element name="potvrda_o_vakcinaciji">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="sifra_potvrde" type="fv:sifra"/>
+                <xs:element name="licni_podaci" type="pov:Licni_podaci"/>
+                <xs:element name="informacije_vakcinacije" type="pov:informacije_vakcinacija"/>
+                <xs:element name="datum_izdavanja_potvrde">
+                    <xs:complexType>
+                        <xs:simpleContent>
+                            <xs:extension base="xs:date">
+                                <xs:attribute name="property"/>
+                                <xs:attribute name="datatype"/>
+                            </xs:extension>
+                        </xs:simpleContent>
+                    </xs:complexType>
+                </xs:element>
+                <xs:element name="zdravstvena_ustanova" type="xs:string"/>
+                <xs:element name="qr_kod" type="xs:string"/>
+            </xs:sequence>
+            <xs:attribute name="interesovanje" type="xs:anyURI"/>
+            <xs:attribute name="potvrda_o_vakcinisanju" type="xs:anyURI"/>
+            <xs:attribute name="saglasnost_za_imunizaciju" type="xs:anyURI"/>
+            <xs:attribute name="id" type="xs:string"/>
+            <xs:attribute name="about" type="xs:anyURI"/>
+            <xs:attribute name="rel" type="xs:string"/>
+        </xs:complexType>
+    </xs:element>
+    <xs:complexType name="Licni_podaci">
+        <xs:sequence>
+            <xs:element name="ime_prezime" type="fv:Ime_prezime"> </xs:element>
+            <xs:element name="pol" maxOccurs="1" minOccurs="1" type="fv:pol"> </xs:element>
+            <xs:element name="JMBG">
+                <xs:complexType>
+                    <xs:simpleContent>
+                        <xs:extension base="fv:JMBG">
+                            <xs:attribute name="property"/>
+                            <xs:attribute name="datatype"/>
+                        </xs:extension>
+                    </xs:simpleContent>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="datum_rodjenja" type="xs:date"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="informacije_vakcinacija">
+        <xs:sequence>
+            <xs:element maxOccurs="unbounded" minOccurs="1" ref="pov:informacije_o_dozi"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:element name="informacije_o_dozi" type="pov:TInfomacije_o_dozi"> </xs:element>
+    <xs:complexType name="TInfomacije_o_dozi">
+        <xs:sequence>
+            <xs:element name="naziv_vakcine">
+                <xs:complexType>
+                    <xs:simpleContent>
+                        <xs:extension base="fv:tip_vakcine">
+                            <xs:attribute name="property"/>
+                            <xs:attribute name="datatype"/>
+                        </xs:extension>
+                    </xs:simpleContent>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="datum_doze" type="xs:date"/>
+            <xs:element name="broj_serije" type="xs:positiveInteger"/>
+            <xs:element name="broj_doze" type="xs:positiveInteger"/>
+            <xs:element name="zdravstena_ustanova">
+                <xs:complexType>
+                    <xs:simpleContent>
+                        <xs:extension base="xs:string">
+                            <xs:attribute name="property"/>
+                            <xs:attribute name="datatype"/>
+                        </xs:extension>
+                    </xs:simpleContent>
+                </xs:complexType>
+            </xs:element>
+        </xs:sequence>
+    </xs:complexType>
+</xs:schema>
