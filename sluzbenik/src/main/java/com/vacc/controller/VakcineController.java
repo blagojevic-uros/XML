@@ -36,7 +36,7 @@ public class VakcineController {
     }
 
     @GetMapping("/porudzbine")
-    @Produces("applicatoin/xml")
+    @Produces("application/xml")
     public ResponseEntity<?> getAllPorudzbine() throws XMLDBException, JAXBException {
         return new ResponseEntity<>(porudzbinaService.getAll(), HttpStatus.OK);
     }

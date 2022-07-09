@@ -3,16 +3,16 @@ package com.vacc.controller;
 import com.vacc.service.InteresovanjeService;
 import com.vacc.service.ZahtevService;
 import model.interesovanje.Interesovanje;
+import model.korisnik.Korisnik;
 import model.zahtev.ZahtevZaSertifikat;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.security.core.Authentication;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.server.ResponseStatusException;
 
 import javax.ws.rs.Produces;
+import java.text.ParseException;
 
 @RestController
 @RequestMapping(path = "/api/zahtev")
@@ -25,9 +25,9 @@ public class ZahtevSertifikatController {
 
     @PostMapping("/save")
     @Produces("application/xml")
-    public ResponseEntity<String> save(@RequestBody ZahtevZaSertifikat zahtevZaSertifikat) throws Exception {
+    public ResponseEntity<String> save(@RequestBody ZahtevZaSertifikat zahtevZaSertifikat, Authentication authentication) throws Exception {
         try{
-            String id = this.zahtevService.save(zahtevZaSertifikat);
+            String id = this.zahtevService.save(zahtevZaSertifikat,zahtevZaSertifikat.getLicniPodaci().getJMBG().toString());
             return new ResponseEntity<>("Kreiran dokument zahteva id: " + id, HttpStatus.OK);
         }
         catch (Exception e){
@@ -36,4 +36,9 @@ public class ZahtevSertifikatController {
 
     }
 
+    @GetMapping("/{start}/{end}")
+    @Produces("application/xml")
+    public ResponseEntity<?> getCountInRange(@PathVariable("start") String start, @PathVariable("end") String end) throws ParseException {
+        return new ResponseEntity<>(this.zahtevService.getCountInRange(start,end),HttpStatus.OK);
+    }
 }

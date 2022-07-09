@@ -10,6 +10,7 @@ export class DocumentViewComponent implements OnInit {
 
   interesovanje!: any;
   saglasnost!: any;
+  sertifikati!: any[];
   constructor(private interesovanjeService: InteresovanjeService) { 
     interesovanjeService.getAll().subscribe((res) => {
       this.interesovanje = res;

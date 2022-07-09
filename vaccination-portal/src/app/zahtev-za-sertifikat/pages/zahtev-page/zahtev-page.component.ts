@@ -32,7 +32,7 @@ export class ZahtevPageComponent implements OnInit {
       mesto: this.fb.group({
         value: ['', Validators.required],
       }),
-      datum:  [this.currentDate],
+      datum_zahtev:  [new Date()],
       potpis: ['', Validators.required]
     });
   }

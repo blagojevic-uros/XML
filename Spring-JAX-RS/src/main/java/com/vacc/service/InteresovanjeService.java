@@ -35,8 +35,6 @@ public class InteresovanjeService {
         emailService.sendMailForSaglasnost(interesovanje.getLicniPodaci().getEmail(),new Date());
         try{
             this.interesovanjeDAO.save(folderPath,documentId,interesovanje,Interesovanje.class);
-
-
             return uniqueID;
         }
         catch (Exception e){
@@ -69,5 +67,9 @@ public class InteresovanjeService {
     }
     public List<Interesovanje> getAllJMBG(String jmbg) throws XMLDBException {
         return this.interesovanjeDAO.getAll(jmbg);
+    }
+
+    public Integer getCountInRange(String start,String end){
+        return this.interesovanjeDAO.getCountDateRange(start,end);
     }
 }

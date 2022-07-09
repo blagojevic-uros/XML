@@ -1,16 +1,13 @@
 package com.vacc.service;
 
-import com.vacc.dao.InteresovanjeDAO;
+import com.vacc.Exception.NotFoundException;
 import com.vacc.dao.SaglasnostDAO;
-import model.interesovanje.Interesovanje;
-import model.saglasnost.LicniPodaci;
 import model.saglasnost.SaglasnostZaImunizaciju;
 import org.springframework.stereotype.Service;
 import org.xmldb.api.modules.XMLResource;
 import util.ObjectParser;
 
 import java.util.List;
-import java.util.UUID;
 
 @Service
 public class SaglasnostService {
@@ -18,19 +15,20 @@ public class SaglasnostService {
     private final ObjectParser objectParser;
     private final SaglasnostDAO saglasnostDAO;
     private final String folderPath="/db/saglasnost";
-    public SaglasnostService(ObjectParser objectParser, SaglasnostDAO saglasnostDAO) {
+
+    private final InteresovanjeService interesovanjeService;
+    public SaglasnostService(ObjectParser objectParser, SaglasnostDAO saglasnostDAO, InteresovanjeService interesovanjeService) {
         this.objectParser = objectParser;
         this.saglasnostDAO = saglasnostDAO;
 
+        this.interesovanjeService = interesovanjeService;
     }
 
-    public SaglasnostZaImunizaciju getByJmbgOrPassportNumber(String jmbg) throws Exception {
+    public List<SaglasnostZaImunizaciju> getByJmbgOrPassportNumber(String jmbg) throws Exception {
         try{
-            System.out.println(jmbg);
             List<SaglasnostZaImunizaciju> lista =this.saglasnostDAO.getByJmbgOrPassportNumber(jmbg);
-            System.out.println(lista);
 
-            return lista.get(0);
+            return lista;
         }
         catch (Exception e){
             throw new Exception();
@@ -39,7 +37,10 @@ public class SaglasnostService {
 
     public String save(SaglasnostZaImunizaciju saglasnost, String jmbg) throws Exception{
         String documentId = "saglasnost-" + jmbg + ".xml";
-        //emailService.sendMailForSaglasnost(interesovanje.getLicniPodaci().getEmail(),new Date());
+
+        if(interesovanjeService.getAllJMBG(jmbg).isEmpty()){
+            throw new NotFoundException("Niste popunili interesovanje");
+        }
 //        SaglasnostZaImunizaciju saglasnostZaImunizaciju = new SaglasnostZaImunizaciju();
 //        saglasnostZaImunizaciju.setLicniPodaci(saglasnost);
 //        saglasnostZaImunizaciju.setId(uniqueID);

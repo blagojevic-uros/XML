@@ -25,7 +25,7 @@ public class SaglasnostDAO extends DataAccessLayer{
 
     public List<SaglasnostZaImunizaciju> getByJmbgOrPassportNumber(String jmbg){
 
-        String xPath = "//saglasnost_za_imunizaciju/licni_podaci/drzavljanstvo/srpsko[JMBG ='" + jmbg + "']";
+        String xPath = "//saglasnost_za_imunizaciju[licni_podaci/drzavljanstvo/srpsko/JMBG ='" + jmbg + "']";
         List<SaglasnostZaImunizaciju> saglasnostZaImunizaciju = new ArrayList<>();
         try{
             saglasnostZaImunizaciju = this.xPathResult(this.dbConfig.getUrl()+folderPath, xPath,"http://ftn.uns.ac.rs/vakcina/saglasnost",SaglasnostZaImunizaciju.class);

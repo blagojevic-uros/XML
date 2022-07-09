@@ -34,7 +34,7 @@ public class EmailService{
     public void sendMailForSaglasnost(String email, Date datumVakcinisanja) throws Exception {
         try
         {
-            Thread t = new Thread(() -> sendEmail(email,"Vakcinisanje protiv COVID-19",interesovanjeMail(datumVakcinisanja),));
+            Thread t = new Thread(() -> sendEmail(email,"Vakcinisanje protiv COVID-19",interesovanjeMail(datumVakcinisanja)));
             t.start();
         }
         catch(Exception e) {

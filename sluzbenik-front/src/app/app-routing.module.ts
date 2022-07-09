@@ -27,6 +27,14 @@ const routes: Routes = [
       ),
   },
   {
+    path: 'izvestaj',
+    component: RootLayoutComponent,
+    loadChildren: () =>
+      import('./izvestaj/izvestaj.module').then(
+        (m) => m.IzvestajModule
+      ),
+  },
+  {
     path: '**',
     component: NotFoundPageComponent,
   },

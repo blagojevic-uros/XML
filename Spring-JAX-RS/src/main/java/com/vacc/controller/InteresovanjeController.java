@@ -12,7 +12,11 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.server.ResponseStatusException;
 import org.xmldb.api.base.XMLDBException;
 
+import javax.ws.rs.Path;
 import javax.ws.rs.Produces;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
 
 @RestController
@@ -48,6 +52,11 @@ public class InteresovanjeController {
             throw new Exception();
         }
     }
+    @GetMapping("/{start}/{end}")
+    @Produces("application/xml")
+    public ResponseEntity<?> getCountInRange(@PathVariable("start") String start, @PathVariable("end") String end) throws ParseException {
+        return new ResponseEntity<>(this.interesovanjeService.getCountInRange(start,end),HttpStatus.OK);
+    }
     @GetMapping("/{id}")
     @Produces("application/xml")
     public ResponseEntity<String> getOne(@PathVariable("id") String id) throws Exception {
@@ -70,4 +79,8 @@ public class InteresovanjeController {
         Korisnik k = (Korisnik) authentication.getPrincipal();
         return new ResponseEntity<>(this.interesovanjeService.getAllJMBG(k.getJmbg()),HttpStatus.OK);
     }
+
+
+
+
 }
