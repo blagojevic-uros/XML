@@ -9,22 +9,30 @@ import { FormArray, FormBuilder, FormGroup } from '@angular/forms';
 export class ImunizacijaFormComponent implements OnInit {
 
   @Input() imunizacijaForm!: FormGroup;
+  @Input() saglasnost: any;
+  @Input() searchInput: string = '';
   @Output() submitFormEvent = new EventEmitter();
-  productForm: FormGroup;
+  @Output() searchEvent = new EventEmitter();
+  tabelaVakcinisanja: FormGroup;
   constructor(private fb: FormBuilder) {
-    this.productForm = this.fb.group({  
+
+    this.tabelaVakcinisanja = this.fb.group({  
       name: '',  
       quantities: this.fb.array([]) ,  
-    }); 
+    });
+    // this.imunizacijaForm.addControl(this.tabelaVakcinisanja);
   }
 
   ngOnInit(): void {}
 
+  searchJmbg(){
+    this.searchEvent.emit(this.searchInput);
+  }
   onSubmit() {
     this.submitFormEvent.emit();
   }
   quantities() : FormArray {  
-    return this.productForm.get("quantities") as FormArray  
+    return this.tabelaVakcinisanja.get("quantities") as FormArray  
   }  
      
   newQuantity(): FormGroup {  

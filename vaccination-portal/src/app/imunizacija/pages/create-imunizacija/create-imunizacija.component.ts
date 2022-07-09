@@ -14,8 +14,8 @@ import { Saglasnost } from 'src/app/saglasnost/model/saglanosts';
 export class CreateImunizacijaComponent implements OnInit {
   imunizacijaForm!: FormGroup;
   currentDate: string = new Date().toISOString().split('T')[0];
-  saglasnost: any;
-
+  saglasnost!: Saglasnost;
+  searchInput: string = ''; 
   constructor(
     private fb: FormBuilder,
     private imunizacijaService: ImunizacijaService,
@@ -23,51 +23,50 @@ export class CreateImunizacijaComponent implements OnInit {
     private http: HttpClient
   ) {
     this.imunizacijaForm = this.fb.group({
-      licniPodaci: this.fb.group({
-        pol: [{value: '',disabled:true}],
-        datum: [{value: '',disabled:true}],
-        drzavljanstvo: [{value: '',disabled:true}],
-        jmbg: [{value: '',disabled:true}],
-        imePacijenta: [{value: '',disabled:true}],
-        prezimePacijenta: [{value: '',disabled:true}],
-        imeRoditelja: [{value: '',disabled:true}],
-        mestoRodjenja:[{value: '',disabled:true}],
-        ulica: [{value: '',disabled:true}],
-        naselje:[{value: '',disabled:true}],
-        opstina: [{value: '',disabled:true}],
-        fiksni:[{value: '',disabled:true}],
-        mobilni: [{value: '',disabled:true}],
-        email:[{value: '',disabled:true}],
-        radniStatus: [{value: '',disabled:true}],
-        zanimanje:[{value: '',disabled:true}],
-      }),
-      zdravstvenaUstanova: this.fb.group({
-        value: ['', Validators.required],
-        punkt: ['', Validators.required],
-      }),
-      informacijeLekara: this.fb.group({
+        // licniPodaci: this.fb.group({
+        //   pol: [{value: '',disabled:true}],
+        //   datum: [{value: '',disabled:true}],
+        //   drzavljanstvo: [{value: '',disabled:true}],
+        //   jmbg: [{value: '',disabled:true}],
+        //   imePacijenta: [{value: '',disabled:true}],
+        //   prezimePacijenta: [{value: '',disabled:true}],
+        //   imeRoditelja: [{value: '',disabled:true}],
+        //   mestoRodjenja:[{value: '',disabled:true}],
+        //   ulica: [{value: '',disabled:true}],
+        //   naselje:[{value: '',disabled:true}],
+        //   opstina: [{value: '',disabled:true}],
+        //   fiksni:[{value: '',disabled:true}],
+        //   mobilni: [{value: '',disabled:true}],
+        //   email:[{value: '',disabled:true}],
+        //   radniStatus: [{value: '',disabled:true}],
+        //   zanimanje:[{value: '',disabled:true}],
+        // }),
+      zdravstvenaUstanova: 
+        ['', Validators.required],
+        vakcinijskiPunkt: ['', Validators.required],
+        lekar: this.fb.group({
         ime: ['', Validators.required],
         prezime: ['', Validators.required],
         faksmil: ['', Validators.required],
-        fiksniTelefon: ['', Validators.required],
+        brojTelefona: ['', Validators.required],
       }),
     });
   }
   onSubmit() {
     this.imunizacijaService
-      .save(this.imunizacijaForm.value)
-      .subscribe((res: string) => {
+      .save(this.imunizacijaForm.value,this.searchInput)
+      .subscribe((res : any) => {
         this._snackBar.open(res, 'Close');
       });
   }
-  ngOnInit(): void {
-    this.imunizacijaService.getSaglasnost('123123123').subscribe(response => {
-
-      this.saglasnost = response;
-      // this.saglasnost = response as Saglasnost;
-      console.log(response);
-      console.log(this.saglasnost.ime)
+  onSearch($event: string){
+    this.searchInput = $event;
+    this.imunizacijaService.getSaglasnost($event).subscribe((response) => {
+      this.saglasnost = response as Saglasnost;
     });
+  }
+  ngOnInit(): void {
+
   }
 }
 

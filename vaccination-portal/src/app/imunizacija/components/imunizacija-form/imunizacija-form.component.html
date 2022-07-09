@@ -1,17 +1,25 @@
+
+
+<div class="containter"> 
+<h2>Pretraga pacijenata po JMBG</h2>
+<mat-form-field appearance="outline">
+  <mat-label>Unesite JMBG Pacijenta</mat-label>
+  <input matInput type="text" [(ngModel)]="searchInput">
+</mat-form-field>
+<button class="dodaj-vakcinu-btn" id="searchBtn" (click)="searchJmbg()">Pretrazi</button>
+</div>
+
+<div *ngIf="saglasnost">
+  <h2>Znaci ovde samo da se prikaze ovo ne moras u formu da pises</h2>
+  <p>{{saglasnost |json}}</p>
+</div>
 <form
   [formGroup]="imunizacijaForm"
   class="containter"
   (ngSubmit)="onSubmit()"
 >
-  <h2>Pretraga pacijenata po JMBG</h2>
-  <mat-form-field appearance="outline">
-    <mat-label>Unesite JMBG Pacijenta</mat-label>
-    <input matInput formControlName="jmbg" />
-  </mat-form-field>
-  <button class="dodaj-vakcinu-btn" id="searchBtn">
-    Pretrazi
-  </button>
-  <h2>Podaci o Saglasnosti za imunizaciju protiv COVID-19</h2>
+
+  <!-- <h2>Podaci o Saglasnosti za imunizaciju protiv COVID-19</h2>
   <table formGroupName="licniPodaci">
     <tr>
       <td>
@@ -183,29 +191,25 @@
       </mat-form-field>
       </td>
     </tr>
-  </table>
+  </table> -->
 
   <h2 id="evidencijaNaslov">Evidencija o vakcinaciji protiv COVID-19</h2>
   <table>
-    <div formGroupName="zdravstvenaUstanova" class="container">
-
       <tr>
         <td>
           <mat-form-field appearance="outline">
             <mat-label>Zdravstvena Ustanova</mat-label>
-            <input matInput formControlName="value" />
+            <input matInput formControlName="zdravstvenaUstanova" />
           </mat-form-field>
         </td>
         <td>
           <mat-form-field appearance="outline">
             <mat-label>Vakcinacijski Punkt</mat-label>
-            <input matInput formControlName="punkt" />
+            <input matInput formControlName="vakcinijskiPunkt" />
           </mat-form-field>
         </td>
       </tr>
-    </div>
-
-    <div formGroupName="informacijeLekara" class="container">
+    <div formGroupName="lekar" class="container">
       <tr>
         <td>
           <mat-form-field appearance="outline">
@@ -230,7 +234,7 @@
         <td>
           <mat-form-field appearance="outline">
             <mat-label>Br. Telefona Lekara</mat-label>
-            <input matInput formControlName="fiksniTelefon" pattern="0[0-9]+" />
+            <input matInput formControlName="brojTelefona" pattern="0[0-9]+" />
           </mat-form-field>
         </td>
       </tr>
@@ -243,7 +247,7 @@
       <h2> Istorija Vakcinisanja </h2>  
       <button type="button" (click)="addQuantity()" class="dodaj-vakcinu-btn">Dodaj Vakcinu</button> 
     </div>
-    <form [formGroup]="productForm" (ngSubmit)="onSubmit()">  
+    <form [formGroup]="tabelaVakcinisanja" (ngSubmit)="onSubmit()">  
       
       <div formArrayName="quantities">  
         <div *ngFor="let quantity of quantities().controls; let i=index" [formGroupName]="i">
@@ -321,7 +325,7 @@
           </tr>
           <button (click)="removeQuantity(i)" class="dodaj-vakcinu-btn align-center" id="remove-btn">Remove</button>
           <br>
-          ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+          <hr>
 
         </div>
       </div>  

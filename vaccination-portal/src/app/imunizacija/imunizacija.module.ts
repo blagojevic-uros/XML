@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-
+import { FormsModule } from '@angular/forms';
 import { ImunizacijaRoutingModule } from './imunizacija-routing.module';
 import { CreateImunizacijaComponent } from './pages/create-imunizacija/create-imunizacija.component';
 import { ImunizacijaFormComponent } from './components/imunizacija-form/imunizacija-form.component';
@@ -26,6 +26,7 @@ import { MatCheckboxModule } from '@angular/material/checkbox';
     MatSelectModule,
     MatDatepickerModule,
     ReactiveFormsModule,
+    FormsModule,
     MatNativeDateModule,
     MatTooltipModule,
     MatIconModule,

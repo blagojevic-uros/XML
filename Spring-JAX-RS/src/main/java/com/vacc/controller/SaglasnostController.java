@@ -3,10 +3,7 @@ package com.vacc.controller;
 import com.vacc.service.SaglasnostService;
 import model.interesovanje.Interesovanje;
 import model.korisnik.Korisnik;
-import model.saglasnost.Drzavljanstvo;
-import model.saglasnost.LicniPodaci;
-import model.saglasnost.SaglasnostZaImunizaciju;
-import model.saglasnost.Srpsko;
+import model.saglasnost.*;
 import org.apache.coyote.Response;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -48,7 +45,12 @@ public class SaglasnostController {
             throw new Exception();
         }
     }
-
+    @PostMapping("/update/{jmbg}")
+    @Produces("application/xml")
+    public ResponseEntity<?> updateSaglasnostVakcinisanje(@RequestBody EvidencijaOVakcinaciji evidencijaOVakcinaciji,@PathVariable String jmbg) throws Exception {
+        saglasnostService.updateSaglasnost(evidencijaOVakcinaciji,jmbg);
+        return new ResponseEntity<>("Updated",HttpStatus.OK);
+    }
     @GetMapping("/imunizacija")
     @Produces("application/xml")
     public ResponseEntity<?> getSaglasnostForUpdate(@RequestParam("jmbg") String jmbg){

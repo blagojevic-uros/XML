@@ -1,8 +1,11 @@
 <div class="containter">
-
     <app-imunizacija-form
       [imunizacijaForm]="imunizacijaForm"
       (submitFormEvent)="onSubmit()"
+      (searchEvent) = "onSearch($event)"
+      [saglasnost] = "saglasnost"
+      [searchInput] = "searchInput"
     ></app-imunizacija-form>
+
 </div>
   

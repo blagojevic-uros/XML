@@ -42,7 +42,7 @@ public class DataConfig {
             roles.add(r1);
 
 
-            Korisnik k = new Korisnik(1L,"pera","$2a$12$BKZlNSMhhIVTVsiPt9Qz8eXX/eEoCkP851wlR3/mxJqbfdWsOjgM6","Pera","Peric","1707999850111","123123123",roles);
+            Korisnik k = new Korisnik(1L,"pera","$2a$12$BKZlNSMhhIVTVsiPt9Qz8eXX/eEoCkP851wlR3/mxJqbfdWsOjgM6","Pera","Peric","123123123","1707999850111",roles);
             korisnikDAO.save("/db/korisnik",k.getUsername() + ".xml",k,Korisnik.class);
 
         };

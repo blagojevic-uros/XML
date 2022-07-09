@@ -2,6 +2,7 @@ package com.vacc.service;
 
 import com.vacc.Exception.NotFoundException;
 import com.vacc.dao.SaglasnostDAO;
+import model.saglasnost.EvidencijaOVakcinaciji;
 import model.saglasnost.SaglasnostZaImunizaciju;
 import org.springframework.stereotype.Service;
 import org.xmldb.api.modules.XMLResource;
@@ -54,7 +55,11 @@ public class SaglasnostService {
         }
     }
 
-
+    public void updateSaglasnost(EvidencijaOVakcinaciji evidencijaOVakcinaciji,String jmbg) throws Exception {
+        SaglasnostZaImunizaciju saglasnostZaImunizaciju = getByIdObject(jmbg);
+        saglasnostZaImunizaciju.setEvidencijaOVakcinaciji(evidencijaOVakcinaciji);
+        save(saglasnostZaImunizaciju,jmbg);
+    }
     public SaglasnostZaImunizaciju getByIdObject(String jmbg) throws Exception {
         try{
             String documentId = "saglasnost-" + jmbg + ".xml";
