@@ -1,0 +1,319 @@
+<form
+  [formGroup]="imunizacijaForm"
+  class="containter"
+  (ngSubmit)="onSubmit()"
+>
+  <h2>Pretraga pacijenata po JMBG</h2>
+  <mat-form-field appearance="outline">
+    <mat-label>Unesite JMBG Pacijenta</mat-label>
+    <input matInput formControlName="jmbg" />
+  </mat-form-field>
+  <button class="dodaj-vakcinu-btn" id="searchBtn">
+    Pretrazi
+  </button>
+  <h2>Podaci o Saglasnosti za imunizaciju protiv COVID-19</h2>
+  <table formGroupName="licniPodaci">
+    <tr>
+      <td>
+        <mat-form-field appearance="outline" >
+          <mat-label>Drzavljanstvo</mat-label>
+          <mat-select >
+            <mat-option value="Drzavljanin_RS"
+              >Drzavljanin RS</mat-option
+            >
+            <mat-option value="STRANI_BEZ_BORAVKA"
+              >Strani bez boravka</mat-option
+            >
+            <mat-option value="STRANI_SA_BORAVKOM"
+              >Strani sa boravkom</mat-option
+            >
+          </mat-select>
+        </mat-form-field>
+      </td>
+      <td>
+          <mat-form-field appearance="outline">
+            <mat-label>JMBG</mat-label>
+            <input matInput formControlName="jmbg" />
+          </mat-form-field>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <mat-form-field appearance="outline">
+          <mat-label>Prezime</mat-label>
+          <input matInput formControlName="prezimePacijenta" />
+        </mat-form-field>
+      </td>
+      <td>
+        <mat-form-field appearance="outline">
+          <mat-label>Ime</mat-label>
+          <input matInput formControlName="imePacijenta" />
+        </mat-form-field>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <mat-form-field appearance="outline">
+          <mat-label>Ime Roditelja </mat-label>
+          <input matInput formControlName="imeRoditelja" />
+        </mat-form-field>
+      </td>
+      <td>
+        <mat-form-field appearance="outline">
+          <mat-label>Pol</mat-label>
+          <mat-select >
+            <mat-option value="Musko"
+              >Musko</mat-option
+            >
+            <mat-option value="Zensko"
+              >Zensko</mat-option
+            >
+          </mat-select>
+        </mat-form-field>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <mat-form-field appearance="outline">
+          <mat-label>Datum Rodjenja</mat-label>
+          <input matInput [matDatepicker]="picker">
+          <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+          <mat-datepicker #picker></mat-datepicker>
+        </mat-form-field>
+      </td>
+      <td>
+        <mat-form-field appearance="outline">
+          <mat-label>Mesto Rodjenja </mat-label>
+          <input matInput formControlName="mestoRodjenja" />
+        </mat-form-field>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <mat-form-field appearance="outline">
+          <mat-label>Ulica i broj </mat-label>
+          <input matInput formControlName="ulica" />
+        </mat-form-field>
+      </td>
+      <td>
+        <mat-form-field appearance="outline">
+          <mat-label>Mesto/Naselje </mat-label>
+          <input matInput formControlName="naselje" />
+        </mat-form-field>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <mat-form-field appearance="outline">
+          <mat-label>Opstina </mat-label>
+          <input matInput formControlName="opstina" />
+        </mat-form-field>
+      </td>
+      <td>
+        <mat-form-field appearance="outline">
+          <mat-label>Fiksni Telefon </mat-label>
+          <input matInput formControlName="fiksni" />
+        </mat-form-field>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <mat-form-field appearance="outline">
+          <mat-label>Mobilni Telefon </mat-label>
+          <input matInput formControlName="mobilni" />
+        </mat-form-field>
+      </td>
+      <td>
+        <mat-form-field appearance="outline">
+          <mat-label>Email Adresa </mat-label>
+          <input matInput formControlName="email" />
+        </mat-form-field>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <mat-form-field appearance="outline">
+          <mat-label>Radni Status</mat-label>
+          <mat-select formControlName="radniStatus">
+            <mat-option value="Zaposlen"
+              >Zaposlen</mat-option
+            >
+            <mat-option value="Nezaposlen"
+              >Nezaposlen</mat-option
+            >
+            <mat-option value="Penzioner"
+            >Penzioner</mat-option
+            >
+            <mat-option value="Ucenik"
+              >Ucenik</mat-option
+            >
+            <mat-option value="Student"
+            >Student</mat-option
+            >
+            <mat-option value="Dete"
+              >Dete</mat-option
+            >
+          </mat-select>
+        </mat-form-field>
+      </td>
+      <td>
+        
+        <mat-form-field appearance="outline">
+        <mat-label>Zanimanje</mat-label>
+        <mat-select formControlName="zanimanje">
+          <mat-option value="Zdravstvena"
+            >Zdravstvena Zastita</mat-option
+          >
+          <mat-option value="Socijalna"
+            >Socijalna Zastita</mat-option
+          >
+          <mat-option value="Prosveta"
+          >Prosveta</mat-option
+          >
+          <mat-option value="MUP"
+            >MUP</mat-option
+          >
+          <mat-option value="Vojska"
+          >Vojska RS</mat-option
+          >
+          <mat-option value="Ostalo"
+            >Ostalo</mat-option
+          >
+        </mat-select>
+      </mat-form-field>
+      </td>
+    </tr>
+  </table>
+
+  <h2>Evidencija o vakcinaciji protiv COVID-19</h2>
+  <div formGroupName="zdravstvenaUstanova" class="container">
+    <mat-form-field appearance="outline">
+      <mat-label>Zdravstvena Ustanova</mat-label>
+      <input matInput formControlName="value" />
+    </mat-form-field>
+    <br>
+    <mat-form-field appearance="outline">
+      <mat-label>Vakcinacijski Punkt</mat-label>
+      <input matInput formControlName="punkt" />
+    </mat-form-field>
+  </div>
+  <div formGroupName="informacijeLekara" class="container">
+    <mat-form-field appearance="outline">
+      <mat-label>Ime Lekara</mat-label>
+      <input matInput formControlName="ime" />
+    </mat-form-field>
+    <br>
+    <mat-form-field appearance="outline">
+      <mat-label>Prezime Lekara</mat-label>
+      <input matInput formControlName="prezime" />
+    </mat-form-field>
+    <br>
+    <mat-form-field appearance="outline">
+      <mat-label>Faksmil</mat-label>
+      <input matInput formControlName="faksmil" />
+    </mat-form-field>
+    <br>
+    <mat-form-field appearance="outline">
+      <mat-label>Br. Telefona Lekara</mat-label>
+      <input matInput formControlName="fiksniTelefon" pattern="0[0-9]+" />
+    </mat-form-field>
+  </div>
+  <div class="istorija-vakcina">  
+    <div class="wrapper">
+      <h2> Istorija Vakcinisanja </h2>  
+      <button type="button" (click)="addQuantity()" class="dodaj-vakcinu-btn">Dodaj Vakcinu</button> 
+    </div>
+    <form [formGroup]="productForm" (ngSubmit)="onSubmit()">  
+      
+      <div formArrayName="quantities">  
+        <div *ngFor="let quantity of quantities().controls; let i=index" [formGroupName]="i">
+          <tr>  
+            <td>  
+              <mat-form-field appearance="outline">
+                <mat-label>Naziv vakcine</mat-label>
+                <input matInput />
+              </mat-form-field> 
+            </td>
+            <td>  
+              <mat-form-field appearance="fill">
+                <mat-label>Datum davanja vakcine</mat-label>
+                <input matInput [matDatepicker]="picker">
+                <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                <mat-datepicker #picker></mat-datepicker>
+              </mat-form-field>
+            </td>  
+          </tr>
+          <tr>
+            <td>  
+              <mat-form-field appearance="outline">
+                <mat-label>Nacin davanja vakcine</mat-label>
+                <mat-select >
+                  <mat-option value="JESTE_IM"
+                    >Jeste IM</mat-option
+                  >
+                  <mat-option value="NIJE_IM"
+                    >Nije IM</mat-option
+                  >
+                </mat-select>
+              </mat-form-field>
+            </td>
+            <td>  
+              <mat-form-field appearance="outline">
+                <mat-label>Ekstremitet</mat-label>
+                <mat-select >
+                  <mat-option value="DR"
+                    >DR</mat-option
+                  >
+                  <mat-option value="LR"
+                    >LR</mat-option
+                  >
+                </mat-select>
+              </mat-form-field>
+            </td>  
+          </tr>
+          <tr>  
+            <td>  
+              <mat-form-field appearance="outline">
+                <mat-label>Serija vakcine</mat-label>
+                <input matInput />
+              </mat-form-field> 
+            </td>
+            <td>  
+              <mat-form-field appearance="outline">
+                <mat-label>Proizvodjac</mat-label>
+                <input matInput />
+              </mat-form-field> 
+            </td>  
+          </tr>
+          <tr>  
+            <td>  
+              <mat-form-field appearance="outline">
+                <mat-label>Nezeljena reakcija</mat-label>
+                <input matInput />
+              </mat-form-field> 
+            </td>
+            <td>  
+              <mat-form-field appearance="outline">
+                <mat-label>Potpis lekara</mat-label>
+                <input matInput />
+              </mat-form-field> 
+            </td>  
+          </tr>
+          <button (click)="removeQuantity(i)" class="dodaj-vakcinu-btn align-center" id="remove-btn">Remove</button>
+          <br>
+          ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+        </div>
+      </div>  
+    </form>  
+  </div>  
+  <button
+    mat-flat-button
+    class="align-center"
+    color="primary"
+    type="submit"
+    [disabled]="!imunizacijaForm.valid"
+  >
+    Submit
+  </button>
+</form>

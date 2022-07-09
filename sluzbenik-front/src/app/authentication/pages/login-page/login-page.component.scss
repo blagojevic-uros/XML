@@ -1,0 +1,47 @@
+.container {
+  display: inline-flex; /* or inline-flex */
+  flex-direction: column;
+}
+
+.loginForm {
+  display: inline-flex; /* or inline-flex */
+  flex-direction: column;
+  width: 450px;
+  position: absolute;
+  left: 50%;
+  margin-top: 250px;
+  -webkit-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+
+  background-color: azure;
+  color: black;
+
+  border-radius: 18px;
+
+  padding: 18px;
+}
+@media (max-width: 350px) {
+  .myForm {
+    min-width: 90%;
+  }
+}
+
+.center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+.lgn-button {
+  font-size: large;
+}
+button {
+  width: 250px;
+  align-self: center;
+}
+p {
+  align-self: center;
+}
+a {
+  text-decoration: none;
+}

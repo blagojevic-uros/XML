@@ -36,7 +36,7 @@ public class RestApplication {
 	public CorsFilter corsFilter(){
 		CorsConfiguration corsConfiguration = new CorsConfiguration();
 		corsConfiguration.setAllowCredentials(true);
-		corsConfiguration.setAllowedOrigins(Arrays.asList("http://localhost:4200"));
+		corsConfiguration.setAllowedOrigins(Arrays.asList("http://localhost:5000"));
 		corsConfiguration.setAllowedHeaders(Arrays.asList("Origin","Access-Control-Allow-Origin", "Content-Type",
 				"Accept","Authorization","Origin, Accept", "X-Requested-With",
 				"Access-Control-Request-Method","Access-Control-Request-Headers"));
@@ -47,16 +47,5 @@ public class RestApplication {
 		urlBasedCorsConfigurationSource.registerCorsConfiguration("/**",corsConfiguration);
 		return new CorsFilter(urlBasedCorsConfigurationSource);
 	}
-	/*Konfiguracija apache CXF JAX-RS servleta
-	 *Moguce je konfigurasati endpoints dynamicki vezano za same klase
-	 * */
-	
-//	@Bean
-//	public ServletRegistrationBean<CXFServlet> cxfServlet() {
-//		CXFServlet cxfServlet = new CXFServlet();
-//		ServletRegistrationBean<CXFServlet> servletReg = new ServletRegistrationBean<CXFServlet>(cxfServlet, "/*");
-//		servletReg.setLoadOnStartup(1);
-//		return servletReg;
-//	}
 
 }

@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.RestController;
 import org.xmldb.api.base.XMLDBException;
 
 import javax.ws.rs.Produces;
+import javax.xml.bind.JAXBException;
 
 @RestController
 @RequestMapping(path = "/api/vakcine")
@@ -22,7 +23,9 @@ public class VakcineController {
     }
     @GetMapping("/all")
     @Produces("application/xml")
-    public ResponseEntity<?> getAllVakcine() throws XMLDBException {
+    public ResponseEntity<?> getAllVakcine() throws XMLDBException, JAXBException {
         return new ResponseEntity<>(vakcineService.getAll(), HttpStatus.OK);
     }
+
+
 }

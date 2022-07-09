@@ -1,0 +1,20 @@
+<div class="float-container">
+
+<div class="float-child">
+<h2>Vakcine</h2>
+<h4>
+    <tr *ngFor="let vakcina of vakcine">
+        <app-vakcina-view [vakcina] = "vakcina"></app-vakcina-view>
+    </tr>
+</h4>
+</div>
+<div class="float-child">
+    <h2>Porudzbine</h2>
+<h4>
+    <tr *ngFor="let porudzbina of porudzbine">
+        <app-porudzbine [porudzbina] = "porudzbina"></app-porudzbine >
+    </tr>
+</h4>
+</div>
+</div>
+

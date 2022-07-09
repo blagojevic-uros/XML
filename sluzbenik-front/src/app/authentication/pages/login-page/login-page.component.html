@@ -1,0 +1,21 @@
+<form class="loginForm" [formGroup]="loginForm" (ngSubmit)="submit()">
+  <h1 style="text-align: center">Vaccination portal</h1>
+  <mat-form-field appearance="outline">
+    <mat-label>Username </mat-label>
+    <input matInput placeholder="Username" formControlName="username" />
+  </mat-form-field>
+  <mat-form-field appearance="outline">
+    <mat-label>Password </mat-label>
+    <input matInput type="password" formControlName="password" />
+  </mat-form-field>
+  <p>Nemate nalog? <a href="/registration">Registruj se</a></p>
+
+  <button
+    mat-flat-button
+    class="lgn-button"
+    color="primary"
+    [disabled]="!loginForm.valid"
+  >
+    Login
+  </button>
+</form>
