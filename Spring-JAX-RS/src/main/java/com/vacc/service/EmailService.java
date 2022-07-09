@@ -1,5 +1,6 @@
 package com.vacc.service;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.mail.SimpleMailMessage;
 import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.stereotype.Service;
@@ -8,28 +9,32 @@ import java.util.Date;
 
 @Service
 public class EmailService{
-    private final JavaMailSender javaMailSender;
 
-    public EmailService(JavaMailSender javaMailSender) {
-        this.javaMailSender = javaMailSender;
-    }
+    @Autowired
+    private JavaMailSender javaMailSender;
+    //wnrkrxbhsucgzhoh
 
+//    public EmailService(JavaMailSender javaMailSender) {
+//        this.javaMailSender = javaMailSender;
+//    }
 
-    public void sendEmail(String to, String body, String topic) {
-        System.out.println("Sending email...");
-        SimpleMailMessage msg = new SimpleMailMessage();
-        msg.setFrom("xmlmladduf@gmail.com");
-        msg.setTo(to);
-        msg.setSubject(topic);
-        msg.setText(body);
-        javaMailSender.send(msg);
+    final String username = "xmlmauf@gmail.com";
+    final String password = "zhuybtutzjgrftsb";
+
+    public void sendEmail(String to, String subject, String text) {
+        SimpleMailMessage message = new SimpleMailMessage();
+        message.setFrom(username);
+        message.setTo(to);
+        message.setSubject(subject);
+        message.setText(text);
+        javaMailSender.send(message);
         System.out.println("Email sent...");
     }
 
     public void sendMailForSaglasnost(String email, Date datumVakcinisanja) throws Exception {
         try
         {
-            Thread t = new Thread(() -> sendEmail(email,interesovanjeMail(datumVakcinisanja),"Vakcinisanje protiv COVID-19"));
+            Thread t = new Thread(() -> sendEmail(email,"Vakcinisanje protiv COVID-19",interesovanjeMail(datumVakcinisanja),));
             t.start();
         }
         catch(Exception e) {
