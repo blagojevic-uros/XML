@@ -19,6 +19,10 @@ public class SaglasnostDAO extends DataAccessLayer{
         this.dbConfig = dbConfig;
     }
 
+    public String getFolderPath() {
+        return folderPath;
+    }
+
     public List<SaglasnostZaImunizaciju> getByJmbgOrPassportNumber(String jmbg){
 
         String xPath = "//saglasnost_za_imunizaciju/licni_podaci/drzavljanstvo/srpsko[JMBG ='" + jmbg + "']";

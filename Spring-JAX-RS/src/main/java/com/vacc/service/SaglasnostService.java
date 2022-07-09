@@ -6,6 +6,7 @@ import model.interesovanje.Interesovanje;
 import model.saglasnost.LicniPodaci;
 import model.saglasnost.SaglasnostZaImunizaciju;
 import org.springframework.stereotype.Service;
+import org.xmldb.api.modules.XMLResource;
 import util.ObjectParser;
 
 import java.util.List;
@@ -36,9 +37,8 @@ public class SaglasnostService {
         }
     }
 
-    public String save(SaglasnostZaImunizaciju saglasnost) throws Exception{
-        String uniqueID = UUID.randomUUID().toString();
-        String documentId = "saglasnost-" + uniqueID + ".xml";
+    public String save(SaglasnostZaImunizaciju saglasnost, String jmbg) throws Exception{
+        String documentId = "saglasnost-" + jmbg + ".xml";
         //emailService.sendMailForSaglasnost(interesovanje.getLicniPodaci().getEmail(),new Date());
 //        SaglasnostZaImunizaciju saglasnostZaImunizaciju = new SaglasnostZaImunizaciju();
 //        saglasnostZaImunizaciju.setLicniPodaci(saglasnost);
@@ -51,6 +51,17 @@ public class SaglasnostService {
         catch (Exception e){
             throw new Exception();
         }
+    }
 
+
+    public SaglasnostZaImunizaciju getByIdObject(String jmbg) throws Exception {
+        try{
+            String documentId = "saglasnost-" + jmbg + ".xml";
+            XMLResource content = this.saglasnostDAO.getById(documentId,saglasnostDAO.getFolderPath());
+            return (SaglasnostZaImunizaciju) ObjectParser.parseToObject(content,SaglasnostZaImunizaciju.class);
+        }
+        catch (Exception e){
+            throw new Exception();
+        }
     }
 }
