@@ -11,6 +11,7 @@ import { InteresovanjeService } from '../../service/interesovanje.service';
 export class CreateInterosavenjeComponent implements OnInit {
   interesovanjeForm!: FormGroup;
   currentDate: string = new Date().toISOString().split('T')[0];
+  router: any;
   constructor(
     private fb: FormBuilder,
     private interesovanjeService: InteresovanjeService,
@@ -43,6 +44,12 @@ export class CreateInterosavenjeComponent implements OnInit {
       davalacKrvi: false,
       id: ['12345'],
     });
+  }
+  logout() {
+    localStorage.removeItem('user');
+    
+    location.reload();
+    this.router.navigate(['/123']);
   }
   onSubmit() {
     this.interesovanjeService
