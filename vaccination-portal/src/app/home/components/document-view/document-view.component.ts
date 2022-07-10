@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { FormBuilder, Validators } from '@angular/forms';
 import { InteresovanjeService } from 'src/app/interesovanje/service/interesovanje.service';
 import { SaglasnostService } from 'src/app/saglasnost/service/saglasnost.service';
 import { SertifikatService } from 'src/app/sertifikat/service/sertifikat.service';
@@ -13,7 +14,25 @@ export class DocumentViewComponent implements OnInit {
   interesovanje!: any;
   saglasnost!: any;
   sertifikati!: any[];
-  constructor(private interesovanjeService: InteresovanjeService,private sertifikatService:SertifikatService,private saglasnostService: SaglasnostService) { 
+  
+  firstFormGroup = this._formBuilder.group({
+    firstCtrl: [''],
+  });
+  secondFormGroup = this._formBuilder.group({
+    secondCtrl: [''],
+  });
+  thirdFormGroup = this._formBuilder.group({
+    thirdCtrl: [''],
+  })
+  fourthFormGroup = this._formBuilder.group({
+    fourthCtrl: [''],
+  })
+  isLinear = false;
+
+  constructor(private interesovanjeService: InteresovanjeService,
+    private sertifikatService:SertifikatService,
+    private saglasnostService: SaglasnostService,
+    private _formBuilder: FormBuilder) { 
     interesovanjeService.getAll().subscribe((res) => {
       this.interesovanje = res;
     })

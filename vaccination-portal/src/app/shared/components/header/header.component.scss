@@ -113,3 +113,34 @@ header .search input::placeholder {
     flex-direction: column;
   }
 }
+
+
+
+.header{
+  background-color: rgba(13, 32, 90, 0.688);
+  width:200px;
+  height: 100vh;
+}
+
+.item{
+  width: 100%;
+  height: 50px;
+  font-size: 18px;
+  padding-left: 30px;
+  padding-top: 13px;
+  color: white;
+  border-bottom: 2px solid rgb(0, 0, 0);
+  border-right: 2px solid black;
+}
+.item *{
+  color: white;
+  text-decoration: none
+}
+
+.item:hover{
+
+}
+.item *:hover{
+  
+  color: white;
+}
