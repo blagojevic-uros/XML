@@ -31,6 +31,12 @@ export class ImunizacijaFormComponent implements OnInit {
   onSubmit() {
     this.submitFormEvent.emit();
   }
+
+  
+
+
+
+
   quantities() : FormArray {  
     return this.tabelaVakcinisanja.get("quantities") as FormArray  
   }  

@@ -9,18 +9,15 @@
 <button class="dodaj-vakcinu-btn" id="searchBtn" (click)="searchJmbg()">Pretrazi</button>
 </div>
 
-<!-- <div *ngIf="saglasnost">
-  <h2>Znaci ovde samo da se prikaze ovo ne moras u formu da pises</h2>
-  <p>{{saglasnost |json}}</p>
-</div> -->
 <form
   [formGroup]="imunizacijaForm"
   class="containter"
   (ngSubmit)="onSubmit()"
 >
 
-  <h2>Podaci o Saglasnosti za imunizaciju protiv COVID-19</h2>
   <table *ngIf="saglasnost">
+    
+  <h2>Podaci o Saglasnosti za imunizaciju protiv COVID-19</h2>
     <tr>
       <td>
         <mat-form-field appearance="outline">
@@ -178,7 +175,8 @@
 
   <h2 id="evidencijaNaslov">Evidencija o vakcinaciji protiv COVID-19</h2>
   <table>
-      <!-- <tr>
+    <div formGroupName="evidencijaOVakcinaciji">
+      <tr>
         <td>
           <mat-form-field appearance="outline">
             <mat-label>Zdravstvena Ustanova</mat-label>
@@ -191,7 +189,9 @@
             <input matInput formControlName="vakcinijskiPunkt" />
           </mat-form-field>
         </td>
-      </tr> -->
+      </tr>
+    </div>
+
     <div formGroupName="lekar" class="container">
       <tr>
         <td>
@@ -222,104 +222,119 @@
         </td>
       </tr>
     </div>
+
+    <!-- OVDE TREBA LISTA VAKCINA -->
+    <div class="istorija-vakcina">  
+      <div class="wrapper">
+        <h2> Istorija Vakcinisanja </h2>  
+        <button type="button" (click)="addQuantity()" class="dodaj-vakcinu-btn">Dodaj Vakcinu</button> 
+      </div>
+
+      <!-- <form [formGroup]="tabelaVakcinisanja" (ngSubmit)="onSubmit()">
+        <div formArrayName="vakcinisanje">
+          <div *ngFor="let vakcina of vakcinisanje().controls; let i = index" [formGroup]="vakcina">
+            <div [formGroup]="vakcinisanje">
+              <mat-form-field appearance="outline">
+                <mat-label>Naziv vakcine</mat-label>
+                <input matInput formControlName="nacinDavanja"/>
+              </mat-form-field> 
+            </div>
+          </div>
+        </div>
+      </form> -->
+
+      <!-- <form [formGroup]="tabelaVakcinisanja" (ngSubmit)="onSubmit()">     -->
+        <div formArrayName="quantities" (ngSubmit)="onSubmit()">  
+          <div *ngFor="let quantity of quantities().controls; let vakcinisanje=index" [formGroupName]="vakcinisanje">
+            <tr>  
+              <td>  
+                  <mat-form-field appearance="outline">
+                    <mat-label>Naziv vakcine</mat-label>
+                    <input matInput />
+                  </mat-form-field> 
+              </td>
+              <td>  
+                <mat-form-field appearance="fill">
+                  <mat-label>Datum davanja vakcine</mat-label >
+                  <input matInput [matDatepicker]="picker">
+                  <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                  <mat-datepicker #picker></mat-datepicker>
+                </mat-form-field>
+              </td>  
+            </tr>
+            <tr>
+              <td>  
+                <mat-form-field appearance="outline">
+                  <mat-label>Nacin davanja vakcine</mat-label>
+                  <mat-select >
+                    <mat-option value="JESTE_IM"
+                      >Jeste IM</mat-option
+                    >
+                    <mat-option value="NIJE_IM"
+                      >Nije IM</mat-option
+                    >
+                  </mat-select>
+                </mat-form-field>
+              </td>
+              <td>  
+                <mat-form-field appearance="outline">
+                  <mat-label>Ekstremitet</mat-label>
+                  <mat-select >
+                    <mat-option value="DR"
+                      >DR</mat-option
+                    >
+                    <mat-option value="LR"
+                      >LR</mat-option
+                    >
+                  </mat-select>
+                </mat-form-field>
+              </td>  
+            </tr>
+            <tr>  
+              <td>  
+                <mat-form-field appearance="outline">
+                  <mat-label>Serija vakcine</mat-label>
+                  <input matInput />
+                </mat-form-field> 
+              </td>
+              <td>  
+                <mat-form-field appearance="outline">
+                  <mat-label>Proizvodjac</mat-label>
+                  <input matInput />
+                </mat-form-field> 
+              </td>  
+            </tr>
+            <tr>  
+              <td>  
+                <mat-form-field appearance="outline">
+                  <mat-label>Nezeljena reakcija</mat-label>
+                  <input matInput />
+                </mat-form-field> 
+              </td>
+              <td>  
+                <mat-form-field appearance="outline">
+                  <mat-label>Potpis lekara</mat-label>
+                  <input matInput />
+                </mat-form-field> 
+              </td>  
+            </tr>
+            <button (click)="removeQuantity(vakcinisanje)" class="dodaj-vakcinu-btn align-center" id="remove-btn">Remove</button>
+            <br>
+            <hr>
+  
+          </div>
+        </div>  
+      <!-- </form>   -->
+    </div>   
   </table>
 
 
-  <div class="istorija-vakcina">  
-    <div class="wrapper">
-      <h2> Istorija Vakcinisanja </h2>  
-      <button type="button" (click)="addQuantity()" class="dodaj-vakcinu-btn">Dodaj Vakcinu</button> 
-    </div>
-    <form [formGroup]="tabelaVakcinisanja" (ngSubmit)="onSubmit()">  
-      
-      <div formArrayName="quantities">  
-        <div *ngFor="let quantity of quantities().controls; let i=index" [formGroupName]="i">
-          <tr>  
-            <td>  
-              <mat-form-field appearance="outline">
-                <mat-label>Naziv vakcine</mat-label>
-                <input matInput />
-              </mat-form-field> 
-            </td>
-            <td>  
-              <mat-form-field appearance="fill">
-                <mat-label>Datum davanja vakcine</mat-label>
-                <input matInput [matDatepicker]="picker">
-                <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
-                <mat-datepicker #picker></mat-datepicker>
-              </mat-form-field>
-            </td>  
-          </tr>
-          <tr>
-            <td>  
-              <mat-form-field appearance="outline">
-                <mat-label>Nacin davanja vakcine</mat-label>
-                <mat-select >
-                  <mat-option value="JESTE_IM"
-                    >Jeste IM</mat-option
-                  >
-                  <mat-option value="NIJE_IM"
-                    >Nije IM</mat-option
-                  >
-                </mat-select>
-              </mat-form-field>
-            </td>
-            <td>  
-              <mat-form-field appearance="outline">
-                <mat-label>Ekstremitet</mat-label>
-                <mat-select >
-                  <mat-option value="DR"
-                    >DR</mat-option
-                  >
-                  <mat-option value="LR"
-                    >LR</mat-option
-                  >
-                </mat-select>
-              </mat-form-field>
-            </td>  
-          </tr>
-          <tr>  
-            <td>  
-              <mat-form-field appearance="outline">
-                <mat-label>Serija vakcine</mat-label>
-                <input matInput />
-              </mat-form-field> 
-            </td>
-            <td>  
-              <mat-form-field appearance="outline">
-                <mat-label>Proizvodjac</mat-label>
-                <input matInput />
-              </mat-form-field> 
-            </td>  
-          </tr>
-          <tr>  
-            <td>  
-              <mat-form-field appearance="outline">
-                <mat-label>Nezeljena reakcija</mat-label>
-                <input matInput />
-              </mat-form-field> 
-            </td>
-            <td>  
-              <mat-form-field appearance="outline">
-                <mat-label>Potpis lekara</mat-label>
-                <input matInput />
-              </mat-form-field> 
-            </td>  
-          </tr>
-          <button (click)="removeQuantity(i)" class="dodaj-vakcinu-btn align-center" id="remove-btn">Remove</button>
-          <br>
-          <hr>
-
-        </div>
-      </div>  
-    </form>  
-  </div>  
+ 
   <button
     mat-flat-button
     class="align-center"
     color="primary"
     type="submit"
-    [disabled]="!imunizacijaForm.valid"
   >
     Submit
   </button>

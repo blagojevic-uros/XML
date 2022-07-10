@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { FormArray, FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { ImunizacijaService } from '../../service/imunizacija.service';
 import { HttpClient } from '@angular/common/http';
@@ -23,41 +23,60 @@ export class CreateImunizacijaComponent implements OnInit {
     private http: HttpClient
   ) {
     this.imunizacijaForm = this.fb.group({
-        // licniPodaci: this.fb.group({
-        //   pol: [{value: '',disabled:true}],
-        //   datum: [{value: '',disabled:true}],
-        //   drzavljanstvo: [{value: '',disabled:true}],
-        //   jmbg: [{value: '',disabled:true}],
-        //   imePacijenta: [{value: '',disabled:true}],
-        //   prezimePacijenta: [{value: '',disabled:true}],
-        //   imeRoditelja: [{value: '',disabled:true}],
-        //   mestoRodjenja:[{value: '',disabled:true}],
-        //   ulica: [{value: '',disabled:true}],
-        //   naselje:[{value: '',disabled:true}],
-        //   opstina: [{value: '',disabled:true}],
-        //   fiksni:[{value: '',disabled:true}],
-        //   mobilni: [{value: '',disabled:true}],
-        //   email:[{value: '',disabled:true}],
-        //   radniStatus: [{value: '',disabled:true}],
-        //   zanimanje:[{value: '',disabled:true}],
-        // }),
-      zdravstvenaUstanova: 
-        ['', Validators.required],
+      evidencijaOVakcinaciji: this.fb.group({
         vakcinijskiPunkt: ['', Validators.required],
-        lekar: this.fb.group({
+        zdravstvenaUstanova: ['',Validators.required],
+      }),
+      lekar: this.fb.group({
         ime: ['', Validators.required],
         prezime: ['', Validators.required],
         faksmil: ['', Validators.required],
         brojTelefona: ['', Validators.required],
       }),
+      tabelaVakcinisanja: this.fb.array([])
     });
   }
+
+  get tabelaVakcinisanja(){
+    return this.imunizacijaForm.controls["tabelaVakcinisanja"] as FormArray;
+  }
+
+  addVakcina(){
+    const vakcina = this.fb.group({
+      nazivVakcine: this.fb.group({
+        tipVakcine: this.fb.group({
+          value: ['', Validators.required],
+        }),
+      }),
+      nacinDavanja: ['', Validators.required],
+      ekstremitet: ['', Validators.required],
+      serijaVakcine: ['', Validators.required],
+      proizvodjac: this.fb.group({
+        value: ['', Validators.required],
+      }),
+      nezeljenaReakcija: ['', Validators.required],
+      potpisLekara: ['', Validators.required],
+      privremeneKontraindikacije: this.fb.group({
+        datum: ['', Validators.required],
+        dijagnoza: ['', Validators.required],
+      }),
+      odlukaKomisije: ['', Validators.required],
+    })
+
+    this.tabelaVakcinisanja.push(vakcina)
+  }
+
+  deleteVakcina(vakcinaIndex: number){
+    this.tabelaVakcinisanja.removeAt(vakcinaIndex);
+  }
+
   onSubmit() {
-    this.imunizacijaService
-      .save(this.imunizacijaForm.value,this.searchInput)
-      .subscribe((res : any) => {
-        this._snackBar.open(res, 'Close');
-      });
+    console.log(this.imunizacijaForm.value)
+    // this.imunizacijaService
+      // .save(this.imunizacijaForm.value,this.searchInput)
+      // .subscribe((res : any) => {
+      //   this._snackBar.open(res, 'Close');
+      // });
   }
   onSearch($event: string){
     this.searchInput = $event;
