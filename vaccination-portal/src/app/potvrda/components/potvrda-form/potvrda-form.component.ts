@@ -1,4 +1,10 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit, Output, EventEmitter } from '@angular/core';
+import {
+  FormGroup,
+  FormControl,
+  FormBuilder,
+  Validators,
+} from '@angular/forms';
 
 @Component({
   selector: 'app-potvrda-form',
@@ -7,9 +13,14 @@ import { Component, OnInit } from '@angular/core';
 })
 export class PotvrdaFormComponent implements OnInit {
 
-  constructor() { }
+  @Input() potvrdaForm!: FormGroup;
+  @Output() submitFormEvent = new EventEmitter();
+  constructor(private fb: FormBuilder) {}
 
-  ngOnInit(): void {
+  ngOnInit(): void {}
+
+  onSubmit() {
+    this.submitFormEvent.emit();
   }
 
 }
