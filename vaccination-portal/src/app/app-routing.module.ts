@@ -51,6 +51,14 @@ const routes: Routes = [
       ),
   },
   {
+    path: 'potvrda',
+    component: RootLayoutComponent,
+    loadChildren: () =>
+      import('./potvrda/potvrda.module').then(
+        (m) => m.PotvrdaModule
+      ),
+  },
+  {
     path: '**',
     component: NotFoundPageComponent,
   },
