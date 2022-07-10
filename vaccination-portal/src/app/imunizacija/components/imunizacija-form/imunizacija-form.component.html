@@ -9,39 +9,30 @@
 <button class="dodaj-vakcinu-btn" id="searchBtn" (click)="searchJmbg()">Pretrazi</button>
 </div>
 
-<div *ngIf="saglasnost">
+<!-- <div *ngIf="saglasnost">
   <h2>Znaci ovde samo da se prikaze ovo ne moras u formu da pises</h2>
   <p>{{saglasnost |json}}</p>
-</div>
+</div> -->
 <form
   [formGroup]="imunizacijaForm"
   class="containter"
   (ngSubmit)="onSubmit()"
 >
 
-  <!-- <h2>Podaci o Saglasnosti za imunizaciju protiv COVID-19</h2>
-  <table formGroupName="licniPodaci">
+  <h2>Podaci o Saglasnosti za imunizaciju protiv COVID-19</h2>
+  <table *ngIf="saglasnost">
     <tr>
       <td>
         <mat-form-field appearance="outline">
-          <mat-label>Drzavljanstvo</mat-label>
-          <mat-select formControlName="drzavljanstvo">
-            <mat-option value="Drzavljanin_RS"
-              >Drzavljanin RS</mat-option
-            >
-            <mat-option value="STRANI_BEZ_BORAVKA"
-              >Strani bez boravka</mat-option
-            >
-            <mat-option value="STRANI_SA_BORAVKOM"
-              >Strani sa boravkom</mat-option
-            >
-          </mat-select>
+          <mat-label>Drzavljanstvo </mat-label>
+          <input matInput  *ngIf="saglasnost.licniPodaci.drzavljanstvo.srpsko.jmbg !== null"  [value]="'Srpsko'" [disabled]=true/>
+          <input matInput  *ngIf="saglasnost.licniPodaci.drzavljanstvo.strano.nazivDrzavljanstva !== null"  [value]="'Strano'" [disabled]=true/>
         </mat-form-field>
       </td>
       <td>
           <mat-form-field appearance="outline">
             <mat-label>JMBG</mat-label>
-            <input matInput formControlName="jmbg" />
+            <input matInput [value]="saglasnost.licniPodaci.drzavljanstvo.srpsko.jmbg.value" [disabled]=true/>
           </mat-form-field>
       </td>
     </tr>
@@ -49,13 +40,13 @@
       <td>
         <mat-form-field appearance="outline">
           <mat-label>Prezime</mat-label>
-          <input matInput formControlName="prezimePacijenta" />
+          <input matInput [value]="saglasnost.licniPodaci.prezime" [disabled]=true/>
         </mat-form-field>
       </td>
       <td>
         <mat-form-field appearance="outline">
           <mat-label>Ime</mat-label>
-          <input matInput formControlName="imePacijenta" />
+          <input matInput [value]="saglasnost.licniPodaci.ime" [disabled]=true/>
         </mat-form-field>
       </td>
     </tr>
@@ -63,36 +54,28 @@
       <td>
         <mat-form-field appearance="outline">
           <mat-label>Ime Roditelja </mat-label>
-          <input matInput formControlName="imeRoditelja" />
+          <input matInput  [value]="saglasnost.licniPodaci.imeRoditelja" [disabled]=true/>
         </mat-form-field>
       </td>
       <td>
         <mat-form-field appearance="outline">
-          <mat-label>Pol</mat-label>
-          <mat-select formControlName="pol">
-            <mat-option value="Musko"
-              >Musko</mat-option
-            >
-            <mat-option value="Zensko"
-              >Zensko</mat-option
-            >
-          </mat-select>
+          <mat-label>Pol </mat-label>
+          <input matInput  *ngIf="saglasnost.licniPodaci.pol === 'Z'"  [value]="'Zensko'" [disabled]=true/>
+          <input matInput  *ngIf="saglasnost.licniPodaci.pol === 'M'"  [value]="'Musko'" [disabled]=true/>
         </mat-form-field>
       </td>
     </tr>
     <tr>
       <td>
         <mat-form-field appearance="outline">
-          <mat-label>Datum Rodjenja</mat-label>
-          <input matInput [matDatepicker]="picker" formControlName="datum">
-          <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
-          <mat-datepicker #picker></mat-datepicker>
+          <mat-label>Datum Rodjenja </mat-label>
+          <input matInput  [value]="saglasnost.licniPodaci.datumRodjenja" [disabled]=true/>
         </mat-form-field>
       </td>
       <td>
         <mat-form-field appearance="outline">
           <mat-label>Mesto Rodjenja </mat-label>
-          <input matInput formControlName="mestoRodjenja" />
+          <input matInput [value]="saglasnost.licniPodaci.mestoRodjenja" [disabled]=true/>
         </mat-form-field>
       </td>
     </tr>
@@ -100,13 +83,13 @@
       <td>
         <mat-form-field appearance="outline">
           <mat-label>Ulica i broj </mat-label>
-          <input matInput formControlName="ulica" />
+          <input matInput  [value]="saglasnost.licniPodaci.adresa.ulicaBroj" [disabled]=true/>
         </mat-form-field>
       </td>
       <td>
         <mat-form-field appearance="outline">
           <mat-label>Mesto/Naselje </mat-label>
-          <input matInput formControlName="naselje" />
+          <input matInput  [value]="saglasnost.licniPodaci.adresa.mestoNaselje" [disabled]=true/>
         </mat-form-field>
       </td>
     </tr>
@@ -114,13 +97,13 @@
       <td>
         <mat-form-field appearance="outline">
           <mat-label>Opstina </mat-label>
-          <input matInput formControlName="opstina" />
+          <input matInput [value]="saglasnost.licniPodaci.adresa.opstinaGrad" [disabled]=true/>
         </mat-form-field>
       </td>
       <td>
         <mat-form-field appearance="outline">
           <mat-label>Fiksni Telefon </mat-label>
-          <input matInput formControlName="fiksni" />
+          <input matInput  [value]="saglasnost.licniPodaci.fiksniBroj" [disabled]=true/>
         </mat-form-field>
       </td>
     </tr>
@@ -128,13 +111,13 @@
       <td>
         <mat-form-field appearance="outline">
           <mat-label>Mobilni Telefon </mat-label>
-          <input matInput formControlName="mobilni" />
+          <input matInput  [value]="saglasnost.licniPodaci.mobilniBroj" [disabled]=true/>
         </mat-form-field>
       </td>
       <td>
         <mat-form-field appearance="outline">
           <mat-label>Email Adresa </mat-label>
-          <input matInput formControlName="email" />
+          <input matInput   [value]="saglasnost.licniPodaci.email" [disabled]=true/>
         </mat-form-field>
       </td>
     </tr>
@@ -142,7 +125,7 @@
       <td>
         <mat-form-field appearance="outline">
           <mat-label>Radni Status</mat-label>
-          <mat-select formControlName="radniStatus">
+          <mat-select >
             <mat-option value="Zaposlen"
               >Zaposlen</mat-option
             >
@@ -168,7 +151,7 @@
         
         <mat-form-field appearance="outline">
         <mat-label>Zanimanje</mat-label>
-        <mat-select formControlName="zanimanje">
+        <mat-select >
           <mat-option value="Zdravstvena"
             >Zdravstvena Zastita</mat-option
           >
@@ -191,7 +174,7 @@
       </mat-form-field>
       </td>
     </tr>
-  </table> -->
+  </table>
 
   <h2 id="evidencijaNaslov">Evidencija o vakcinaciji protiv COVID-19</h2>
   <table>
@@ -341,6 +324,188 @@
     Submit
   </button>
 </form>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

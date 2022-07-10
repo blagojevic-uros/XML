@@ -55,11 +55,15 @@ public class SaglasnostService {
         }
     }
 
+
+
     public void updateSaglasnost(EvidencijaOVakcinaciji evidencijaOVakcinaciji,String jmbg) throws Exception {
+        evidencijaOVakcinaciji.getTabelaVakcinisanja()
         SaglasnostZaImunizaciju saglasnostZaImunizaciju = getByIdObject(jmbg);
         saglasnostZaImunizaciju.setEvidencijaOVakcinaciji(evidencijaOVakcinaciji);
         save(saglasnostZaImunizaciju,jmbg);
     }
+
     public SaglasnostZaImunizaciju getByIdObject(String jmbg) throws Exception {
         try{
             String documentId = "saglasnost-" + jmbg + ".xml";
