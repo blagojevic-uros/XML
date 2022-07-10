@@ -1,25 +1,30 @@
 <div *ngIf="saglasnostForm">
+    
     <form [formGroup]="saglasnostForm" class="containter" (ngSubmit)="onSubmit()">
-
-        <h3>Saglasnost za imunizaciju protiv COVID-19</h3>
+        <table>
+        <h2>Saglasnost za imunizaciju protiv COVID-19</h2>
         <!--LICNI PODACI POCETAK-->
         <div formGroupName="licniPodaci" class="containter">
-            <div class="containter">
-                <!--SREDI DRZAVLJANSTVO-->
-                <mat-label>Srpsko <input id="drzavljanstvo" type="radio" name="drzavljanstvo" value="Drzavljanin_RS"
-                        [checked]="true" (change)="drzavljanstvoChange('Drzavljanin_RS')" /></mat-label>
-                <mat-label>Strani sa boravkom <input id="srpsko" type="radio" name="drzavljanstvo"
-                        value="STRANI_SA_BORAVKOM" [checked]="false"
-                        (change)="drzavljanstvoChange('STRANI_SA_BORAVKOM')" /></mat-label>
-                <mat-label>Strani bez boravka <input id="srpsko" type="radio" name="drzavljanstvo"
-                        value="STRANI_BEZ_BORAVKA" [checked]="false"
-                        (change)="drzavljanstvoChange('STRANI_BEZ_BORAVKA')" /></mat-label>
-                <!-- <mat-radio-group aria-labelledby="example-radio-group-label" class="example-radio-group">
-                    <mat-radio-button class="example-radio-button" *ngFor="let drz of drzavljanstva" [value]="drz">
-                        {{drz}}
-                    </mat-radio-button>
-                </mat-radio-group> -->
-            </div>
+            <tr>
+                <td>
+                    <div class="containter">
+                        <!--SREDI DRZAVLJANSTVO-->
+                        <mat-label>Srpsko <input id="drzavljanstvo" type="radio" name="drzavljanstvo" value="Drzavljanin_RS"
+                                [checked]="true" (change)="drzavljanstvoChange('Drzavljanin_RS')" /></mat-label>
+                        <mat-label>Strani sa boravkom <input id="srpsko" type="radio" name="drzavljanstvo"
+                                value="STRANI_SA_BORAVKOM" [checked]="false"
+                                (change)="drzavljanstvoChange('STRANI_SA_BORAVKOM')" /></mat-label>
+                        <mat-label>Strani bez boravka <input id="srpsko" type="radio" name="drzavljanstvo"
+                                value="STRANI_BEZ_BORAVKA" [checked]="false"
+                                (change)="drzavljanstvoChange('STRANI_BEZ_BORAVKA')" /></mat-label>
+                        <!-- <mat-radio-group aria-labelledby="example-radio-group-label" class="example-radio-group">
+                            <mat-radio-button class="example-radio-button" *ngFor="let drz of drzavljanstva" [value]="drz">
+                                {{drz}}
+                            </mat-radio-button>
+                        </mat-radio-group> -->
+                    </div>
+                </td>
+                <td>
             <!--DRZAVLJANSTVO-->
             <div formGroupName="drzavljanstvo" class="containter">
                 <div *ngIf="drzavljanstvo == 'Drzavljanin_RS'">
@@ -50,105 +55,146 @@
                     </div>
                 </div>
             </div>
-            <mat-form-field appearance="outline">
-                <mat-label>Prezime </mat-label>
-                <input matInput formControlName="prezime" />
-            </mat-form-field>
-
-            <mat-form-field appearance="outline">
-                <mat-label>Ime </mat-label>
-                <input matInput formControlName="ime" />
-            </mat-form-field>
-
-            <mat-form-field appearance="outline">
-                <mat-label>Ime Roditelja </mat-label>
-                <input matInput formControlName="imeRoditelja" />
-            </mat-form-field>
-
-            <mat-radio-group aria-labelledby="example-radio-group-label" class="example-radio-group"
-                formControlName="pol">
-                <mat-radio-button class="example-radio-button" *ngFor="let pol1 of pols" [value]="pol1">
-                    {{pol1}}
-                </mat-radio-button>
-            </mat-radio-group>
-
-            <mat-form-field appearance="outline">
-                <mat-label>Datum rodjenja </mat-label>
-                <input matInput formControlName="datumRodjenja" id="datumRodjenja" type="date" name="datumRodjenja">
-            </mat-form-field>
-
-            <mat-form-field appearance="outline">
-                <mat-label>Mesto rodjenja </mat-label>
-                <input matInput formControlName="mestoRodjenja" />
-            </mat-form-field>
-            <!--ADRESA POCETAK-->
-
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <mat-form-field appearance="outline">
+                        <mat-label>Prezime </mat-label>
+                        <input matInput formControlName="prezime" />
+                    </mat-form-field>
+                </td>
+                <td>
+                    <mat-form-field appearance="outline">
+                        <mat-label>Ime </mat-label>
+                        <input matInput formControlName="ime" />
+                    </mat-form-field>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <mat-form-field appearance="outline">
+                        <mat-label>Ime Roditelja </mat-label>
+                        <input matInput formControlName="imeRoditelja" />
+                    </mat-form-field>
+                </td>
+                <td>
+                    <mat-radio-group aria-labelledby="example-radio-group-label" class="example-radio-group"
+                    formControlName="pol">
+                    <mat-radio-button class="example-radio-button" *ngFor="let pol1 of pols" [value]="pol1">
+                        {{pol1}}
+                    </mat-radio-button>
+                </mat-radio-group>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <mat-form-field appearance="outline">
+                        <mat-label>Datum rodjenja </mat-label>
+                        <input matInput formControlName="datumRodjenja" id="datumRodjenja" type="date" name="datumRodjenja">
+                    </mat-form-field>
+                </td>
+                <td>
+                    <mat-form-field appearance="outline">
+                        <mat-label>Mesto rodjenja </mat-label>
+                        <input matInput formControlName="mestoRodjenja" />
+                    </mat-form-field>
+        
+                </td>
+            </tr>
+            
             <div formGroupName="adresa" class="containter">
-                <mat-form-field appearance="outline">
-                    <mat-label>Ulica i broj </mat-label>
-                    <input matInput formControlName="ulicaBroj" />
-                </mat-form-field>
-                <mat-form-field appearance="outline">
-                    <mat-label>Mesto/naselje </mat-label>
-                    <input matInput formControlName="mestoNaselje" />
-                </mat-form-field>
-                <mat-form-field appearance="outline">
-                    <mat-label>Opstina/grad </mat-label>
-                    <input matInput formControlName="opstinaGrad" />
-                </mat-form-field>
+                <tr>
+                    <td>
+                        <mat-form-field appearance="outline">
+                            <mat-label>Ulica i broj </mat-label>
+                            <input matInput formControlName="ulicaBroj" />
+                        </mat-form-field>
+                    </td>
+                    <td>
+                        <mat-form-field appearance="outline">
+                            <mat-label>Mesto/naselje </mat-label>
+                            <input matInput formControlName="mestoNaselje" />
+                        </mat-form-field>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <mat-form-field appearance="outline">
+                            <mat-label>Opstina/grad </mat-label>
+                            <input matInput formControlName="opstinaGrad" />
+                        </mat-form-field>
+                    </td>
+                </tr>
             </div>
-            <!--ADRESA KRAJ-->
-            <mat-form-field appearance="outline">
-                <mat-label>Fiksni telefon </mat-label>
-                <input matInput formControlName="fiksniBroj" />
-            </mat-form-field>
-            <mat-form-field appearance="outline">
-                <mat-label>Mobilni telefon </mat-label>
-                <input matInput formControlName="mobilniBroj" />
-            </mat-form-field>
-            <mat-form-field appearance="outline">
-                <mat-label>Email </mat-label>
-                <input matInput formControlName="email" />
-            </mat-form-field>
-
-            <div formGroupName="radniStatus" class="containter">
-                <mat-form-field appearance="outline">
-                    <mat-label>Radni status</mat-label>
-                    <mat-select formControlName="radniStatus">
-                        <mat-option value="Zaposlen">Zaposlen</mat-option>
-                        <mat-option value="Penzioner">Penzioner</mat-option>
-                        <mat-option value="Nezaposlen">Nezaposlen</mat-option>
-                        <mat-option value="Učenik">Učenik</mat-option>
-                        <mat-option value="Student">Student</mat-option>
-                        <mat-option value="Dete">Dete</mat-option>
-                    </mat-select>
-                </mat-form-field>
-            </div>
-
-            <div formGroupName="zanimanjeZaposlenog" class="containter">
-                <mat-form-field appearance="outline">
-                    <mat-label>Zanimanje zaposlenog</mat-label>
-                    <mat-select formControlName="zanimanjeZaposlenog">
-                        <mat-option value="Zdravstvena zastita">Zdravstvena zaštita</mat-option>
-                        <mat-option value="Socijalna zastita">Socijalna zaštita</mat-option>
-                        <mat-option value="Prosveta">Prosveta</mat-option>
-                        <mat-option value="MUP">MUP</mat-option>
-                        <mat-option value="Vojska RS">Vojska RS</mat-option>
-                        <mat-option value="Drugo">Drugo</mat-option>
-                    </mat-select>
-                </mat-form-field>
-            </div>
-
-            <div formGroupName="korisnikSocZastite" class="containter">
-                <mat-form-field appearance="outline">
-                    <mat-label>Korisnik socijalne zaštite (naziv opštine)</mat-label>
-                    <input matInput formControlName="value" />
-                </mat-form-field>
-            </div>
-            <!--KRAJ LICNI PODACI-->
+            <tr>
+                <td>
+                    <mat-form-field appearance="outline">
+                        <mat-label>Fiksni telefon </mat-label>
+                        <input matInput formControlName="fiksniBroj" />
+                    </mat-form-field>
+                </td>
+                <td>
+                    <mat-form-field appearance="outline">
+                        <mat-label>Mobilni telefon </mat-label>
+                        <input matInput formControlName="mobilniBroj" />
+                    </mat-form-field>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <mat-form-field appearance="outline">
+                        <mat-label>Email </mat-label>
+                        <input matInput formControlName="email" />
+                    </mat-form-field>
+                </td>
+                <td>
+                    <div formGroupName="radniStatus" class="containter">
+                        <mat-form-field appearance="outline">
+                            <mat-label>Radni status</mat-label>
+                            <mat-select formControlName="radniStatus">
+                                <mat-option value="Zaposlen">Zaposlen</mat-option>
+                                <mat-option value="Penzioner">Penzioner</mat-option>
+                                <mat-option value="Nezaposlen">Nezaposlen</mat-option>
+                                <mat-option value="Učenik">Učenik</mat-option>
+                                <mat-option value="Student">Student</mat-option>
+                                <mat-option value="Dete">Dete</mat-option>
+                            </mat-select>
+                        </mat-form-field>
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <div formGroupName="zanimanjeZaposlenog" class="containter">
+                        <mat-form-field appearance="outline">
+                            <mat-label>Zanimanje zaposlenog</mat-label>
+                            <mat-select formControlName="zanimanjeZaposlenog">
+                                <mat-option value="Zdravstvena zastita">Zdravstvena zaštita</mat-option>
+                                <mat-option value="Socijalna zastita">Socijalna zaštita</mat-option>
+                                <mat-option value="Prosveta">Prosveta</mat-option>
+                                <mat-option value="MUP">MUP</mat-option>
+                                <mat-option value="Vojska RS">Vojska RS</mat-option>
+                                <mat-option value="Drugo">Drugo</mat-option>
+                            </mat-select>
+                        </mat-form-field>
+                    </div>
+                </td>
+                <td>
+                    <div formGroupName="korisnikSocZastite" class="containter">
+                        <mat-form-field appearance="outline">
+                            <mat-label>Korisnik socijalne zaštite (naziv opštine)</mat-label>
+                            <input matInput formControlName="value" />
+                        </mat-form-field>
+                    </div>
+                </td>
+            </tr>
         </div>
+        </table>
+
         <button mat-flat-button class="align-center" color="primary" type="submit">
             Submit
         </button>
+
     </form>
 </div>

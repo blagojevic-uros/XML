@@ -1,3 +1,25 @@
-<div class="containter">
-    <app-saglasnost-form [saglasnostForm]="saglasnostForm" (submitFormEvent)="onSubmit()"></app-saglasnost-form>
-</div>
+<div class="all">
+    <div class="header">
+      <div class="item">
+        <a href="#">Moji Dokumenti</a>
+      </div>
+      <div class="item">
+        <a href="interesovanje/create">Kreiraj Interesovanje</a>
+      </div>
+      <div class="item">
+        <a href="saglasnost/create">Kreiraj Saglasnost</a>
+      </div>
+      <div class="item">
+        <a href="#">Kreiraj Potvrdu</a>
+      </div>
+      <div class="item">
+        <a href="#">Kreiraj Sertifikat</a>
+      </div>
+      <div class="item" (click)="logout()">
+        <a href="/login" >Logout</a>
+      </div>
+    </div>
+    <div class="body">
+        <app-saglasnost-form [saglasnostForm]="saglasnostForm" (submitFormEvent)="onSubmit()"></app-saglasnost-form>
+    </div>
+  </div>

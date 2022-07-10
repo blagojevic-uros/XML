@@ -11,6 +11,7 @@ import { SaglasnostService } from '../../service/saglasnost.service';
 export class CreateSaglasnostComponent implements OnInit {
   saglasnostForm!: FormGroup;
   bol!: false;
+  router: any;
   constructor(
     private fb: FormBuilder,
     private saglasnostService: SaglasnostService,
@@ -70,7 +71,12 @@ export class CreateSaglasnostComponent implements OnInit {
 
     })
   }
-
+  logout() {
+    localStorage.removeItem('user');
+    console.log("")
+    // this.router.navigate(['/login']);
+    location.reload();
+  }
   ngOnInit(): void {
     this.saglasnostService
       .checkIfExist("2894536f-4c48-4843-a5a3-0a3b1a52e1f8")

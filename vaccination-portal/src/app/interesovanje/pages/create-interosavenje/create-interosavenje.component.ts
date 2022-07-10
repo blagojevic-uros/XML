@@ -47,9 +47,9 @@ export class CreateInterosavenjeComponent implements OnInit {
   }
   logout() {
     localStorage.removeItem('user');
-    
+    // alert("123")
+    // this.router.navigate(['/123']);
     location.reload();
-    this.router.navigate(['/123']);
   }
   onSubmit() {
     this.interesovanjeService

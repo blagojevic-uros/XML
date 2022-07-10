@@ -14,9 +14,11 @@ import {
 export class InteresovanjeFormComponent implements OnInit {
   @Input() interesovanjeForm!: FormGroup;
   @Output() submitFormEvent = new EventEmitter();
+  router: any;
   constructor(private fb: FormBuilder) {}
 
   ngOnInit(): void {}
+
 
   onSubmit() {
     this.submitFormEvent.emit();
