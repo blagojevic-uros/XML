@@ -1,6 +1,28 @@
-<div class="containter">
+<div class="all">
+  <div class="header">
+    <div class="item">
+      <a href="#">Moji Dokumenti</a>
+    </div>
+    <div class="item">
+      <a href="interesovanje/create">Kreiraj Interesovanje</a>
+    </div>
+    <div class="item">
+      <a href="saglasnost/create">Kreiraj Saglasnost</a>
+    </div>
+    <div class="item">
+      <a href="potvrda/create">Kreiraj Potvrdu</a>
+    </div>
+    <div class="item">
+      <a href="#">Kreiraj Sertifikat</a>
+    </div>
+    <div class="item" (click)="logout()">
+      <a href="/login" >Logout</a>
+    </div>
+  </div>
+  <div class="body">
     <app-potvrda-form
       [potvrdaForm]="potvrdaForm"
       (submitFormEvent)="onSubmit()"
     ></app-potvrda-form>
+  </div>
 </div>

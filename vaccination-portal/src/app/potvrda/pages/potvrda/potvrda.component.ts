@@ -41,6 +41,12 @@ export class PotvrdaComponent implements OnInit {
       //qr: ['', Validators.required]
     });
   }
+  logout() {
+    localStorage.removeItem('user');
+    // alert("123")
+    // this.router.navigate(['/123']);
+    location.reload();
+  }
   onSubmit() {
     this.potvrdaService
       .save(this.potvrdaForm.value)
