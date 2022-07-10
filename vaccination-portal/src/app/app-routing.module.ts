@@ -52,13 +52,21 @@ const routes: Routes = [
       ),
   },
   {
+
     path: 'saglasnost',
     component: RootLayoutComponent,
     loadChildren: () =>
       import('./saglasnost/saglasnost.module').then(
         (m) => m.SaglasnostModule
-      )
+      ),},
+  {
 
+    path: 'potvrda',
+    component: RootLayoutComponent,
+    loadChildren: () =>
+      import('./potvrda/potvrda.module').then(
+        (m) => m.PotvrdaModule
+      ),
   },
   {
     path: '**',
