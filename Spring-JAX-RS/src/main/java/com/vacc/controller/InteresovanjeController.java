@@ -75,7 +75,7 @@ public class InteresovanjeController {
     @GetMapping("/jmbg")
     @Produces("application/xml")
     @PreAuthorize("hasRole('ROLE_PACIJENT')")
-    public ResponseEntity<List<Interesovanje>> getAllJMBG(Authentication authentication) throws XMLDBException {
+    public ResponseEntity<?> getAllJMBG(Authentication authentication) throws XMLDBException {
         Korisnik k = (Korisnik) authentication.getPrincipal();
         return new ResponseEntity<>(this.interesovanjeService.getAllJMBG(k.getJmbg()),HttpStatus.OK);
     }

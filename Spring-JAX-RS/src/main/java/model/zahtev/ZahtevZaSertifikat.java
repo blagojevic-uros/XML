@@ -96,7 +96,9 @@ import javax.xml.datatype.XMLGregorianCalendar;
     "razlogZaZahtev",
     "mesto",
     "datumZahteva",
-    "potpis"
+    "potpis",
+    "status",
+    "zahtevId"
 })
 @XmlRootElement(name = "zahtev_za_sertifikat")
 public class ZahtevZaSertifikat {
@@ -111,6 +113,11 @@ public class ZahtevZaSertifikat {
     protected DatumZahteva datumZahteva;
     @XmlElement(required = true)
     protected String potpis;
+    @XmlElement(required = true)
+    protected String status;
+
+    @XmlElement(required = true)
+    protected String zahtevId;
     @XmlAttribute(name = "sertifikat")
     @XmlSchemaType(name = "anySimpleType")
     protected String sertifikat;
@@ -246,6 +253,15 @@ public class ZahtevZaSertifikat {
     public void setPotpis(String value) {
         this.potpis = value;
     }
+
+
+    public void setStatus(String value) {this.status = value;}
+
+    public String getStatus() {return status;}
+
+    public void setZahtevId(String value) {this.zahtevId = value;}
+
+    public String getZahtevId() {return zahtevId;}
 
     /**
      * Gets the value of the sertifikat property.

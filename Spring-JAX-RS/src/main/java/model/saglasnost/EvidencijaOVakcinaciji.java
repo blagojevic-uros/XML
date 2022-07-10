@@ -194,7 +194,7 @@ public class EvidencijaOVakcinaciji {
 
         /**
          * Gets the value of the vakcinisanje property.
-         * 
+      2   *
          * <p>
          * This accessor method returns a reference to the live list,
          * not a snapshot. Therefore any modification you make to the

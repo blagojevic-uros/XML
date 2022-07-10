@@ -1,6 +1,7 @@
 package com.vacc.dao;
 
 import com.vacc.config.DBConfig;
+import lombok.Getter;
 import model.interesovanje.Interesovanje;
 import model.zahtev.ZahtevZaSertifikat;
 import org.springframework.stereotype.Component;
@@ -10,6 +11,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Component
+@Getter
 public class ZahtevDAO extends DataAccessLayer{
 
     private final String folderPath="/db/zahtev";
@@ -33,4 +35,16 @@ public class ZahtevDAO extends DataAccessLayer{
 
     }
 
+    public List<ZahtevZaSertifikat> getAllPendingJmbgZahtevi(String jmbg) {
+        String xPath = String.format("//zahtev_za_sertifikat[licni_podaci/JMBG='%s' and status='PENDING']",jmbg);
+        List<ZahtevZaSertifikat> zahtevi = new ArrayList<>();
+        try{
+            zahtevi = this.xPathResult(this.dbConfig.getUrl()+folderPath, xPath,"http://ftn.uns.ac.rs/vakcina/zahtev",ZahtevZaSertifikat.class);
+        }
+        catch(XMLDBException xe){
+            xe.printStackTrace();
+        }
+
+        return zahtevi;
+    }
 }

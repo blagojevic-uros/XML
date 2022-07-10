@@ -1,13 +1,12 @@
+
 <form
     [formGroup]="zahtevForm"
     class="container"
     (ngSubmit)="onSubmit()"
 >
-
-    <h3>Zahtev za izdavanje digitalnog zelenog sertifikata</h3>
-
+<h3>Zahtev za izdavanje digitalnog zelenog sertifikata</h3>
     <div formGroupName="licniPodaci" class="container">
-        <div formGroupName="imePrezime" class="container">
+        <div formGroupName="imePrezime" class="containter">
             <mat-form-field appearance="outline">
                 <mat-label>Ime</mat-label>
                 <input matInput id="ime" formControlName="ime" type="text">
@@ -17,10 +16,13 @@
                 <input matInput id="prezime" formControlName="prezime" type="text">
             </mat-form-field>
         </div>
-        <mat-form-field appearance="outline">
+        <div class="container">
+        <mat-form-field appearance="outline" >
             <mat-label>Datum Rođenja</mat-label>
             <input matInput formControlName="datumRodjenja" type="date">
+
         </mat-form-field>
+    </div>
             <mat-form-field appearance="outline">
                 <mat-label>Pol</mat-label>
                 <mat-select formControlName="pol">
