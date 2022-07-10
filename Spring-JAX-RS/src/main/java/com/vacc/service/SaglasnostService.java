@@ -58,7 +58,7 @@ public class SaglasnostService {
 
 
     public void updateSaglasnost(EvidencijaOVakcinaciji evidencijaOVakcinaciji,String jmbg) throws Exception {
-        evidencijaOVakcinaciji.getTabelaVakcinisanja()
+//        evidencijaOVakcinaciji.getTabelaVakcinisanja();
         SaglasnostZaImunizaciju saglasnostZaImunizaciju = getByIdObject(jmbg);
         saglasnostZaImunizaciju.setEvidencijaOVakcinaciji(evidencijaOVakcinaciji);
         save(saglasnostZaImunizaciju,jmbg);
