@@ -33,7 +33,8 @@ export class ZahtevPageComponent implements OnInit {
         value: ['', Validators.required],
       }),
       datum_zahtev:  [new Date()],
-      potpis: ['', Validators.required]
+      potpis: ['', Validators.required],
+      status: ['PENDING']
     });
   }
   onSubmit() {

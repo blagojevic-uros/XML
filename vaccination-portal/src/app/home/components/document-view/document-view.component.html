@@ -1,7 +1,8 @@
 <p>Vasi dokumenti</p>
 <ol>
-  <ul>Interesovanje: {{interesovanje[0] | xml }}</ul>
-  <ul>Saglasnost: {{saglasnost}}</ul>
-  <ul>Potvrda: </ul>
-  <ul>Sertifikat: {{sertifikati |json}}</ul>
+  <ul><h2>Interesovanje: </h2>{{interesovanje[0] | json}}</ul>
+  <ul><h2>Saglasnost:</h2> {{saglasnost | json}}</ul>
+  <ul><h2>Potvrda:</h2> </ul>
+  <ul><h2>Sertifikati:</h2> 
+  <p *ngFor="let sertifikat of sertifikati">{{sertifikat|json}}</p></ul>
 </ol>

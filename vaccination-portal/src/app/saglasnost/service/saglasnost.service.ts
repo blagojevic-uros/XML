@@ -25,4 +25,7 @@ export class SaglasnostService {
       { responseType: 'text' }
     );
   }
+  getSaglasnost(): Observable<any> {
+    return this.http.get<any>("http://localhost:9090/api/saglasnost/jmbg")
+  }
 }

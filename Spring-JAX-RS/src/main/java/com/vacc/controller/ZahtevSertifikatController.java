@@ -10,8 +10,10 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.Authentication;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.server.ResponseStatusException;
+import org.xmldb.api.base.XMLDBException;
 
 import javax.ws.rs.Produces;
+import javax.xml.bind.JAXBException;
 import java.text.ParseException;
 
 @RestController
@@ -40,5 +42,19 @@ public class ZahtevSertifikatController {
     @Produces("application/xml")
     public ResponseEntity<?> getCountInRange(@PathVariable("start") String start, @PathVariable("end") String end) throws ParseException {
         return new ResponseEntity<>(this.zahtevService.getCountInRange(start,end),HttpStatus.OK);
+    }
+    @GetMapping("/decline/{id}")
+    public ResponseEntity<?> declineZahtev(@PathVariable String id) throws JAXBException, XMLDBException {
+        this.zahtevService.updateStatus(id,"DECLINED");
+        return new ResponseEntity<>("Declined Zahtev with id : " + id, HttpStatus.OK);
+    }
+    @GetMapping("/accept/{id}")
+    public ResponseEntity<?> acceptZahtev(@PathVariable String id) throws JAXBException, XMLDBException {
+        this.zahtevService.updateStatus(id,"ACCEPTED");
+        return new ResponseEntity<>("Accepted Zahtev with id : " + id, HttpStatus.OK);
+    }
+    @GetMapping("/pending/{jmbg}")
+    public ResponseEntity<?> getAllPendingJmbg(@PathVariable String jmbg){
+        return new ResponseEntity<>(this.zahtevService.getAllPendingUserZahtevi(jmbg),HttpStatus.OK);
     }
 }

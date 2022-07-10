@@ -8,6 +8,8 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.Authentication;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @RestController
 @RequestMapping(path="/api/sertifikat")
 public class SertifikatController {
@@ -29,7 +31,7 @@ public class SertifikatController {
         return new ResponseEntity<>(sertifikatService.getAllJmbg(jmbg), HttpStatus.OK);
     }
     @GetMapping("/all")
-    public ResponseEntity<?> getAllJmbg(Authentication authentication){
+    public ResponseEntity<List<ZeleniSertifikat>> getAllJmbg(Authentication authentication){
         Korisnik k = (Korisnik) authentication.getPrincipal();
         return new ResponseEntity<>(sertifikatService.getAllJmbg(k.getJmbg()), HttpStatus.OK);
     }

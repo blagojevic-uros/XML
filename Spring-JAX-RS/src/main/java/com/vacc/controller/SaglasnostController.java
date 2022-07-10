@@ -7,6 +7,7 @@ import model.saglasnost.*;
 import org.apache.coyote.Response;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.security.core.Authentication;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.server.ResponseStatusException;
@@ -40,6 +41,18 @@ public class SaglasnostController {
     public ResponseEntity<?> getSaglasnost(@RequestParam("jmbg") String jmbg) throws Exception {
         try{
             return new ResponseEntity<>(this.saglasnostService.getByIdObject(jmbg), HttpStatus.OK);
+        }
+        catch (Exception e){
+            throw new Exception();
+        }
+    }
+    @GetMapping("/jmbg")
+    @PreAuthorize("hasRole('ROLE_PACIJENT')")
+    @Produces("application/xml")
+    public ResponseEntity<?> getSaglasnost(Authentication authentication) throws Exception {
+        try{
+            Korisnik k = (Korisnik) authentication.getPrincipal();
+             return new ResponseEntity<>(this.saglasnostService.getByIdObject(k.getJmbg()), HttpStatus.OK);
         }
         catch (Exception e){
             throw new Exception();
