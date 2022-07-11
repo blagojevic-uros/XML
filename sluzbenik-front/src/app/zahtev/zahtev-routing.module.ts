@@ -1,14 +1,13 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { ZahtevPageComponent } from './pages/zahtev-page/zahtev-page.component';
-
-
+import { ZahtevComponent } from './pages/zahtev/zahtev.component';
 
 const routes: Routes = [
+
   {
-    path: 'create',
+    path: '',
     pathMatch: 'full',
-    component: ZahtevPageComponent,
+    component: ZahtevComponent,
   },
 ];
 
@@ -16,4 +15,4 @@ const routes: Routes = [
   imports: [RouterModule.forChild(routes)],
   exports: [RouterModule]
 })
-export class ZahtevZaSertifikatRoutingModule { }
+export class ZahtevRoutingModule { }

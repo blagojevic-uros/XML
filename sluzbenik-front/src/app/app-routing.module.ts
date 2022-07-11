@@ -19,6 +19,14 @@ const routes: Routes = [
       ),
   },
   {
+    path: 'zahtev',
+    component: RootLayoutComponent,
+    loadChildren: () =>
+      import('./zahtev/zahtev.module').then(
+        (m) => m.ZahtevModule
+      ),
+  },
+  {
     path: 'vakcine',
     component: RootLayoutComponent,
     loadChildren: () =>

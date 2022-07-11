@@ -1,20 +1,20 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { ZahtevPageComponent } from './zahtev-page.component';
+import { ZahtevListComponent } from './zahtev-list.component';
 
-describe('ZahtevPageComponent', () => {
-  let component: ZahtevPageComponent;
-  let fixture: ComponentFixture<ZahtevPageComponent>;
+describe('ZahtevListComponent', () => {
+  let component: ZahtevListComponent;
+  let fixture: ComponentFixture<ZahtevListComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ ZahtevPageComponent ]
+      declarations: [ ZahtevListComponent ]
     })
     .compileComponents();
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(ZahtevPageComponent);
+    fixture = TestBed.createComponent(ZahtevListComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

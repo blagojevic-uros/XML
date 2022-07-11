@@ -1,6 +1,5 @@
 package com.vacc.service;
 
-import com.vacc.Exception.NotFoundException;
 import com.vacc.dao.ZahtevDAO;
 import model.saglasnost.SaglasnostZaImunizaciju;
 import model.zahtev.ZahtevZaSertifikat;
@@ -19,10 +18,12 @@ public class ZahtevService {
     private final ZahtevDAO zahtevDAO;
     private final String folderPath="/db/zahtev";
 
+    private final EmailService emailService;
     private final SaglasnostService saglasnostService;
-    public ZahtevService(ObjectParser objectParser, ZahtevDAO zahtevDAO, SaglasnostService saglasnostService) {
+    public ZahtevService(ObjectParser objectParser, ZahtevDAO zahtevDAO, EmailService emailService, SaglasnostService saglasnostService) {
         this.objectParser = objectParser;
         this.zahtevDAO = zahtevDAO;
+        this.emailService = emailService;
         this.saglasnostService = saglasnostService;
     }
 
@@ -61,13 +62,23 @@ public class ZahtevService {
         return this.zahtevDAO.getCountDateRange(start,end);
     }
 
-    public void updateStatus(String id,String status) throws JAXBException, XMLDBException {
+    public ZahtevZaSertifikat updateStatus(String id,String status) throws Exception {
         String document_id = "zahtev-" + id + ".xml";
         ZahtevZaSertifikat zahtevZaSertifikat = getById(document_id);
         zahtevZaSertifikat.setStatus(status);
         zahtevDAO.save(zahtevDAO.getFolderPath(),document_id,zahtevZaSertifikat,ZahtevZaSertifikat.class);
+        return zahtevZaSertifikat;
     }
 
+    public void declineZahtev(String id,String status,String reason) throws Exception {
+
+        ZahtevZaSertifikat zahtevZaSertifikat = updateStatus(id,status);
+        emailService.sendZahtevDeclineMail(getEmailFromSaglasnost(zahtevZaSertifikat.getLicniPodaci().getJMBG().getValue()),reason);
+    }
+
+    public String getEmailFromSaglasnost(String jmbg) throws Exception {
+        return saglasnostService.getByIdObject(jmbg).getLicniPodaci().getDrzavljanstvo().getSrpsko().getJMBG().getValue();
+    }
     public List<ZahtevZaSertifikat> getAllPendingUserZahtevi(String jmbg){
         List<ZahtevZaSertifikat> zahtevZaSertifikat = zahtevDAO.getAllPendingJmbgZahtevi(jmbg);
         return zahtevZaSertifikat;
