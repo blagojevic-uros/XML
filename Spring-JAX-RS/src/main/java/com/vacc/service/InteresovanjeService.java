@@ -59,6 +59,7 @@ public class InteresovanjeService {
         if (interesovanje == null) {
             throw new Exception();
         }
+        System.out.println("Working Directory AAAAAA= " + System.getProperty("user.dir"));
         return pdfTransformerService.generatePDF(interesovanje, XSLFOPaths.INTERESOVANJE_XSL_FO);
     }
 
@@ -67,6 +68,7 @@ public class InteresovanjeService {
         if (interesovanje == null) {
             throw new Exception();
         }
+        System.out.println("Working Directory BBBB= " + System.getProperty("user.dir"));
         return xhtmlTransformerService.generateHTML(interesovanje, XSLPaths.INTERESOVANJE_XSL);
     }
     public String getById(String id) throws Exception {
