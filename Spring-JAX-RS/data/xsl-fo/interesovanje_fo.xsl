@@ -1,8 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
     xmlns:fo="http://www.w3.org/1999/XSL/Format"
-    xmlns:in="http:///www.ftn.uns.ac.rs/vakcinacija/interesovanje"
-    xmlns:ct="http:///www.ftn.uns.ac.rs/vakcinacija/commonTypes"
+    xmlns:in="http://ftn.uns.ac.rs/vakcina/interesovanje"
     version="2.0">
     <xsl:template match="/">
         <fo:root>
@@ -22,7 +21,7 @@
                         	 	Gradjanin je:
                         	 </fo:inline>
                             <fo:inline>
-                                <xsl:value-of select="//in:LicniPodaci/in:Drzavljanstvo/text()"/>
+                                <xsl:value-of select="//in:licni_podaci/in:drzavljanstvo/text()"/>
                             </fo:inline>
                     </fo:block>
                     
@@ -31,7 +30,7 @@
                         	    JMBG:
                         	 </fo:inline>
                             <fo:block  padding-left="50px">
-                                <xsl:value-of select="//in:LicneInformacije/in:JMBG/text()"/>
+                                <xsl:value-of select="//in:licni_podaci/in:JMBG/text()"/>
                             </fo:block>
                     </fo:block>
                     
@@ -40,7 +39,7 @@
                         	    Ime:
                         	 </fo:inline>
                             <fo:block padding-left="50px">
-                                <xsl:value-of select="//in:LicneInformacije/in:PunoIme/ct:Ime/text()"/>
+                                <xsl:value-of select="//in:licni_podaci/in:ime/text()"/>
                             </fo:block>
                     </fo:block>
                     
@@ -49,7 +48,7 @@
                         	    Prezime:
                         	 </fo:inline>
                             <fo:block padding-left="50px">
-                                <xsl:value-of select="//in:LicneInformacije/in:PunoIme/ct:Prezime/text()"/>
+                                <xsl:value-of select="//in:licni_podaci/in:prezime/text()"/>
                             </fo:block>
                     </fo:block>
                     
@@ -58,7 +57,7 @@
                         	    Adresa elektronske poste:
                         	 </fo:inline>
                             <fo:block padding-left="50px">
-                                <xsl:value-of select="//in:LicneInformacije/in:AdresaElektronskePoste/text()"/>
+                                <xsl:value-of select="//in:licni_podaci/in:email/text()"/>
                             </fo:block>
                     </fo:block>
                     
@@ -67,7 +66,7 @@
                         	    Broj mobilnog telefona:
                         	 </fo:inline>
                             <fo:block padding-left="50px">
-                                <xsl:value-of select="//in:LicneInformacije/in:BrojMobilnogTelefona/text()"/>
+                                <xsl:value-of select="//in:licni_podaci/in:mobilni_telefon/text()"/>
                             </fo:block>
                     </fo:block>
                     
@@ -76,25 +75,25 @@
                         	    Broj fiksnog telefona:
                         	 </fo:inline>
                             <fo:block padding-left="50px">
-                                <xsl:value-of select="//in:LicneInformacije/in:BrojFiksnogTelefona/text()"/>
+                                <xsl:value-of select="//in:licni_podaci/in:fiksni_telefon/text()"/>
                             </fo:block>
                     </fo:block>
                     
-                    <fo:block font-size="13px" padding="10px">
-                        	 <fo:inline font-weight="bold">
-                        	    Broj fiksnog telefona:
-                        	 </fo:inline>
-                            <fo:block padding-left="50px">
-                                <xsl:value-of select="//in:LicneInformacije/in:BrojFiksnogTelefona/text()"/>
-                            </fo:block>
-                    </fo:block>
+<!--                    <fo:block font-size="13px" padding="10px">-->
+<!--                        	 <fo:inline font-weight="bold">-->
+<!--                        	    Broj fiksnog telefona:-->
+<!--                        	 </fo:inline>-->
+<!--                            <fo:block padding-left="50px">-->
+<!--                                <xsl:value-of select="//in:licni_podaci/in:fiksni_telefon/text()"/>-->
+<!--                            </fo:block>-->
+<!--                    </fo:block>-->
                     
                     <fo:block font-size="13px" padding="10px">
                         	 <fo:inline font-weight="bold">
                         	    Opstina primanja:
                         	 </fo:inline>
                             <fo:block padding-left="50px">
-                                <xsl:value-of select="//in:OpstinaPrimanja/text()"/>
+                                <xsl:value-of select="//in:lokacija_vakcinisanja/text()"/>
                             </fo:block>
                     </fo:block>
                     
@@ -103,7 +102,7 @@
                         	    Tip vakcina:
                         	 </fo:inline>
                             <fo:block padding-left="50px">
-                                <xsl:value-of select="//in:Vakcina/text()"/>
+                                <xsl:value-of select="//in:tip_vakcine/text()"/>
                             </fo:block>
                     </fo:block>
                     
@@ -113,12 +112,12 @@
                         	 </fo:inline>
                             <fo:block padding-left="50px">
                                 <xsl:choose>
-									 <xsl:when test="//in:DavalacKrvi/text()='true'">
+									 <xsl:when test="//in:davalac_krvi/text()='true'">
 									  	<p style = "padding-top:10px;">
 						                	Da
 						                </p>
 									 </xsl:when>
-									 <xsl:when test="//in:DavalacKrvi/text()='false'">
+									 <xsl:when test="//in:davalac_krvi/text()='false'">
 									  	<p style = "padding-top:10px;">
 						                	Ne
 						                </p>
@@ -132,7 +131,7 @@
 	                            <fo:inline>
 	                                Datum izdavanja: 
 	                                <fo:inline text-decoration="underline">
-	                                   <xsl:value-of select="//in:DatumPodnosenja/text()"/>
+	                                   <xsl:value-of select="//in:datum/text()"/>
 	                                </fo:inline>
 	                                godine
 	                            </fo:inline>
