@@ -52,8 +52,7 @@ public class InteresovanjeService {
             this.interesovanjeDAO.save(folderPath,documentId,interesovanje,Interesovanje.class);
             ByteArrayDataSource ds = new ByteArrayDataSource(generisiPdf(uniqueID), "application/pdf");
             System.out.println(ds);
-            emailService.sendMailWithAttachment(interesovanje.getLicniPodaci().getEmail(),"test","test",ds);
-//            emailService.sendMailForSaglasnost(interesovanje.getLicniPodaci().getEmail(),new Date(),mimeMultipart);
+            emailService.sendMail(interesovanje.getLicniPodaci().getEmail(),"test","test",ds);
             return uniqueID;
         }
         catch (Exception e){

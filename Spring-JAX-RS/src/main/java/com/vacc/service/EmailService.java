@@ -1,21 +1,28 @@
 package com.vacc.service;
 
+import org.apache.commons.compress.utils.IOUtils;
+import org.apache.jena.sparql.function.library.leviathan.log;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.core.io.ByteArrayResource;
+import org.springframework.core.io.ClassPathResource;
+import org.springframework.core.io.FileSystemResource;
+import org.springframework.core.io.InputStreamSource;
 import org.springframework.mail.MailException;
 import org.springframework.mail.SimpleMailMessage;
 import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.mail.javamail.MimeMessageHelper;
 import org.springframework.mail.javamail.MimeMessagePreparator;
 import org.springframework.stereotype.Service;
+import org.springframework.ui.freemarker.FreeMarkerTemplateUtils;
 
 import javax.activation.DataHandler;
 import javax.mail.Message;
+import javax.mail.MessagingException;
 import javax.mail.Session;
-import javax.mail.internet.InternetAddress;
-import javax.mail.internet.MimeBodyPart;
-import javax.mail.internet.MimeMessage;
-import javax.mail.internet.MimeMultipart;
+import javax.mail.internet.*;
 import javax.mail.util.ByteArrayDataSource;
+import java.io.IOException;
+import java.nio.charset.StandardCharsets;
 import java.util.Date;
 import java.util.Properties;
 
@@ -43,35 +50,39 @@ public class EmailService{
         javaMailSender.send(message);
         System.out.println("Email sent...");
     }
-
-    public void sendMailWithAttachment(String to, String subject, String body,  ByteArrayDataSource ds)
-    {
-        MimeMessagePreparator preparator = new MimeMessagePreparator()
-        {
-            public void prepare(MimeMessage mimeMessage) throws Exception
-            {
-                mimeMessage.setRecipient(Message.RecipientType.TO, new InternetAddress(to));
-                mimeMessage.setFrom(new InternetAddress(username));
-                mimeMessage.setSubject(subject);
-                mimeMessage.setText(body);
-                MimeMultipart mimeMultipart = new MimeMultipart();
-                MimeBodyPart attachment = new MimeBodyPart();
-                attachment.setDataHandler(new DataHandler(ds));
-                attachment.setFileName("Interesovanje.pdf");
-                mimeMultipart.addBodyPart(attachment);
-                mimeMessage.setContent(mimeMultipart);
-                MimeMessageHelper helper = new MimeMessageHelper(mimeMessage, true);
-            }
-        };
-
+    public String sendMail(String to, String subject, String body, ByteArrayDataSource ds ) {
+        String response;
+        MimeMessage message = javaMailSender.createMimeMessage();
         try {
-            javaMailSender.send(preparator);
+            MimeMessageHelper helper = new MimeMessageHelper(message, MimeMessageHelper.MULTIPART_MODE_MIXED_RELATED,
+                    StandardCharsets.UTF_8.name());
+            ClassPathResource pdf = new ClassPathResource("static/attachment.pdf");
+            ClassPathResource image = new ClassPathResource("static/asbnotebook.png");
+            helper.setTo(to);
+            helper.setFrom(username);
+            helper.setSubject(subject);
+            helper.setText(body, true);
+            helper.addAttachment("interesovanje.pdf", ds);
+            javaMailSender.send(message);
+            response = "Email has been sent to :" + to;
+        } catch (MessagingException e) {
+            response = "Email send failure to :" + to;
         }
-        catch (MailException ex) {
-            // simply log it and go on...
-            System.err.println(ex.getMessage());
-        }
+        return response;
     }
+//    public void sendMailWithAttachment()
+//    {
+//        MimeMessage message = javaMailSender.createMimeMessage();
+//        try {
+//            MimeMessageHelper helper = new MimeMessageHelper(message, true);
+//            helper.setFrom(username);
+//            helper.setTo(to);
+//            helper.setSubject(subject);
+//            helper.addAttachment("interesovanje.pdf", (InputStreamSource) ds, "application/pdf");
+//        } catch (Exception e) {
+//        }
+//        javaMailSender.send(message);
+//    }
     public void sendMailForSaglasnost(String email, Date datumVakcinisanja) throws Exception {
         try
         {
