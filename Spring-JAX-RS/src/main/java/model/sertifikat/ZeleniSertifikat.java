@@ -94,9 +94,9 @@ public class ZeleniSertifikat {
     @XmlElement(name = "izdavac_sertifikata", required = true)
     protected IzdavacSertifikata izdavacSertifikata;
     @XmlElement(required = true)
-    protected Vakcinacije vakcinacije;
+    protected Vakcinacije vakcinacije; // OSTALO OVO
     @XmlElement(required = true)
-    protected Testovi testovi;
+    protected Testovi testovi; //OSTALO OVO
     protected Prelezana prelezana;
     @XmlAttribute(name = "zahtev_za_sertifikat")
     protected String zahtevZaSertifikat;

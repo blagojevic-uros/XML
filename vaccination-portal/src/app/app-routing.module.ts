@@ -69,6 +69,14 @@ const routes: Routes = [
       ),
   },
   {
+    path: 'sertifikat',
+    component: RootLayoutComponent,
+    loadChildren: () =>
+      import('./sertifikat/sertifikat.module').then(
+        (m) => m.SertifikatModule
+      ),
+  },
+  {
     path: '**',
     component: NotFoundPageComponent,
   },

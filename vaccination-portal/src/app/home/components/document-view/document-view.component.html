@@ -199,14 +199,59 @@
   <mat-step [stepControl]="fourthFormGroup">
     <form [formGroup]="fourthFormGroup">
       <ng-template matStepLabel>Sertifikati</ng-template>
-      <mat-form-field appearance="fill">
-        <mat-label>Address</mat-label>
-        <input matInput formControlName="fourthCtrl" placeholder="Ex. 1 Main St, New York, NY"
-               required>
+      <mat-form-field appearance="fill" class="polje">
+        <mat-label>QR Code</mat-label>
+        <input matInput  formControlName="fourthCtrl" readonly>
       </mat-form-field>
+      <mat-form-field appearance="fill" class="polje">
+        <mat-label>Broj Sertifikata</mat-label>
+        <input matInput  formControlName="fourthCtrl" readonly>
+      </mat-form-field>
+      <mat-form-field appearance="fill" class="polje">
+        <mat-label>Datum Izdavanja Sertifikata</mat-label>
+        <input matInput  formControlName="fourthCtrl" readonly>
+      </mat-form-field>
+      <mat-form-field appearance="fill" class="polje">
+        <mat-label>Ime i Prezime</mat-label>
+        <input matInput  formControlName="fourthCtrl" readonly>
+      </mat-form-field>
+      <br>
+      <mat-form-field appearance="fill" class="polje">
+        <mat-label>Pol</mat-label>
+        <input matInput  formControlName="fourthCtrl" readonly>
+      </mat-form-field>
+      <mat-form-field appearance="fill" class="polje">
+        <mat-label>JMBG</mat-label>
+        <input matInput  formControlName="fourthCtrl" readonly>
+      </mat-form-field>
+      <mat-form-field appearance="fill" class="polje">
+        <mat-label>Broj Pasosa</mat-label>
+        <input matInput  formControlName="fourthCtrl" readonly>
+      </mat-form-field>
+      <mat-form-field appearance="fill" class="polje">
+        <mat-label>Izdavac Sertifikata</mat-label>
+        <input matInput  formControlName="fourthCtrl" readonly>
+      </mat-form-field>
+      <br>
+      <mat-form-field appearance="fill" class="polje">
+        <mat-label>Datum Pozitivnog</mat-label>
+        <input matInput  formControlName="fourthCtrl" readonly>
+      </mat-form-field>
+      <mat-form-field appearance="fill" class="polje">
+        <mat-label>Laboratorija</mat-label>
+        <input matInput  formControlName="fourthCtrl" readonly>
+      </mat-form-field>
+      <mat-form-field appearance="fill" class="polje">
+        <mat-label>Zahtev za Sertifikat</mat-label>
+        <input matInput  formControlName="fourthCtrl" readonly>
+      </mat-form-field>
+      <mat-form-field appearance="fill" class="polje">
+        <mat-label>Potvrda o Vakcinaciji</mat-label>
+        <input matInput  formControlName="fourthCtrl" readonly>
+      </mat-form-field>
+      <br>
       <div>
         <button mat-button matStepperPrevious>Back</button>
-        <button mat-button matStepperNext>Next</button>
       </div>
     </form>
   </mat-step>
