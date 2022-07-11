@@ -21,17 +21,17 @@ public class InteresovanjeRdf {
     public static void main(String[] args) throws Exception {
 
         run(conn.loadProperties(),
-                "src/main/resources/podaci/xml/interesovanje.xml","src/main/resources/podaci/gen/interesovanje.rdf");
+                "Spring-JAX-RS/src/main/resources/podaci/xml/interesovanje.xml","Spring-JAX-RS/src/main/resources/podaci/gen/interesovanje.rdf");
         run(RDFAuthenticationUtilities.loadProperties(),
-                "src/main/resources/podaci/xml/saglasnost_za_imunizaciju.xml","src/main/resources/podaci/gen/saglasnost_za_imunizaciju.rdf");
+                "Spring-JAX-RS/src/main/resources/podaci/xml/saglasnost_za_imunizaciju.xml","Spring-JAX-RS/src/main/resources/podaci/gen/saglasnost_za_imunizaciju.rdf");
         run(RDFAuthenticationUtilities.loadProperties(),
-                "src/main/resources/podaci/xml/potvrda_o_vakcinisanju.xml","src/main/resources/podaci/gen/potvrda_o_vakcinisanju.rdf");
+                "Spring-JAX-RS/src/main/resources/podaci/xml/potvrda_o_vakcinisanju.xml","Spring-JAX-RS/src/main/resources/podaci/gen/potvrda_o_vakcinisanju.rdf");
         run(RDFAuthenticationUtilities.loadProperties(),
-                "src/main/resources/podaci/xml/zahtev_za_sertifikat.xml","src/main/resources/podaci/gen/zahtev_za_sertifikat.rdf");
+                "Spring-JAX-RS/src/main/resources/podaci/xml/zahtev_za_sertifikat.xml","Spring-JAX-RS/src/main/resources/podaci/gen/zahtev_za_sertifikat.rdf");
         run(RDFAuthenticationUtilities.loadProperties(),
-                "src/main/resources/podaci/xml/zeleni_sertifikat.xml","src/main/resources/podaci/gen/zeleni_sertifikat.rdf");
+                "Spring-JAX-RS/src/main/resources/podaci/xml/zeleni_sertifikat.xml","Spring-JAX-RS/src/main/resources/podaci/gen/zeleni_sertifikat.rdf");
         run(RDFAuthenticationUtilities.loadProperties(),
-                "src/main/resources/podaci/xml/izvestaj.xml","src/main/resources/podaci/gen/izvestaj.rdf");
+                "Spring-JAX-RS/src/main/resources/podaci/xml/izvestaj.xml","Spring-JAX-RS/src/main/resources/podaci/gen/izvestaj.rdf");
         printAll(RDFAuthenticationUtilities.loadProperties());
     }
 
@@ -43,9 +43,9 @@ public class InteresovanjeRdf {
 //        String rdfFilePath = "src/main/resources/podaci/gen/interesovanje.rdf";
 
         // Automatic extraction of RDF triples from XML file
-        MetadataExtractor metadataExtractor = new MetadataExtractor(conn);
-        System.out.println(conn);
-        metadataExtractor.extractAndSave(xmlFilePath,rdfFilePath);
+//        MetadataExtractor metadataExtractor = new MetadataExtractor(rdfConfig, conn);
+//        System.out.println(conn);
+//        metadataExtractor.extractAndSave(xmlFilePath,rdfFilePath);
     }
 
     public static void printAll(RDFAuthenticationUtilities.ConnectionProperties conn){

@@ -43,13 +43,13 @@ public class ZahtevSertifikatController {
     public ResponseEntity<?> getCountInRange(@PathVariable("start") String start, @PathVariable("end") String end) throws ParseException {
         return new ResponseEntity<>(this.zahtevService.getCountInRange(start,end),HttpStatus.OK);
     }
-    @GetMapping("/decline/{id}")
-    public ResponseEntity<?> declineZahtev(@PathVariable String id) throws JAXBException, XMLDBException {
-        this.zahtevService.updateStatus(id,"DECLINED");
+    @GetMapping("/decline/{id}/{reason}")
+    public ResponseEntity<?> declineZahtev(@PathVariable String id,@PathVariable String reason) throws Exception {
+        this.zahtevService.declineZahtev(id,"DECLINED",reason);
         return new ResponseEntity<>("Declined Zahtev with id : " + id, HttpStatus.OK);
     }
     @GetMapping("/accept/{id}")
-    public ResponseEntity<?> acceptZahtev(@PathVariable String id) throws JAXBException, XMLDBException {
+    public ResponseEntity<?> acceptZahtev(@PathVariable String id) throws Exception {
         this.zahtevService.updateStatus(id,"ACCEPTED");
         return new ResponseEntity<>("Accepted Zahtev with id : " + id, HttpStatus.OK);
     }

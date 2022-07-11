@@ -22,9 +22,9 @@ public class SaglasnostRdf {
         String xmlFilePath = "src/main/resources/podaci/xml/saglasnost_za_imunizaciju.xml";
 
         String rdfFilePath = "src/main/resources/podaci/gen/saglasnost_za_imunizaciju.rdf";
-
-        // Automatic extraction of RDF triples from XML file
-        MetadataExtractor metadataExtractor = new MetadataExtractor(conn);
-        metadataExtractor.extractAndSave(xmlFilePath,rdfFilePath);
+//
+//        // Automatic extraction of RDF triples from XML file
+//        MetadataExtractor metadataExtractor = new MetadataExtractor(rdfConfig, conn);
+//        metadataExtractor.extractAndSave(xmlFilePath,rdfFilePath);
     }
 }

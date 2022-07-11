@@ -2,11 +2,23 @@ package com.vacc.service;
 
 import com.vacc.dao.InteresovanjeDAO;
 import model.interesovanje.Interesovanje;
+import org.springframework.core.io.FileSystemResource;
+import org.springframework.mail.javamail.MimeMessageHelper;
+import org.springframework.mail.javamail.MimeMessagePreparator;
 import org.springframework.stereotype.Service;
 import org.xmldb.api.base.XMLDBException;
 import org.xmldb.api.modules.XMLResource;
 import util.ObjectParser;
+import util.XSLFOPaths;
 
+import javax.activation.DataHandler;
+import javax.mail.Message;
+import javax.mail.internet.InternetAddress;
+import javax.mail.internet.MimeBodyPart;
+import javax.mail.internet.MimeMessage;
+import javax.mail.internet.MimeMultipart;
+import javax.mail.util.ByteArrayDataSource;
+import java.io.ByteArrayInputStream;
 import java.util.Date;
 import java.util.List;
 import java.util.UUID;
@@ -17,11 +29,14 @@ public class InteresovanjeService {
     private final ObjectParser objectParser;
     private final InteresovanjeDAO interesovanjeDAO;
     private final EmailService emailService;
+
+    private final PDFTransformerService pdfTransformerService;
     private final String folderPath="/db/interesovanje";
-    public InteresovanjeService(ObjectParser objectParser, InteresovanjeDAO interesovanjeDAO, EmailService emailService) {
+    public InteresovanjeService(ObjectParser objectParser, InteresovanjeDAO interesovanjeDAO, EmailService emailService, PDFTransformerService pdfTransformerService) {
         this.objectParser = objectParser;
         this.interesovanjeDAO = interesovanjeDAO;
         this.emailService = emailService;
+        this.pdfTransformerService = pdfTransformerService;
     }
 
     public String save(Interesovanje interesovanje) throws Exception{
@@ -32,9 +47,13 @@ public class InteresovanjeService {
         String documentId = "interesovanje-" + uniqueID + ".xml";
         //TODO: provera da li je vec izdao sta je trebao
         //TODO: naci termin u narednih 7 dana
-        emailService.sendMailForSaglasnost(interesovanje.getLicniPodaci().getEmail(),new Date());
+
         try{
             this.interesovanjeDAO.save(folderPath,documentId,interesovanje,Interesovanje.class);
+            ByteArrayDataSource ds = new ByteArrayDataSource(generisiPdf(uniqueID), "application/pdf");
+            System.out.println(ds);
+            emailService.sendMailWithAttachment(interesovanje.getLicniPodaci().getEmail(),"test","test",ds);
+//            emailService.sendMailForSaglasnost(interesovanje.getLicniPodaci().getEmail(),new Date(),mimeMultipart);
             return uniqueID;
         }
         catch (Exception e){
@@ -43,6 +62,16 @@ public class InteresovanjeService {
 
     }
 
+
+
+
+    public ByteArrayInputStream generisiPdf(String uniqueID) throws Exception {
+        String interesovanje = getById(uniqueID);
+        if (interesovanje == null) {
+            throw new Exception();
+        }
+        return pdfTransformerService.generatePDF(interesovanje, XSLFOPaths.INTERESOVANJE_XSL_FO);
+    }
     public String getById(String id) throws Exception {
         try{
             String documentId = "interesovanje-" + id + ".xml";

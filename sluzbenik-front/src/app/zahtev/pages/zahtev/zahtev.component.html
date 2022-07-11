@@ -1,0 +1,3 @@
+<input type="text" name="name" [(ngModel)]="searchInput" />
+<button mat-raised-button color="primary" (click)="searchJmbg()">Search</button>
+<app-zahtev-list (zahtevChangeEvent)="searchJmbg()" [zahtevi]="zahtevi"></app-zahtev-list>
