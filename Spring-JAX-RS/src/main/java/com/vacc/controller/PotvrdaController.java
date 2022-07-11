@@ -4,12 +4,12 @@ import com.vacc.service.PotvrdaService;
 import com.vacc.service.ZahtevService;
 import model.potvrda.PotvrdaOVakcinaciji;
 import model.zahtev.ZahtevZaSertifikat;
+import org.springframework.core.io.InputStreamResource;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.security.access.prepost.PreAuthorize;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.server.ResponseStatusException;
 
 import javax.ws.rs.Produces;
@@ -37,4 +37,14 @@ public class PotvrdaController {
 
     }
 
+    @GetMapping(value = "/generisiXhtml/{id}", produces = MediaType.TEXT_HTML_VALUE)
+    @PreAuthorize("hasAnyRole('ROLE_GRADJANIN', 'ROLE_SLUZBENIK')")
+    public ResponseEntity<InputStreamResource> generisiXHTML(@PathVariable String id) throws Exception {
+        return new ResponseEntity<>(new InputStreamResource(potvrdaService.generisiXHTML(id)), HttpStatus.OK);
+    }
+
+    @GetMapping(value = "/generisiPdf/{jmbg}/{brojDoze}", produces = MediaType.APPLICATION_PDF_VALUE)
+    public ResponseEntity<InputStreamResource> generisiPdf(@PathVariable String id) throws Exception {
+        return new ResponseEntity<>(new InputStreamResource(potvrdaService.generisiPdf(id)), HttpStatus.OK);
+    }
 }

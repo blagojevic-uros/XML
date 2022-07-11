@@ -39,8 +39,8 @@ public class PotvrdaService {
         String documentId = "potvrda-" + uniqueID + ".xml";
         try{
             this.potvrdaDAO.save(folderPath,documentId,potvrdaOVakcinaciji,PotvrdaOVakcinaciji.class);
-            ByteArrayDataSource pdf = new ByteArrayDataSource(generisiPdf(uniqueID), "application/pdf");
-            ByteArrayDataSource xhtml = new ByteArrayDataSource(generisiXHTML(uniqueID), "text/html");
+//            ByteArrayDataSource pdf = new ByteArrayDataSource(generisiPdf(uniqueID), "application/pdf");
+//            ByteArrayDataSource xhtml = new ByteArrayDataSource(generisiXHTML(uniqueID), "text/html");
             return uniqueID;
         }
         catch (Exception e){

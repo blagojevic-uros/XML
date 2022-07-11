@@ -4,7 +4,9 @@ package com.vacc.controller;
 import com.vacc.service.InteresovanjeService;
 import model.interesovanje.Interesovanje;
 import model.korisnik.Korisnik;
+import org.springframework.core.io.InputStreamResource;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.security.core.Authentication;
@@ -80,7 +82,17 @@ public class InteresovanjeController {
         return new ResponseEntity<>(this.interesovanjeService.getAllJMBG(k.getJmbg()),HttpStatus.OK);
     }
 
+    @GetMapping(value = "/generisiXhtml/{id}", produces = MediaType.TEXT_HTML_VALUE)
+    @PreAuthorize("hasAnyRole('ROLE_GRADJANIN', 'ROLE_SLUZBENIK')")
+    public ResponseEntity<InputStreamResource> generisiXHTML(@PathVariable String id) throws Exception {
+        return new ResponseEntity<>(new InputStreamResource(interesovanjeService.generisiXHTML(id)), HttpStatus.OK);
+    }
 
+    @GetMapping(value = "/generisiPdf/{id}", produces = MediaType.TEXT_HTML_VALUE)
+    @PreAuthorize("hasAnyRole('ROLE_GRADJANIN', 'ROLE_SLUZBENIK')")
+    public ResponseEntity<InputStreamResource> generisiPdf(@PathVariable String id) throws Exception {
+        return new ResponseEntity<>(new InputStreamResource(interesovanjeService.generisiPdf(id)), HttpStatus.OK);
+    }
 
 
 }
