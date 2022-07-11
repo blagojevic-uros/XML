@@ -67,8 +67,8 @@ public class ZahtevService {
         String documentId = "zahtev-" + uniqueID + ".xml";
         try{
             this.zahtevDAO.save(folderPath,documentId,zahtevZaSertifikat,ZahtevZaSertifikat.class);
-            ByteArrayDataSource pdf = new ByteArrayDataSource(generisiPdf(uniqueID), "application/pdf");
-            ByteArrayDataSource xhtml = new ByteArrayDataSource(generisiXHTML(uniqueID), "text/html");
+//            ByteArrayDataSource pdf = new ByteArrayDataSource(generisiPdf(uniqueID), "application/pdf");
+//            ByteArrayDataSource xhtml = new ByteArrayDataSource(generisiXHTML(uniqueID), "text/html");
             return uniqueID;
         }
         catch (Exception e){

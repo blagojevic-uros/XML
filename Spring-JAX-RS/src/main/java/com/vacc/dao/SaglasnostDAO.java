@@ -35,6 +35,10 @@ public class SaglasnostDAO extends DataAccessLayer{
         }
         return saglasnostZaImunizaciju;
     }
+
+//    public List<SaglasnostZaImunizaciju> getByFullId(String id, boolean jmbg){
+//
+//    }
 }
 
 

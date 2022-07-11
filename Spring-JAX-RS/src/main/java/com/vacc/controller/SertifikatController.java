@@ -3,8 +3,11 @@ package com.vacc.controller;
 import com.vacc.service.SertifikatService;
 import model.korisnik.Korisnik;
 import model.sertifikat.ZeleniSertifikat;
+import org.springframework.core.io.InputStreamResource;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.security.core.Authentication;
 import org.springframework.web.bind.annotation.*;
 
@@ -21,7 +24,7 @@ public class SertifikatController {
     }
 
     @PostMapping("/save")
-    public void save(@RequestBody ZeleniSertifikat sertifikat){
+    public void save(@RequestBody ZeleniSertifikat sertifikat) throws Exception {
 
         sertifikatService.save(sertifikat);
 
@@ -34,5 +37,17 @@ public class SertifikatController {
     public ResponseEntity<List<ZeleniSertifikat>> getAllJmbg(Authentication authentication){
         Korisnik k = (Korisnik) authentication.getPrincipal();
         return new ResponseEntity<>(sertifikatService.getAllJmbg(k.getJmbg()), HttpStatus.OK);
+    }
+
+    @GetMapping(value = "/generisiXhtml/{id}", produces = MediaType.TEXT_HTML_VALUE)
+    @PreAuthorize("hasAnyRole('ROLE_GRADJANIN', 'ROLE_SLUZBENIK')")
+    public ResponseEntity<InputStreamResource> generisiXHTML(@PathVariable String id) throws Exception {
+        return new ResponseEntity<>(new InputStreamResource(sertifikatService.generisiXHTML(id)), HttpStatus.OK);
+    }
+
+    @GetMapping(value = "/generisiPdf/{id}", produces = MediaType.TEXT_HTML_VALUE)
+    @PreAuthorize("hasAnyRole('ROLE_GRADJANIN', 'ROLE_SLUZBENIK')")
+    public ResponseEntity<InputStreamResource> generisiPdf(@PathVariable String id) throws Exception {
+        return new ResponseEntity<>(new InputStreamResource(sertifikatService.generisiPdf(id)), HttpStatus.OK);
     }
 }
