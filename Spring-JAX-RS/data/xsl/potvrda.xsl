@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
     xmlns:po="http://ftn.uns.ac.rs/vakcina/potvrda"
-    xmlns:ct="http:///www.ftn.uns.ac.rs/vakcinacija/commonTypes"
+    xmlns:ct="http://ftn.uns.ac.rs/vakcina/tipovi"
     version="2.0">
     <xsl:template match="/">
         <html>
@@ -56,40 +56,40 @@
         	<body>
         		<h1 id = "naslov">Potvrda o izvrsenoj vakcinaciji protiv COVID-19</h1>
         		<p style = "padding-top:10px">
-                   Ime i prezime: <xsl:value-of select="//po:LicneInformacije/po:PunoIme/ct:Ime/text()"/> <xsl:value-of select="//po:LicneInformacije/po:PunoIme/ct:Prezime/text()"/>
+                   Ime i prezime: <xsl:value-of select="//po:licni_podaci/po:ime_prezime/ct:ime/text()"/> <xsl:value-of select="//po:licni_podaci/po:ime_prezime/ct:prezime/text()"/>
                 </p>
                 
                 <p style = "padding-top:10px;">
-                	Datum rodjenja: <xsl:value-of select="//po:LicneInformacije/po:DatumRodjenja/text()"/>
+                	Datum rodjenja: <xsl:value-of select="//po:licni_podaci/po:datum_rodjenja/text()"/>
                 </p>
                 
                 <p style = "padding-top:10px;">
-                	Pol: <xsl:value-of select="//po:LicneInformacije/po:Pol/text()"/>
+                	Pol: <xsl:value-of select="//po:licni_podaci/po:datum_rodjenja/text()"/>
                 </p>
                 
                 <p style = "padding-top:10px;">
-                	JMBG: <xsl:value-of select="//po:LicneInformacije/po:JMBG/text()"/>
+                	JMBG: <xsl:value-of select="//po:licni_podaci/po:JMBG/text()"/>
                 </p>
                 
-                <xsl:for-each select="//po:InformacijeOVakcinama">
+                <xsl:for-each select="//po:informacije_vakcinacije">
                 	<p style = "padding-top:10px;">
-                		Datum davanja <xsl:value-of select="po:BrojDoze"/> doze i broj serije vakcine: <xsl:value-of select="concat(' ', po:DatumDavanja/text(), ' ', po:Serija/text())"/>
+                		Datum davanja <xsl:value-of select="po:broj_doze"/> doze i broj serije vakcine: <xsl:value-of select="concat(' ', po:datum_doze/text(), ' ', po:broj_serije/text())"/>
 	                </p>
 	                <p style = "padding-top:10px;">
-	                	Zdravstvena ustanova koja vakcinise: <xsl:value-of select="po:ZdravstvenaUstanova/text()"/>
-	                </p>
-	                
-	                <p style = "padding-top:10px;">
-	                	Naziv vakcine: <xsl:value-of select="po:VakcinaPrveDveDoze/text()"/>
+	                	Zdravstvena ustanova koja vakcinise: <xsl:value-of select="po:zdravstena_ustanova/text()"/>
 	                </p>
 	                
 	                <p style = "padding-top:10px;">
-	                	Datum izdavanja potvrde: <xsl:value-of select="po:DatumIzdavanja/text()"/>
+	                	Naziv vakcine: <xsl:value-of select="po:naziv_vakcine/text()"/>
+	                </p>
+	                
+	                <p style = "padding-top:10px;">
+	                	Datum izdavanja potvrde: <xsl:value-of select="po:datum_izdavanja_potvrde/text()"/>
 	                </p>
                 </xsl:for-each>
                 
                 
-                <xsl:variable name="QR" select="//po:QR/text()"/>
+                <xsl:variable name="QR" select="//po:qr_kod/text()"/>
                 <div style="width: 20vw; margin-right: 20vw; float:right">
                     <image src="data:image/jpeg;base64,{$QR}"/>
                 </div>

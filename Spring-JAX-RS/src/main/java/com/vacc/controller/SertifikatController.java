@@ -21,7 +21,7 @@ public class SertifikatController {
     }
 
     @PostMapping("/save")
-    public void save(@RequestBody ZeleniSertifikat sertifikat){
+    public void save(@RequestBody ZeleniSertifikat sertifikat) throws Exception {
 
         sertifikatService.save(sertifikat);
 
