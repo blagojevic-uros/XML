@@ -27,9 +27,9 @@ export class PotvrdaComponent implements OnInit {
           value: ['', Validators.required],
         }),
       }),
-      informacijaVakcinacije: this.fb.group({
+      informacijeVakcinacije: this.fb.group({
         informacijeODozi: this.fb.group({  
-          nazivVakcije: ['', Validators.required],
+          nazivVakcine: ['', Validators.required],
           datumDoze: ['', Validators.required],
           brojSerije: ['', Validators.required],
           brojDoze: ['', Validators.required],
@@ -38,7 +38,7 @@ export class PotvrdaComponent implements OnInit {
         }),
       datumIzdavanjaPotvrde:  [this.currentDate],
       zdravstvenaUstanova: ['', Validators.required],
-      //qr: ['', Validators.required]
+      qr: ['', Validators.required]
     });
   }
   logout() {
