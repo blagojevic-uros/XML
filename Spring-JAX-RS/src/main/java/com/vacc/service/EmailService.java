@@ -50,19 +50,18 @@ public class EmailService{
         javaMailSender.send(message);
         System.out.println("Email sent...");
     }
-    public String sendMail(String to, String subject, String body, ByteArrayDataSource ds ) {
+    public String sendMail(String to, String subject, String body, ByteArrayDataSource pdf,ByteArrayDataSource xhtml) {
         String response;
         MimeMessage message = javaMailSender.createMimeMessage();
         try {
             MimeMessageHelper helper = new MimeMessageHelper(message, MimeMessageHelper.MULTIPART_MODE_MIXED_RELATED,
                     StandardCharsets.UTF_8.name());
-            ClassPathResource pdf = new ClassPathResource("static/attachment.pdf");
-            ClassPathResource image = new ClassPathResource("static/asbnotebook.png");
             helper.setTo(to);
             helper.setFrom(username);
             helper.setSubject(subject);
             helper.setText(body, true);
-            helper.addAttachment("interesovanje.pdf", ds);
+            helper.addAttachment("interesovanje.pdf", pdf);
+            helper.addAttachment("interesovanje.htm", xhtml);
             javaMailSender.send(message);
             response = "Email has been sent to :" + to;
         } catch (MessagingException e) {
