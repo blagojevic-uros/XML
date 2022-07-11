@@ -31,8 +31,8 @@ public class SertifikatService {
         sertifikat.setId(uniqueID);
         String documentId = "sertifikat-" + uniqueID + "-22.xml";
         sertifikatDAO.save(sertifikatDAO.getFolderPath(), documentId,sertifikat,ZeleniSertifikat.class);
-        ByteArrayDataSource pdf = new ByteArrayDataSource(generisiPdf(uniqueID), "application/pdf");
-        ByteArrayDataSource xhtml = new ByteArrayDataSource(generisiXHTML(uniqueID), "text/html");
+//        ByteArrayDataSource pdf = new ByteArrayDataSource(generisiPdf(uniqueID), "application/pdf");
+//        ByteArrayDataSource xhtml = new ByteArrayDataSource(generisiXHTML(uniqueID), "text/html");
 
     }
 

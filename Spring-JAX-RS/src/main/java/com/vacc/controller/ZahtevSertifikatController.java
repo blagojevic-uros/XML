@@ -5,8 +5,11 @@ import com.vacc.service.ZahtevService;
 import model.interesovanje.Interesovanje;
 import model.korisnik.Korisnik;
 import model.zahtev.ZahtevZaSertifikat;
+import org.springframework.core.io.InputStreamResource;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.security.core.Authentication;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.server.ResponseStatusException;
@@ -56,5 +59,17 @@ public class ZahtevSertifikatController {
     @GetMapping("/pending/{jmbg}")
     public ResponseEntity<?> getAllPendingJmbg(@PathVariable String jmbg){
         return new ResponseEntity<>(this.zahtevService.getAllPendingUserZahtevi(jmbg),HttpStatus.OK);
+    }
+
+    @GetMapping(value = "/generisiXhtml/{id}", produces = MediaType.TEXT_HTML_VALUE)
+    @PreAuthorize("hasAnyRole('ROLE_GRADJANIN', 'ROLE_SLUZBENIK')")
+    public ResponseEntity<InputStreamResource> generisiXHTML(@PathVariable String id) throws Exception {
+        return new ResponseEntity<>(new InputStreamResource(zahtevService.generisiXHTML(id)), HttpStatus.OK);
+    }
+
+    @GetMapping(value = "/generisiPdf/{id}", produces = MediaType.TEXT_HTML_VALUE)
+    @PreAuthorize("hasAnyRole('ROLE_GRADJANIN', 'ROLE_SLUZBENIK')")
+    public ResponseEntity<InputStreamResource> generisiPdf(@PathVariable String id) throws Exception {
+        return new ResponseEntity<>(new InputStreamResource(zahtevService.generisiPdf(id)), HttpStatus.OK);
     }
 }

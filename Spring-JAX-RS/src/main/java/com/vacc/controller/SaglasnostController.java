@@ -5,7 +5,9 @@ import model.interesovanje.Interesovanje;
 import model.korisnik.Korisnik;
 import model.saglasnost.*;
 import org.apache.coyote.Response;
+import org.springframework.core.io.InputStreamResource;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.security.core.Authentication;
@@ -72,5 +74,17 @@ public class SaglasnostController {
         }catch(Exception e){
             return new ResponseEntity<>(e.getMessage(), HttpStatus.BAD_REQUEST);
         }
+    }
+
+    @GetMapping(value = "/generisiXhtml/{id}", produces = MediaType.TEXT_HTML_VALUE)
+    @PreAuthorize("hasAnyRole('ROLE_GRADJANIN', 'ROLE_SLUZBENIK')")
+    public ResponseEntity<InputStreamResource> generisiXHTML(@PathVariable String id) throws Exception {
+        return new ResponseEntity<>(new InputStreamResource(saglasnostService.generisiXHTML(id)), HttpStatus.OK);
+    }
+
+    @GetMapping(value = "/generisiPdf/{id}", produces = MediaType.TEXT_HTML_VALUE)
+    @PreAuthorize("hasAnyRole('ROLE_GRADJANIN', 'ROLE_SLUZBENIK')")
+    public ResponseEntity<InputStreamResource> generisiPdf(@PathVariable String id) throws Exception {
+        return new ResponseEntity<>(new InputStreamResource(saglasnostService.generisiPdf(id)), HttpStatus.OK);
     }
 }
