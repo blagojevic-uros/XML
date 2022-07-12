@@ -1,5 +1,5 @@
-<button mat-button (click) ="getPdf()">pdf</button>
-<button mat-button (click)="getXhtml()">xhtml</button>
+<button mat-raised-button (click) ="getPdf()" color="primary">pdf</button>
+<button mat-raised-button (click)="getXhtml()" color="primary">xhtml</button>
 <!-- <p>{{interesovanje | json}}</p> -->
 
 <p>Drzavljanstvo: {{interesovanje.licniPodaci.drzavljanstvo.value}}</p>
@@ -10,7 +10,7 @@
 <p>Email: {{interesovanje.licniPodaci.email}}</p>
 <p>Mobilni telefon: {{interesovanje.licniPodaci.mobilniTelefon}}</p>
 <p>Fiksni telefon: {{interesovanje.licniPodaci.fiksniTelefon}}</p>
-<p>Lokacija vakcinisanja: {{interesovanje.licniPodaci.lokacijaVakcinisanja.value}}</p>
+<p>Lokacija vakcinisanja: {{interesovanje.licniPodaci.lokacijaVakcinisanja}}</p>
 <p>Tip vakcine: {{interesovanje.tipVakcine.value}}</p>
 <p>Datum: {{interesovanje.datum.value | date}}</p>
 <p>Davalac krvi: {{interesovanje.davalacKrvi}}</p>

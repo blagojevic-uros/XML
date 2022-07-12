@@ -1,65 +1,23 @@
 <div class="docs">
-<mat-stepper orientation="vertical"  #stepper>
-  <mat-step [stepControl]="firstFormGroup">
+<mat-stepper orientation="vertical" #stepper>
+  <mat-step >
       <ng-template matStepLabel>Interesovanje</ng-template>
-
+      <div *ngIf="interesovanje">
       <app-interesovanje-view [interesovanje] = "interesovanje[0]"></app-interesovanje-view>
-      <!-- <mat-form-field appearance="fill" class="polje">
-        <mat-label>Drzavljanstvo</mat-label>
-        <input matInput  formControlName="firstCtrl" readonly>
-      </mat-form-field>
-      <mat-form-field appearance="fill" class="polje">
-        <mat-label>JMBG</mat-label>
-        <input matInput  formControlName="firstCtrl" readonly>
-      </mat-form-field>
-      <mat-form-field appearance="fill" class="polje">
-        <mat-label>Ime</mat-label>
-        <input matInput  formControlName="firstCtrl" readonly>
-      </mat-form-field>
-      <mat-form-field appearance="fill" class="polje">
-        <mat-label>Prezime</mat-label>
-        <input matInput  formControlName="firstCtrl" readonly>
-      </mat-form-field>
-      <br>
-      <mat-form-field appearance="fill" class="polje">
-        <mat-label>Email Adresa</mat-label>
-        <input matInput  formControlName="firstCtrl" readonly>
-      </mat-form-field>
-      <mat-form-field appearance="fill" class="polje">
-        <mat-label>Mobilni Telefon</mat-label>
-        <input matInput  formControlName="firstCtrl" readonly>
-      </mat-form-field>
-      <mat-form-field appearance="fill" class="polje">
-        <mat-label>Fiksni Telefon</mat-label>
-        <input matInput  formControlName="firstCtrl" readonly>
-      </mat-form-field>
-      <mat-form-field appearance="fill" class="polje">
-        <mat-label>Lokacija Vakcinisanja</mat-label>
-        <input matInput  formControlName="firstCtrl" readonly>
-      </mat-form-field>
-      <br>
-      <mat-form-field appearance="fill" class="polje">
-        <mat-label>Tip Vakcine</mat-label>
-        <input matInput  formControlName="firstCtrl" readonly>
-      </mat-form-field>
-      <mat-form-field appearance="fill" class="polje">
-        <mat-label>Datum Vakcinisanja</mat-label>
-        <input matInput  formControlName="firstCtrl" readonly>
-      </mat-form-field>
-      <mat-form-field appearance="fill" class="polje">
-        <mat-label>Potpis</mat-label>
-        <input matInput  formControlName="firstCtrl" readonly>
-      </mat-form-field>
-      <mat-form-field appearance="fill" class="polje">
-        <mat-label>Davalac Krvi</mat-label>
-        <input matInput  formControlName="firstCtrl" readonly>
-      </mat-form-field> -->
+    </div>
       <div>
         <button mat-button matStepperNext>Next</button>
       </div>
   </mat-step>
-  <mat-step [stepControl]="secondFormGroup">
-    <form [formGroup]="secondFormGroup">
+  <mat-step>
+    <ng-template matStepLabel>Saglasnost</ng-template>
+    <div *ngIf="saglasnost">
+    <app-saglasnost-view [saglasnost]="saglasnost"></app-saglasnost-view>
+    </div>
+    <div>
+      <button mat-button matStepperNext>Next</button>
+    </div>
+    <!-- <form [formGroup]="secondFormGroup">
       <ng-template matStepLabel>Saglasnost</ng-template>
       <mat-form-field appearance="fill" class="polje">
         <mat-label>Drzavljanstvo</mat-label>
@@ -133,7 +91,7 @@
         <button mat-button matStepperPrevious>Back</button>
         <button mat-button matStepperNext>Next</button>
       </div>
-    </form>
+    </form> -->
   </mat-step>
   <mat-step [stepControl]="thirdFormGroup">
     <form [formGroup]="thirdFormGroup">

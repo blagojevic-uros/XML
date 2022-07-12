@@ -3,8 +3,12 @@ package com.vacc.dao;
 import com.vacc.config.DBConfig;
 import model.interesovanje.Interesovanje;
 import model.saglasnost.SaglasnostZaImunizaciju;
+import model.saglasnost.TVakcinisanje;
 import org.springframework.stereotype.Component;
+import org.xml.sax.SAXException;
 import org.xmldb.api.base.XMLDBException;
+import org.xmldb.api.modules.XMLResource;
+import util.ObjectParser;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -36,9 +40,19 @@ public class SaglasnostDAO extends DataAccessLayer{
         return saglasnostZaImunizaciju;
     }
 
-//    public List<SaglasnostZaImunizaciju> getByFullId(String id, boolean jmbg){
-//
-//    }
+
+    public List<String> getVakcineInDateRange(String start, String end) throws SAXException {
+        String xPath = "//saglasnost_za_imunizaciju//vakcinisanje[datum_davanja >'" + start + "' and datum_davanja <'" + end + "']";
+        List<String> vakcine = new ArrayList<>();
+        try{
+            vakcine = this.xPathResult2(this.dbConfig.getUrl()+folderPath, xPath,"",TVakcinisanje.class);
+        }
+        catch(XMLDBException xe){
+            xe.printStackTrace();
+        }
+        return vakcine;
+    }
+
 }
 
 

@@ -19,12 +19,14 @@ import {MatStepperModule} from '@angular/material/stepper'
 
 import { ReactiveFormsModule } from '@angular/forms';
 import { InteresovanjeViewComponent } from './components/interesovanje-view/interesovanje-view.component';
+import { SaglasnostViewComponent } from './components/saglasnost-view/saglasnost-view.component';
 @NgModule({
   declarations: [
     PacientHomeComponent,
     DocumentViewComponent,
     XmlPipe,
-    InteresovanjeViewComponent
+    InteresovanjeViewComponent,
+    SaglasnostViewComponent
   ],
   imports: [
     CommonModule,

@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
-    xmlns:za="http:///www.ftn.uns.ac.rs/vakcinacija/zahtev"
-    xmlns:ct="http:///www.ftn.uns.ac.rs/vakcinacija/commonTypes"
+    xmlns:za="http://ftn.uns.ac.rs/vakcina/zahtev"
+    xmlns:ct="http://ftn.uns.ac.rs/vakcina/tipovi"
     version="2.0">
     <xsl:template match="/">
         <html>
@@ -61,7 +61,7 @@
                 </p>
                 
                 <p style = "padding-top:10px;">
-                	<xsl:value-of select="//za:Podnosilac/za:JMBG/text()"/>
+                	<xsl:value-of select="//za:licni_podaci/za:JMBG/text()"/>
                 </p>
                 
                 <p style = "padding-top:10px;">
@@ -69,7 +69,7 @@
                 </p>
                 
                 <p style = "padding-top:10px;">
-                	<xsl:value-of select="//za:Podnosilac/za:PunoIme/ct:Ime/text()"/>
+                	<xsl:value-of select="//za:licni_podaci/za:ime/text()"/>
                 </p>
                 
                 <p style = "padding-top:10px;">
@@ -77,7 +77,7 @@
                 </p>
                 
                 <p style = "padding-top:10px;">
-                	<xsl:value-of select="//za:Podnosilac/za:PunoIme/ct:Prezime/text()"/>
+                	<xsl:value-of select="//za:licni_podaci/za:prezime/text()"/>
                 </p>
                 
                 
@@ -86,7 +86,7 @@
                 </p>
                 
                 <p style = "padding-top:10px;">
-                	<xsl:value-of select="//za:Podnosilac/za:DatumRodjenja/text()"/>
+                	<xsl:value-of select="//za:licni_podaci/za:datum_rodjenja/text()"/>
                 </p>
                 
                 <p style = "padding-top:10px;">
@@ -94,7 +94,7 @@
                 </p>
                 
                 <p style = "padding-top:10px;">
-                	<xsl:value-of select="//za:Podnosilac/za:Pol/text()"/>
+                	<xsl:value-of select="//za:licni_podaci/za:pol/text()"/>
                 </p>
                 
                 <p style = "padding-top:10px;">
@@ -102,19 +102,19 @@
                 </p>
                 
                 <p style = "padding-top:10px;">
-                	<xsl:value-of select="//za:Podnosilac/za:BrojPasosa/text()"/>
+                	<xsl:value-of select="//za:licni_podaci/za:broj_pasosa/text()"/>
                 </p>
                 
                 <p style = "padding-top:10px;">
                 	Razlog podnosenja
                 </p>
                 <p style = "padding-top:10px;">
-                	<xsl:value-of select="//za:RazlogPodnosenja"/>
+                	<xsl:value-of select="//za:razlog_za_zahtev"/>
                 </p>
               	
                  <p style = "padding-top:100px;">
 	                Datum podnosenja: 
-	                <u><xsl:value-of select="//za:DatumPodnosenja/text()"/></u>
+	                <u><xsl:value-of select="//za:datum_podnosenja/text()"/></u>
 	                godine.	
                 </p>
                 <p id="potpis">Potpis</p>

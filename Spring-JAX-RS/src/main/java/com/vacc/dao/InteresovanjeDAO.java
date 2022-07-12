@@ -24,8 +24,6 @@ public class InteresovanjeDAO extends  DataAccessLayer{
     }
 
     public List<Interesovanje> getAll(String jmbg){
-
-//        String xPath = "//interesovanje[licni_podaci/JMBG ='" + jmbg + "']";
         String xPath = "//interesovanje[licni_podaci/JMBG ='" + jmbg + "']";
         List<Interesovanje> interesovanja = new ArrayList<>();
         try{

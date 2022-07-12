@@ -13,6 +13,7 @@ import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.security.core.Authentication;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.server.ResponseStatusException;
+import org.xml.sax.SAXException;
 
 import javax.ws.rs.Produces;
 
@@ -83,14 +84,17 @@ public class SaglasnostController {
         }
     }
 
+    @GetMapping("/vakcine/{start}/{end}")
+    @Produces("application/xml")
+    public ResponseEntity<?> vakcineRange(@PathVariable String start,@PathVariable String end) throws SAXException {
+        return new ResponseEntity<>(this.saglasnostService.getVakcineInRange(start,end), HttpStatus.OK);
+    }
     @GetMapping(value = "/generisiXhtml/{id}", produces = MediaType.TEXT_HTML_VALUE)
-    @PreAuthorize("hasAnyRole('ROLE_GRADJANIN', 'ROLE_SLUZBENIK')")
     public ResponseEntity<InputStreamResource> generisiXHTML(@PathVariable String id) throws Exception {
         return new ResponseEntity<>(new InputStreamResource(saglasnostService.generisiXHTML(id)), HttpStatus.OK);
     }
 
     @GetMapping(value = "/generisiPdf/{id}", produces = MediaType.TEXT_HTML_VALUE)
-    @PreAuthorize("hasAnyRole('ROLE_GRADJANIN', 'ROLE_SLUZBENIK')")
     public ResponseEntity<InputStreamResource> generisiPdf(@PathVariable String id) throws Exception {
         return new ResponseEntity<>(new InputStreamResource(saglasnostService.generisiPdf(id)), HttpStatus.OK);
     }

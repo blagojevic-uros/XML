@@ -4,6 +4,7 @@ import com.vacc.dao.VakcineDAO;
 import model.vakcine.Vakcina;
 import org.springframework.stereotype.Service;
 import org.xmldb.api.base.XMLDBException;
+import util.ObjectParser;
 
 import javax.xml.bind.JAXBException;
 import java.util.List;
@@ -21,6 +22,16 @@ public class VakcineService {
 
     public List<Vakcina> getAll() throws XMLDBException, JAXBException {
         return vakcineDAO.getAllVakcineObject();
+    }
+
+    public Vakcina getByName(String name) throws XMLDBException, JAXBException {
+        return (Vakcina) ObjectParser.parseToObject(vakcineDAO.getById(name + ".xml",vakcineDAO.getFolderPath()),Vakcina.class);
+    }
+
+    public void subtractVakcina(String name,Integer amount) throws XMLDBException, JAXBException {
+        Vakcina v = getByName(name);
+        v.setKolicina(v.getKolicina() - amount);
+        vakcineDAO.save(vakcineDAO.getFolderPath(),name + ".xml",v,Vakcina.class);
     }
 
 

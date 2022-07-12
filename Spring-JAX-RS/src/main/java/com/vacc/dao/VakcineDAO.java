@@ -1,6 +1,7 @@
 package com.vacc.dao;
 
 import com.vacc.config.DBConfig;
+import lombok.Getter;
 import model.vakcine.Vakcina;
 import org.springframework.stereotype.Component;
 import org.xmldb.api.base.XMLDBException;
@@ -12,6 +13,7 @@ import java.util.List;
 
 
 @Component
+@Getter
 public class VakcineDAO extends DataAccessLayer{
     private final String folderPath = "/db/vakcine";
     private final DBConfig dbConfig;

@@ -2,18 +2,22 @@ package com.vacc.service;
 
 import com.vacc.Exception.NotFoundException;
 import com.vacc.dao.SaglasnostDAO;
+import model.interesovanje.Interesovanje;
 import model.saglasnost.EvidencijaOVakcinaciji;
 import model.saglasnost.SaglasnostZaImunizaciju;
 import model.saglasnost.TVakcinisanje;
 import org.springframework.stereotype.Service;
+import org.xml.sax.SAXException;
 import org.xmldb.api.modules.XMLResource;
 import util.ObjectParser;
 import util.XSLFOPaths;
 import util.XSLPaths;
 
-import javax.mail.util.ByteArrayDataSource;
 import java.io.ByteArrayInputStream;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
+import java.util.logging.Handler;
 
 @Service
 public class SaglasnostService {
@@ -24,13 +28,16 @@ public class SaglasnostService {
     private final XHTMLTransformerService xhtmlTransformerService;
     private final PDFTransformerService pdfTransformerService;
     private final InteresovanjeService interesovanjeService;
-    public SaglasnostService(ObjectParser objectParser, SaglasnostDAO saglasnostDAO, InteresovanjeService interesovanjeService, XHTMLTransformerService xhtmlTransformerService, PDFTransformerService pdfTransformerService) {
+
+    private final VakcineService vakcineService;
+    public SaglasnostService(ObjectParser objectParser, SaglasnostDAO saglasnostDAO, InteresovanjeService interesovanjeService, XHTMLTransformerService xhtmlTransformerService, PDFTransformerService pdfTransformerService, VakcineService vakcineService) {
         this.objectParser = objectParser;
         this.saglasnostDAO = saglasnostDAO;
 
         this.interesovanjeService = interesovanjeService;
         this.xhtmlTransformerService = xhtmlTransformerService;
         this.pdfTransformerService = pdfTransformerService;
+        this.vakcineService = vakcineService;
     }
 
     public List<SaglasnostZaImunizaciju> getByJmbgOrPassportNumber(String jmbg) throws Exception {
@@ -75,7 +82,7 @@ public class SaglasnostService {
             System.out.println(documentId);
             System.out.println("*********************");
             XMLResource content = this.saglasnostDAO.getById(documentId,saglasnostDAO.getFolderPath());
-            return (String) ObjectParser.parseToObject(content,SaglasnostZaImunizaciju.class);
+            return content.toString();
         }
         catch (Exception e){
             throw new Exception();
@@ -111,7 +118,6 @@ public class SaglasnostService {
         return xhtmlTransformerService.generateHTML(saglasnost, XSLPaths.SAGLASNOST_XSL);
     }
     public void updateSaglasnost(EvidencijaOVakcinaciji evidencijaOVakcinaciji,String jmbg) throws Exception {
-//        evidencijaOVakcinaciji.getTabelaVakcinisanja();
         evidencijaOVakcinaciji.setTabelaVakcinisanja(new EvidencijaOVakcinaciji.TabelaVakcinisanja());
         SaglasnostZaImunizaciju saglasnostZaImunizaciju = getByIdObject(jmbg);
         saglasnostZaImunizaciju.setEvidencijaOVakcinaciji(evidencijaOVakcinaciji);
@@ -124,8 +130,25 @@ public class SaglasnostService {
         if(saglasnostZaImunizaciju.getEvidencijaOVakcinaciji() == null){
             throw new Exception();
         }
-        //\<O(saglasnostZaImunizaciju.getEvidencijaOVakcinaciji().setTabelaVakcinisanja(new EvidencijaOVakcinaciji.TabelaVakcinisanja());
         saglasnostZaImunizaciju.getEvidencijaOVakcinaciji().getTabelaVakcinisanja().getVakcinisanje().add(vakcinisanje);
+        vakcineService.subtractVakcina(vakcinisanje.getNazivVakcine().getValue().value(),1);
         save(saglasnostZaImunizaciju,jmbg);
+    }
+
+    public List<String>  getVakcineInRange(String start,String end) throws SAXException {
+        List<String> vakcinisanja = this.saglasnostDAO.getVakcineInDateRange(start,end);
+        Map<String, Integer> mapaVakcina = new HashMap<>();
+        mapaVakcina.put("AstraZeneca",0);
+        mapaVakcina.put("Moderna",0);
+        mapaVakcina.put("Pfizer-BioNTech",0);
+        mapaVakcina.put("Sinopharm",0);
+        mapaVakcina.put("Sputnik_V",0);
+        Integer count = 0;
+//        for(TVakcinisanje vakcina: vakcinisanja){
+//            System.out.println(vakcina.getProizvodjac());
+////            String key = vakcina.getProizvodjac().value();
+////            mapaVakcina.put(key, mapaVakcina.get(key) + 1);
+//        }
+        return vakcinisanja;
     }
 }

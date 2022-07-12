@@ -92,11 +92,13 @@ public class ZahtevService {
     public void declineZahtev(String id,String status,String reason) throws Exception {
 
         ZahtevZaSertifikat zahtevZaSertifikat = updateStatus(id,status);
-        emailService.sendZahtevDeclineMail(getEmailFromSaglasnost(zahtevZaSertifikat.getLicniPodaci().getJMBG().getValue()),reason);
+        String email = getEmailFromSaglasnost(zahtevZaSertifikat.getLicniPodaci().getJMBG().getValue());
+        System.out.println(email);
+        emailService.sendZahtevDeclineMail(email,reason);
     }
 
     public String getEmailFromSaglasnost(String jmbg) throws Exception {
-        return saglasnostService.getByIdObject(jmbg).getLicniPodaci().getDrzavljanstvo().getSrpsko().getJMBG().getValue();
+        return saglasnostService.getByIdObject(jmbg).getLicniPodaci().getEmail();
     }
     public List<ZahtevZaSertifikat> getAllPendingUserZahtevi(String jmbg){
         List<ZahtevZaSertifikat> zahtevZaSertifikat = zahtevDAO.getAllPendingJmbgZahtevi(jmbg);

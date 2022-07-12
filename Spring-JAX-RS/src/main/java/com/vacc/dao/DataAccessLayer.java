@@ -181,6 +181,31 @@ public class DataAccessLayer {
         return results;
     }
 
+    public <T> List<String> xPathResult2(String collectionPath, String xPath, String namespace, Class<T> clazz) throws XMLDBException {
+        Collection col;
+        col = DatabaseManager.getCollection(collectionPath);
+        XPathQueryService xpathService = (XPathQueryService) col.getService("XPathQueryService", "1.0");
+        xpathService.setProperty("indent", "yes");
+        xpathService.setNamespace("", namespace);
+        ResourceSet result =  xpathService.query(xPath);
+        ResourceIterator i = result.getIterator();
 
+        List<String> results = new ArrayList<>();
+        Resource res;
+        while(i.hasMoreResources()) {
+            try {
+                res = i.nextResource();
+                results.add(String.valueOf(res.getContent()));
+
+            } catch(XMLDBException xe) {
+                xe.printStackTrace();
+            }
+
+
+        }
+
+
+        return results;
+    }
 
 }

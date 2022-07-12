@@ -62,13 +62,11 @@ public class ZahtevSertifikatController {
     }
 
     @GetMapping(value = "/generisiXhtml/{id}", produces = MediaType.TEXT_HTML_VALUE)
-    @PreAuthorize("hasAnyRole('ROLE_GRADJANIN', 'ROLE_SLUZBENIK')")
     public ResponseEntity<InputStreamResource> generisiXHTML(@PathVariable String id) throws Exception {
         return new ResponseEntity<>(new InputStreamResource(zahtevService.generisiXHTML(id)), HttpStatus.OK);
     }
 
     @GetMapping(value = "/generisiPdf/{id}", produces = MediaType.TEXT_HTML_VALUE)
-    @PreAuthorize("hasAnyRole('ROLE_GRADJANIN', 'ROLE_SLUZBENIK')")
     public ResponseEntity<InputStreamResource> generisiPdf(@PathVariable String id) throws Exception {
         return new ResponseEntity<>(new InputStreamResource(zahtevService.generisiPdf(id)), HttpStatus.OK);
     }

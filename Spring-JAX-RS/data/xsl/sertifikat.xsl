@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
-    xmlns:se="http:///www.ftn.uns.ac.rs/vakcinacija/sertifikat"
-    xmlns:ct="http:///www.ftn.uns.ac.rs/vakcinacija/commonTypes"
+    xmlns:se="http://ftn.uns.ac.rs/vakcina/sertifikat"
+                xmlns:ct="http://ftn.uns.ac.rs/vakcina/tipovi"
     version="2.0">
     <xsl:template match="/">
         <html>
@@ -76,19 +76,19 @@
 	            </div>
 	            <div style = "width: 20vw; margin-left: 10vw;">
 	                <p><b>Broj sertifikata / Certificate ID:</b></p>
-	                <p><xsl:value-of select="//se:BrojSertifikata/text()"/></p>
+	                <p><xsl:value-of select="//se:broj_sertifikata/text()"/></p>
 	                <p><b>Datum i vreme izdavanja sertifikata / Certificate issuing date and time:</b></p>
-	                <p><xsl:value-of select="//se:DatumVremeIzdavanja/text()"/></p>
+	                <p><xsl:value-of select="//se:datum_izdavanja/text()"/></p>
 	                <p><b>Ime i prezime / Name and surname:</b></p>
-	                <p><xsl:value-of select="concat(' ', //se:LicneInformacije/se:PunoIme/ct:Ime/text(), ' ', //se:LicneInformacije/se:PunoIme/ct:Prezime/text())"/></p>
+	                <p><xsl:value-of select="concat(' ', //se:licni_podaci/se:ime_prezime/ct:ime/text(), ' ', //se:licni_podaci/se:ime_prezime/ct:prezime/text())"/></p>
 	                <p><b>Pol / Gender:</b></p>
-	                <p><xsl:value-of select="//se:LicneInformacije/se:Pol/text()"/></p>
+	                <p><xsl:value-of select="//se:licni_podaci/se:pol/text()"/></p>
 	                <p><b>Datum rodjenja / Date of birth:</b></p>
-	                <p><xsl:value-of select="//se:LicneInformacije/se:DatumRodjenja/text()"/></p>
+	                <p><xsl:value-of select="//se:licni_podaci/se:datum/text()"/></p>
 	                <p><b>JMBG / Personal No. / EBS:</b></p>
-	                <p><xsl:value-of select="//se:LicneInformacije/se:JMBG/text()"/></p>
+	                <p><xsl:value-of select="//se:licni_podaci/se:JMBG/text()"/></p>
 	                <p><b>Broj pasosa / Passport No.:</b></p>
-	                <p><xsl:value-of select="//se:LicneInformacije/se:BrojPasosa/text()"/></p>
+	                <p><xsl:value-of select="//se:licni_podaci/se:broj_pasosa/text()"/></p>
                 </div>
                 <h1 id = "vakcinacija">Vakcinacija / Vaccination</h1>
                 <div class='wrapper' style='text-align: center;'>
@@ -100,23 +100,23 @@
                             <b>Tip / Type</b>
                         </p>
                         <p>
-                            <xsl:value-of select="//se:Vakcinacija[1]/se:TipVakcine/text()"/>
+                            <xsl:value-of select="//se:vakcinacija[1]/se:tip/text()"/>
                         </p>
                         <p>
                             <b>Proizvodjac i serija / Manufacturer and batch number:</b>
                         </p>
                         <p>
-                            <xsl:value-of select="concat(' ', //se:Vakcinacija[1]/se:Proizvodjac/text(), ' ',  //se:Vakcinacija[1]/se:Serija/text())"/>
+                            <xsl:value-of select="concat(' ', //se:vakcinacija[1]/se:proizvodjac/text(), ' ',  //se:vakcinacija[1]/se:ser/text())"/>
                         </p>
                         <p>
                             <b>Datum / Date:</b>
-                            <xsl:value-of select="concat(' ', //se:Vakcinacija[1]/se:DatumDavanja/text())"/>
+                            <xsl:value-of select="concat(' ', //se:vakcinacija[1]/se:datum_izdavanja/text())"/>
                         </p>
                         <p>
                             <b>Zdravstvena ustanova / Health care insitution:</b>
                         </p>
                         <p>
-                            <xsl:value-of select="//se:Vakcinacija[1]/se:ZdravstvenaUstanova/text()"/>
+                            <xsl:value-of select="//se:vakcinacija[1]/se:zdravstvena_ustanova/text()"/>
                         </p>
                     </div>
                     <div style='display: inline-block; vertical-align: top; margin-left: 10px;'>
@@ -127,23 +127,23 @@
                             <b>Tip / Type</b>
                         </p>
                         <p>
-                            <xsl:value-of select="//se:Vakcinacija[2]/se:TipVakcine/text()"/>
+                            <xsl:value-of select="//se:vakcinacija[2]/se:tip/text()"/>
                         </p>
                         <p>
                             <b>Proizvodjac i serija / Manufacturer and batch number:</b>
                         </p>
                         <p>
-                            <xsl:value-of select="concat(' ', //se:Vakcinacija[2]/se:Proizvodjac/text(), ' ', //se:Vakcinacija[2]/se:Serija/text())"/>
+                            <xsl:value-of select="concat(' ', //se:vakcinacija[2]/se:proizvodjac/text(), ' ', //se:vakcinacija[2]/se:ser/text())"/>
                         </p>
                         <p>
                             <b>Datum / Date:</b>
-                            <xsl:value-of select="concat(' ', //se:Vakcinacija[2]/se:DatumDavanja/text())"/>
+                            <xsl:value-of select="concat(' ', //se:vakcinacija[2]/se:datum_izdavanja/text())"/>
                         </p>
                         <p>
                             <b>Zdravstvena ustanova / Health care insitution:</b>
                         </p>
                         <p>
-                            <xsl:value-of select="//se:Vakcinacija[2]/se:ZdravstvenaUstanova/text()"/>
+                            <xsl:value-of select="//se:vakcinacija[2]/se:zdravstvena_ustanova/text()"/>
                         </p>
                     </div>
                 </div>

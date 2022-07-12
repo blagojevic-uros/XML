@@ -11,6 +11,8 @@ import util.XSLPaths;
 
 import javax.mail.util.ByteArrayDataSource;
 import java.io.ByteArrayInputStream;
+import java.util.Calendar;
+import java.util.Date;
 import java.util.List;
 import java.util.UUID;
 
@@ -38,14 +40,15 @@ public class InteresovanjeService {
         interesovanje.setAbout("http://www.ftn.uns.ac.rs/rdf/interesovanje/" + uniqueID);
         interesovanje.setRel("pred:saglasnostOd");
         String documentId = "interesovanje-" + uniqueID + ".xml";
-        //TODO: provera da li je vec izdao sta je trebao
-        //TODO: naci termin u narednih 7 dana
 
+        if(!this.interesovanjeDAO.getAll(interesovanje.getLicniPodaci().getJMBG().getValue()).isEmpty()){
+            throw new Exception();
+        };
         try{
             this.interesovanjeDAO.save(folderPath,documentId,interesovanje,Interesovanje.class);
             ByteArrayDataSource pdf = new ByteArrayDataSource(generisiPdf(uniqueID), "application/pdf");
             ByteArrayDataSource xhtml = new ByteArrayDataSource(generisiXHTML(uniqueID), "text/html");
-            emailService.sendMail(interesovanje.getLicniPodaci().getEmail(),"test","test",pdf,xhtml);
+            //emailService.sendMail(interesovanje.getLicniPodaci().getEmail(),"test","test",pdf,xhtml);
             return uniqueID;
         }
         catch (Exception e){
