@@ -33,7 +33,6 @@ export class CreateImunizacijaComponent implements OnInit {
         faksmil: ['', Validators.required],
         brojTelefona: ['', Validators.required],
       }),
-      tabelaVakcinisanja: this.fb.array([])
     });
   }
 
@@ -72,11 +71,11 @@ export class CreateImunizacijaComponent implements OnInit {
 
   onSubmit() {
     console.log(this.imunizacijaForm.value)
-    // this.imunizacijaService
-      // .save(this.imunizacijaForm.value,this.searchInput)
-      // .subscribe((res : any) => {
-      //   this._snackBar.open(res, 'Close');
-      // });
+    this.imunizacijaService
+      .save(this.imunizacijaForm.value,this.searchInput)
+      .subscribe((res : any) => {
+        this._snackBar.open(res, 'Close');
+      });
   }
   onSearch($event: string){
     this.searchInput = $event;
