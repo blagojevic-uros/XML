@@ -8,6 +8,7 @@ import { ZahtevService } from '../../service/zahtev.service';
 })
 export class ZahtevListComponent implements OnInit {
 
+  razlog: any = '';
   @Input() zahtevi!: any[];
   @Output() zahtevChangeEvent = new EventEmitter();
   constructor(private zahtevService:ZahtevService) { }
@@ -23,7 +24,7 @@ export class ZahtevListComponent implements OnInit {
     });
   }
   odbiZahtev(zahtevId:string){
-    this.zahtevService.declineZahtev(zahtevId).subscribe((res)=>{
+    this.zahtevService.declineZahtev(zahtevId,this.razlog).subscribe((res)=>{
       this.zahtevChangeEvent.emit();
       alert(res);
 

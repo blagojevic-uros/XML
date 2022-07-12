@@ -21,8 +21,8 @@ export class ZahtevService {
       responseType: 'text',
     });
   }
-  declineZahtev(id:any): Observable<string> {
-    return this.http.get('http://localhost:9091/zahtev/decline/'+id, {
+  declineZahtev(id:any,razlog: any): Observable<string> {
+    return this.http.get('http://localhost:9091/zahtev/decline/'+id + "/" + razlog, {
       headers: this.headers,
       responseType: 'text',
     });
