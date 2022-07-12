@@ -19,13 +19,16 @@
     </div>
 
   </mat-step>
-  <mat-step [stepControl]="thirdFormGroup">
+  <mat-step >
     <ng-template matStepLabel>Potvrde</ng-template>
-    {{potvrda|json}}
+    <app-potvrda-view [potvrde]="potvrda"></app-potvrda-view>
+    <div>
+      <button mat-button matStepperNext>Next</button>
+    </div>
   </mat-step>
-  <mat-step [stepControl]="fourthFormGroup">
+  <mat-step >
     <ng-template matStepLabel>Sertifikati</ng-template>
-    {{sertifikati|json}}
+    <app-sertifikat-view [sertifikati]="sertifikati"></app-sertifikat-view>
     
   </mat-step>
 </mat-stepper>

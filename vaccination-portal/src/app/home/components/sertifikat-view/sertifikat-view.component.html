@@ -1,0 +1,6 @@
+
+<div *ngFor="let sertifikat of sertifikati">
+    <p>{{sertifikat |json}}</p>
+    <button mat-raised-button (click) ="getPdf(sertifikat.id)" color="primary">pdf</button>
+    <button mat-raised-button (click)="getXhtml(sertifikat.id)" color="primary">xhtml</button>
+</div>

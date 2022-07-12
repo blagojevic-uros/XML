@@ -1,5 +1,4 @@
-<button mat-raised-button (click) ="getPdf(interesovanje.id)" color="primary">pdf</button>
-<button mat-raised-button (click)="getXhtml(interesovanje.id)" color="primary">xhtml</button>
+
 
 <p>Drzavljanstvo: {{interesovanje.licniPodaci.drzavljanstvo.value}}</p>
 
@@ -13,3 +12,6 @@
 <p>Tip vakcine: {{interesovanje.tipVakcine.value}}</p>
 <p>Datum: {{interesovanje.datum.value | date}}</p>
 <p>Davalac krvi: {{interesovanje.davalacKrvi}}</p>
+
+<button mat-raised-button (click) ="getPdf(interesovanje.id)" color="primary">pdf</button>
+<button mat-raised-button (click)="getXhtml(interesovanje.id)" color="primary">xhtml</button>

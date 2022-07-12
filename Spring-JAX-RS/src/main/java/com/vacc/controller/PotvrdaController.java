@@ -54,7 +54,7 @@ public class PotvrdaController {
         return new ResponseEntity<>(new InputStreamResource(potvrdaService.generisiXHTML(id)), HttpStatus.OK);
     }
 
-    @GetMapping(value = "/generisiPdf/{jmbg}/{brojDoze}", produces = MediaType.APPLICATION_PDF_VALUE)
+    @GetMapping(value = "/generisiPdf/{id}", produces = MediaType.APPLICATION_PDF_VALUE)
     public ResponseEntity<InputStreamResource> generisiPdf(@PathVariable String id) throws Exception {
         return new ResponseEntity<>(new InputStreamResource(potvrdaService.generisiPdf(id)), HttpStatus.OK);
     }

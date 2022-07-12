@@ -1,0 +1,8 @@
+
+{{potvrde|json}}
+
+
+<div *ngFor="let potvrda of potvrde">
+    <button mat-raised-button (click) ="getPdf(potvrda.sifraPotvrde)" color="primary">pdf</button>
+    <button mat-raised-button (click)="getXhtml(potvrda.sifraPotvrde)" color="primary">xhtml</button>
+</div>

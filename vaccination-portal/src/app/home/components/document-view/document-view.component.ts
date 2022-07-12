@@ -16,18 +16,6 @@ export class DocumentViewComponent implements OnInit {
   saglasnost!: any;
   sertifikati!: any[];
   potvrda!: any;
-  firstFormGroup = this._formBuilder.group({
-    firstCtrl: [''],
-  });
-  secondFormGroup = this._formBuilder.group({
-    secondCtrl: [''],
-  });
-  thirdFormGroup = this._formBuilder.group({
-    thirdCtrl: [''],
-  })
-  fourthFormGroup = this._formBuilder.group({
-    fourthCtrl: [''],
-  })
   isLinear = false;
 
   constructor(private interesovanjeService: InteresovanjeService,

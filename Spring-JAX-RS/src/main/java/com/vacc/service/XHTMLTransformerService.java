@@ -14,7 +14,7 @@ import java.io.ByteArrayInputStream;
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
-
+import javax.xml.transform.TransformerFactory;
 @Service
 public class XHTMLTransformerService {
     private static TransformerFactory transformerFactory;

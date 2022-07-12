@@ -20,13 +20,17 @@ import {MatStepperModule} from '@angular/material/stepper'
 import { ReactiveFormsModule } from '@angular/forms';
 import { InteresovanjeViewComponent } from './components/interesovanje-view/interesovanje-view.component';
 import { SaglasnostViewComponent } from './components/saglasnost-view/saglasnost-view.component';
+import { PotvrdaViewComponent } from './components/potvrda-view/potvrda-view.component';
+import { SertifikatViewComponent } from './components/sertifikat-view/sertifikat-view.component';
 @NgModule({
   declarations: [
     PacientHomeComponent,
     DocumentViewComponent,
     XmlPipe,
     InteresovanjeViewComponent,
-    SaglasnostViewComponent
+    SaglasnostViewComponent,
+    PotvrdaViewComponent,
+    SertifikatViewComponent
   ],
   imports: [
     CommonModule,

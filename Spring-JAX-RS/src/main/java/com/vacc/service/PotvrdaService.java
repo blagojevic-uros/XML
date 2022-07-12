@@ -63,6 +63,7 @@ public class PotvrdaService {
         if (potvrda == null) {
             throw new Exception();
         }
+        System.out.println("PEra" + potvrda);
         return xhtmlTransformerService.generateHTML(potvrda, XSLPaths.POTVRDA_XSL);
     }
 
