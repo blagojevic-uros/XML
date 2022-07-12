@@ -58,4 +58,9 @@ public class PotvrdaController {
     public ResponseEntity<InputStreamResource> generisiPdf(@PathVariable String id) throws Exception {
         return new ResponseEntity<>(new InputStreamResource(potvrdaService.generisiPdf(id)), HttpStatus.OK);
     }
+
+    @GetMapping("/{id}")
+    public ResponseEntity<?> getByIdObject(@PathVariable String id) throws Exception {
+        return new ResponseEntity<>(potvrdaService.getByIdObject(id), HttpStatus.OK);
+    }
 }

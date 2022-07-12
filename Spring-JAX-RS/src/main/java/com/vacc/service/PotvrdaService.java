@@ -6,6 +6,7 @@ import model.potvrda.PotvrdaOVakcinaciji;
 import model.zahtev.ZahtevZaSertifikat;
 import org.springframework.stereotype.Service;
 import util.ObjectParser;
+import util.QrCodeUtil;
 import util.XSLFOPaths;
 import util.XSLPaths;
 
@@ -36,8 +37,11 @@ public class PotvrdaService {
         String uniqueID = UUID.randomUUID().toString();
         potvrdaOVakcinaciji.setId(uniqueID);
         potvrdaOVakcinaciji.setAbout("http://www.ftn.uns.ac.rs/rdf/potvrda/" + uniqueID);
-        potvrdaOVakcinaciji.setSifraPotvrde(uniqueID);
+
         String documentId = "potvrda-" + uniqueID + ".xml";
+        potvrdaOVakcinaciji.setQrKod(QrCodeUtil.generisiQRCode( "http://localhost:9090/api/potvrda/"+uniqueID));
+        potvrdaOVakcinaciji.setSifraPotvrde(uniqueID);
+
         try{
             this.potvrdaDAO.save(folderPath,documentId,potvrdaOVakcinaciji,PotvrdaOVakcinaciji.class);
 //            ByteArrayDataSource pdf = new ByteArrayDataSource(generisiPdf(uniqueID), "application/pdf");
@@ -79,5 +83,16 @@ public class PotvrdaService {
 
     public List<PotvrdaOVakcinaciji> getByJmbg(String jmbg) {
         return potvrdaDAO.getByJmbg(jmbg);
+    }
+
+    public PotvrdaOVakcinaciji getByIdObject(String id) throws Exception {
+
+        try{
+            String documentId = "potvrda-" + id + ".xml";
+            return (PotvrdaOVakcinaciji) ObjectParser.parseToObject(this.potvrdaDAO.getById(documentId,folderPath),PotvrdaOVakcinaciji.class);
+        }
+        catch (Exception e){
+            throw new Exception();
+        }
     }
 }

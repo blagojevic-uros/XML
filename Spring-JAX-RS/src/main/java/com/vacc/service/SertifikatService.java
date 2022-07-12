@@ -34,7 +34,7 @@ public class SertifikatService {
         sertifikat.setId(uniqueID);
         sertifikat.setBrojSertifikata(uniqueID);
         String documentId = "sertifikat-" + uniqueID + ".xml";
-        sertifikat.setQRCode(QrCodeUtil.generisiQRCode( "http://localhost:9090/sertifikat/"+uniqueID));
+        sertifikat.setQRCode(QrCodeUtil.generisiQRCode( "http://localhost:9090/api/sertifikat/"+uniqueID));
         sertifikatDAO.save(sertifikatDAO.getFolderPath(), documentId,sertifikat,ZeleniSertifikat.class);
 //        ByteArrayDataSource pdf = new ByteArrayDataSource(generisiPdf(uniqueID), "application/pdf");
 //        ByteArrayDataSource xhtml = new ByteArrayDataSource(generisiXHTML(uniqueID), "text/html");
