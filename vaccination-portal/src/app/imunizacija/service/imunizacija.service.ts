@@ -12,6 +12,13 @@ export class ImunizacijaService {
       evidencija,
     );
   }
+
+  saveVakcina(vakcina: any,jmbg: any) {
+    return this.http.post(
+      'http://localhost:9090/api/saglasnost/update/vakcina/' + jmbg,
+      vakcina,
+    );
+  }
   getSaglasnost(jmbg : string | number){
   const params = new HttpParams().append('jmbg', jmbg);
     return this.http.get(

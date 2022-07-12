@@ -18,11 +18,13 @@ import { MatCheckboxModule } from '@angular/material/checkbox';
 import {MatStepperModule} from '@angular/material/stepper'
 
 import { ReactiveFormsModule } from '@angular/forms';
+import { InteresovanjeViewComponent } from './components/interesovanje-view/interesovanje-view.component';
 @NgModule({
   declarations: [
     PacientHomeComponent,
     DocumentViewComponent,
-    XmlPipe
+    XmlPipe,
+    InteresovanjeViewComponent
   ],
   imports: [
     CommonModule,

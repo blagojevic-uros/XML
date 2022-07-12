@@ -1,10 +1,10 @@
 <div class="docs">
-<!-- <ul><h2>Interesovanje: </h2>{{interesovanje[0] | json}}</ul> -->
 <mat-stepper orientation="vertical"  #stepper>
   <mat-step [stepControl]="firstFormGroup">
-    <form [formGroup]="firstFormGroup">
       <ng-template matStepLabel>Interesovanje</ng-template>
-      <mat-form-field appearance="fill" class="polje">
+
+      <app-interesovanje-view [interesovanje] = "interesovanje[0]"></app-interesovanje-view>
+      <!-- <mat-form-field appearance="fill" class="polje">
         <mat-label>Drzavljanstvo</mat-label>
         <input matInput  formControlName="firstCtrl" readonly>
       </mat-form-field>
@@ -53,11 +53,10 @@
       <mat-form-field appearance="fill" class="polje">
         <mat-label>Davalac Krvi</mat-label>
         <input matInput  formControlName="firstCtrl" readonly>
-      </mat-form-field>
+      </mat-form-field> -->
       <div>
         <button mat-button matStepperNext>Next</button>
       </div>
-    </form>
   </mat-step>
   <mat-step [stepControl]="secondFormGroup">
     <form [formGroup]="secondFormGroup">

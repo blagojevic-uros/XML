@@ -4,6 +4,7 @@ import com.vacc.Exception.NotFoundException;
 import com.vacc.dao.SaglasnostDAO;
 import model.saglasnost.EvidencijaOVakcinaciji;
 import model.saglasnost.SaglasnostZaImunizaciju;
+import model.saglasnost.TVakcinisanje;
 import org.springframework.stereotype.Service;
 import org.xmldb.api.modules.XMLResource;
 import util.ObjectParser;
@@ -66,12 +67,7 @@ public class SaglasnostService {
 
 
 
-    public void updateSaglasnost(EvidencijaOVakcinaciji evidencijaOVakcinaciji,String jmbg) throws Exception {
-//        evidencijaOVakcinaciji.getTabelaVakcinisanja();
-        SaglasnostZaImunizaciju saglasnostZaImunizaciju = getByIdObject(jmbg);
-        saglasnostZaImunizaciju.setEvidencijaOVakcinaciji(evidencijaOVakcinaciji);
-        save(saglasnostZaImunizaciju,jmbg);
-    }
+
 
     public String getById(String jmbg) throws Exception {
         try{
@@ -98,6 +94,7 @@ public class SaglasnostService {
         }
     }
 
+
     public ByteArrayInputStream generisiPdf(String uniqueID) throws Exception {
         String saglasnost = getById(uniqueID);
         if (saglasnost == null) {
@@ -112,5 +109,23 @@ public class SaglasnostService {
             throw new Exception();
         }
         return xhtmlTransformerService.generateHTML(saglasnost, XSLPaths.SAGLASNOST_XSL);
+    }
+    public void updateSaglasnost(EvidencijaOVakcinaciji evidencijaOVakcinaciji,String jmbg) throws Exception {
+//        evidencijaOVakcinaciji.getTabelaVakcinisanja();
+        evidencijaOVakcinaciji.setTabelaVakcinisanja(new EvidencijaOVakcinaciji.TabelaVakcinisanja());
+        SaglasnostZaImunizaciju saglasnostZaImunizaciju = getByIdObject(jmbg);
+        saglasnostZaImunizaciju.setEvidencijaOVakcinaciji(evidencijaOVakcinaciji);
+        save(saglasnostZaImunizaciju,jmbg);
+    }
+
+    public void updateSaglasnostVakcina(TVakcinisanje vakcinisanje, String jmbg) throws Exception {
+
+        SaglasnostZaImunizaciju saglasnostZaImunizaciju = getByIdObject(jmbg);
+        if(saglasnostZaImunizaciju.getEvidencijaOVakcinaciji() == null){
+            throw new Exception();
+        }
+        //\<O(saglasnostZaImunizaciju.getEvidencijaOVakcinaciji().setTabelaVakcinisanja(new EvidencijaOVakcinaciji.TabelaVakcinisanja());
+        saglasnostZaImunizaciju.getEvidencijaOVakcinaciji().getTabelaVakcinisanja().getVakcinisanje().add(vakcinisanje);
+        save(saglasnostZaImunizaciju,jmbg);
     }
 }

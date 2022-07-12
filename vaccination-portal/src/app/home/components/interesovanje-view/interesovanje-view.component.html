@@ -1,0 +1,16 @@
+<button mat-button (click) ="getPdf()">pdf</button>
+<button mat-button (click)="getXhtml()">xhtml</button>
+<!-- <p>{{interesovanje | json}}</p> -->
+
+<p>Drzavljanstvo: {{interesovanje.licniPodaci.drzavljanstvo.value}}</p>
+
+<p>JMBG: {{interesovanje.licniPodaci.jmbg.value}}</p>
+
+<p>Ime: {{interesovanje.licniPodaci.ime}} Prezime: {{interesovanje.licniPodaci.prezime}}</p>
+<p>Email: {{interesovanje.licniPodaci.email}}</p>
+<p>Mobilni telefon: {{interesovanje.licniPodaci.mobilniTelefon}}</p>
+<p>Fiksni telefon: {{interesovanje.licniPodaci.fiksniTelefon}}</p>
+<p>Lokacija vakcinisanja: {{interesovanje.licniPodaci.lokacijaVakcinisanja.value}}</p>
+<p>Tip vakcine: {{interesovanje.tipVakcine.value}}</p>
+<p>Datum: {{interesovanje.datum.value | date}}</p>
+<p>Davalac krvi: {{interesovanje.davalacKrvi}}</p>

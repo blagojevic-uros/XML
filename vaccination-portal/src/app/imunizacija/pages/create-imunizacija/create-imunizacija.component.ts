@@ -15,7 +15,7 @@ export class CreateImunizacijaComponent implements OnInit {
   imunizacijaForm!: FormGroup;
   currentDate: string = new Date().toISOString().split('T')[0];
   saglasnost!: Saglasnost;
-  searchInput: string = ''; 
+  searchInput: string = '1707999850111'; 
   constructor(
     private fb: FormBuilder,
     private imunizacijaService: ImunizacijaService,

@@ -66,6 +66,13 @@ public class SaglasnostController {
         saglasnostService.updateSaglasnost(evidencijaOVakcinaciji,jmbg);
         return new ResponseEntity<>("Updated",HttpStatus.OK);
     }
+
+    @PostMapping("/update/vakcina/{jmbg}")
+    @Produces("application/xml")
+    public ResponseEntity<?> updateSaglasnostVakcina(@RequestBody TVakcinisanje vakcinisanje,@PathVariable String jmbg) throws Exception {
+        saglasnostService.updateSaglasnostVakcina(vakcinisanje,jmbg);
+        return new ResponseEntity<>("Updated",HttpStatus.OK);
+    }
     @GetMapping("/imunizacija")
     @Produces("application/xml")
     public ResponseEntity<?> getSaglasnostForUpdate(@RequestParam("jmbg") String jmbg){

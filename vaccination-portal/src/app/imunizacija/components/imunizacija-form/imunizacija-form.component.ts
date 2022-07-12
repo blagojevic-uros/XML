@@ -13,14 +13,8 @@ export class ImunizacijaFormComponent implements OnInit {
   @Input() searchInput: string = '';
   @Output() submitFormEvent = new EventEmitter();
   @Output() searchEvent = new EventEmitter();
-  tabelaVakcinisanja: FormGroup;
+  tabelaVakcinisanja!: FormGroup;
   constructor(private fb: FormBuilder) {
-
-    this.tabelaVakcinisanja = this.fb.group({  
-      name: '',  
-      quantities: this.fb.array([]) ,  
-    });
-    // this.imunizacijaForm.addControl(this.tabelaVakcinisanja);
   }
 
   ngOnInit(): void {}
@@ -31,28 +25,4 @@ export class ImunizacijaFormComponent implements OnInit {
   onSubmit() {
     this.submitFormEvent.emit();
   }
-
-  
-
-
-
-
-  quantities() : FormArray {  
-    return this.tabelaVakcinisanja.get("quantities") as FormArray  
-  }  
-     
-  newQuantity(): FormGroup {  
-    return this.fb.group({  
-      qty: '',  
-      price: '',  
-    })  
-  }  
-     
-  addQuantity() {  
-    this.quantities().push(this.newQuantity());  
-  }  
-     
-  removeQuantity(i:number) {  
-    this.quantities().removeAt(i);  
-  }  
 }

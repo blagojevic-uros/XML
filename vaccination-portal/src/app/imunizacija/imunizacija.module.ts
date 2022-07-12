@@ -15,8 +15,9 @@ import { MatNativeDateModule } from '@angular/material/core';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { MatIconModule } from '@angular/material/icon';
 import { MatCheckboxModule } from '@angular/material/checkbox';
+import { VakcinaFormComponent } from './components/vakcina-form/vakcina-form.component';
 @NgModule({
-  declarations: [CreateImunizacijaComponent, ImunizacijaFormComponent],
+  declarations: [CreateImunizacijaComponent, ImunizacijaFormComponent, VakcinaFormComponent],
   imports: [
     CommonModule,
     ImunizacijaRoutingModule,

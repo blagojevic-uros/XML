@@ -66,7 +66,7 @@
       <td>
         <mat-form-field appearance="outline">
           <mat-label>Datum Rodjenja </mat-label>
-          <input matInput  [value]="saglasnost.licniPodaci.datumRodjenja" [disabled]=true/>
+          <input matInput  [value]="saglasnost.licniPodaci.datumRodjenja | date" [disabled]=true/>
         </mat-form-field>
       </td>
       <td>
@@ -121,54 +121,15 @@
     <tr>
       <td>
         <mat-form-field appearance="outline">
-          <mat-label>Radni Status</mat-label>
-          <mat-select >
-            <mat-option value="Zaposlen"
-              >Zaposlen</mat-option
-            >
-            <mat-option value="Nezaposlen"
-              >Nezaposlen</mat-option
-            >
-            <mat-option value="Penzioner"
-            >Penzioner</mat-option
-            >
-            <mat-option value="Ucenik"
-              >Ucenik</mat-option
-            >
-            <mat-option value="Student"
-            >Student</mat-option
-            >
-            <mat-option value="Dete"
-              >Dete</mat-option
-            >
-          </mat-select>
+          <mat-label>Radni Status </mat-label>
+          <input matInput   [value]="saglasnost.radniStatus" [disabled]=true/>
         </mat-form-field>
       </td>
       <td>
-        
         <mat-form-field appearance="outline">
-        <mat-label>Zanimanje</mat-label>
-        <mat-select >
-          <mat-option value="Zdravstvena"
-            >Zdravstvena Zastita</mat-option
-          >
-          <mat-option value="Socijalna"
-            >Socijalna Zastita</mat-option
-          >
-          <mat-option value="Prosveta"
-          >Prosveta</mat-option
-          >
-          <mat-option value="MUP"
-            >MUP</mat-option
-          >
-          <mat-option value="Vojska"
-          >Vojska RS</mat-option
-          >
-          <mat-option value="Ostalo"
-            >Ostalo</mat-option
-          >
-        </mat-select>
-      </mat-form-field>
+          <mat-label>Radni Status </mat-label>
+          <input matInput   [value]="saglasnost.zanimanje" [disabled]=true/>
+        </mat-form-field>
       </td>
     </tr>
   </table>
@@ -224,11 +185,11 @@
     </div>
 
     <!-- OVDE TREBA LISTA VAKCINA -->
-    <div class="istorija-vakcina">  
+    <!-- <div class="istorija-vakcina">  
       <div class="wrapper">
         <h2> Istorija Vakcinisanja </h2>  
         <button type="button" (click)="addQuantity()" class="dodaj-vakcinu-btn">Dodaj Vakcinu</button> 
-      </div>
+      </div> -->
 
       <!-- <form [formGroup]="tabelaVakcinisanja" (ngSubmit)="onSubmit()">
         <div formArrayName="vakcinisanje">
@@ -243,7 +204,7 @@
         </div>
       </form> -->
 
-      <!-- <form [formGroup]="tabelaVakcinisanja" (ngSubmit)="onSubmit()">     -->
+      <!-- <form [formGroup]="tabelaVakcinisanja" (ngSubmit)="onSubmit()">    
         <div formArrayName="quantities" (ngSubmit)="onSubmit()">  
           <div *ngFor="let quantity of quantities().controls; let vakcinisanje=index" [formGroupName]="vakcinisanje">
             <tr>  
@@ -325,7 +286,6 @@
           </div>
         </div>  
       <!-- </form>   -->
-    </div>   
   </table>
 
 

@@ -1,0 +1,62 @@
+<form
+  [formGroup]="vakcinaForm"
+  class="containter"
+  (ngSubmit)="onSubmit()"
+>   
+
+<div formGroupName="nazivVakcine" class="containter">
+<mat-form-field appearance="outline">
+    <mat-label>Vakcina</mat-label>
+
+    <mat-select formControlName="value">
+      <mat-option value="PFIZER_BIO_N_TECH">Pfizer-BioNTech</mat-option>
+      <mat-option value="SPUTNIK_V">Sputnik V</mat-option>
+      <mat-option value="SINOPHARM">Sinopharm</mat-option>
+      <mat-option value="ASTRA_ZENECA">AstraZeneca</mat-option>
+      <mat-option value="MODERNA">Moderna</mat-option>
+    </mat-select>
+</mat-form-field>
+</div>
+<mat-form-field appearance="outline">
+  <mat-label>Proizvodjac</mat-label>
+
+  <mat-select formControlName="proizvodjac">
+    <mat-option value="PFIZER_BIO_N_TECH">Pfizer-BioNTech</mat-option>
+    <mat-option value="SPUTNIK_V">Sputnik V</mat-option>
+    <mat-option value="SINOPHARM">Sinopharm</mat-option>
+    <mat-option value="ASTRA_ZENECA">AstraZeneca</mat-option>
+    <mat-option value="MODERNA">Moderna</mat-option>
+  </mat-select>
+</mat-form-field>
+
+
+<mat-form-field appearance="outline">
+  <mat-label>Ekstremitet</mat-label>
+<mat-select formControlName="ekstremitet">
+  <mat-option value="leva_ruka">Leva ruka</mat-option>
+  <mat-option value="desna_ruka">Desna ruka</mat-option>
+</mat-select>
+</mat-form-field>
+
+<mat-form-field appearance="outline">
+  <mat-label>Serija Vakcine</mat-label>
+  <input matInput formControlName="serijaVakcine" />
+</mat-form-field>
+<mat-form-field appearance="outline">
+  <mat-label>Nezeljena Reakcija</mat-label>
+  <input matInput formControlName="nezeljenaReakcija" />
+</mat-form-field>
+
+<mat-form-field appearance="outline">
+  <mat-label>Potpis</mat-label>
+  <input matInput formControlName="potpisLekara" />
+</mat-form-field>
+<button
+mat-flat-button
+class="align-right"
+color="primary"
+type="submit"
+>
+Submit
+</button>
+</form>
