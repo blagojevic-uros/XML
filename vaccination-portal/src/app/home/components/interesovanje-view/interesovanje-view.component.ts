@@ -16,13 +16,13 @@ export class InteresovanjeViewComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  getPdf(){
-    this.interesovanjeService.downloadPDF().subscribe(() =>{
+  getPdf(id:any){
+    this.interesovanjeService.downloadPDF(id).subscribe(() =>{
       
     });
   }
-  getXhtml(){
-    this.interesovanjeService.downloadXhtml().subscribe(() =>{
+  getXhtml(id:any){
+    this.interesovanjeService.downloadXhtml(id).subscribe(() =>{
       
     });
   }

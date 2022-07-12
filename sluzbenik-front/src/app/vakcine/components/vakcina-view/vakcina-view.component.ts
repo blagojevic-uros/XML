@@ -1,4 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { VakcineService } from '../../service/vakcine.service';
 
 @Component({
   selector: 'app-vakcina-view',
@@ -10,9 +11,13 @@ export class VakcinaViewComponent implements OnInit {
 
   @Input() vakcina!: any;
   
-  constructor() { }
+  constructor(private vakcinaService:VakcineService) { }
 
   ngOnInit(): void {
   }
-
+  updateKolicina(naziv:any,kolicina:any){
+    this.vakcinaService.updateKolicinaVakcina(naziv,kolicina).subscribe((res)=>{
+      
+    })
+  }
 }

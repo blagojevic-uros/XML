@@ -5,6 +5,7 @@ import lombok.Getter;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.xmldb.api.base.XMLDBException;
@@ -27,5 +28,10 @@ public class VakcineController {
         return new ResponseEntity<>(vakcineService.getAll(), HttpStatus.OK);
     }
 
+    @GetMapping("/update/{naziv}/{kolicina}")
+    public ResponseEntity<?> getAllVakcine(@PathVariable String naziv,@PathVariable Integer kolicina) throws XMLDBException, JAXBException {
+        vakcineService.setKolicina(naziv,kolicina);
+        return new ResponseEntity<>("Kolicina updated", HttpStatus.OK);
+    }
 
 }

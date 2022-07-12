@@ -10,12 +10,16 @@ export class VakcineComponent implements OnInit {
 
   vakcine!: any[];
   porudzbine!: any[];
+  pending!: any[];
   constructor(private vakcineService: VakcineService) {
     vakcineService.getAll().subscribe((res)=>{
       this.vakcine = res;
     })
     vakcineService.getAllPorudzine().subscribe((res)=>{
       this.porudzbine = res;
+    })
+    vakcineService.getAllPorudzinePending().subscribe((res)=>{
+      this.pending = res;
     })
    }
 

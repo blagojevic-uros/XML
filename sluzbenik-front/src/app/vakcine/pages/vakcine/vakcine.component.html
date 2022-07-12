@@ -8,11 +8,19 @@
     </tr>
 </h4>
 </div>
-<div class="float-child">
+<!-- <div class="float-child">
     <h2>Porudzbine</h2>
 <h4>
     <tr *ngFor="let porudzbina of porudzbine">
         <app-porudzbine [porudzbina] = "porudzbina"></app-porudzbine >
+    </tr>
+</h4>
+</div> -->
+<div class="float-child">
+    <h2>Porudzbine Pending</h2>
+<h4>
+    <tr *ngFor="let porudzbina of pending">
+        <app-porudzbine [porudzbina] = "porudzbina"></app-porudzbine>
     </tr>
 </h4>
 </div>

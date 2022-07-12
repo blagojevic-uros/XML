@@ -48,9 +48,10 @@ public class DataConfig {
 
             Korisnik k = new Korisnik(1L,"pera","$2a$12$BKZlNSMhhIVTVsiPt9Qz8eXX/eEoCkP851wlR3/mxJqbfdWsOjgM6","Pera","Peric","1707999850111","123123123",roles);
             korisnikDAO.save("/db/korisnik",k.getUsername() + ".xml",k,Korisnik.class);
-
-            Porudzbina p = new Porudzbina("Moderna",10,new Date(), PORUDZBINA_STATUS.FINISHED);
+            Porudzbina p = new Porudzbina("Moderna",10,new Date(), PORUDZBINA_STATUS.PENDING,"123");
+            Porudzbina p1 = new Porudzbina("Moderna",10,new Date(), PORUDZBINA_STATUS.FINISHED,"1234");
             porudzbinaDAO.save(porudzbinaDAO.getFolderPath(),"porudzbina-123.xml",p,Porudzbina.class);
+            porudzbinaDAO.save(porudzbinaDAO.getFolderPath(),"porudzbina-1234.xml",p1,Porudzbina.class);
 
         };
     }

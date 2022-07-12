@@ -18,4 +18,6 @@ public class Porudzbina {
     private Integer kolicina;
     private Date datum;
     private PORUDZBINA_STATUS status;
+
+    private String id;
 }

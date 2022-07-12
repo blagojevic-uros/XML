@@ -8,8 +8,10 @@ import org.xmldb.api.modules.CollectionManagementService;
 import org.xmldb.api.modules.XMLResource;
 import org.xmldb.api.modules.XPathQueryService;
 import org.xmldb.api.modules.XQueryService;
+import util.ObjectParser;
 
 import javax.xml.bind.JAXBContext;
+import javax.xml.bind.JAXBException;
 import javax.xml.bind.Marshaller;
 import javax.xml.transform.OutputKeys;
 import java.io.ByteArrayOutputStream;
@@ -164,10 +166,13 @@ public class DataAccessLayer {
         while(i.hasMoreResources()) {
             try {
                 res = i.nextResource();
-                results.add((T) res.getContent());
+                results.add((T) ObjectParser.parseToObject((XMLResource) res,clazz));
+//                results.add((T) res.getContent());
 
             } catch(XMLDBException xe) {
                 xe.printStackTrace();
+            } catch (JAXBException e) {
+                throw new RuntimeException(e);
             }
 
         }
@@ -175,7 +180,6 @@ public class DataAccessLayer {
 
         return results;
     }
-
 //    @SuppressWarnings("unchecked")
 //    public <T> List<T> xQueryResult(String collectionPath, String xQuery, String namespace, Class<T> clazz) throws XMLDBException {
 //        Collection col;

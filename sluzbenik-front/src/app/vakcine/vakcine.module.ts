@@ -5,7 +5,7 @@ import { VakcineRoutingModule } from './vakcine-routing.module';
 import { VakcineComponent } from './pages/vakcine/vakcine.component';
 import { VakcinaViewComponent } from './components/vakcina-view/vakcina-view.component';
 import { PorudzbineComponent } from './components/porudzbine/porudzbine.component';
-
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -15,7 +15,8 @@ import { PorudzbineComponent } from './components/porudzbine/porudzbine.componen
   ],
   imports: [
     CommonModule,
-    VakcineRoutingModule
+    VakcineRoutingModule,
+    FormsModule
   ]
 })
 export class VakcineModule { }

@@ -3,6 +3,7 @@ package com.vacc.dao;
 import com.vacc.config.DBConfig;
 import com.vacc.config.DataConfig;
 import lombok.Getter;
+import model.interesovanje.Interesovanje;
 import model.vakcine.Porudzbina;
 import model.vakcine.Vakcina;
 import org.springframework.stereotype.Component;
@@ -32,5 +33,29 @@ public class PorudzbinaDAO extends  DataAccessLayer{
             porudzbine.add(p );
         }
         return porudzbine;
+    }
+    public List<Porudzbina> getAllPendingPorudzbine() throws XMLDBException, JAXBException {
+        String xPath = "//porudzbina[status ='PENDING']";
+        List<Porudzbina> porudzbinas = new ArrayList<>();
+        try{
+            porudzbinas = this.xPathResult(this.dbConfig.getUrl()+folderPath, xPath,"",Porudzbina.class);
+        }
+        catch(XMLDBException xe){
+            xe.printStackTrace();
+        }
+        System.out.println(porudzbinas);
+        return porudzbinas;
+    }
+    public Porudzbina getById(String id) throws XMLDBException, JAXBException {
+        String xPath = "//porudzbina[id ='" +id + "']";
+        List<Porudzbina> porudzbinas = new ArrayList<>();
+        try{
+            porudzbinas = this.xPathResult(this.dbConfig.getUrl()+folderPath, xPath,"",Porudzbina.class);
+        }
+        catch(XMLDBException xe){
+            xe.printStackTrace();
+        }
+        System.out.println(porudzbinas);
+        return porudzbinas.get(0);
     }
 }

@@ -11,6 +11,7 @@ import util.XSLPaths;
 
 import javax.mail.util.ByteArrayDataSource;
 import java.io.ByteArrayInputStream;
+import java.util.List;
 import java.util.UUID;
 
 @Service
@@ -34,8 +35,8 @@ public class PotvrdaService {
     public String save(PotvrdaOVakcinaciji potvrdaOVakcinaciji) throws Exception{
         String uniqueID = UUID.randomUUID().toString();
         potvrdaOVakcinaciji.setId(uniqueID);
-        //potvrdaOVakcinaciji.setAbout("http://www.ftn.uns.ac.rs/rdf/potvrda/" + uniqueID);
-        //potvrdaOVakcinaciji.setRel("pred:saglasnostOd");
+        potvrdaOVakcinaciji.setAbout("http://www.ftn.uns.ac.rs/rdf/potvrda/" + uniqueID);
+        potvrdaOVakcinaciji.setSifraPotvrde(uniqueID);
         String documentId = "potvrda-" + uniqueID + ".xml";
         try{
             this.potvrdaDAO.save(folderPath,documentId,potvrdaOVakcinaciji,PotvrdaOVakcinaciji.class);
@@ -73,5 +74,9 @@ public class PotvrdaService {
         catch (Exception e){
             throw new Exception();
         }
+    }
+
+    public List<PotvrdaOVakcinaciji> getByJmbg(String jmbg) {
+        return potvrdaDAO.getByJmbg(jmbg);
     }
 }

@@ -20,4 +20,20 @@ export class VakcineService {
       'http://localhost:9091/vakcine/porudzbine'
     );
   }
+  getAllPorudzinePending(): Observable<any[]> {
+    return this.http.get<any[]>(
+      'http://localhost:9091/vakcine/porudzbine/pending'
+    );
+  }
+  finishPorudzbina(id: any){
+    return this.http.get<any[]>(
+      'http://localhost:9091/vakcine/porudzbine/finish/'+ id
+    );
+  }
+
+  updateKolicinaVakcina(naziv:any,kolicina:any){
+    return this.http.get<any[]>(
+      'http://localhost:9091/vakcine/update/kolicina/'+ naziv + "/" + kolicina
+    );
+  }
 }

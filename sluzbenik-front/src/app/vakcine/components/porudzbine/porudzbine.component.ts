@@ -1,4 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { VakcineService } from '../../service/vakcine.service';
 
 @Component({
   selector: 'app-porudzbine',
@@ -7,9 +8,15 @@ import { Component, Input, OnInit } from '@angular/core';
 })
 export class PorudzbineComponent implements OnInit {
   @Input() porudzbina!: any;
-  constructor() { }
+  constructor(private vakcineService:VakcineService) { }
 
   ngOnInit(): void {
   }
 
+  finishPorudzbina(id:any){
+    this.vakcineService.finishPorudzbina(id).subscribe((res)=>{
+
+    });
+
+  }
 }

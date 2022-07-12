@@ -34,5 +34,11 @@ public class VakcineService {
         vakcineDAO.save(vakcineDAO.getFolderPath(),name + ".xml",v,Vakcina.class);
     }
 
+    public void setKolicina(String name,Integer amount) throws XMLDBException, JAXBException {
+        Vakcina v = getByName(name);
+        v.setKolicina(amount);
+        vakcineDAO.save(vakcineDAO.getFolderPath(),name + ".xml",v,Vakcina.class);
+    }
+
 
 }

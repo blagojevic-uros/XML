@@ -5,6 +5,7 @@ import {
   HttpParams,
   HttpResponse,
 } from '@angular/common/http';
+import { Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -18,5 +19,8 @@ export class PotvrdaService {
       potvrda,
       { responseType: 'text' }
     );
+  }
+  getByJmbg():Observable<any>{
+    return this.http.get('http://localhost:9090/api/potvrda/jmbg');
   }
 }

@@ -29,9 +29,9 @@ export class InteresovanjeService {
       'http://localhost:9090/api/interesovanje/generisiPdf/5c3244ad-be8c-43eb-b098-8fc283a4c445'
     );
   }
-  downloadPDF(): any {
+  downloadPDF(id:any): any {
     var mediaType = 'application/pdf';
-    this.http.get('http://localhost:9090/api/interesovanje/generisiPdf/5c3244ad-be8c-43eb-b098-8fc283a4c445', { responseType: 'blob' }).subscribe(
+    this.http.get('http://localhost:9090/api/interesovanje/generisiPdf/'+id, { responseType: 'blob' }).subscribe(
         (response) => {
             var blob = new Blob([response], { type: mediaType });
             saveAs(blob, 'report.pdf');
@@ -39,9 +39,9 @@ export class InteresovanjeService {
         e => { throwError(e); }
     );
 }
-downloadXhtml(): any {
+downloadXhtml(id:any): any {
   var mediaType = '"text/html"';
-  this.http.get('http://localhost:9090/api/interesovanje/generisiXhtml/5c3244ad-be8c-43eb-b098-8fc283a4c445', { responseType: 'blob' }).subscribe(
+  this.http.get('http://localhost:9090/api/interesovanje/generisiXhtml/'+id, { responseType: 'blob' }).subscribe(
       (response) => {
           var blob = new Blob([response], { type: mediaType });
           saveAs(blob, 'report.html');

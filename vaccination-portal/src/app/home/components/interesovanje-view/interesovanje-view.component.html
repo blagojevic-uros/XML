@@ -1,6 +1,5 @@
-<button mat-raised-button (click) ="getPdf()" color="primary">pdf</button>
-<button mat-raised-button (click)="getXhtml()" color="primary">xhtml</button>
-<!-- <p>{{interesovanje | json}}</p> -->
+<button mat-raised-button (click) ="getPdf(interesovanje.id)" color="primary">pdf</button>
+<button mat-raised-button (click)="getXhtml(interesovanje.id)" color="primary">xhtml</button>
 
 <p>Drzavljanstvo: {{interesovanje.licniPodaci.drzavljanstvo.value}}</p>
 

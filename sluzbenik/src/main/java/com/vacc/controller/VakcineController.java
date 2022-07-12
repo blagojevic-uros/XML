@@ -6,6 +6,7 @@ import model.vakcine.Vakcina;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.client.RestTemplate;
@@ -39,5 +40,25 @@ public class VakcineController {
     @Produces("application/xml")
     public ResponseEntity<?> getAllPorudzbine() throws XMLDBException, JAXBException {
         return new ResponseEntity<>(porudzbinaService.getAll(), HttpStatus.OK);
+    }
+    @GetMapping("/porudzbine/pending")
+    @Produces("application/xml")
+    public ResponseEntity<?> getAllPorudzbinePending() throws XMLDBException, JAXBException {
+        return new ResponseEntity<>(porudzbinaService.getAllPending(), HttpStatus.OK);
+    }
+
+    @GetMapping("/porudzbine/finish/{id}")
+    @Produces("application/xml")
+    public ResponseEntity<?> finishPorudzbinaPending(@PathVariable String id) throws XMLDBException, JAXBException {
+        porudzbinaService.finishPorudzbina(id);
+        return new ResponseEntity<>("Porudzbina updated",HttpStatus.OK);
+    }
+
+    @GetMapping("/update/kolicina/{naziv}/{kolicina}")
+    @Produces("application/xml")
+    public ResponseEntity<?> updateKolicina(@PathVariable String naziv,@PathVariable Integer kolicina) throws XMLDBException, JAXBException {
+        String response = restTemplate.getForObject(
+                "http://localhost:9090/api/vakcine/update/"+ naziv + "/" + kolicina, String.class);
+        return new ResponseEntity<>(response,HttpStatus.OK);
     }
 }
