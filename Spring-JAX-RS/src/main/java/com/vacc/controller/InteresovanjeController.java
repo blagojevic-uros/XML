@@ -83,13 +83,13 @@ public class InteresovanjeController {
     }
 
     @GetMapping(value = "/generisiXhtml/{id}", produces = MediaType.TEXT_HTML_VALUE)
-    @PreAuthorize("hasAnyRole('ROLE_GRADJANIN', 'ROLE_SLUZBENIK')")
+//    @PreAuthorize("hasAnyRole('ROLE_GRADJANIN', 'ROLE_SLUZBENIK')")
     public ResponseEntity<InputStreamResource> generisiXHTML(@PathVariable String id) throws Exception {
         return new ResponseEntity<>(new InputStreamResource(interesovanjeService.generisiXHTML(id)), HttpStatus.OK);
     }
 
     @GetMapping(value = "/generisiPdf/{id}", produces = MediaType.TEXT_HTML_VALUE)
-    @PreAuthorize("hasAnyRole('ROLE_GRADJANIN', 'ROLE_SLUZBENIK')")
+//    @PreAuthorize("hasAnyRole('ROLE_GRADJANIN', 'ROLE_SLUZBENIK')")
     public ResponseEntity<InputStreamResource> generisiPdf(@PathVariable String id) throws Exception {
         return new ResponseEntity<>(new InputStreamResource(interesovanjeService.generisiPdf(id)), HttpStatus.OK);
     }
