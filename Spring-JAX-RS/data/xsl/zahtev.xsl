@@ -69,7 +69,7 @@
                 </p>
                 
                 <p style = "padding-top:10px;">
-                	<xsl:value-of select="//za:licni_podaci/za:ime/text()"/>
+                	<xsl:value-of select="//za:licni_podaci/za:ime_prezime/ct:ime/text()"/>
                 </p>
                 
                 <p style = "padding-top:10px;">
@@ -77,7 +77,7 @@
                 </p>
                 
                 <p style = "padding-top:10px;">
-                	<xsl:value-of select="//za:licni_podaci/za:prezime/text()"/>
+                	<xsl:value-of select="//za:licni_podaci/za:ime_prezime/ct:prezime/text()"/>
                 </p>
                 
                 
@@ -114,7 +114,7 @@
               	
                  <p style = "padding-top:100px;">
 	                Datum podnosenja: 
-	                <u><xsl:value-of select="//za:datum_podnosenja/text()"/></u>
+	                <u><xsl:value-of select="//za:datum_zahteva/text()"/></u>
 	                godine.	
                 </p>
                 <p id="potpis">Potpis</p>

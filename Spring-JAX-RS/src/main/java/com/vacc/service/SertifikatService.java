@@ -3,6 +3,8 @@ package com.vacc.service;
 import com.vacc.dao.SertifikatDAO;
 import model.sertifikat.ZeleniSertifikat;
 import org.springframework.stereotype.Service;
+import util.ObjectParser;
+import util.QrCodeUtil;
 import util.XSLFOPaths;
 import util.XSLPaths;
 
@@ -26,14 +28,17 @@ public class SertifikatService {
         this.pdfTransformerService = pdfTransformerService;
     }
 
-    public void save(ZeleniSertifikat sertifikat) throws Exception {
+    public String save(ZeleniSertifikat sertifikat) throws Exception {
         String uniqueID = UUID.randomUUID().toString();
+        uniqueID = uniqueID + "-22";
         sertifikat.setId(uniqueID);
-        String documentId = "sertifikat-" + uniqueID + "-22.xml";
+        sertifikat.setBrojSertifikata(uniqueID);
+        String documentId = "sertifikat-" + uniqueID + ".xml";
+        sertifikat.setQRCode(QrCodeUtil.generisiQRCode( "http://localhost:9090/sertifikat/"+uniqueID));
         sertifikatDAO.save(sertifikatDAO.getFolderPath(), documentId,sertifikat,ZeleniSertifikat.class);
 //        ByteArrayDataSource pdf = new ByteArrayDataSource(generisiPdf(uniqueID), "application/pdf");
 //        ByteArrayDataSource xhtml = new ByteArrayDataSource(generisiXHTML(uniqueID), "text/html");
-
+        return uniqueID;
     }
 
     public List<ZeleniSertifikat> getAllJmbg(String jmbg){
@@ -56,6 +61,15 @@ public class SertifikatService {
         return xhtmlTransformerService.generateHTML(sertifikat, XSLPaths.SERTIFIKAT_XSL);
     }
 
+    public ZeleniSertifikat getByIdObject(String id) throws Exception {
+        try{
+            String documentId = "sertifikat-" + id + ".xml";
+            return (ZeleniSertifikat) ObjectParser.parseToObject(this.sertifikatDAO.getById(documentId,folderPath),ZeleniSertifikat.class);
+        }
+        catch (Exception e){
+            throw new Exception();
+        }
+    }
     public String getById(String id) throws Exception {
         try{
             String documentId = "sertifikat-" + id + ".xml";

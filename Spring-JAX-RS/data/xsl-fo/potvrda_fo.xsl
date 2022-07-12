@@ -56,10 +56,10 @@
                     <xsl:for-each select="//po:informacije_vakcinacije">
                     	<fo:block font-size="13px" padding="10px">
                         	 <fo:inline>
-                        	    Datum davanja <xsl:value-of select="po:broj_doze"/> doze i broj serije vakcine:
+                        	    Datum davanja <xsl:value-of select="//po:broj_doze"/> doze i broj serije vakcine:
                         	 </fo:inline>
                             <fo:block>
-                                <xsl:value-of select="concat(' ', //po:datum_izdavanja_potvrde/text(), ' ', po:broj_serije/text())"/>
+                                <xsl:value-of select="concat(' ', //po:datum_izdavanja_potvrde/text(), ' ', //po:broj_serije/text())"/>
                             </fo:block>
                     </fo:block>
                     </xsl:for-each>

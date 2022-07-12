@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
     xmlns:fo="http://www.w3.org/1999/XSL/Format"
-    xmlns:se="http:///www.ftn.uns.ac.rs/vakcinacija/sertifikat"
-    xmlns:ct="http:///www.ftn.uns.ac.rs/vakcinacija/commonTypes"
+    xmlns:se="http://ftn.uns.ac.rs/vakcina/sertifikat"
+    xmlns:ct="http://ftn.uns.ac.rs/vakcina/tipovi"
     version="2.0">
     <xsl:template match="/">
         <fo:root>
@@ -44,7 +44,7 @@
 	                    </fo:block>
 	                    <fo:block-container width="5%" left="70%" top="3.9in" position="absolute">
                             <fo:block>
-                                <xsl:variable name="QR" select="//se:QR/text()"/>
+                                <xsl:variable name="QR" select="//se:QR_code/text()"/>
                                 <fo:external-graphic src="url('data:image/jpeg;base64,{$QR}')"/>
                             </fo:block>
                         </fo:block-container>
@@ -65,8 +65,7 @@
 	                    		<fo:block font-family="sans-serif" font-size="11px" font-weight="bold">
 	                        		Certificate issuing date and time:
 		                        	<fo:inline font-weight="normal">
-		                            	<xsl:value-of
-		                                    select="format-dateTime(//se:DatumVremeIzdavanja/text(), '[Y0001]-[M01]-[D01] [H01]:[m01]')"/>	                                     
+										<xsl:value-of select="//se:datum_izdavanja/text()"/>
 		                        	</fo:inline>
 	                    		</fo:block>
 	                    	</fo:block-container>
@@ -75,7 +74,7 @@
                             <fo:block font-size="11px" font-weight="bold">
 	                    		Ime i prezime / Name and surname: 
 		                    	<fo:inline font-size="11px" font-weight = "normal">
-		                    		<xsl:value-of select="concat(' ', //se:LicneInformacije/se:PunoIme/ct:Ime/text(), ' ', //se:LicneInformacije/se:PunoIme/ct:Prezime/text())"/>
+		                    		<xsl:value-of select="concat(' ', //se:licni_podaci/se:ime_prezime/ct:ime/text(), ' ',//se:licni_podaci/se:ime_prezime/ct:prezime/text())"/>
 		                    	</fo:inline>
 	                    	</fo:block>
 	                    </fo:block-container>
@@ -83,24 +82,16 @@
 	                            <fo:block font-size="11px" font-weight="bold" padding="10px">
 			                    	Pol / Gender: 
 			                    	<fo:inline font-size="11px" font-weight="normal">
-			                    		<xsl:value-of select="//se:LicneInformacije/se:Pol/text()"/> 
+			                    		<xsl:value-of select="//se:licni_podaci/se:pol/text()"/>
 			                    	</fo:inline>
 		                    	</fo:block>
 	                    </fo:block-container>
 	                    <fo:block-container>
 	                        <fo:block-container>
 	                            <fo:block font-size="11px" font-weight="bold" padding="10px">
-			                    	Datum rodjenja / Date of birth: 
-			                    	<fo:inline font-size="11px" font-weight="normal">
-			                    		<xsl:value-of select="//se:LicneInformacije/se:DatumRodjenja/text()"/> 
-			                    	</fo:inline>
-			                    </fo:block>
-	                        </fo:block-container>
-	                        <fo:block-container>
-	                            <fo:block font-size="11px" font-weight="bold" padding="10px">
 			                    	JMBG / Personal No. / EBS: 
 			                    	<fo:inline font-weight = "normal" font-size="11px">
-			                    		<xsl:value-of select="//se:LicneInformacije/se:JMBG/text()"/> 
+			                    		<xsl:value-of select="//se:licni_podaci/se:JMBG/text()"/>
 			                    	</fo:inline>
 			                    </fo:block>       
 	                        </fo:block-container>
@@ -110,7 +101,7 @@
 	                            <fo:block font-size="11px" font-weight="bold" padding="10px">
 			                    	Broj pasosa / Passport No: 
 			                    	<fo:inline font-size="11px" font-weight="normal">
-			                    		<xsl:value-of select="//se:LicneInformacije/se:BrojPasosa/text()"/> 
+			                    		<xsl:value-of select="//se:licni_podaci/se:broj_pasosa/text()"/>
 			                    	</fo:inline>
 			                    </fo:block> 
 	                        </fo:block-container>
@@ -127,28 +118,28 @@
 			                    <fo:block font-size="11px" font-weight="bold" padding-top = "5px">
 			                    	Tip / Type:
 			                    	<fo:block font-size="11px"  padding="5px" font-weight="normal">
-			                    		<xsl:value-of select="//se:Vakcinacija[1]/se:TipVakcine/text()"/> 
+			                    		<xsl:value-of select="//se:Vakcinacija[1]/se:tip/text()"/>
 			                    	</fo:block>
 			                     </fo:block>
 			                     <fo:block font-size="11px" font-weight="bold" padding-top = "5px">
 			                    	Proizvodjac i serija / Manufacturer and batch number:
 			                    	<fo:block font-size="11px"  padding="5px">
 			                    		<fo:inline font-weight="normal">
-			                    			<xsl:value-of select="//se:Vakcinacija[1]/se:Proizvodjac/text()"/>,
-			                    			 <xsl:value-of select="//se:Vakcinacija[1]/se:Serija/text()"/>
+			                    			<xsl:value-of select="//se:vakcinacija[1]/se:proizvodjac/text()"/>,
+			                    			 <xsl:value-of select="//se:vakcinacija[1]/se:tip/text()"/>
 			                    		</fo:inline>
 			                    	</fo:block>
 			                     </fo:block>
 			                     <fo:block font-size="11px" font-weight="bold" padding-top = "5px">
 			                    	Datum / Date:
 			                    	<fo:inline font-size="11px" font-weight="normal">
-			                    		<xsl:value-of select="//se:Vakcinacija[1]/se:DatumDavanja/text()"/> 
+			                    		<xsl:value-of select="//se:vakcinacija[1]/se:datum_izdavanja/text()"/>
 			                    	</fo:inline>
 			                     </fo:block>
 			                     <fo:block font-size="11px" font-weight="bold" padding-top = "5px">
 			                    	Zdravstvena ustanova / Health care institution:
 			                    	<fo:block font-size="11px" font-weight="normal">
-			                    		<xsl:value-of select="//se:Vakcinacija[1]/se:ZdravstvenaUstanova/text()"/> 
+			                    		<xsl:value-of select="//se:datum_izdavanja[1]/se:zdravstvena_ustanova/text()"/>
 			                    	</fo:block>
 			                     </fo:block>
 	                     	</fo:block-container>
@@ -173,28 +164,28 @@
 			                    <fo:block font-size="11px" font-weight="bold" padding-top = "5px">
 			                    	Tip / Type:
 			                    	<fo:block font-size="11px"  padding="5px" font-weight="normal">
-			                    		<xsl:value-of select="//se:Vakcinacija[2]/se:TipVakcine/text()"/> 
+			                    		<xsl:value-of select="//se:Vakcinacija[2]/se:tip/text()"/>
 			                    	</fo:block>
 			                     </fo:block>
 			                     <fo:block font-size="11px" font-weight="bold" padding-top = "5px">
 			                    	Proizvodjac i serija / Manufacturer and batch number:
 			                    	<fo:block font-size="11px"  padding="5px" font-weight="normal">
 			                    		<fo:inline>
-			                    			<xsl:value-of select="//se:Vakcinacija[2]/se:Proizvodjac/text()"/>,
-			                    			 <xsl:value-of select="//se:Vakcinacija[2]/se:Serija/text()"/>
+			                    			<xsl:value-of select="//se:vakcinacija[2]/se:proizvodjac/text()"/>,
+			                    			 <xsl:value-of select="//se:vakcinacija[2]/se:tip/text()"/>
 			                    		</fo:inline>
 			                    	</fo:block>
 			                     </fo:block>
 			                     <fo:block font-size="11px" font-weight="bold" padding-top = "5px">
 			                    	Datum / Date:
 			                    	<fo:inline font-size="11px" font-weight="normal">
-			                    		<xsl:value-of select="//se:Vakcinacija[2]/se:DatumDavanja/text()"/> 
+			                    		<xsl:value-of select="//se:vakcinacija[2]/se:datum_izdavanja/text()"/>
 			                    	</fo:inline>
 			                     </fo:block>
 			                     <fo:block font-size="11px" font-weight="bold" padding-top = "5px">
 			                    	Zdravstvena ustanova / Health care institution:
 			                    	<fo:block font-size="11px" font-weight="normal">
-			                    		<xsl:value-of select="//se:Vakcinacija[2]/se:ZdravstvenaUstanova/text()"/> 
+			                    		<xsl:value-of select="//se:vakcinacija[2]/se:zdravstvena_ustanova/text()"/>
 			                    	</fo:block>
 			                     </fo:block>
 		                     </fo:block-container>

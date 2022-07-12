@@ -1,4 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { SertifikatService } from 'src/app/sertifikat/service/sertifikat.service';
 
 @Component({
   selector: 'app-sertifikat-view',
@@ -8,18 +9,18 @@ import { Component, Input, OnInit } from '@angular/core';
 export class SertifikatViewComponent implements OnInit {
 
   @Input() sertifikati!: any[];
-  constructor() { }
+  constructor(private sertifikatService:SertifikatService) { }
 
   ngOnInit(): void {
   }
   getPdf(id:any){
-    // this.interesovanjeService.downloadPDF(id).subscribe(() =>{
+    this.sertifikatService.downloadPDF(id).subscribe(() =>{
       
-    // });
+    });
   }
   getXhtml(id:any){
-    // this.interesovanjeService.downloadXhtml(id).subscribe(() =>{
+    this.sertifikatService.downloadXhtml(id).subscribe(() =>{
       
-    // });
+    });
   }
 }

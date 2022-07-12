@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
     xmlns:fo="http://www.w3.org/1999/XSL/Format"
-    xmlns:za="http:///www.ftn.uns.ac.rs/vakcinacija/zahtev"
- 	xmlns:ct="http:///www.ftn.uns.ac.rs/vakcinacija/commonTypes"
+				xmlns:za="http://ftn.uns.ac.rs/vakcina/zahtev"
+				xmlns:ct="http://ftn.uns.ac.rs/vakcina/tipovi"
     version="2.0">
     <xsl:template match="/">
         <fo:root>
@@ -29,8 +29,8 @@
 	                            <fo:inline>
 	                                Ime i prezime:
 	                                <fo:inline text-decoration="underline">
-	                                    <xsl:value-of select="//za:Zahtev/za:Podnosilac/za:PunoIme/ct:Ime"/>
-										<xsl:value-of select="//za:Zahtev/za:Podnosilac/za:PunoIme/ct:Prezime"/>
+	                                    <xsl:value-of select="//za:licni_podaci/za:ime_prezime/ct:ime/text()"/>
+										<xsl:value-of select="//za:licni_podaci/za:ime_prezime/ct:prezime/text()"/>
 	                                </fo:inline>
 	                            </fo:inline>
 							</fo:block>
@@ -38,7 +38,7 @@
 								<fo:inline>
 	                                Datum rodjenja:
 	                                <fo:inline text-decoration="underline">
-	                                    <xsl:value-of select="//za:Zahtev/za:Podnosilac/za:DatumRodjenja"/>
+	                                    <xsl:value-of select="//za:licni_podaci/za:datum_rodjenja/text()"/>
 	                                </fo:inline>
 	                            </fo:inline>
 							</fo:block>
@@ -46,7 +46,7 @@
 								<fo:inline>
 	                                Pol:
 	                                <fo:inline text-decoration="underline">
-	                                    <xsl:value-of select="//za:Zahtev/za:Podnosilac/za:Pol"/>
+	                                    <xsl:value-of select="//za:licni_podaci/za:pol/text()"/>
 	                                </fo:inline>
 	                            </fo:inline>
 							</fo:block>
@@ -54,7 +54,7 @@
 								<fo:inline>
 	                                Jedinstveni maticni broj gradjanina:
 	                                <fo:inline text-decoration="underline">
-	                                    <xsl:value-of select="//za:Zahtev/za:Podnosilac/za:JMBG"/>
+	                                    <xsl:value-of select="//za:licni_podaci/za:JMBG/text()"/>
 	                                </fo:inline>
 	                            </fo:inline>
 							</fo:block>
@@ -62,7 +62,7 @@
 								<fo:inline>
 	                                Broj pasosa:
 	                                <fo:inline text-decoration="underline">
-	                                    <xsl:value-of select="//za:Zahtev/za:Podnosilac/za:BrojPasosa"/>
+	                                    <xsl:value-of select="//za:licni_podaci/za:broj_pasosa/text()"/>
 	                                </fo:inline>
 	                            </fo:inline>
 							</fo:block>
@@ -70,7 +70,7 @@
 								<fo:inline>
 	                                Razlog podnosenja zahteva:
 	                                <fo:inline text-decoration="underline">
-	                                    <xsl:value-of select="//za:Zahtev/za:RazlogPodnosenja"/>
+	                                    <xsl:value-of select="//za:razlog_za_zahtev/text()" />
 	                                </fo:inline>
 	                            </fo:inline>
                         	</fo:block>
@@ -78,7 +78,7 @@
 	                            <fo:inline>
 	                                Datum podnosenja: 
 	                                <fo:inline text-decoration="underline">
-	                                    <xsl:value-of select="//za:Zahtev/za:DatumPodnosenja"/>
+	                                    <xsl:value-of select="//za:datum_zahteva"/>
 	                                </fo:inline>
 	                                godine
 	                            </fo:inline>

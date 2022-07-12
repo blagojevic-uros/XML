@@ -24,14 +24,20 @@ public class SertifikatController {
     }
 
     @PostMapping("/save")
-    public void save(@RequestBody ZeleniSertifikat sertifikat) throws Exception {
+    public ResponseEntity<?> save(@RequestBody ZeleniSertifikat sertifikat) throws Exception {
 
-        sertifikatService.save(sertifikat);
+
+        return new ResponseEntity<>("Kreiran sertifikat id:" + sertifikatService.save(sertifikat),HttpStatus.OK);
 
     }
     @GetMapping("/all/{jmbg}")
     public ResponseEntity<?> getAllJmbg(@PathVariable String jmbg){
         return new ResponseEntity<>(sertifikatService.getAllJmbg(jmbg), HttpStatus.OK);
+    }
+
+    @GetMapping("/{id}")
+    public ResponseEntity<?> getByIdObject(@PathVariable String id) throws Exception {
+        return new ResponseEntity<>(sertifikatService.getByIdObject(id), HttpStatus.OK);
     }
     @GetMapping("/all")
     public ResponseEntity<List<ZeleniSertifikat>> getAllJmbg(Authentication authentication){
