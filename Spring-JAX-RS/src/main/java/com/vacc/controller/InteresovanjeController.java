@@ -82,6 +82,11 @@ public class InteresovanjeController {
         return new ResponseEntity<>(this.interesovanjeService.getAllJMBG(k.getJmbg()),HttpStatus.OK);
     }
 
+    @GetMapping("/jmbg/{jmbg}")
+    @Produces("application/xml")
+    public ResponseEntity<?> getAllJMBG(@PathVariable String jmbg) throws XMLDBException {
+        return new ResponseEntity<>(this.interesovanjeService.getAllJMBG(jmbg),HttpStatus.OK);
+    }
     @GetMapping(value = "/generisiXhtml/{id}", produces = MediaType.TEXT_HTML_VALUE)
 //    @PreAuthorize("hasAnyRole('ROLE_GRADJANIN', 'ROLE_SLUZBENIK')")
     public ResponseEntity<InputStreamResource> generisiXHTML(@PathVariable String id) throws Exception {

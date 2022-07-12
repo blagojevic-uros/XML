@@ -11,6 +11,7 @@ export class ZahtevListComponent implements OnInit {
   razlog: any = '';
   @Input() zahtevi!: any[];
   @Output() zahtevChangeEvent = new EventEmitter();
+
   constructor(private zahtevService:ZahtevService) { }
 
   ngOnInit(): void {

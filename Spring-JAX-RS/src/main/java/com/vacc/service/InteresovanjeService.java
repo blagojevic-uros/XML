@@ -48,7 +48,7 @@ public class InteresovanjeService {
             this.interesovanjeDAO.save(folderPath,documentId,interesovanje,Interesovanje.class);
             ByteArrayDataSource pdf = new ByteArrayDataSource(generisiPdf(uniqueID), "application/pdf");
             ByteArrayDataSource xhtml = new ByteArrayDataSource(generisiXHTML(uniqueID), "text/html");
-            //emailService.sendMail(interesovanje.getLicniPodaci().getEmail(),"test","test",pdf,xhtml);
+            emailService.sendMail(interesovanje.getLicniPodaci().getEmail(),"Interesovanje ","Vase interesovanje. Popunite saglasnost!!",pdf,xhtml);
             return uniqueID;
         }
         catch (Exception e){

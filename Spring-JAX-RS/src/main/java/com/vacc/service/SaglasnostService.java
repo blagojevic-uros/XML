@@ -2,7 +2,6 @@ package com.vacc.service;
 
 import com.vacc.Exception.NotFoundException;
 import com.vacc.dao.SaglasnostDAO;
-import model.interesovanje.Interesovanje;
 import model.saglasnost.EvidencijaOVakcinaciji;
 import model.saglasnost.SaglasnostZaImunizaciju;
 import model.saglasnost.TVakcinisanje;
@@ -17,7 +16,6 @@ import java.io.ByteArrayInputStream;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import java.util.logging.Handler;
 
 @Service
 public class SaglasnostService {
@@ -29,14 +27,17 @@ public class SaglasnostService {
     private final PDFTransformerService pdfTransformerService;
     private final InteresovanjeService interesovanjeService;
 
+
+    private final EmailService emailService;
     private final VakcineService vakcineService;
-    public SaglasnostService(ObjectParser objectParser, SaglasnostDAO saglasnostDAO, InteresovanjeService interesovanjeService, XHTMLTransformerService xhtmlTransformerService, PDFTransformerService pdfTransformerService, VakcineService vakcineService) {
+    public SaglasnostService(ObjectParser objectParser, SaglasnostDAO saglasnostDAO, InteresovanjeService interesovanjeService, XHTMLTransformerService xhtmlTransformerService, PDFTransformerService pdfTransformerService, EmailService emailService, VakcineService vakcineService) {
         this.objectParser = objectParser;
         this.saglasnostDAO = saglasnostDAO;
 
         this.interesovanjeService = interesovanjeService;
         this.xhtmlTransformerService = xhtmlTransformerService;
         this.pdfTransformerService = pdfTransformerService;
+        this.emailService = emailService;
         this.vakcineService = vakcineService;
     }
 
@@ -54,13 +55,10 @@ public class SaglasnostService {
     public String save(SaglasnostZaImunizaciju saglasnost, String jmbg) throws Exception{
         String documentId = "saglasnost-" + jmbg + ".xml";
 
+        saglasnost.setId(jmbg);
         if(interesovanjeService.getAllJMBG(jmbg).isEmpty()){
             throw new NotFoundException("Niste popunili interesovanje");
         }
-//        SaglasnostZaImunizaciju saglasnostZaImunizaciju = new SaglasnostZaImunizaciju();
-//        saglasnostZaImunizaciju.setLicniPodaci(saglasnost);
-//        saglasnostZaImunizaciju.setId(uniqueID);
-//        saglasnostZaImunizaciju.setRel("pred:interesovanjeOd");
         try{
             this.saglasnostDAO.save(folderPath,documentId,saglasnost,SaglasnostZaImunizaciju.class);
 //            ByteArrayDataSource pdf = new ByteArrayDataSource(generisiPdf(uniqueID), "application/pdf");
@@ -118,8 +116,11 @@ public class SaglasnostService {
         return xhtmlTransformerService.generateHTML(saglasnost, XSLPaths.SAGLASNOST_XSL);
     }
     public void updateSaglasnost(EvidencijaOVakcinaciji evidencijaOVakcinaciji,String jmbg) throws Exception {
-        evidencijaOVakcinaciji.setTabelaVakcinisanja(new EvidencijaOVakcinaciji.TabelaVakcinisanja());
         SaglasnostZaImunizaciju saglasnostZaImunizaciju = getByIdObject(jmbg);
+        if (saglasnostZaImunizaciju.getEvidencijaOVakcinaciji() != null){
+            throw new Exception();
+        }
+        evidencijaOVakcinaciji.setTabelaVakcinisanja(new EvidencijaOVakcinaciji.TabelaVakcinisanja());
         saglasnostZaImunizaciju.setEvidencijaOVakcinaciji(evidencijaOVakcinaciji);
         save(saglasnostZaImunizaciju,jmbg);
     }
@@ -131,8 +132,12 @@ public class SaglasnostService {
             throw new Exception();
         }
         saglasnostZaImunizaciju.getEvidencijaOVakcinaciji().getTabelaVakcinisanja().getVakcinisanje().add(vakcinisanje);
+
         vakcineService.subtractVakcina(vakcinisanje.getNazivVakcine().getValue().value(),1);
+
+
         save(saglasnostZaImunizaciju,jmbg);
+        emailService.sendEmail(saglasnostZaImunizaciju.getLicniPodaci().getEmail(),"Sledeca doza","Sledece doza je za 6 meseci");
     }
 
     public List<String>  getVakcineInRange(String start,String end) throws SAXException {

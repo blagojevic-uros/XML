@@ -6,24 +6,36 @@ import model.saglasnost.Drzavljanstvo;
 import model.saglasnost.LicniPodaci;
 import model.saglasnost.SaglasnostZaImunizaciju;
 import model.saglasnost.Srpsko;
-import org.apache.coyote.Response;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.client.RestTemplate;
 import org.springframework.web.server.ResponseStatusException;
 
 import javax.ws.rs.Produces;
+import java.util.List;
 
 @RestController
 @RequestMapping(path = "/api/saglasnost")
 public class SaglasnostController {
 
     private final SaglasnostService saglasnostService;
-
-    public SaglasnostController(SaglasnostService saglasnostService){
+    private final RestTemplate restTemplate;
+    public SaglasnostController(SaglasnostService saglasnostService, RestTemplate restTemplate){
         this.saglasnostService = saglasnostService;
+        this.restTemplate = restTemplate;
     }
 
+
+
+    @PostMapping("/get/{jmbg}")
+    @Produces("application/xml")
+    public ResponseEntity<?> getSaglasnost(@RequestBody String jmbg) throws Exception {
+        SaglasnostZaImunizaciju response = restTemplate.getForObject(
+                "http://localhost:9090/api/saglasnost/" + jmbg, SaglasnostZaImunizaciju.class);
+        return new ResponseEntity<>(response,HttpStatus.OK);
+
+    }
     @PostMapping("/save")
     @Produces("application/xml")
     public ResponseEntity<String> save(@RequestBody SaglasnostZaImunizaciju saglasnost) throws Exception {

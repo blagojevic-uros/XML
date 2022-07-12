@@ -21,14 +21,16 @@ export class ZahtevService {
       responseType: 'text',
     });
   }
-  declineZahtev(id:any,razlog: any): Observable<string> {
-    return this.http.get('http://localhost:9091/zahtev/decline/'+id + "/" + razlog, {
+  declineZahtev(id:any,razlog:any): Observable<string> {
+    return this.http.get('http://localhost:9091/api/saglasnost/get/'+id + "/" + razlog, {
       headers: this.headers,
       responseType: 'text',
     });
   }
-  // declineZahtev(id:any): Observable<string> {
-  //   return this.http.get(
-  //     'http://localhost:9091/zahtev/decline/'+id);
-  // }
+  getInteresovanje(id:any): Observable<any>{
+    return this.http.get('http://localhost:9091/api/interesovanje/get/'+id);
+  }
+  getSaglasnost(id:any): Observable<any>{
+    return this.http.get('http://localhost:9091/api/saglasnost/get/'+id)
+  }
 }

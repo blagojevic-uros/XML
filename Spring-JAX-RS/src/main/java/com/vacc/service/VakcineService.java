@@ -28,8 +28,11 @@ public class VakcineService {
         return (Vakcina) ObjectParser.parseToObject(vakcineDAO.getById(name + ".xml",vakcineDAO.getFolderPath()),Vakcina.class);
     }
 
-    public void subtractVakcina(String name,Integer amount) throws XMLDBException, JAXBException {
+    public void subtractVakcina(String name,Integer amount) throws Exception {
         Vakcina v = getByName(name);
+        if(v.getKolicina() == 0){
+            throw new Exception();
+        }
         v.setKolicina(v.getKolicina() - amount);
         vakcineDAO.save(vakcineDAO.getFolderPath(),name + ".xml",v,Vakcina.class);
     }
